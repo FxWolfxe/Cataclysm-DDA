@@ -2394,6 +2394,7 @@ std::vector<const item *> Character::get_pseudo_items() const
             }
         }
 
+     
         pseudo_items_valid = true;
     }
     return pseudo_items;
