@@ -3287,6 +3287,34 @@
     "prereqs": [ "VISCOUS", "AMORPHOUS" ],
     "category": [ "GASTROPOD" ]
   },
+
+  {
+    "type": "mutation",
+    "id": "TAIL_INTERMEDIAT_ABDOMEN",
+    "name": { "str": "Small Abdomen" },
+    "points": 0,
+    "visibility": 1,
+    "ugliness": 2,
+    "description": "Your short stubby tail has grown and turned into a small abdomen, like on a bug",
+    "types": [ "TAIL" ],
+    "changes_to": [ "TAIL_STING",  "TAIL_SPIDER_ABDOMEN"],
+    "category": [ "SPIDER", "INSECT", "CHIMERA" ]
+  },
+
+  {
+
+    "type": "mutation",
+    "id": "TAIL_SPIDER_ABDOMEN",
+    "name": { "str": "Spider Abdomen" },
+    "points": 0,
+    "visibility": 1,
+    "ugliness": 2,
+    "description": "You have grown a large spider's abdomen",
+    "types": [ "TAIL" ],
+    "category": [ "SPIDER" ],
+    "threshreq": [ "THRESH_SPIDER" ], 
+    "allowed_items": [ "ALLOWS_TAIL" ]
+  },
   {
     "type": "mutation",
     "id": "INSECT_RESERVOIR",
@@ -4100,8 +4128,8 @@
     "ugliness": 2,
     "description": "You have a short, stubby tail, like a rabbit's.  It serves no purpose.",
     "types": [ "TAIL" ],
-    "changes_to": [ "TAIL_LONG", "TAIL_THICK", "TAIL_FIN", "TAIL_RAT", "TAIL_RAPTOR" ],
-    "category": [ "URSINE", "FELINE", "LIZARD", "FISH", "RAT", "MOUSE", "RAPTOR", "LUPINE", "INSECT", "CATTLE", "CHIMERA", "BEAST" ]
+    "changes_to": [ "TAIL_LONG", "TAIL_THICK", "TAIL_FIN", "TAIL_RAT", "TAIL_RAPTOR" , "TAIL_INTERMEDIAT_ABDOMEN"],
+    "category": [ "URSINE", "FELINE", "LIZARD", "FISH", "RAT", "MOUSE", "RAPTOR", "LUPINE", "INSECT", "SPIDER" ,"CATTLE", "CHIMERA", "BEAST" ]
   },
   {
     "type": "mutation",
@@ -4833,7 +4861,7 @@
     "points": -3,
     "description": "Your body produces and anchors webbing.  Too bad you can't seem to control the process.  There is a chance that you will leave webs in your wake.",
     "types": [ "SECRETION" ],
-    "prereqs": [ "WEB_WALKER" ],
+    "prereqs": [ "WEB_WALKER"],
     "threshreq": [ "THRESH_SPIDER" ],
     "changes_to": [ "WEB_WEAVER" ],
     "category": [ "SPIDER" ]
@@ -4861,7 +4889,7 @@
     "name": { "str": "Web Diver" },
     "points": 2,
     "description": "Your webbing is strong enough to support your weight.  Activate to rappel down any drop you encounter, at the cost of nutrition.",
-    "prereqs": [ "WEB_WEAVER" ],
+    "prereqs": [ "WEB_WEAVER" , "TAIL_SPIDER_ABDOMEN"],
     "threshreq": [ "THRESH_SPIDER" ],
     "category": [ "SPIDER" ],
     "active": true,
@@ -4875,7 +4903,7 @@
     "name": { "str": "Rope Webs" },
     "points": 3,
     "description": "With spinnerets like THESE, who needs rope?!  Activate to produce rope.",
-    "prereqs": [ "WEB_WEAVER" ],
+    "prereqs": [ "WEB_WEAVER", "TAIL_SPIDER_ABDOMEN" ],
     "threshreq": [ "THRESH_SPIDER" ],
     "category": [ "SPIDER" ],
     "active": true,
