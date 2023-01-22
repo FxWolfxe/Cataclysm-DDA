@@ -9555,7 +9555,7 @@ bool item::reinforceable() const
 
 bool item::is_gun() const
 {
-    return !!type->gun;
+    return !!type->gun; //can cause a nullptr exception if the item is a 'fake' item 
 }
 
 void item::select_itype_variant()
