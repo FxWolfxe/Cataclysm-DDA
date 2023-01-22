@@ -450,6 +450,85 @@
       }
     ]
   },
+
+  {
+    "id":"integrated_claws_rat",
+    "type":"ARMOR",
+    "category":"armor",
+    "name":{"str_sp":"claws"},
+    "description":"Your paws are bone, muscle, and claw with a thin layer of skin and fur.  They might as well be made of stainless steel",
+    "weight":"50 g",
+    "volume": "100 ml",
+    "price":0,
+    "price_postapoc": 0,
+    "material": [ "chitin" ],
+    "symbol": ";",
+    "color": "dark_gray",
+    "warmth": 1,
+    "qualities":[[ "CUT", 2 ], ["PRY", 1]],
+    "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "SKINTIGHT", "PADDED" ],
+    "armor": [
+      {
+        "material": [ { "type": "sclerotin", "covered_by_mat": 100, "thickness": 3.2 } ],
+        "covers": [ "hand_l", "hand_r" ],
+        "coverage": 80,
+        "encumbrance": 7
+      }
+    ]
+  },
+
+  {
+    "id":"integrated_burrow_full",
+    "type":"ARMOR",
+    "category":"armor",
+    "name":{"str_sp":"claws and teeth"},
+    "description":"as a pair, your claws and teeth can get through just about",
+    "weight":"50 g",
+    "volume": "100 ml",
+    "price":0,
+    "price_postapoc": 0,
+    "material": [ "chitin" ],
+    "symbol": "b",
+    "color": "dark_gray",
+    "warmth": 1,
+    "qualities":[[ "DIG", 3 ]],
+    "use_action": [ "DIG", "PICKAXE" ],
+    "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "SKINTIGHT", "PADDED" ],
+    "armor": [
+      {
+        "material": [ { "type": "sclerotin", "covered_by_mat": 100, "thickness": 3.2 } ],
+        "covers": [ "hand_l", "hand_r" ],
+        "coverage": 80,
+        "encumbrance": 7
+      }
+    ]
+  },
+  {
+    "id":"integrated_burrow_large",
+    "type":"ARMOR",
+    "category":"armor",
+    "name":{"str_sp":"claws"},
+    "description":"your large paws can dig up dirt as good as any shovel",
+    "weight":"50 g",
+    "volume": "100 ml",
+    "price":0,
+    "price_postapoc": 0,
+    "material": [ "chitin" ],
+    "symbol": "b",
+    "color": "dark_gray",
+    "warmth": 1,
+    "qualities":[[ "DIG", 3 ]],
+    "use_action": [ "DIG" ],
+    "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "SKINTIGHT", "PADDED" ],
+    "armor": [
+      {
+        "material": [ { "type": "sclerotin", "covered_by_mat": 100, "thickness": 3.2 } ],
+        "covers": [ "hand_l", "hand_r" ],
+        "coverage": 80,
+        "encumbrance": 7
+      }
+    ]
+  },
   {
     "id": "integrated_mandibles",
     "type": "ARMOR",
