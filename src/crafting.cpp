@@ -608,10 +608,24 @@ const inventory &Character::crafting_inventory( const tripoint &src_pos, int rad
         *crafting_cache.crafting_inventory += *i;
     }
 
-    if( has_trait( trait_BURROW ) || has_trait( trait_BURROWLARGE ) ) {
+    //mutation psudo items
+    for(const auto &iMType: get_mutations())
+    {
+        for(const auto &iArmor: iMType->integrated_armor)
+        {
+            const auto& qualities = iArmor->qualities;
+            if(!qualities.empty())
+            {
+                *crafting_cache.crafting_inventory += item(iArmor, calendar::turn); 
+            }
+
+        }
+    }
+
+    /*if( has_trait( trait_BURROW ) || has_trait( trait_BURROWLARGE ) ) {
         *crafting_cache.crafting_inventory += item( "pickaxe", calendar::turn );
         *crafting_cache.crafting_inventory += item( "shovel", calendar::turn );
-    }
+    }*/
 
     crafting_cache.moves = moves;
     crafting_cache.time = calendar::turn;
