@@ -48,6 +48,7 @@ static const activity_id ACT_TREE_COMMUNION( "ACT_TREE_COMMUNION" );
 static const flag_id json_flag_INTEGRATED( "INTEGRATED" );
 
 static const itype_id itype_fake_burrowing( "fake_burrowing" );
+static const itype_id itype_true_burrowing("true_burrowing");
 
 static const json_character_flag json_flag_CHLOROMORPH( "CHLOROMORPH" );
 static const json_character_flag json_flag_HUGE( "HUGE" );
@@ -798,7 +799,15 @@ void Character::activate_mutation( const trait_id &mut )
     } else if( mut == trait_SNAIL_TRAIL ) {
         get_map().add_field( pos(), fd_sludge, 1 );
         add_msg_if_player( _( "You start leaving a trail of sludge as you go." ) );
-    } else if( mut == trait_BURROW || mut == trait_BURROWLARGE ) {
+    }
+    else if (mut == trait_BURROW)
+    {
+        tdata.powered = false; 
+        item burrowing_item(itype_true_burrowing); 
+        invoke_item(&burrowing_item); 
+        return; //handle when the activity finishes 
+    }
+    else if(  mut == trait_BURROWLARGE ) {
         tdata.powered = false;
         item burrowing_item( itype_fake_burrowing );
         invoke_item( &burrowing_item );
