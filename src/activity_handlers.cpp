@@ -1548,8 +1548,13 @@ void activity_handlers::pickaxe_finish( player_activity *act, Character *you )
                                 _( "<npcname> finishes digging." ) );
     here.destroy( pos, true );
     if( !act->targets.empty() ) {
-        item &it = *act->targets.front();
-        you->consume_charges( it, it.ammo_required() );
+        item* itPtr = act->targets.front().get_item(); // it reference can be null if using a fake item?  
+                            //this is hacky,need to figure out a better way to handle the fack items, this feels like it would cause further issues 
+        if (itPtr != nullptr)
+        {
+            item& it = *itPtr;
+            you->consume_charges(it, it.ammo_required());
+        }
     } else {
         debugmsg( "pickaxe activity targets empty" );
     }
