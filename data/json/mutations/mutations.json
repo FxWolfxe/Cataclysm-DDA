@@ -3370,6 +3370,7 @@
     "description": "Your index fingers have grown into huge talons.  After a bit of practice, you find that this does not affect your dexterity, but allows for a deadly unarmed attack.  They also prevent wearing gloves.",
     "types": [ "CLAWS" ],
     "prereqs": [ "NAILS" ],
+    "integrated_armor":["integrated_large_talons"],
     "category": [ "LIZARD", "BIRD", "CHIMERA" ],
     "allowed_items": [ "ALLOWS_TALONS" ]
   },

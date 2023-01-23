@@ -977,6 +977,32 @@
     ]
   },
   {
+    "id": "integrated_large_talons",
+    "type": "ARMOR",
+    "category": "armor",
+    "name": { "str_sp": "Large Talons" },
+    "description": "your fingers are now tipped with large wicked talons, perfect for slicing into prey.",
+    "weight": "300 g",
+    "volume": "200 ml",
+    "price": 0,
+    "price_postapoc": 0,
+    "material": [ "sclerotin" ],
+    "symbol": "c",
+    "color": "brown",
+    "warmth": 2,
+    "qualities":[ [ "CUT", 2 ], [ "CUT_FINE", 1 ], [ "BUTCHER", 19 ]],
+    "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "PERSONAL", "WATER_FRIENDLY", "PADDED" ],
+    "armor": [
+      {
+        "material": [ { "type": "sclerotin", "covered_by_mat": 100, "thickness": 3 } ],
+        "covers": [ "hand_r", "hand_l" ],
+        "coverage": 40,
+        "encumbrance": 5
+      }
+    ]
+  },
+
+  {
     "id": "armor_bio_eyes",
     "//": "These do not preclude wearing glasses, but you'll get double-up penalties.  If you really needed to you could likely still situate the lenses in front of them.  You should probably just augment your eyes though.",
     "type": "ARMOR",
