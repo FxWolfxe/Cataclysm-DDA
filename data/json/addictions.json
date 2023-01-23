@@ -77,7 +77,9 @@
     "type_name": "mutation",
     "description": "You've gotten a taste for mutating and the chemicals that cause it.  But you can stop, yeah, any time you want.",
     "craving_morale": "morale_craving_mutagen",
-    "effect_on_condition": "EOC_MUTAGEN_ADDICTION"
+    "effect_on_condition": "EOC_MUTAGEN_ADDICTION",
+    "satiated_morale":"morale_satiated_addiction",
+    "satisfied_duration":"1d"
   },
   {
     "type": "addiction_type",
