@@ -20,6 +20,9 @@ struct add_type {
         translation _desc;
         morale_type _craving_morale;
         effect_on_condition_id _effect;
+        
+        morale_type _satiated_morale;
+        time_duration _satisfied_duration; //how long the addiction is satiated for when using a drug 
         std::string _builtin;
     public:
         addiction_id id;
@@ -51,6 +54,16 @@ struct add_type {
         }
         const std::string &get_builtin() const {
             return _builtin;
+        }
+
+        const time_duration &get_satiated_duration() const
+        {
+            return _satisfied_duration;
+        }
+
+        const morale_type &get_satiated_morale() const
+        {
+            return _satiated_morale;
         }
 };
 
