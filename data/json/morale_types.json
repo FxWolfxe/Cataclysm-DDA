@@ -105,6 +105,11 @@
     "text": "Craving mutagen"
   },
   {
+    "id":"morale_satiated_addiction",
+    "type":"morale_type",
+    "text":"mutagen high"
+  },
+  {
     "id": "morale_craving_diazepam",
     "type": "morale_type",
     "text": "Craving prescription sedatives"
