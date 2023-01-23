@@ -79,6 +79,15 @@
   {
     "type": "profession",
     "subtype": "hobby",
+    "id": "muta_junkie",
+    "name": "Mutagen Junkie",
+    "description": "You managed to get your hands on mutagen once, ever since then you've been craving more and the changes it brings.",
+    "points": -3,
+    "addictions": [ { "intensity": 40, "type": "mutagen" } ]
+  },
+  {
+    "type": "profession",
+    "subtype": "hobby",
     "id": "cosplay",
     "name": "Cosplay",
     "description": "You liked to make your own costumes and wear them to various conventions.  Now that everyone is dead or dying, maybe this will be useful for something else.",
