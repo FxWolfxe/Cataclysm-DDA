@@ -3384,12 +3384,25 @@ cata::optional<int> iuse::pickaxe( Character *p, item *it, bool, const tripoint 
         return cata::nullopt;
     }
 
-    int moves = to_moves<int>( 20_minutes );
+    
+    int moves = to_moves<int>( time_duration::from_minutes(20_minutes) );
     moves += ( ( MAX_STAT + 4 ) - std::min( p->get_arm_str(), MAX_STAT ) ) * to_moves<int>( 5_minutes );
     if( here.move_cost( pnt ) == 2 ) {
         // We're breaking up some flat surface like pavement, which is much easier
         moves /= 2;
     }
+
+    if (it != nullptr)
+    { //reduce the base time by tool quality if available
+        if (it->has_quality(qual_DIG))
+        {
+
+            //reduce it by 1 / sqrt(dig quality) 
+            const float mull = 1.0f / std::sqrt(static_cast<float>(it->get_quality(qual_DIG)));
+            moves = std::round(mull * static_cast<float>(moves));
+        }
+    }
+
 
     const std::vector<npc *> helpers = p->get_crafting_helpers();
     const std::size_t helpersize = p->get_num_crafting_helpers( 3 );
