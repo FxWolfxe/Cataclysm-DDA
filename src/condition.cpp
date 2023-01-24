@@ -369,6 +369,15 @@ void conditional_t<T>::set_has_trait( const JsonObject &jo, const std::string &m
 }
 
 template<class T>
+void conditional_t<T>::set_reached_any_threshold(const JsonObject& jo, const std::string& member, bool is_npc )
+{
+    condition = [is_npc](const T& d)
+    {
+        return d.actor(is_npc)->crossed_threshold();
+    };
+}
+
+template<class T>
 void conditional_t<T>::set_has_flag( const JsonObject &jo, const std::string &member,
                                      bool is_npc )
 {
@@ -2769,7 +2778,11 @@ conditional_t<T>::conditional_t( const JsonObject &jo )
         set_has_any_trait( jo, "npc_has_any_trait", true );
     } else if( jo.has_member( "u_has_trait" ) ) {
         set_has_trait( jo, "u_has_trait" );
-    } else if( jo.has_member( "npc_has_trait" ) ) {
+    }else if(jo.has_member("u_reached_any_threshold"))
+    {
+        set_reached_any_threshold(jo, "u_reached_any_threshold");
+    }
+    else if( jo.has_member( "npc_has_trait" ) ) {
         set_has_trait( jo, "npc_has_trait", true );
     } else if( jo.has_member( "u_has_flag" ) ) {
         set_has_flag( jo, "u_has_flag" );
