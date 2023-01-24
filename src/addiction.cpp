@@ -353,6 +353,10 @@ void add_type::load( const JsonObject &jo, const std::string & )
     optional( jo, was_loaded, "craving_morale", _craving_morale, MORALE_NULL );
     optional( jo, was_loaded, "effect_on_condition", _effect );
     optional( jo, was_loaded, "builtin", _builtin );
+    optional(jo, was_loaded, "satiated_morale", _satiated_morale, MORALE_NULL);
+    time_duration def_duration = 2_hours; 
+    optional(jo, was_loaded, "satisfied_duration", def_duration);
+
 }
 
 void add_type::check_add_types()

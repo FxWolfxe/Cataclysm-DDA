@@ -48,7 +48,7 @@ const std::unordered_set<std::string> complex_conds = { {
         "is_temperature", "is_windpower", "is_humidity", "is_pressure", "u_is_height", "npc_is_height",
         "u_has_worn_with_flag", "npc_has_worn_with_flag", "u_has_wielded_with_flag", "npc_has_wielded_with_flag",
         "u_has_pain", "npc_has_pain", "u_has_power", "npc_has_power", "u_has_focus", "npc_has_focus", "u_has_morale",
-        "npc_has_morale", "u_is_on_terrain", "npc_is_on_terrain", "u_is_in_field", "npc_is_in_field", "compare_int", "compare_string"
+        "npc_has_morale", "u_is_on_terrain", "npc_is_on_terrain", "u_is_in_field", "npc_is_in_field", "compare_int", "compare_string", "u_reached_any_threshold"
     }
 };
 } // namespace dialogue_data
@@ -120,6 +120,7 @@ struct conditional_t {
 
         void set_has_any_trait( const JsonObject &jo, const std::string &member, bool is_npc = false );
         void set_has_trait( const JsonObject &jo, const std::string &member, bool is_npc = false );
+        void set_reached_any_threshold(const JsonObject& jo, const std::string& member, bool is_npc = false); 
         void set_has_flag( const JsonObject &jo, const std::string &member, bool is_npc = false );
         void set_has_var( const JsonObject &jo, const std::string &member, bool is_npc = false );
         void set_compare_var( const JsonObject &jo, const std::string &member, bool is_npc = false );

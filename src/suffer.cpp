@@ -340,13 +340,34 @@ void suffer::while_grabbed( Character &you )
 
 void suffer::from_addictions( Character &you )
 {
-    time_duration timer = -6_hours;
-    if( you.has_trait( trait_ADDICTIVE ) ) {
-        timer = -10_hours;
-    } else if( you.has_trait( trait_NONADDICTIVE ) ) {
-        timer = -3_hours;
+
+    int addiction_level = 0; //convert this to enum? 
+    if(you.has_trait(trait_ADDICTIVE))
+    {
+        addiction_level = 1; 
     }
+    else if(you.has_trait(trait_NONADDICTIVE))
+    {
+        addiction_level = 2; 
+    }
+
     for( addiction &cur_addiction : you.addictions ) {
+
+        time_duration timer = cur_addiction.type->get_satiated_duration();// = -6_hours //default -6h, addictive -10h, non addictive -3h 
+
+        switch(addiction_level)
+        {
+        case 1:
+            timer *= -10;
+            break;
+        case 2:
+            timer *= -3;
+            break;
+        default:
+            timer *= -6;
+        }
+        
+
         if( cur_addiction.sated <= 0_turns &&
             cur_addiction.intensity >= MIN_ADDICTION_LEVEL ) {
             cur_addiction.run_effect( you );
@@ -2254,13 +2275,13 @@ void Character::add_addiction( const addiction_id &type, int strength )
     if( type.is_null() ) {
         return;
     }
-    time_duration timer = 2_hours;
+    time_duration timer = type->get_satiated_duration();
     if( has_trait( trait_ADDICTIVE ) ) {
         strength *= 2;
-        timer = 1_hours;
+        timer /= 2;
     } else if( has_trait( trait_NONADDICTIVE ) ) {
         strength /= 2;
-        timer = 6_hours;
+        timer *= 3;
     }
     //Update existing addiction
     for( addiction &i : addictions ) {
@@ -2278,6 +2299,18 @@ void Character::add_addiction( const addiction_id &type, int strength )
         }
         if( i.intensity < MAX_ADDICTION_LEVEL && strength > i.intensity * rng( 2, 5 ) ) {
             i.intensity++;
+        } else if(i.intensity >= MAX_ADDICTION_LEVEL && type->get_satiated_morale() != MORALE_NULL )
+        {
+            //only give moral bonus to max intensity addictions
+            
+            //todo special morale for MUT_JUNKIE?
+            //default range is 20
+            //duration is half of satiated period
+
+            time_duration decay_start = timer / 10;
+            if (decay_start < 30_minutes)
+                decay_start = 30_minutes;
+            add_morale(type->get_satiated_morale(), 5, 20, timer / 2, decay_start); 
         }
 
         add_msg_debug( debugmode::DF_CHAR_HEALTH, "Updating addiction: %d intensity, %d sated",
