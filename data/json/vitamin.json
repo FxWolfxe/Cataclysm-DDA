@@ -405,7 +405,7 @@
     "max": 8000,
     "flags": [ "NO_DISPLAY" ],
     "rate": "2 h",
-    "disease_excess": [ [ 1, 899 ], [ 900, 2799 ], [ 2800, 8000 ] ]
+    "disease_excess": [ [ 1, 1349 ], [ 1350, 4199 ], [ 4200, 12000 ] ]
   },
   {
     "id": "bad_food",
