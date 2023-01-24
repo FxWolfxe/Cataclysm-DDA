@@ -1011,9 +1011,9 @@ bool Character::mutation_ok( const trait_id &mutation, bool allow_good, bool all
 bool Character::roll_bad_mutation() const
 {
     //Instability value at which bad mutations become possible
-    const float I0 = 900.0;
+    const float I0 = 1400.0;
     //Instability value at which good and bad mutations are equally likely
-    const float I50 = 2800.0;
+    const float I50 = 4200.0;
 
     //Static to avoid recalculating this every time - std::log is not constexpr
     static const float exp = std::log( 2 ) / std::log( I50 / I0 );
