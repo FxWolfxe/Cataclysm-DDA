@@ -64,6 +64,10 @@
     "id": "BODY_ARMOR"
   },
   {
+    "type":"mutation_type",
+    "id":"BODY_ARMOR_EXTRA"
+  },
+  {
     "type": "mutation_type",
     "id": "THIRST"
   },
