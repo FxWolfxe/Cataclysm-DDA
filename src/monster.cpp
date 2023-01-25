@@ -1349,6 +1349,15 @@ monster_attitude monster::attitude( const Character *u ) const
             effective_anger -= 20;
         }
 
+        for(const auto& trait: u->get_mutations())
+        {
+            const auto& elem = trait->faction_anger_offsets.find(faction->id);
+            if(elem != trait->faction_anger_offsets.end())
+            {
+                effective_anger += elem->second;
+            }
+        }
+
         if( u->has_trait( trait_TERRIFYING ) ) {
             effective_morale -= 10;
         }

@@ -312,6 +312,10 @@ struct mutation_branch {
         /**Map of angered species and there intensity*/
         std::map<species_id, int> anger_relations;
 
+        /**anger offset for monster factions*/
+        std::map<mfaction_str_id, int> faction_anger_offsets;
+
+
         /**List of material required for food to be be edible*/
         std::set<material_id> can_only_eat;
 

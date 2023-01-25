@@ -523,6 +523,11 @@ void mutation_branch::load( const JsonObject &jo, const std::string & )
 
     }
 
+    for (JsonArray ja : jo.get_array("faction_anger_offsets")) {
+        const mfaction_str_id faction = mfaction_str_id(ja.next_string());
+        faction_anger_offsets.emplace(faction, ja.next_int());
+    }
+
     for( JsonObject wp : jo.get_array( "wet_protection" ) ) {
         int ignored = wp.get_int( "ignored", 0 );
         int neutral = wp.get_int( "neutral", 0 );
