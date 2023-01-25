@@ -178,6 +178,8 @@
           "TAIL_RAPTOR",
           "TAIL_RAT",
           "TAIL_STING",
+          "TAIL_STING_STRONG",
+          "TAIL_INTERMEDIAT_ABDOMEN",
           "TAIL_STUB",
           "TAIL_THICK"
         ],

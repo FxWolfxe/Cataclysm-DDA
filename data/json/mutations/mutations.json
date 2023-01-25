@@ -3295,6 +3295,7 @@
     "name": { "str": "Small Abdomen" },
     "points": 0,
     "visibility": 1,
+    "prereqs":["TAIL_STUB"],
     "ugliness": 2,
     "description": "Your short stubby tail has grown and turned into a small abdomen, like on a bug",
     "types": [ "TAIL" ],
@@ -3527,7 +3528,7 @@
     "description": "Your body produces a potent venom.  Cutting or stabbing attacks from mutations have a chance to poison your target.",
     "prereqs": [ "POISRESIST" ],
     "changes_to": [ "POISONOUS2" ],
-    "category": [ "SLIME", "TROGLOBITE", "SPIDER", "CEPHALOPOD", "GASTROPOD", "CHIMERA", "BATRACHIAN" ]
+    "category": [ "SLIME", "TROGLOBITE", "SPIDER", "INSECT", "CEPHALOPOD", "GASTROPOD", "CHIMERA", "BATRACHIAN" ]
   },
   {
     "type": "mutation",
@@ -4162,7 +4163,7 @@
     "description": "You have a long, graceful tail, like that of a big cat.  It improves your balance, making your ability to dodge higher, but prevents wearing non-fabric pants.",
     "types": [ "TAIL" ],
     "prereqs": [ "TAIL_STUB" ],
-    "changes_to": [ "TAIL_FLUFFY", "TAIL_STING", "TAIL_CATTLE", "TAIL_RAT" ],
+    "changes_to": [ "TAIL_FLUFFY", "TAIL_CATTLE", "TAIL_RAT" ],
     "category": [ "FELINE", "LUPINE", "INSECT", "CHIMERA", "CATTLE", "RAT", "MOUSE" ],
     "restricts_gear": [ "leg_hip_l", "leg_hip_r" ],
     "allowed_items": [ "ALLOWS_TAIL" ],
@@ -4259,13 +4260,14 @@
   {
     "type": "mutation",
     "id": "TAIL_STING",
-    "name": { "str": "Spiked Tail" },
+    "name": { "str": "Stingger Abdomen" },
     "points": 0,
-    "visibility": 6,
+    "visibility": 7,
     "ugliness": 3,
-    "description": "You have a long tail that ends in a vicious stinger.  It does not improve your balance at all, but allows for a powerful piercing attack.  Prevents wearing non-fabric pants.",
+    "description": "Your abdomen has developed a vicious stinger.  It does not improve your balance at all, but allows for a powerful piercing attack.  Prevents wearing non-fabric pants.",
     "types": [ "TAIL" ],
-    "prereqs": [ "TAIL_LONG" ],
+    "changes_to":["TAIL_STING_STRONG"],
+    "prereqs": [ "TAIL_INTERMEDIAT_ABDOMEN" ],
     "restricts_gear": [ "leg_hip_l", "leg_hip_r" ],
     "allowed_items": [ "ALLOWS_TAIL" ],
     "category": [ "INSECT", "CHIMERA" ],
@@ -4278,6 +4280,33 @@
       "base_damage": { "damage_type": "stab", "amount": 20 }
     }
   },
+
+  {
+    "type": "mutation",
+    "id": "TAIL_STING_STRONG",
+    "name": { "str": "Stinger Abdomen" },
+    "points": 2,
+    "visibility": 7,
+    "ugliness": 3,
+    "description": "Your abdomen has grown just a bit larger and the stinger has lengthened and grown wicked barbes. You can also feel the venom gland in it has grown larger",
+    "types": [ "TAIL" ],
+    "prereqs": [ "TAIL_STING" ],
+    "prereqs2":[ "POISONOUS" ],
+    "restricts_gear": [ "leg_hip_l", "leg_hip_r" ],
+    "allowed_items": [ "ALLOWS_TAIL" ],
+    "category": [ "INSECT" ],
+    "threshreq": [ "THRESH_INSECT" ],
+    "allow_soft_gear": true,
+    "attacks": {
+      "attack_text_u": "You sting %s with your tail",
+      "attack_text_npc": "%1$s stings %2$s with their tail",
+      "chance": 30,
+      "base_damage": [{ "damage_type": "stab", "amount": 20 }, {"damage_type":"cut" , "amount":5}]
+    }
+  },
+
+
+
   {
     "type": "mutation",
     "id": "TAIL_CLUB",
