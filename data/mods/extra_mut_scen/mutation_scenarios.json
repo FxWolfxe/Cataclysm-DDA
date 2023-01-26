@@ -7,7 +7,7 @@
     "start_name": "Mutant",
     "points": 1,
     "flags": [ "CHALLENGE", "CITY_START", "LONE_START" ],
-    "professions": [ "unemployed", "mutant_patient", "mutant_volunteer", "labtech", "security", "medic" ],
+    "professions": [ "unemployed", "mutant_patient", "mutant_volunteer", "labtech", "security", "medic", "urban_samurai" ],
     "allowed_locs": [
       "sloc_forest",
       "sloc_field",
