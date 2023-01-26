@@ -3685,11 +3685,43 @@
     "id": "PADDED_FEET",
     "name": { "str": "Padded Feet" },
     "points": 1,
+    "changes_to":["FOOT_PAWS"],
     "visibility": 1,
     "description": "The bottoms of your feet are strongly padded.  You receive no movement penalty for not wearing shoes, and even receive a 10% bonus when moving barefoot.",
     "types": [ "SOLES" ],
     "category": [ "BATRACHIAN", "RABBIT", "URSINE", "FELINE", "LUPINE", "SPIDER" ]
   },
+  {
+    "type": "mutation",
+    "id": "FOOT_PAWS",
+    "name": { "str": "Foot Paws" },
+    "points": 1,
+    "visibility": 1,
+    "prereqs": [ "PADDED_FEET" ],
+    "description": "Your feet have reshaped further, and look alot more like paws then human feet. you can no longer wear boots but feel even better walking barefoot",
+    "types": [ "SOLES" ],
+    "category": [ "RABBIT", "URSINE", "FELINE", "LUPINE" ],
+    "movecost_modifier":0.85,
+    "restricts_gear":[ "foot_l", "foot_r"],
+    "allow_soft_gear":true
+  },
+  {
+    "type": "mutation",
+    "id": "DIGITIGRADE_LEGS",
+    "name": { "str": "digitigrade legs" },
+    "points": 2,
+    "visibility": 2,
+    "prereqs":[ "STRONG_LEGS"],
+    "prereqs2":[ "FOOT_PAWS" ],
+    "description": "Your legs have changed structure significantly, you're always standing on your 'toes' with a significantly longer heel. they look alot more like dog legs then human. You can only wear cloth pants but moving for long periods feels less taxing",
+    "types": [ "LEGS" ],
+    "threshreq": ["THRESH_LUPINE"],
+    "category": ["LUPINE" ],
+    "stamina_regen_modifier":0.1,
+    "restricts_gear":[ "leg_l" ,  "leg_r" ],
+    "allow_soft_gear":true
+  },
+ 
   {
     "type": "mutation",
     "id": "STRONG_LEGS",
@@ -3699,7 +3731,8 @@
     "description": "Your legs have gained muscle mass to propel you across any terrain.",
     "types": [ "LEGS" ],
     "leads_to": [ "LEAPING_LEGS", "FELINE_LEAP" ],
-    "prereqs": [ "PADDED_FEET" ],
+    "changes_to": ["DIGITIGRADE_LEGS"],
+    "prereqs": [ "PADDED_FEET" , "FOOT_PAWS"],
     "movecost_modifier": 0.88,
     "category": [ "BATRACHIAN", "RABBIT", "FELINE", "LUPINE", "SPIDER" ]
   },
