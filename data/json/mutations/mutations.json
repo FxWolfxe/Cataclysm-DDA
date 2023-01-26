@@ -3708,7 +3708,7 @@
   {
     "type": "mutation",
     "id": "DIGITIGRADE_LEGS",
-    "name": { "str": "digitigrade legs" },
+    "name": { "str": "Digitigrade Legs" },
     "points": 2,
     "visibility": 2,
     "prereqs":[ "STRONG_LEGS"],
