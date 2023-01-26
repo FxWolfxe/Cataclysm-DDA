@@ -3702,7 +3702,7 @@
     "types": [ "SOLES" ],
     "category": [ "RABBIT", "URSINE", "FELINE", "LUPINE" ],
     "movecost_modifier":0.85,
-    "restricts_gear":[ "foot_l", "foot_r"],
+    "restricts_gear":[ "foot_l", "foot_r", "foot_sole_l", "foot_sole_l", "foot_toes_l", "foot_toes_r"],
     "allow_soft_gear":true
   },
   {
