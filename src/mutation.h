@@ -351,6 +351,8 @@ struct mutation_branch {
         std::vector<effect_on_condition_id> deactivated_eocs;
         /** mutation enchantments */
         std::vector<enchantment_id> enchantments;
+
+        mutable std::unordered_map<trait_id, bool> previous_forms_cached; 
     private:
         translation raw_spawn_item_message;
     public:
@@ -423,9 +425,21 @@ struct mutation_branch {
          * \brief gets the translated text to display before the default transformation message 
          * \return the translated text to display before the default transformation message if available, cata::nullopt otherwise 
          */
-        cata::optional<std::string> transformation_text() const; 
+        cata::optional<std::string> transformation_text() const;
 
+        /**
+         * \brief checks if this is a previous form of the other trait
+         * \param other the other trait to check 
+         * \return if this is a previous form of the given trait 
+         */
+        bool is_previous_form_of(const trait_id& other) const;
 
+        /**
+         * \brief checks if adding this mutation would remove the given trait 
+         * \param other the other trait that may or may not be removed 
+         * \return if the given trait would be removed or not 
+         */
+        bool would_remove(const trait_id& other) const; 
 
         /**
          * Returns the color to display the mutation name with.

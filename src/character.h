@@ -3445,6 +3445,14 @@ class Character : public Creature, public visitable
          */
         std::vector<const mutation_branch *> cached_mutations;
 
+        /**
+         * map that stores time cooldown times for various mutation targets to prevent constant shifting between
+         * conflicting 'branches' 
+         */
+        mutable std::unordered_map<trait_id, time_point> mutation_chain_cooldown_cache; //todo this is reset on load, figure out how to save it 
+
+        trait_id cached_mutation_target = trait_id::NULL_ID();
+
         // if the player puts on and takes off items these mutations
         // are added or removed at the beginning of the next
         std::vector<trait_id> mutations_to_remove;

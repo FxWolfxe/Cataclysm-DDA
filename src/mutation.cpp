@@ -966,6 +966,8 @@ bool Character::mutation_ok( const trait_id &mutation, bool allow_good, bool all
     return mutation_ok( mutation, allow_good, allow_bad, allow_neutral );
 }
 
+
+
 bool Character::mutation_ok( const trait_id &mutation, bool allow_good, bool allow_bad,
                              bool allow_neutral ) const
 {
@@ -1003,6 +1005,20 @@ bool Character::mutation_ok( const trait_id &mutation, bool allow_good, bool all
 
     if( !allow_neutral && mdata.points == 0 ) {
         return false;
+    }
+
+    static constexpr time_duration mutation_save_time = 3_days; 
+
+    //check if there are ay recently added mutations that would get removed
+    const auto& mutations_of_type = get_mutations_in_types(mdata.types);
+    for(const auto& pair: mutation_chain_cooldown_cache)
+    {
+        if (pair.first == mutation ||   pair.first->is_previous_form_of(mutation)) continue; //ignore if the given mutation is the cached cooldown or is a previous form of it
+        //check if it would remove the other mutation, if it does check if it's still in the grace period 
+        if(mutation->would_remove(pair.first) && calendar::turn - pair.second  < mutation_save_time)
+        {
+            return false; 
+        }
     }
 
     return true;
@@ -1255,8 +1271,12 @@ bool Character::mutate_towards( std::vector<trait_id> muts, const mutation_categ
 {
     while( !muts.empty() && num_tries > 0 ) {
         int i = rng( 0, muts.size() - 1 );
+        const trait_id& picked = muts[i];
 
-        if( mutate_towards( muts[i], mut_cat, nullptr, use_vitamins ) ) {
+        
+        if( mutate_towards( picked, mut_cat, nullptr, use_vitamins ) ) {
+            //if we mutate towards a given mutation put it on cooldown so we cannot pick a conflicting mutation for awhile 
+            mutation_chain_cooldown_cache[picked] = calendar::turn;
             return true;
         }
 
@@ -1475,6 +1495,7 @@ bool Character::mutate_towards( const trait_id &mut, const mutation_category_id 
         add_msg_if_player(m_mixed, mdata.transformation_text().value()); 
     }
 
+    mutation_chain_cooldown_cache[mut] = calendar::turn; // record when the mutation was added 
 
     if( replacing ) {
         const mutation_branch &replace_mdata = replacing.obj();

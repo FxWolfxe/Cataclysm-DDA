@@ -816,6 +816,125 @@ void mutation_branch::check_consistency()
     }
 }
 
+
+static bool st_is_previous_form_of(const mutation_branch& this_branch, const trait_id &other)
+{
+    //now check ahead to all changes into 
+    std::set<trait_id> checked_set;
+    std::queue<trait_id> queue;
+    //load queue and set while doing a simple check to make sure the other isn't a direct replacement 
+    for (const auto& trait : this_branch.replacements)
+    {
+        if (trait == other)
+        {
+            return true; 
+        }
+
+        
+        queue.emplace(trait); 
+
+    }
+    
+    while(!queue.empty())
+    {
+        auto& cur_trait = queue.front();
+        queue.pop();
+        if(checked_set.find(cur_trait) != checked_set.end())
+        {
+            //simple check to prevent cyclic dependencies and an infinite loop, should never happen in correctly laid out branches but good to check 
+            continue;
+        }
+        checked_set.emplace(cur_trait);
+
+        for(const auto& r_trait: cur_trait->replacements)
+        {
+            if (r_trait == other) return true;
+            if(checked_set.find(cur_trait) == checked_set.end())
+            {
+                queue.emplace(r_trait);
+            }
+        }
+
+      
+    }
+
+    checked_set.clear();
+    //now go the other direction in case it's only linked 1 way 
+    for (const auto& trait : other->prereqs)
+    {
+        
+        if (trait->id == this_branch.id)
+        {
+            return true;
+        }
+        
+        queue.emplace(trait);
+    }
+    for (const auto& trait : other->prereqs2)
+    {
+        if (trait->id == this_branch.id)
+        {
+            return true;
+        }
+        queue.emplace(trait);
+    }
+
+    while(!queue.empty())
+    {
+        auto& cur_trait = queue.front();
+        queue.pop();
+
+        if(checked_set.find(cur_trait) != checked_set.end())
+        {
+            continue; 
+        }
+        checked_set.emplace(cur_trait);
+
+        for(const auto &r_trait : cur_trait->prereqs)
+        {
+            if (r_trait->id == this_branch.id) return true;
+            queue.emplace(r_trait); 
+        }
+
+        for (const auto& r_trait : cur_trait->prereqs2)
+        {
+            if (r_trait->id == this_branch.id) return true;
+            queue.emplace(r_trait);
+        }
+
+
+
+    }
+
+    return false; 
+}
+
+bool mutation_branch::is_previous_form_of(const trait_id& other) const
+{
+    const auto& itr = previous_forms_cached.find(other); 
+    if (itr != previous_forms_cached.end()) return itr->second;
+
+    const bool ret_val = st_is_previous_form_of(*this, other); 
+    previous_forms_cached[other] = ret_val;
+    return ret_val; 
+
+}
+
+bool mutation_branch::would_remove(const trait_id& other) const
+{
+    if (std::find(additions.cbegin(), additions.cend(), other) != additions.cend()) return false; 
+
+    if (std::find(cancels.cbegin(), cancels.cend(), other) != cancels.cend()) return true;
+    for (const auto& type: types)
+    {
+        if (std::find(other->types.cbegin(), other->types.cend(), type) != other->types.end())
+        {
+            return true;
+        }
+    }
+    return false; 
+}
+
 nc_color mutation_branch::get_display_color() const
 {
     if( flags.count( STATIC( json_character_flag( "ATTUNEMENT" ) ) ) ) {
