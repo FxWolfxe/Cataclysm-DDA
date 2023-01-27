@@ -233,6 +233,7 @@ struct mutation_branch {
         cata::optional<int> scent_intensity;
         cata::optional<int> scent_mask;
 
+
         int butchering_quality = 0;
 
         cata::value_ptr<mut_transform> transform;
@@ -407,9 +408,24 @@ struct mutation_branch {
         std::map<bodypart_str_id, int> bionic_slot_bonuses;
         translation raw_name;
         translation raw_desc;
+        cata::optional<translation> raw_transformation_text; 
     public:
         std::string name( const std::string &variant = "" ) const;
         std::string desc( const std::string &variant = "" ) const;
+
+        /**
+         * \brief if the mutation should display some custom text before the gained mutation message 
+         * \return  if the mutation should display some custom text before the gained mutation message 
+         */
+        bool has_transformation_text() const;
+
+        /**
+         * \brief gets the translated text to display before the default transformation message 
+         * \return the translated text to display before the default transformation message if available, cata::nullopt otherwise 
+         */
+        cata::optional<std::string> transformation_text() const; 
+
+
 
         /**
          * Returns the color to display the mutation name with.

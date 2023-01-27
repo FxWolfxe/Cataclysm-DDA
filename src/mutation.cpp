@@ -1470,6 +1470,12 @@ bool Character::mutate_towards( const trait_id &mut, const mutation_category_id 
     const std::string &variant_id = chosen_var != nullptr ? chosen_var->id : "";
     const std::string gained_name = mdata.name( variant_id );
 
+    if(mdata.has_transformation_text())
+    {
+        add_msg_if_player(m_mixed, mdata.transformation_text().value()); 
+    }
+
+
     if( replacing ) {
         const mutation_branch &replace_mdata = replacing.obj();
         const std::string lost_name = mutation_name( replacing );
@@ -1482,7 +1488,7 @@ bool Character::mutate_towards( const trait_id &mut, const mutation_category_id 
         } else {
             rating = m_neutral;
         }
-        // Both new and old mutation visible
+
         if( mdata.player_display && replace_mdata.player_display ) {
             add_msg_player_or_npc( rating,
                                    _( "Your %1$s mutation turns into %2$s!" ),

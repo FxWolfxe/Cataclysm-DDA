@@ -327,7 +327,6 @@ void mutation_branch::load( const JsonObject &jo, const std::string & )
     optional( jo, was_loaded, "fatigue", fatigue, false );
     optional( jo, was_loaded, "valid", valid, true );
     optional( jo, was_loaded, "purifiable", purifiable, true );
-
     std::vector<mutation_variant> _variants;
     optional( jo, was_loaded, "variants", _variants );
     for( mutation_variant &var : _variants ) {
@@ -431,6 +430,7 @@ void mutation_branch::load( const JsonObject &jo, const std::string & )
     optional( jo, was_loaded, "can_only_eat", can_only_eat );
     optional( jo, was_loaded, "can_only_heal_with", can_only_heal_with );
     optional( jo, was_loaded, "can_heal_with", can_heal_with );
+    optional(jo, was_loaded, "transformation_text", raw_transformation_text, cata::nullopt);
 
     optional( jo, was_loaded, "butchering_quality", butchering_quality, 0 );
 
@@ -654,6 +654,20 @@ std::string mutation_branch::desc( const std::string &variant ) const
     }
     return variter->second.alt_description.translated();
 }
+
+bool mutation_branch::has_transformation_text() const
+{
+    return raw_transformation_text.has_value();
+}
+
+
+cata::optional<std::string> mutation_branch::transformation_text() const
+{
+    if (!raw_transformation_text.has_value()) return cata::nullopt;
+    return raw_transformation_text->translated();
+
+}
+
 
 static bool has_cyclic_dependency( const trait_id &mid, std::vector<trait_id> already_visited )
 {
