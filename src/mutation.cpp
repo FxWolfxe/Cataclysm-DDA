@@ -87,7 +87,7 @@ static const trait_id trait_VOMITOUS( "VOMITOUS" );
 static const trait_id trait_WEB_WEAVER( "WEB_WEAVER" );
 
 static const vitamin_id vitamin_instability( "instability" );
-
+static const vitamin_id vitamin_mutagen("mutagen"); 
 namespace io
 {
 
@@ -1008,10 +1008,12 @@ bool Character::mutation_ok( const trait_id &mutation, bool allow_good, bool all
     return true;
 }
 
+static constexpr  float MinInstabilityForBadMutations = 1400.0;
+
 bool Character::roll_bad_mutation() const
 {
     //Instability value at which bad mutations become possible
-    const float I0 = 1400.0;
+    const float I0 = MinInstabilityForBadMutations;
     //Instability value at which good and bad mutations are equally likely
     const float I50 = 4200.0;
 
@@ -1033,13 +1035,29 @@ void Character::mutate( const int &true_random_chance, bool use_vitamins )
     mutation_category_id cat;
     weighted_int_list<mutation_category_id> cat_list = get_vitamin_weighted_categories();
 
-    //If we picked bad, mutation can be bad or neutral
-    //Otherwise, can be good or neutral
-    bool picked_bad = roll_bad_mutation();
 
-    bool allow_good = !picked_bad;
-    bool allow_bad = picked_bad;
-    bool allow_neutral = true;
+    const bool max_random = vitamin_get(vitamin_mutagen) > 500 && vitamin_get( vitamin_instability) > MinInstabilityForBadMutations;
+
+
+    bool allow_good, allow_bad, allow_neutral; 
+
+    if (!max_random)
+    {
+        //If we picked bad, mutation can be bad or neutral
+        //Otherwise, can be good or neutral
+        bool picked_bad = roll_bad_mutation();
+
+        allow_good = !picked_bad;
+        allow_bad = picked_bad;
+        allow_neutral = true;
+    }
+    else //if greater then warping and instability is high enough allow all mutations 
+    {
+        allow_good = allow_bad = allow_neutral = true; 
+    }
+
+
+
 
     if( true_random_chance > 0 && one_in( true_random_chance ) ) {
         cat = mutation_category_ANY;
