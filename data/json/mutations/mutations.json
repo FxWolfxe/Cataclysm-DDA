@@ -5847,7 +5847,7 @@
       "MUZZLE_RAT",
       "RABBIT_NOSE"
     ],
-    "category": [ "BIRD", "CEPHALOPOD", "FELINE", "INSECT", "CATTLE", "BEAST", "LUPINE", "URSINE", "LIZARD", "RAT", "RABBIT", "MOUSE" ]
+    "category": [ "BIRD", "CEPHALOPOD", "FELINE", "INSECT", "CATTLE", "BEAST", "LUPINE", "URSINE", "LIZARD", "RAT", "RABBIT", "MOUSE" , "CHIMERA"]
   },
   {
     "type": "mutation",
@@ -5875,7 +5875,7 @@
     "description": "Your jaw and nose have extended into a wolfish muzzle.  It lends itself to biting in combat and looks impressive, but prevents wearing mouthgear.",
     "types": [ "MUZZLE" ],
     "prereqs": [ "SNOUT" ],
-    "category": [ "BEAST", "LUPINE" ],
+    "category": [ "BEAST", "LUPINE" , "CHIMERA"],
     "restricts_gear": [ "mouth" ],
     "social_modifiers": { "intimidate": 6 },
     "attacks": {
@@ -5898,7 +5898,7 @@
     "description": "Your jaw and nose have extended into a bearish muzzle.  You could bite with it, and it looks impressive, but it prevents wearing mouthgear.",
     "types": [ "MUZZLE" ],
     "prereqs": [ "SNOUT" ],
-    "category": [ "URSINE" ],
+    "category": [ "URSINE" , "CHIMERA"],
     "restricts_gear": [ "mouth" ],
     "attacks": {
       "attack_text_u": "You bite %s",
@@ -5933,7 +5933,7 @@
     "description": "Your face and jaws are a shorter version of those found on alligators.  They look NASTY--as do the bite wounds they can inflict--but prevent wearing mouthgear.",
     "types": [ "MUZZLE" ],
     "prereqs": [ "SNOUT" ],
-    "category": [ "LIZARD" ],
+    "category": [ "LIZARD" , "CHIMERA"],
     "restricts_gear": [ "mouth" ],
     "social_modifiers": { "intimidate": 20 },
     "attacks": {
