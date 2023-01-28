@@ -79,6 +79,7 @@
 #include "itype.h"
 #include "json.h"
 #include "kill_tracker.h"
+#include "construction_tracker.h"
 #include "lru_cache.h"
 #include "magic.h"
 #include "magic_teleporter_list.h"
@@ -4605,6 +4606,32 @@ void kill_tracker::deserialize( const JsonObject &data )
         npc_kills.push_back( npc_name );
     }
 }
+
+static constexpr std::string construction_object_name = "constructions";
+
+void construction_tracker::serialize(JsonOut &jsout) const
+{
+    jsout.start_object();
+    jsout.member(construction_object_name);
+    jsout.start_object();
+    for(const auto& elem: constructed_tracker)
+    {
+        jsout.member(elem.first.str(), elem.second);
+    }
+    jsout.end_object();
+
+    jsout.end_object();
+}
+
+void construction_tracker::deserialize(const JsonObject& data)
+{
+    data.allow_omitted_members();
+    for(const auto& member: data.get_object(construction_object_name))
+    {
+        constructed_tracker[construction_str_id(member.name())] = member.get_int(); 
+    }
+}
+
 
 void cata_variant::serialize( JsonOut &jsout ) const
 {

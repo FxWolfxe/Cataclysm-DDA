@@ -37,6 +37,7 @@
 #include "translations.h"
 #include "vehicle.h"
 #include "vpart_position.h"
+#include "event_bus.h"
 
 #define dbg(x) DebugLog((x),D_GAME) << __FILE__ << ":" << __LINE__ << ": "
 
@@ -314,6 +315,11 @@ void mission::assign( avatar &u )
         }
         type->start( this );
         status = mission_status::in_progress;
+    }
+
+    if( type->goal == mission_goal::MGOAL_COMPLETE_CONSTRUCTION )
+    {
+        get_event_bus().subscribe()
     }
 }
 

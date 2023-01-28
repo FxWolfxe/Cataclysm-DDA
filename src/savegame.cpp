@@ -126,6 +126,8 @@ void game::serialize( std::ostream &fout )
     json.member( "stats_tracker", *stats_tracker_ptr );
     json.member( "achievements_tracker", *achievements_tracker_ptr );
 
+    json.member("construction_tracker", *construction_tracker_ptr);
+    
     json.member( "player", u );
     json.member( "inactive_global_effect_on_condition_vector",
                  inactive_global_effect_on_condition_vector );
@@ -260,7 +262,7 @@ void game::unserialize( std::istream &fin, const cata_path &path )
         data.read( "bVMonsterLookFire", bVMonsterLookFire );
 
         data.read( "kill_tracker", *kill_tracker_ptr );
-
+        data.read("construction_tracker", *construction_tracker_ptr);
         data.read( "player", u );
         data.read( "inactive_global_effect_on_condition_vector",
                    inactive_global_effect_on_condition_vector );

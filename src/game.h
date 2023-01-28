@@ -85,6 +85,7 @@ class avatar;
 class event_bus;
 class faction_manager;
 class kill_tracker;
+class construction_tracker;
 class map;
 class map_item_stack;
 class memorial_logger;
@@ -521,7 +522,10 @@ class game
         void reload_npcs();
         void remove_npc( character_id const &id );
         const kill_tracker &get_kill_tracker() const;
-        /** Add follower id to set of followers. */
+
+        const construction_tracker& get_construction_tracker() const; 
+
+    /** Add follower id to set of followers. */
         void add_npc_follower( const character_id &id );
         /** Remove follower id from follower set. */
         void remove_npc_follower( const character_id &id );
@@ -1024,6 +1028,7 @@ class game
         pimpl<stats_tracker> stats_tracker_ptr;
         pimpl<achievements_tracker> achievements_tracker_ptr;
         pimpl<kill_tracker> kill_tracker_ptr;
+        pimpl<construction_tracker> construction_tracker_ptr; 
         pimpl<memorial_logger> memorial_logger_ptr; // NOLINT(cata-serialize)
         pimpl<spell_events> spell_events_ptr; // NOLINT(cata-serialize)
 

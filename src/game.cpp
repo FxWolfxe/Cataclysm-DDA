@@ -406,6 +406,7 @@ game::game() :
     reset_light_level();
     events().subscribe( &*stats_tracker_ptr );
     events().subscribe( &*kill_tracker_ptr );
+    events().subscribe( &*construction_tracker_ptr ); 
     events().subscribe( &*memorial_logger_ptr );
     events().subscribe( &*achievements_tracker_ptr );
     events().subscribe( &*spell_events_ptr );
@@ -750,6 +751,8 @@ void game::setup()
     stats().clear();
     // reset kill counts
     kill_tracker_ptr->clear();
+    //ckear construction tracker
+    construction_tracker_ptr->clear();
     achievements_tracker_ptr->clear();
     // reset follower list
     follower_ids.clear();
@@ -1154,6 +1157,11 @@ void game::reload_npcs()
 const kill_tracker &game::get_kill_tracker() const
 {
     return *kill_tracker_ptr;
+}
+
+const construction_tracker& game::get_construction_tracker() const
+{
+    return *construction_tracker_ptr; 
 }
 
 void game::create_starting_npcs()

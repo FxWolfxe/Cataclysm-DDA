@@ -49,6 +49,7 @@ enum mission_origin {
     ORIGIN_ANY_NPC,    // Any NPC
     ORIGIN_SECONDARY,  // Given at the end of another mission
     ORIGIN_COMPUTER,   // Taken after reading investigation provoking entries in computer terminal
+    ORIGIN_INSTINCT,  //mutation instinct missions 
     NUM_ORIGIN
 };
 
@@ -67,6 +68,7 @@ enum mission_goal {
     MGOAL_FIND_MONSTER,      // Find and retrieve a friendly monster
     MGOAL_FIND_NPC,          // Find a given NPC
     MGOAL_ASSASSINATE,       // Kill a given NPC
+    MGOAL_COMPLETE_CONSTRUCTION, //build something
     MGOAL_KILL_MONSTER,      // Kill a particular hostile monster
     MGOAL_KILL_MONSTER_TYPE, // Kill a number of a given monster type
     MGOAL_KILL_NEMESIS,      // Kill the nemesis monster from the "hunted" trait
@@ -228,6 +230,7 @@ struct mission_type {
         npc_class_id recruit_class = npc_class_id( "NC_NONE" );  // The type of NPC you are to recruit
         character_id target_npc_id;
         mtype_id monster_type = mtype_id::NULL_ID();
+        construction_id target_construction_id; 
         species_id monster_species;
         int monster_kill_goal = -1;
         string_id<oter_type_t> target_id;

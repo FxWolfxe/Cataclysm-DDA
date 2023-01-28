@@ -38,6 +38,7 @@ enum class event_type : int {
     // Eating is always consuming, but consuming also covers medication and
     // fueling bionics
     character_consumes_item,
+    player_completes_construction,
     character_eats_item,
     character_forgets_spell,
     character_gains_effect,
@@ -171,7 +172,7 @@ struct event_spec_character_item {
     };
 };
 
-static_assert( static_cast<int>( event_type::num_event_types ) == 86,
+static_assert( static_cast<int>( event_type::num_event_types ) == 87,
                "This static_assert is to remind you to add a specialization for your new "
                "event_type below" );
 
@@ -180,6 +181,16 @@ struct event_spec<event_type::activates_artifact> {
     static constexpr std::array<std::pair<const char *, cata_variant_type>, 2> fields = {{
             { "character", cata_variant_type::character_id },
             { "item_name", cata_variant_type::string },
+        }
+    };
+};
+
+template<>
+struct event_spec<event_type::player_completes_construction>
+{
+    static constexpr std::array<std::pair<const char*, cata_variant_type>, 2>fields = {
+        {
+            {"construction_id", cata_variant_type::string},
         }
     };
 };

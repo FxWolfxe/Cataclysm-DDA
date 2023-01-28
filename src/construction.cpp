@@ -1170,6 +1170,10 @@ void complete_construction( Character *you )
         you->backlog.clear();
         you->assign_activity( ACT_MULTIPLE_CONSTRUCTION );
     }
+
+    //send an construction completed event only for the player for now 
+    if(you == &get_player_character())
+        get_event_bus().send<event_type::player_completes_construction>(built.id);
 }
 
 bool construct::check_channel( const tripoint_bub_ms &p )
