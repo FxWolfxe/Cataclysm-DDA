@@ -366,7 +366,8 @@
     "color": "brown",
     "sided": true,
     "material_thickness": 1,
-    "pocket_data": [ { "ammo_restriction": { "arrow": 20, "bolt": 20 }, "moves": 20 } ],
+    "pocket_data": [ { "ammo_restriction": { "arrow": 20, "bolt": 20 }, "moves": 20 , 
+    "weight_capacity_modifier": 0.9} ],
     "flags": [ "BELTED", "OVERSIZE", "WATER_FRIENDLY" ],
     "armor": [
       {
@@ -393,7 +394,7 @@
     "color": "light_gray",
     "sided": true,
     "material_thickness": 1,
-    "pocket_data": [ { "ammo_restriction": { "arrow": 20, "bolt": 20 }, "moves": 20 } ],
+    "pocket_data": [ { "ammo_restriction": { "arrow": 20, "bolt": 20 }, "moves": 20 , "weight_capacity_modifier": 0.9} ],
     "flags": [ "BELTED", "VARSIZE", "OVERSIZE", "WATER_FRIENDLY" ],
     "armor": [
       {
@@ -419,7 +420,7 @@
     "looks_like": "quiver",
     "color": "brown",
     "material_thickness": 1,
-    "pocket_data": [ { "ammo_restriction": { "arrow": 60, "bolt": 60 }, "moves": 20 } ],
+    "pocket_data": [ { "ammo_restriction": { "arrow": 60, "bolt": 60 }, "moves": 20, "weight_capacity_modifier": 0.85 } ],
     "flags": [ "BELTED", "OVERSIZE", "WATER_FRIENDLY" ],
     "armor": [ { "encumbrance": 3, "coverage": 30, "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_back" ] } ]
   },
@@ -438,7 +439,7 @@
     "looks_like": "quiver_birchbark",
     "color": "light_gray",
     "material_thickness": 1,
-    "pocket_data": [ { "ammo_restriction": { "arrow": 60, "bolt": 60 }, "moves": 20 } ],
+    "pocket_data": [ { "ammo_restriction": { "arrow": 60, "bolt": 60 }, "moves": 20, "weight_capacity_modifier": 0.85 } ],
     "flags": [ "BELTED", "VARSIZE", "OVERSIZE", "WATER_FRIENDLY" ],
     "armor": [ { "encumbrance": 14, "coverage": 30, "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_back" ] } ]
   },
@@ -459,7 +460,7 @@
     "color": "dark_gray",
     "material_thickness": 1,
     "pocket_data": [
-      { "ammo_restriction": { "arrow": 16, "bolt": 16 }, "moves": 20 },
+      { "ammo_restriction": { "arrow": 16, "bolt": 16 }, "moves": 20, "weight_capacity_modifier": 0.80 },
       {
         "pocket_type": "CONTAINER",
         "holster": true,

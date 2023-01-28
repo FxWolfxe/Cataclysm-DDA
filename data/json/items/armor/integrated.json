@@ -1001,7 +1001,31 @@
       }
     ]
   },
-
+  {
+    "id": "integrated_woodpecker_beak",
+    "type": "ARMOR",
+    "category": "armor",
+    "name": { "str_sp": "beak" },
+    "description": "Your beak has grown narrow and hard like steel, you barely feel anything while drilling into wood with it",
+    "weight": "100 g",
+    "volume": "100 ml",
+    "price": 0,
+    "price_postapoc": 0,
+    "material": [ "bone" ],
+    "symbol": "b",
+    "color": "brown",
+    "qualities" :[["DRILL", 2]],
+    "warmth": 2,
+    "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "PERSONAL", "WATER_FRIENDLY", "PADDED" ],
+    "armor": [
+      {
+        "material": [ { "type": "bone", "covered_by_mat": 100, "thickness": 3 } ],
+        "covers": [ "mouth" ],
+        "coverage": 40,
+        "encumbrance": 0
+      }
+    ]
+  },
   {
     "id": "armor_bio_eyes",
     "//": "These do not preclude wearing glasses, but you'll get double-up penalties.  If you really needed to you could likely still situate the lenses in front of them.  You should probably just augment your eyes though.",

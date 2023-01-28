@@ -43,7 +43,8 @@
         "moves": 200,
         "extra_encumbrance": 10,
         "description": "Tucked between your back and the backpack.",
-        "ripoff": 3
+        "ripoff": 3,
+        "weight_multiplier":0.8
       },
       {
         "//": "carabiner pocket",
@@ -57,7 +58,8 @@
         "extra_encumbrance": 3,
         "ripoff": 2,
         "description": "Attached with a carabiner or strap.",
-        "activity_noise": { "volume": 8, "chance": 10 }
+        "activity_noise": { "volume": 8, "chance": 10 },
+        "weight_multiplier": 0.8
       }
     ],
     "warmth": 6,
@@ -2426,6 +2428,7 @@
         "max_contains_volume": "50 L",
         "max_contains_weight": "80 kg",
         "max_item_length": "150 cm",
+        "weight_multiplier": 0.8,
         "magazine_well": "10 L",
         "moves": 300
       }
