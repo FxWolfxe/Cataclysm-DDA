@@ -188,7 +188,7 @@ struct event_spec<event_type::activates_artifact> {
 template<>
 struct event_spec<event_type::player_completes_construction>
 {
-    static constexpr std::array<std::pair<const char*, cata_variant_type>, 2>fields = {
+    static constexpr std::array<std::pair<const char*, cata_variant_type>, 1>fields = {
         {
             {"construction_id", cata_variant_type::string},
         }

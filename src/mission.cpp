@@ -14,6 +14,7 @@
 
 #include "avatar.h"
 #include "colony.h"
+#include "construction_tracker.h"
 #include "creature.h"
 #include "debug.h"
 #include "dialogue_chatbin.h"
@@ -60,7 +61,8 @@ mission mission_type::create( const character_id &npc_id ) const
     ret.monster_species = monster_species;
     ret.monster_type = monster_type;
     ret.monster_kill_goal = monster_kill_goal;
-
+    ret.construction_id = target_construction_id;
+    ret.construction_goal = construction_target;
     if( deadline_low != 0_turns || deadline_high != 0_turns ) {
         ret.deadline = calendar::turn + rng( deadline_low, deadline_high );
     } else {
@@ -319,7 +321,8 @@ void mission::assign( avatar &u )
 
     if( type->goal == mission_goal::MGOAL_COMPLETE_CONSTRUCTION )
     {
-        get_event_bus().subscribe()
+        const construction_tracker& construction_tracker = g->get_construction_tracker();
+        construction_count_to_reach = construction_tracker.get_player_constructed_count(construction_id) + construction_goal;
     }
 }
 
@@ -597,7 +600,8 @@ bool mission::is_complete( const character_id &_npc_id ) const
 
         case MGOAL_KILL_MONSTER_SPEC:
             return g->get_kill_tracker().kill_count( monster_species ) >= kill_count_to_reach;
-
+    case MGOAL_COMPLETE_CONSTRUCTION:
+            return g->get_construction_tracker().get_player_constructed_count(construction_id) >= construction_count_to_reach;
         case MGOAL_CONDITION: {
             mission_goal_condition_context cc;
             cc.alpha = get_talker_for( player_character );

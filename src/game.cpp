@@ -107,6 +107,7 @@
 #include "iuse_actor.h"
 #include "json.h"
 #include "kill_tracker.h"
+#include "construction_tracker.h"
 #include "level_cache.h"
 #include "lightmap.h"
 #include "line.h"

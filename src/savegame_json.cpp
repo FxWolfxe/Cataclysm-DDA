@@ -3745,6 +3745,19 @@ void mission::deserialize( const JsonObject &jo )
 
     jo.read( "item_id", item_id );
 
+    if(jo.has_int("construction_target"))
+    {
+        jo.read("construction_target", construction_count_to_reach);
+    }
+
+    if(jo.has_string("construction_id"))
+    {
+        std::string con_id; 
+        jo.read("construction_id", con_id);
+        construction_id = construction_str_id(con_id); 
+
+    }
+
     const std::string omid = jo.get_string( "target_id", "" );
     if( !omid.empty() ) {
         target_id = string_id<oter_type_t>( omid );
@@ -3802,7 +3815,8 @@ void mission::serialize( JsonOut &json ) const
     json.member( "step", step );
     json.member( "follow_up", follow_up );
     json.member( "player_id", player_id );
-
+    json.member(construction_id_json_name, construction_id.str());
+    json.member(construction_target_json_name, construction_count_to_reach);
     json.end_object();
 }
 
@@ -4607,7 +4621,7 @@ void kill_tracker::deserialize( const JsonObject &data )
     }
 }
 
-static constexpr std::string construction_object_name = "constructions";
+static constexpr const char* construction_object_name = "constructions";
 
 void construction_tracker::serialize(JsonOut &jsout) const
 {

@@ -230,7 +230,8 @@ struct mission_type {
         npc_class_id recruit_class = npc_class_id( "NC_NONE" );  // The type of NPC you are to recruit
         character_id target_npc_id;
         mtype_id monster_type = mtype_id::NULL_ID();
-        construction_id target_construction_id; 
+        int construction_target;
+        construction_str_id target_construction_id; 
         species_id monster_species;
         int monster_kill_goal = -1;
         string_id<oter_type_t> target_id;
@@ -296,6 +297,9 @@ class mission
             num_mission_status
         };
     private:
+        static constexpr const char* construction_id_json_name = "construction_id";
+        static constexpr const char* construction_target_json_name = "construction_target"; 
+        
         // So mission_type::create is simpler
         friend struct mission_type;
         // So it can initialize some properties
@@ -331,6 +335,14 @@ class mission
         int monster_kill_goal = 0;
         // The kill count you need to reach to complete mission
         int kill_count_to_reach = 0;
+
+        int construction_goal; 
+        //the construction count to reach to finish 
+        int construction_count_to_reach = 0;
+        // the construction id to look for when completing a mission 
+        construction_str_id construction_id;
+
+
         time_point deadline;
         // ID of a related npc
         character_id npc_id;

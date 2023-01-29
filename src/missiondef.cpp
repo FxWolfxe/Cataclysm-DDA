@@ -341,6 +341,7 @@ void mission_type::load( const JsonObject &jo, const std::string &src )
         mandatory( djo, was_loaded, "failure", dialogue[ "failure" ] );
     }
 
+    optional(jo, was_loaded, "construction_target", construction_target); 
     optional( jo, was_loaded, "description", description );
     optional( jo, was_loaded, "urgent", urgent );
     optional( jo, was_loaded, "item", item_id );
@@ -349,6 +350,7 @@ void mission_type::load( const JsonObject &jo, const std::string &src )
     optional( jo, was_loaded, "required_container", container_id );
     optional( jo, was_loaded, "remove_container", remove_container );
     //intended for situations where closed and open container are different
+    optional(jo, was_loaded, "construction_id", target_construction_id);
     optional( jo, was_loaded, "empty_container", empty_container );
     optional( jo, was_loaded, "has_generic_rewards", has_generic_rewards, true );
     optional(jo, was_loaded, "construction_id", target_construction_id); 

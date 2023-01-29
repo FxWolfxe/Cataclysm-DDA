@@ -23,6 +23,7 @@
 #include "json.h"
 #include "json_loader.h"
 #include "kill_tracker.h"
+#include "construction_tracker.h"
 #include "map.h"
 #include "messages.h"
 #include "mission.h"

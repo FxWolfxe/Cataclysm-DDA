@@ -11,9 +11,11 @@ class JsonObject;
 class JsonOut;
 
 
-class construction_tracker : event_subscriber
+class construction_tracker : public event_subscriber
 {
 public:
+    construction_tracker() = default; 
+
     void notify(const cata::event&) override;
 
     /**

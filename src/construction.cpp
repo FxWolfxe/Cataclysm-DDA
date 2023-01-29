@@ -1173,7 +1173,7 @@ void complete_construction( Character *you )
 
     //send an construction completed event only for the player for now 
     if(you == &get_player_character())
-        get_event_bus().send<event_type::player_completes_construction>(built.id);
+        get_event_bus().send<event_type::player_completes_construction>(built.str_id.c_str());
 }
 
 bool construct::check_channel( const tripoint_bub_ms &p )
