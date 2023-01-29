@@ -1253,7 +1253,7 @@ void Character::action_taken()
 
 int Character::swim_speed() const
 {
-    int ret;
+    float ret;
     if( is_mounted() ) {
         monster *mon = mounted_creature.get();
         // no difference in swim speed by monster type yet.
@@ -1306,20 +1306,20 @@ int Character::swim_speed() const
     /** @EFFECT_DEX increases swim speed */
     ret -= str_cur * 6 + dex_cur * 4;
     if( worn_with_flag( flag_FLOTATION ) ) {
-        ret = std::min( ret, 400 );
-        ret = std::max( ret, 200 );
+        ret = std::min<float>( ret, 400 );
+        ret = std::max<float>( ret, 200 );
     }
     // If (ret > 500), we can not swim; so do not apply the underwater bonus.
     if( underwater && ret < 500 ) {
         ret -= 50;
     }
-
-    ret += move_mode->swim_speed_mod();
-
-    if( ret < 30 ) {
-        ret = 30;
+    
+    int iret = static_cast<int>(std::round(ret)) + move_mode->swim_speed_mod();
+    
+    if(iret < 30 ) {
+        iret = 30;
     }
-    return ret;
+    return iret;
 }
 
 bool Character::is_on_ground() const

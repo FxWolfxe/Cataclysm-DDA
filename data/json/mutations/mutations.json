@@ -4211,7 +4211,7 @@
     "prereqs": [ "TAIL_STUB" ],
     "category": [ "FISH" ],
     "wet_protection": [ { "part": "leg_l", "good": 3 }, { "part": "leg_r", "good": 3 } ],
-    "movecost_swim_modifier": 0.75,
+    "movecost_swim_modifier": 0.55,
     "restricts_gear": [ "leg_hip_l", "leg_hip_r" ],
     "allowed_items": [ "ALLOWS_TAIL" ],
     "allow_soft_gear": true
@@ -5859,13 +5859,27 @@
       "BEAK_PECK",
       "PROBOSCIS",
       "MINOTAUR",
+      "FISH_SNOUT",
       "MUZZLE",
       "MUZZLE_BEAR",
       "MUZZLE_LONG",
       "MUZZLE_RAT",
       "RABBIT_NOSE"
     ],
-    "category": [ "BIRD", "CEPHALOPOD", "FELINE", "INSECT", "CATTLE", "BEAST", "LUPINE", "URSINE", "LIZARD", "RAT", "RABBIT", "MOUSE" , "CHIMERA"]
+    "category": [ "BIRD", "FISH" ,"CEPHALOPOD", "FELINE", "INSECT", "CATTLE", "BEAST", "LUPINE", "URSINE", "LIZARD", "RAT", "RABBIT", "MOUSE" , "CHIMERA"]
+  },
+  {
+    "type": "mutation",
+    "id": "FISH_SNOUT",
+    "name": { "str": "Shark Muzzle" },
+    "points": 2,
+    "visibility": 4,
+    "ugliness": 2,
+    "description": "Your small snout has changed further, into a long pointed muzzle of a shark. in addition to it's intimidating look, it helps you cut through the water",
+    "types": [ "MUZZLE" ],
+    "threshreq":["THRESH_FISH"],
+    "movecost_swim_modifier":0.75,
+    "category": [ "FISH" ]
   },
   {
     "type": "mutation",
@@ -7179,7 +7193,7 @@
     "description": "Your legs have transformed into six tentacles.  This decreases your speed on land by 20%, makes your movement silent, increases your swimming speed and reduces wet penalties, but you can't use footwear any more.",
     "types": [ "LEGS", "FEET", "SOLES" ],
     "leads_to": [ "LEG_TENT_BRACE" ],
-    "movecost_swim_modifier": 0.85,
+    "movecost_swim_modifier": 0.80,
     "category": [ "CEPHALOPOD" ],
     "wet_protection": [
       { "part": "leg_l", "neutral": 21 },
@@ -7565,6 +7579,7 @@
     "consume_time_modifier": 0.3,
     "description": "Your teeth have grown incredibly sharp, and have calcified even further.  In addition to letting you eat much faster, you can use them as a lethal natural weapon, as long as your anatomy favors it.  They also grow very fast, and you harmlessly shed them more or less at random.",
     "prereqs": [ "FANGS" ],
+    "prereqs2":[ "FISH_SNOUT" ],
     "types": [ "TEETH" ],
     "category": [ "FISH" ],
     "threshreq": [ "THRESH_FISH" ],

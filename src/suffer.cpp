@@ -2299,7 +2299,9 @@ void Character::add_addiction( const addiction_id &type, int strength )
         }
         if( i.intensity < MAX_ADDICTION_LEVEL && strength > i.intensity * rng( 2, 5 ) ) {
             i.intensity++;
-        } else if(i.intensity >= MAX_ADDICTION_LEVEL && type->get_satiated_morale() != MORALE_NULL )
+        }
+
+        if(type->get_satiated_morale() != MORALE_NULL )
         {
             //only give moral bonus to max intensity addictions
             
