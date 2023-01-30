@@ -122,7 +122,10 @@ int64_t recipe::batch_time( const Character &guy, int batch, float multiplier,
             total_time += local_time * ( 1.0 - ( batch_rscale * logf ) );
         }
     }
+    double dex_base = std::max(1, guy.get_dex()); 
 
+    double dex_bonus = std::pow (8.0 / static_cast<double>(dex_base), 0.5);
+    total_time *= dex_bonus; 
     //Assistants can decrease the time for production but never less than that of one unit
     if( assistants == 1 ) {
         total_time = total_time * .75;
