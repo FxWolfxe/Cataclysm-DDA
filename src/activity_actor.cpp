@@ -3456,7 +3456,7 @@ static std::list<item> obtain_activity_items(
     std::list<item> res;
 
     debug_drop_list( items );
-
+    float dex_bonus = std::pow(8.0f/std::min<float>(1.0, who.get_dex()), 0.25f);
     auto it = items.begin();
     for( ; it != items.end(); ++it ) {
         item_location loc = it->loc();
@@ -3465,7 +3465,8 @@ static std::list<item> obtain_activity_items(
             continue;
         }
 
-        const int consumed_moves = loc.obtain_cost( who, it->count() );
+
+        const int consumed_moves = static_cast<int>(std::round( loc.obtain_cost( who, it->count()) * dex_bonus ));
         if( !who.is_npc() && who.moves <= 0 && consumed_moves > 0 ) {
             break;
         }
