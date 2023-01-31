@@ -3655,10 +3655,13 @@ void Character::apply_mut_encumbrance( std::map<bodypart_id, encumbrance_data> &
     const std::vector<trait_id> all_muts = get_mutations();
     std::map<bodypart_str_id, float> total_enc;
 
+
+
     // Lower penalty for bps covered only by XL armor
     // Initialized on demand for performance reasons:
     // (calculation is costly, most of players and npcs are don't have encumbering mutations)
     cata::optional<body_part_set> oversize;
+    
 
     for( const trait_id &mut : all_muts ) {
         for( const std::pair<const bodypart_str_id, int> &enc : mut->encumbrance_always ) {
@@ -3667,9 +3670,11 @@ void Character::apply_mut_encumbrance( std::map<bodypart_id, encumbrance_data> &
         for( const std::pair<const bodypart_str_id, int> &enc : mut->encumbrance_covered ) {
             if( !oversize ) {
                 // initialize on demand
-                oversize = exclusive_flag_coverage( flag_OVERSIZE );
+                std::vector<flag_id> flgs{ flag_OVERSIZE, flag_INTEGRATED };
+                oversize = exclusive_flags_coverage( flgs );
             }
-            if( !oversize->test( enc.first ) ) {
+
+            if( !oversize->test( enc.first )) {
                 total_enc[enc.first] += enc.second;
             }
         }
@@ -3710,6 +3715,14 @@ body_part_set Character::exclusive_flag_coverage( const flag_id &flag ) const
     body_part_set ret;
     ret.fill( get_all_body_parts() );
     return worn.exclusive_flag_coverage( ret, flag );
+}
+
+
+body_part_set Character::exclusive_flags_coverage(const std::vector<flag_id> &flags) const
+{
+    body_part_set ret;
+    ret.fill(get_all_body_parts());
+    return worn.exclusive_flags_coverage(ret, flags); 
 }
 
 /*

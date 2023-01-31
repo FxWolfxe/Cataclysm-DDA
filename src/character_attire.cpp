@@ -9,6 +9,7 @@
 #include "game.h"
 #include "inventory.h"
 #include "itype.h"
+#include "iuse_software_minesweeper.h"
 #include "melee.h"
 #include "memorial_logger.h"
 #include "messages.h"
@@ -1697,6 +1698,26 @@ body_part_set outfit::exclusive_flag_coverage( body_part_set bps, const flag_id 
         }
     }
     return bps;
+}
+
+body_part_set outfit::exclusive_flags_coverage(body_part_set bps, const std::vector<flag_id>& flags) const
+{
+    for (const item& elem : worn) {
+        bool any_flag = false;
+        for(const auto &flag: flags)
+        {
+            if (elem.has_flag(flag)) {
+                any_flag = true;
+                break;
+            }
+        }
+
+        if (!any_flag) {
+            // Unset the parts covered by this item
+            bps.substract_set(elem.get_covered_body_parts());
+        }
+    }
+    return bps; 
 }
 
 item &outfit::front()

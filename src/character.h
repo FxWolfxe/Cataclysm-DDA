@@ -836,6 +836,8 @@ class Character : public Creature, public visitable
         /** Bitset of all the body parts covered only with items with `flag` (or nothing) */
         body_part_set exclusive_flag_coverage( const flag_id &flag ) const;
 
+        body_part_set exclusive_flags_coverage(const std::vector<flag_id> &flags) const;
+
         /** Processes effects which may prevent the Character from moving (bear traps, crushed, etc.).
          *  Returns false if movement is stopped. */
         bool move_effects( bool attacking ) override;
