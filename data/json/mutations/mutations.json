@@ -2436,8 +2436,8 @@
     "description": "Your skin has grown thick and leathery and a set of heavy green scales has grown to cover most of your body, acting as natural armor.  While difficult to penetrate, it also limits your flexibility.  Greatly reduces wet effects.",
     "types": [ "SKIN" ],
     "prereqs": [ "SCALES" ],
-    "threshreq": [ "THRESH_LIZARD" ],
-    "category": [ "LIZARD" ],
+    "threshreq": [ "THRESH_LIZARD" , "THRESH_RAPTOR"],
+    "category": [ "LIZARD", "RAPTOR" ],
     "wet_protection": [
       { "part": "head", "ignored": 5 },
       { "part": "leg_l", "ignored": 16 },
@@ -4184,7 +4184,7 @@
   { 
     "type": "mutation",
     "id": "TAIL_BIRD",
-    "name": { "str": "tail feathers" },
+    "name": { "str": "Tail Feathers" },
     "points": 0,
     "visibility": 2,
     "ugliness": -1,
@@ -4213,6 +4213,37 @@
     "wet_protection": [ { "part": "leg_l", "good": 3 }, { "part": "leg_r", "good": 3 } ],
     "movecost_swim_modifier": 0.55,
     "restricts_gear": [ "leg_hip_l", "leg_hip_r" ],
+    "allowed_items": [ "ALLOWS_TAIL" ],
+    "allow_soft_gear": true
+  },
+  {
+    "type": "mutation",
+    "id": "FIN_STUB",
+    "name": { "str": "Back Stub" },
+    "points": -1,
+    "visibility": 4,
+    "ugliness": 2,
+    "description": "You have grown a small stubby protusion on your back. it's not big enough to prevent you from wearing gear on your torso, but it does encumber you some",
+    "encumbrance_always":[ [ "torso", 10 ]],
+    "types": [ "TORSO_CORE" ],
+    "category": [ "FISH" ]
+  },
+  {
+    "type": "mutation",
+    "id": "DORSAL_FIN",
+    "name": { "str": "Dorsal Fin" },
+    "points": 0,
+    "visibility": 4,
+    "mixed_effect":true,
+    "ugliness": 2,
+    "description": "Your back stub has grown into a large shark like dorsal fin, while it prevents you from wearing non cloth armor it helps you cut through the water. And it feels oddly natural, like you had it your whole life",
+    "types": [ "TORSO_CORE" ],
+    "prereqs": [ "FIN_STUB" ],
+    "threshreq":[ "THRESH_FISH" ],
+    "category": [ "FISH" ],
+    "wet_protection": [ { "part": "torso", "good": 3 } ],
+    "movecost_swim_modifier": 0.65,
+    "restricts_gear": [ "torso"],
     "allowed_items": [ "ALLOWS_TAIL" ],
     "allow_soft_gear": true
   },
@@ -5859,6 +5890,7 @@
       "BEAK_PECK",
       "PROBOSCIS",
       "MINOTAUR",
+      "MUZZLE_RAPTOR",
       "FISH_SNOUT",
       "MUZZLE",
       "MUZZLE_BEAR",
@@ -5866,7 +5898,7 @@
       "MUZZLE_RAT",
       "RABBIT_NOSE"
     ],
-    "category": [ "BIRD", "FISH" ,"CEPHALOPOD", "FELINE", "INSECT", "CATTLE", "BEAST", "LUPINE", "URSINE", "LIZARD", "RAT", "RABBIT", "MOUSE" , "CHIMERA"]
+    "category": [ "BIRD", "FISH" ,"CEPHALOPOD", "FELINE", "INSECT", "RAPTOR", "CATTLE", "BEAST", "LUPINE", "URSINE", "LIZARD", "RAT", "RABBIT", "MOUSE" , "CHIMERA"]
   },
   {
     "type": "mutation",
@@ -5975,6 +6007,30 @@
       "body_part": "mouth",
       "chance": 18,
       "base_damage": { "damage_type": "stab", "amount": 18 }
+    }
+  },
+  {
+    "type": "mutation",
+    "id": "MUZZLE_RAPTOR",
+    "name": { "str": "Reptilian Muzzle" },
+    "points": -3,
+    "visibility": 8,
+    "ugliness": 8,
+    "mixed_effect": true,
+    "description": "Your face and jaws are a shorter version of those you've seen in pictures of raptors, a pointy muzzle filled with sharp dagger like teeth.  They look NASTY--as do the bite wounds they can inflict--but prevent wearing mouthgear.",
+    "types": [ "MUZZLE" ],
+    "prereqs": [ "SNOUT" ],
+    "category": [ "RAPTOR"],
+    "threshreq": ["THRESH_RAPTOR"],
+    "restricts_gear": [ "mouth" ],
+    "social_modifiers": { "intimidate": 20 },
+    "attacks": {
+      "attack_text_u": "You bite a chunk out of %s",
+      "attack_text_npc": "%1$s bites a chunk out of %2$s",
+      "blocker_mutations": [ "FANGS" ],
+      "body_part": "mouth",
+      "chance": 18,
+      "base_damage": [{ "damage_type": "stab", "amount": 10 }, {"damage_type":"cut", "amount":8}]
     }
   },
   {
@@ -6941,7 +6997,7 @@
       { "part": "hand_l", "neutral": 10 },
       { "part": "hand_r", "neutral": 10 }
     ],
-    "encumbrance_always": [ [ "arm_l", 20 ], [ "arm_r", 20 ] ],
+    "encumbrance_covered": [ [ "arm_l", 20 ], [ "arm_r", 20 ] ],
     "armor": [ { "parts": [ "arm_l", "arm_r" ], "bash": 1 } ]
   },
   {
