@@ -146,6 +146,12 @@ static const trait_id trait_THRESH_PLANT( "THRESH_PLANT" );
 static const trait_id trait_THRESH_URSINE( "THRESH_URSINE" );
 static const trait_id trait_VEGETARIAN( "VEGETARIAN" );
 static const trait_id trait_WATERSLEEP( "WATERSLEEP" );
+static const trait_id trait_PRED4( "PRED4" ); 
+static const trait_id trait_PRED3( "PRED3" );
+static const trait_id trait_PRED2( "PRED2" );
+static const trait_id trait_PRED1( "PRED1" ); 
+static const trait_id trait_PACK_HUNTER("PACK_HUNTER"); 
+
 
 // note: cannot use constants from flag.h (e.g. flag_ALLERGEN_VEGGY) here, as they
 // might be uninitialized at the time these const arrays are created
@@ -404,49 +410,52 @@ int Character::nutrition_for( const item &comest ) const
     return compute_effective_nutrients( comest ).kcal() / islot_comestible::kcal_per_nutr;
 }
 
-std::pair<int, int> Character::fun_for( const item &comest, bool ignore_already_ate ) const
+std::pair<int, int> Character::fun_for(const item& comest, bool ignore_already_ate) const
 {
-    if( !comest.is_comestible() ) {
-        return std::pair<int, int>( 0, 0 );
+    if (!comest.is_comestible()) {
+        return std::pair<int, int>(0, 0);
     }
 
     // As float to avoid rounding too many times
     float fun = comest.get_comestible_fun();
     // Food doesn't taste as good when you're sick
-    if( ( has_effect( effect_common_cold ) || has_effect( effect_flu ) ) && fun > 0 ) {
+    if ((has_effect(effect_common_cold) || has_effect(effect_flu)) && fun > 0) {
         fun /= 3;
     }
     // Rotten food should be pretty disgusting
     const float relative_rot = comest.get_relative_rot();
-    if( relative_rot > 1.0f && !has_trait( trait_SAPROPHAGE ) && !has_trait( trait_SAPROVORE ) ) {
-        const float rottedness = clamp( 2 * relative_rot - 2.0f, 0.1f, 1.0f );
+    if (relative_rot > 1.0f && !has_trait(trait_SAPROPHAGE) && !has_trait(trait_SAPROVORE)) {
+        const float rottedness = clamp(2 * relative_rot - 2.0f, 0.1f, 1.0f);
         // Three effects:
         // penalty for rot goes from -2 to -20
         // bonus for tasty food drops from 90% to 0%
         // disgusting food unfun increases from 110% to 200%
         fun -= rottedness * 10;
-        if( fun > 0 ) {
-            fun *= ( 1.0f - rottedness );
-        } else {
-            fun *= ( 1.0f + rottedness );
+        if (fun > 0) {
+            fun *= (1.0f - rottedness);
+        }
+        else {
+            fun *= (1.0f + rottedness);
         }
     }
 
     // Food is less enjoyable when eaten too often.
-    if( !ignore_already_ate && ( fun > 0 || comest.has_flag( flag_NEGATIVE_MONOTONY_OK ) ) ) {
-        for( const consumption_event &event : consumption_history ) {
-            if( event.time > calendar::turn - 2_days && event.type_id == comest.typeId() &&
-                event.component_hash == comest.make_component_hash() ) {
+    if (!ignore_already_ate && (fun > 0 || comest.has_flag(flag_NEGATIVE_MONOTONY_OK))) {
+        for (const consumption_event& event : consumption_history) {
+            if (event.time > calendar::turn - 2_days && event.type_id == comest.typeId() &&
+                event.component_hash == comest.make_component_hash()) {
                 fun -= comest.get_comestible()->monotony_penalty;
                 // This effect can't drop fun below 0, unless the food has the right flag.
                 // 0 is the lowest we'll go, no need to keep looping.
-                if( fun <= 0 && !comest.has_flag( flag_NEGATIVE_MONOTONY_OK ) ) {
+                if (fun <= 0 && !comest.has_flag(flag_NEGATIVE_MONOTONY_OK)) {
                     fun = 0;
                     break;
                 }
             }
         }
     }
+
+
 
     float fun_max = fun < 0 ? fun * 6.0f : fun * 3.0f;
     if( comest.has_flag( flag_EATEN_COLD ) && comest.has_flag( flag_COLD ) ) {
@@ -486,6 +495,38 @@ std::pair<int, int> Character::fun_for( const item &comest, bool ignore_already_
         }
     }
 
+    if (comest.has_flag(flag_PREDATOR_FUN))
+    {
+        int predator_bonus = 0;
+        int predator_max_bonus = 0;
+
+        if (has_flag(json_flag_PRED4))
+        {
+            predator_bonus = 17;
+            predator_max_bonus = 17;
+        }
+        else if (has_flag(json_flag_PRED3))
+        {
+            predator_bonus = 15;
+            predator_max_bonus = 15;
+
+        }
+        else if (has_flag(json_flag_PRED2))
+        {
+            predator_bonus = 10;
+        }
+        else if (has_flag(json_flag_PRED1))
+        {
+            predator_bonus = 5;
+        }
+
+        fun += predator_bonus;
+        fun_max += predator_max_bonus; 
+
+
+    }
+
+
     if( has_bionic( bio_faulty_grossfood ) && comest.is_food() ) {
         fun = fun - 13;
     }
@@ -495,6 +536,8 @@ std::pair<int, int> Character::fun_for( const item &comest, bool ignore_already_
         fun < 0 ) {
         fun = 0;
     }
+
+
 
     return { static_cast< int >( fun ), static_cast< int >( fun_max ) };
 }

@@ -1031,6 +1031,8 @@ class item : public visitable
 
         int get_comestible_fun() const;
 
+        
+
         /** whether an item is perishable (can rot) */
         bool goes_bad() const;
 
