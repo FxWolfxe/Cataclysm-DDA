@@ -3455,7 +3455,7 @@
     "types": [ "PHEROMONE" ],
     "threshreq": [ "THRESH_SPIDER"],
     "category": [ "SPIDER" ],
-    "faction_anger_offsets":[["spider_web", -20], ["spider_cellar", -5]]
+    "faction_anger_offsets":[["spider_web", -35], ["spider_cellar", -20]]
   },
   {
     "type": "mutation",
