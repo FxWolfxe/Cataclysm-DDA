@@ -900,7 +900,8 @@
     "book_learn": [ [ "recipe_chimera", 7 ] ],
     "using": [ [ "mutagen_production_standard", 37 ] ],
     "components": [ [ [ "mutagen_beast", 1 ] ], [ [ "chimera_sample", 1 ] ] ],
-    "flags": [ "SECRET" ]
+    "flags": [ "SECRET" ],
+    "result_mult": 2
   },
   {
     "type": "recipe",
@@ -999,7 +1000,8 @@
       [ [ "fish_sample", 1 ], [ "lizard_sample", 1 ], [ "bird_sample", 1 ] ],
       [ [ "gastropod_sample", 1 ], [ "insect_sample", 1 ], [ "spider_sample", 1 ] ]
     ],
-    "flags": [ "SECRET" ]
+    "flags": [ "SECRET" ],
+    "result_mult": 3
   },
   {
     "type": "recipe",
