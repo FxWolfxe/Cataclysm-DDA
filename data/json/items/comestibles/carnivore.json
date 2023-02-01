@@ -195,8 +195,8 @@
     "cooks_like": "human_cooked",
     "name": { "str": "human flesh", "str_pl": "human fleshes" },
     "description": "A chunk of raw meat, butchered from a human body.",
-    "material": [ "hflesh" ],
-    "delete": { "flags": [ "PREDATOR_FUN" ] }
+    "material": [ "hflesh" ]
+   
   },
   {
     "id": "human_cooked",

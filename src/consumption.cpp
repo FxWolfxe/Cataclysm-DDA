@@ -1267,6 +1267,9 @@ void Character::modify_morale( item &food, const int nutr )
         }
     }
 
+
+
+
     // While raw flesh usually means negative morale, carnivores and cullers get a small bonus.
     // Hunters, predators, and apex predators don't mind raw flesh at all, maybe even like it.
     // Cooked flesh is unaffected, because people with these traits *prefer* it raw. Fat is unaffected.
@@ -1280,12 +1283,12 @@ void Character::modify_morale( item &food, const int nutr )
         const bool apex_predator = has_flag( json_flag_PRED4 );
         if( apex_predator ) {
             // Largest bonus, balances out to around +5 or +10. Some organs may still be negative.
-            add_morale( MORALE_MEATARIAN, 20, 10 );
+            add_morale( MORALE_MEATARIAN, 20, 40 );
             add_msg_if_player( m_good,
                                _( "As you tear into the raw flesh, you feel satisfied with your meal." ) );
         } else if( predator || hunter ) {
             // Should approximately balance the fun to 0 for normal meat.
-            add_morale( MORALE_MEATARIAN, 15, 5 );
+            add_morale( MORALE_MEATARIAN, 15, 15 );
             add_msg_if_player( m_good,
                                _( "Raw flesh doesn't taste all that bad, actually." ) );
         } else if( carnivore || culler ) {
