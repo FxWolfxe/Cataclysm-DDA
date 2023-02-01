@@ -779,6 +779,21 @@
     "components": [ [ [ "scrap_cotton", 4 ] ], [ [ "filament", 15, "LIST" ] ] ]
   },
   {
+    "result": "spider_silk_cloth",
+    "type": "recipe",
+    "activity_level": "LIGHT_EXERCISE",
+    "category": "CC_OTHER",
+    "subcategory": "CSC_OTHER_MATERIALS",
+    "difficulty": 3,
+    "batch_time_factors": [ 50, 1 ],
+    "skill_used": "tailor",
+    "time": "20 m",
+    "proficiencies": [ { "proficiency": "prof_weaving" }],
+    "autolearn": true,
+    "qualities": [ { "id": "SEW", "level": 2 }, { "id": "KNIT", "level": 2 } ],
+    "components": [  [ [ "filament", 80, "LIST" ] ] ]
+  },
+  {
     "result": "sheet_canvas",
     "type": "recipe",
     "activity_level": "LIGHT_EXERCISE",

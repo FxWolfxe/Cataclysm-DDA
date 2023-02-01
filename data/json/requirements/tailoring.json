@@ -560,5 +560,11 @@
     "type": "requirement",
     "//": "Enough to make one tanned hide/pelt",
     "components": [ [ [ "tanbark", 1 ], [ "acorns", 2 ], [ "hops", 2 ], [ "pine_bough", 6 ], [ "meat_brain", 3, "LIST" ] ] ]
+  },
+  {
+    "id": "tailoring_silk_small",
+    "type": "requirement",
+    "qualities": [ { "id": "SEW", "level": 3 }, { "id": "KNIT", "level": 2 } ],
+    "components": [ [ [ "spider_silk_cloth", 1 ] ], [ [ "filament", 3, "LIST" ] ] ]
   }
 ]

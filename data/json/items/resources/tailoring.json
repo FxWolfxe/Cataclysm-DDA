@@ -622,7 +622,7 @@
     "color": "dark_gray"
   },
   {
-    "id": "spider_silk_patchwork",
+    "id": "spider_silk_cloth",
     "type": "GENERIC",
     "category": "spare_parts",
     "name": { "str": "silk patch", "str_pl": "silk patches" },

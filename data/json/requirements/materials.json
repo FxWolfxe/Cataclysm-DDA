@@ -278,6 +278,7 @@
     "components": [
       [
         [ "thread", 1 ],
+        [ "silk_thread", 1 ],
         [ "sinew", 1 ],
         [ "plant_fibre", 1 ],
         [ "yarn", 1 ],
@@ -291,13 +292,13 @@
     "id": "advanced_filament",
     "type": "requirement",
     "//": "each of these equals 12 inches of thread for use when sewing items requiring advanced thread.",
-    "components": [ [ [ "thread_nomex", 2 ], [ "thread_kevlar", 2 ], [ "thread_canvas", 2 ] ] ]
+    "components": [ [ [ "thread_nomex", 2 ], [ "thread_kevlar", 2 ], [ "thread_canvas", 2 ], ["silk_thread", 2] ] ]
   },
   {
     "id": "filament_durable",
     "type": "requirement",
     "//": "Materials for use when sewing high end items, restricted to only the aramid threads and canvas thread.  Canvas thread is 2x the length of aramid thread and is reasonably sturdy, but will be double-stitched anyways to be on the safe side.",
-    "components": [ [ [ "thread_kevlar", 2 ], [ "thread_nomex", 2 ], [ "thread_canvas", 2 ] ] ]
+    "components": [ [ [ "thread_kevlar", 2 ], [ "thread_nomex", 2 ], [ "thread_canvas", 2 ], ["silk_thread", 2] ] ]
   },
   {
     "id": "filament_canvas",
