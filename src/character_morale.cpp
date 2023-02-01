@@ -118,7 +118,18 @@ void Character::add_morale( const morale_type &type, int bonus, int max_bonus,
                             const time_duration &duration, const time_duration &decay_start,
                             bool capped, const itype *item_type )
 {
-    morale->add( type, bonus, max_bonus, duration, decay_start, capped, item_type );
+
+    const auto& replacement = type->get_replacement_morale(*this);
+    if(replacement.has_value())
+    {
+        const auto& val = replacement.value();
+        const int sign_mod = val.flip_sign ? -1 : 1;
+        const int new_bonus = val.additive ? bonus * sign_mod + val.bonus : val.bonus;
+        const int new_max = val.additive ? max_bonus * sign_mod + val.max_bonus : val.max_bonus; 
+        morale->add(val.type, new_bonus, new_max, duration, decay_start, capped, item_type); 
+    }
+    else 
+        morale->add( type, bonus, max_bonus, duration, decay_start, capped, item_type );
 }
 
 int Character::has_morale( const morale_type &type ) const

@@ -9,7 +9,23 @@
 #include "type_id.h"
 
 class JsonObject;
+class Character; 
 struct itype;
+
+
+
+struct replacement_morale_data
+{
+    morale_type type; 
+    bool was_loaded;
+    int bonus;
+    int max_bonus; 
+    bool additive=true;
+    bool flip_sign;
+
+    void load(const JsonObject& jo, const std::string& src); 
+};
+
 
 class morale_type_data
 {
@@ -17,6 +33,8 @@ class morale_type_data
         bool permanent = false;
         // May contain '%s' format string
         translation text;
+
+        std::unordered_map<trait_id, replacement_morale_data> replacement_morales; 
     public:
         morale_type id;
         std::vector<std::pair<morale_type, mod_id>> src;
@@ -27,6 +45,13 @@ class morale_type_data
         bool is_permanent() const {
             return permanent;
         }
+
+        /**
+         * \brief try to get a replacement morale for the given character 
+         * \param character to look for a replacement for 
+         * \return the replacement data if found 
+         */
+        cata::optional<replacement_morale_data> get_replacement_morale(const Character& character) const; 
 
         void load( const JsonObject &jo, const std::string &src );
         void check() const;
