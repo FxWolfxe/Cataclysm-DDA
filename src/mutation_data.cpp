@@ -343,6 +343,7 @@ void mutation_branch::load( const JsonObject &jo, const std::string & )
         JsonObject si = jo.get_object( "ranged_mutation" );
         optional( si, was_loaded, "type", ranged_mutation );
         optional( si, was_loaded, "message", raw_ranged_mutation_message );
+        optional( si, was_loaded, "count", spawn_item_count); 
     }
     if( jo.has_object( "transform" ) ) {
         transform = cata::make_value<mut_transform>();

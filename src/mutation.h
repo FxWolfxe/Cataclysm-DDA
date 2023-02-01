@@ -307,6 +307,9 @@ struct mutation_branch {
         /** The item, if any, spawned by the mutation */
         itype_id spawn_item;
 
+        // if item is spawned, how many 
+        int spawn_item_count = 1; 
+
         /**Species ignoring character with the mutation*/
         std::vector<species_id> ignored_by;
 

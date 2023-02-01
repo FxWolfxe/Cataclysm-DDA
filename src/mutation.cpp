@@ -900,7 +900,7 @@ void Character::activate_mutation( const trait_id &mut )
         return;
     } else if( !mdata.spawn_item.is_empty() ) {
         item tmpitem( mdata.spawn_item );
-        i_add_or_drop( tmpitem );
+        i_add_or_drop( tmpitem , std::max(mdata.spawn_item_count, 1));
         add_msg_if_player( mdata.spawn_item_message() );
         tdata.powered = false;
         return;
