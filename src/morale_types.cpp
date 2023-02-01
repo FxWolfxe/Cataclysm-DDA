@@ -4,6 +4,7 @@
 #include <set>
 #include <vector>
 
+#include "character.h"
 #include "generic_factory.h"
 #include "itype.h"
 #include "json.h"
@@ -303,12 +304,34 @@ void morale_type_data::reset()
     morale_data.reset();
 }
 
-void morale_type_data::load( const JsonObject &jo, const std::string & )
+void morale_type_data::load(const JsonObject& jo, const std::string& src)
 {
-    mandatory( jo, was_loaded, "id", id );
-    mandatory( jo, was_loaded, "text", text );
+    mandatory(jo, was_loaded, "id", id);
+    mandatory(jo, was_loaded, "text", text);
 
-    optional( jo, was_loaded, "permanent", permanent, false );
+    optional(jo, was_loaded, "permanent", permanent, false);
+    if (!was_loaded && jo.has_array("replacement_morales"))
+    {
+        for (JsonArray replacement : jo.get_array("replacement_morales"))
+        {
+            trait_id trait = trait_id(replacement.get_string(0));
+            replacement_morale_data r;
+            r.load(replacement.get_object(1), src);
+            replacement_morales[trait] = r; 
+        }
+    }
+}
+
+cata::optional<replacement_morale_data> morale_type_data::get_replacement_morale(const Character& character) const
+{
+    for(const auto& replacements: replacement_morales)
+    {
+        if(character.has_trait(replacements.first))
+        {
+            return replacements.second; 
+        }
+    }
+    return cata::nullopt; 
 }
 
 void morale_type_data::check() const
@@ -324,4 +347,13 @@ std::string morale_type_data::describe( const itype *it ) const
         // `string_format` will return an error message
         return string_format( text );
     }
+}
+
+void replacement_morale_data::load(const JsonObject& jo, const std::string& src)
+{
+    mandatory(jo, was_loaded, "type", type); 
+    optional(jo, was_loaded, "bonus", bonus);
+    optional(jo, was_loaded, "flip_sign", flip_sign);
+    optional(jo, was_loaded, "max_bonus", max_bonus); 
+    optional(jo, was_loaded, "additive", additive, true); 
 }

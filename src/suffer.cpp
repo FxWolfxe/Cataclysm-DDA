@@ -2333,7 +2333,13 @@ void Character::add_addiction( const addiction_id &type, int strength )
             time_duration decay_start = timer / 10;
             if (decay_start < 30_minutes)
                 decay_start = 30_minutes;
-            add_morale(type->get_satiated_morale(), 5, 20, timer / 2, decay_start); 
+
+            time_duration duration = timer;
+            if(duration < 1_hours)
+            {
+                duration = 1_hours; 
+            }
+            add_morale(type->get_satiated_morale(), 5, 20, duration, decay_start); 
         }
 
         add_msg_debug( debugmode::DF_CHAR_HEALTH, "Updating addiction: %d intensity, %d sated",
