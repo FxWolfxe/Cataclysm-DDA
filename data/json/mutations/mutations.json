@@ -4942,6 +4942,7 @@
     "description": "Your mucus now contains various chemicals that signal to other mollusks you are one of them.",
     "prereqs": [ "MUCUS_SECRETION" , "SNAIL_TRAIL"],
     "category": [ "GASTROPOD" ],
+    "anger_relations":[["MOLLUSK", -50]],
     "faction_anger_offsets":[["slug", -20]]
   },
   {
@@ -4952,10 +4953,10 @@
     "visibility": 4,
     "ugliness": 4,
     "description": "You've developed some ability to control your slime emissions.  As a result of this you can leave trails of slime anywhere you walk.",
-    "prereqs": [ "MUCUS_SECRETION"],
+    "prereqs": [ "MUCUS_SECRETION", "MUCUS_SECRETION2"],
     "category": [ "GASTROPOD" ],
     "active": true,
-    "cost": 174,
+    "cost": 104,
     "time": "100 s",
     "thirst": true,
     "kcal": true
