@@ -1848,6 +1848,23 @@
   },
   {
     "type": "material",
+    "id": "mutant_slime",
+    "name": "Slime",
+    "density": 1,
+    "bash_resist": 1,
+    "breathability":"SECOND_SKIN",
+    "cut_resist": 1,
+    "bullet_resist": 1,
+    "acid_resist": 1,
+    "fire_resist": 5,
+    "conductive": true,
+    "chip_resist": 0,
+    "dmg_adj": [ "scratched", "cut", "cracked", "shattered" ],
+    "bash_dmg_verb": "dented",
+    "cut_dmg_verb": "gouged"
+  },
+  {
+    "type": "material",
     "id": "lc_steel",
     "name": "Low Carbon Steel",
     "//": "SAE 1010/UNS 10100, assumes .1% carbon content and zero slag.",

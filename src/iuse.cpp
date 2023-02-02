@@ -386,6 +386,7 @@ static const trait_id trait_THRESH_MYCUS( "THRESH_MYCUS" );
 static const trait_id trait_THRESH_PLANT( "THRESH_PLANT" );
 static const trait_id trait_TOLERANCE( "TOLERANCE" );
 static const trait_id trait_WAYFARER( "WAYFARER" );
+static const trait_id trait_ACIDM_MUCUS("MUCUS_SECRETION2"); 
 
 static const vitamin_id vitamin_blood( "blood" );
 static const vitamin_id vitamin_redcells( "redcells" );
@@ -3399,6 +3400,15 @@ cata::optional<int> iuse::pickaxe( Character *p, item *it, bool, const tripoint 
         }
     }
 
+    // You can mine either furniture or terrain, and furniture goes first,
+    // according to @ref map::bash_ter_furn()
+    std::string mining_what = mineable_furn ? here.furnname(pnt) : here.tername(pnt);
+
+    if(p->has_trait(trait_ACIDM_MUCUS))
+    {
+        moves = static_cast<int>(std::round(moves * 0.33f)); //acidic secretions greatly reduce dig time
+        p->add_msg_if_player(_("Your acidic secretion eats into %s making your job easier"), mining_what); 
+    }
 
     const std::vector<npc *> helpers = p->get_crafting_helpers();
     const std::size_t helpersize = p->get_num_crafting_helpers( 3 );
@@ -3411,9 +3421,7 @@ cata::optional<int> iuse::pickaxe( Character *p, item *it, bool, const tripoint 
     p->activity.targets.emplace_back( *p, it );
     p->activity.placement = here.getglobal( pnt );
 
-    // You can mine either furniture or terrain, and furniture goes first,
-    // according to @ref map::bash_ter_furn()
-    std::string mining_what = mineable_furn ? here.furnname( pnt ) : here.tername( pnt );
+    
     p->add_msg_if_player( _( "You strike the %1$s with your %2$s." ),
                           mining_what, it->tname() );
 

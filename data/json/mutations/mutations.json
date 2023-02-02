@@ -4880,6 +4880,8 @@
     "prereqs": [ "VISCOUS" ],
     "threshreq": [ "THRESH_GASTROPOD" ],
     "leads_to": [ "GASTROPOD_BALANCE" ],
+    "purifiable":false,
+    "integrated_armor":["integrated_gastropod_foot"],
     "flags": [ "SLUDGE_IMMUNE" ],
     "visibility": 8,
     "ugliness": 9,
@@ -4908,7 +4910,7 @@
     "ugliness": 2,
     "description": "You once had a significant other call you slimy, now you exemplify that.  It covers everything you come into contact with but now you can move through slime you didn't create with ease.",
     "prereqs": [ "GASTROPOD_FOOT" ],
-    "leads_to": [ "MUCUS_SECRETION2" ],
+    "leads_to": [ "MUCUS_SECRETION2", "MUCUS_SECRETION_PHEROMONE" ],
     "changes_to": [ "SNAIL_TRAIL" ],
     "category": [ "GASTROPOD" ]
   },
@@ -4932,13 +4934,25 @@
   },
   {
     "type": "mutation",
+    "id": "MUCUS_SECRETION_PHEROMONE",
+    "name": { "str": "Communal Slime" },
+    "points": 3,
+    "threshreq":["THRESH_GASTROPOD"],
+    "types": [ "PHEROMONE" ],
+    "description": "Your mucus now contains various chemicals that signal to other mollusks you are one of them.",
+    "prereqs": [ "MUCUS_SECRETION" , "SNAIL_TRAIL"],
+    "category": [ "GASTROPOD" ],
+    "faction_anger_offsets":[["slug", -20]]
+  },
+  {
+    "type": "mutation",
     "id": "SNAIL_TRAIL",
     "name": { "str": "Snail Trail" },
     "points": 3,
     "visibility": 4,
     "ugliness": 4,
     "description": "You've developed some ability to control your slime emissions.  As a result of this you can leave trails of slime anywhere you walk.",
-    "prereqs": [ "MUCUS_SECRETION" ],
+    "prereqs": [ "MUCUS_SECRETION"],
     "category": [ "GASTROPOD" ],
     "active": true,
     "cost": 174,
@@ -7599,8 +7613,8 @@
     "points": 3,
     "flags": [ "ACID_IMMUNE" ],
     "description": "Your mutated flesh is immune to the damaging effects of acid.",
-    "threshreq": [ "THRESH_INSECT", "THRESH_CHIMERA", "THRESH_MEDICAL", "THRESH_SLIME" ],
-    "category": [ "INSECT", "CHIMERA", "MEDICAL", "SLIME" ]
+    "threshreq": [ "THRESH_INSECT", "THRESH_CHIMERA","THRESH_GASTROPOD" , "THRESH_MEDICAL", "THRESH_SLIME" ],
+    "category": [ "INSECT", "CHIMERA", "GASTROPOD" , "MEDICAL", "SLIME" ]
   },
   {
     "type": "mutation",

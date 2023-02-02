@@ -1076,6 +1076,34 @@
     ]
   },
   {
+    "id": "integrated_gastropod_foot",
+    "type": "ARMOR",
+    "category": "armor",
+    "name": { "str_sp": "slug foot" },
+    "description": "Your whole lower body is now a single 'foot' covered in a thick layer of mucus",
+    "weight": "100 g",
+    "volume": "10 ml",
+    "price": 0,
+    "price_postapoc": 0,
+    "material": [ "mutant_slime" ],
+    "symbol": "f",
+    "color": "light_red",
+    "warmth": 20,
+    "environmental_protection": 1,
+    "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "SKINTIGHT", "NORMAL", "WATER_FRIENDLY", "PADDED" ],
+    "armor": [
+      {
+        "material": [
+          { "type": "mutant_slime", "covered_by_mat": 100, "thickness": 3 }
+          
+        ],
+        "covers": [ "foot_l", "foot_r", "leg_l", "leg_r" ],
+        "coverage": 100,
+        "encumbrance": 0
+      }
+    ]
+  },
+  {
     "id": "armor_bio_eyes",
     "//": "These do not preclude wearing glasses, but you'll get double-up penalties.  If you really needed to you could likely still situate the lenses in front of them.  You should probably just augment your eyes though.",
     "type": "ARMOR",
