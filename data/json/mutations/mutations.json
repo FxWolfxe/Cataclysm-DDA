@@ -3311,12 +3311,14 @@
     "points": 0,
     "visibility": 1,
     "ugliness": 2,
-    "prereqs":["TAIL_STUB"],
+    "prereqs":["TAIL_INTERMEDIAT_ABDOMEN"],
     "description": "You have grown a large spider's abdomen",
     "types": [ "TAIL" ],
     "category": [ "SPIDER" ],
     "threshreq": [ "THRESH_SPIDER" ], 
-    "allowed_items": [ "ALLOWS_TAIL" ]
+    "allowed_items": [ "ALLOWS_TAIL" ],
+    "allow_soft_gear": true,
+    "restricts_gear": [ "leg_hip_l", "leg_hip_r" ]
   },
   {
     "type": "mutation",
@@ -3667,6 +3669,51 @@
       "base_damage": { "damage_type": "stab", "amount": 15 },
       "strength_damage": { "damage_type": "stab", "amount": 3 }
     }
+  },
+  {
+    "type": "mutation",
+    "id": "SPIDER_EYES_BAD",
+    "name": { "str": "Immature Extra Eyes" },
+    "points": -1,
+    "visibility": 2,
+    "ugliness": 2,
+    "changes_to":["SPIDER_EYES_GOOD"],
+    "description": "You have grown 2 smaller eyes next to your normal ones. you're brain can barely make sense of the information they're feeding you, and it's quite distracting",
+    "types": [ "EYES" ],
+    "category": [ "SPIDER" ],
+    "passive_mods":{"per_mod":-1}
+  },
+  {
+    "type": "mutation",
+    "id": "SPIDER_EYES_GOOD",
+    "name": { "str": "Spider Eyes" },
+    "points": 0,
+    "mixed_effect":true,
+    "changes_to":"SPIDER_EYES_GREAT",
+    "prereqs":["SPIDER_EYES_BAD"],
+    "visibility": 8,
+    "ugliness": 5,
+    "description": "You're 'extra' eyes have fully matured and your original pair have turned black to match them, giving you 4 black spider eyes. You're more preceptive but can't wear eye gear",
+    "types": [ "EYES" ],
+    "category": [ "SPIDER" ],
+    "restricts_gear":[ "eyes" ], 
+    "passive_mods":{ "per_mod":2}
+  },
+  {
+    "type": "mutation",
+    "id": "SPIDER_EYES_GREAT",
+    "name": { "str": "More Spider Eyes" },
+    "points": 3,
+    "mixed_effect":true,
+    "prereqs":["SPIDER_EYES_GOOD"],
+    "threshreq":["THRESH_SPIDER"],
+    "visibility": 8,
+    "ugliness": 5,
+    "description": "You're extra eyes have grown larger still, and you have gained an additional 2 smaller eyes on each side, giving you a total of 8 eyes, just as a spider should.",
+    "types": [ "EYES" ],
+    "category": [ "SPIDER" ],
+    "restricts_gear":[ "eyes" ], 
+    "passive_mods":{ "per_mod":4}
   },
   {
     "type": "mutation",
@@ -4258,7 +4305,7 @@
     "types": [ "TAIL" ],
     "prereqs": [ "TAIL_STUB" ],
     "changes_to": [ "TAIL_FLUFFY", "TAIL_CATTLE", "TAIL_RAT" ],
-    "category": [ "FELINE", "LUPINE", "INSECT", "CHIMERA", "CATTLE", "RAT", "MOUSE" ],
+    "category": [ "FELINE", "LUPINE", "CHIMERA", "CATTLE", "RAT", "MOUSE" ],
     "restricts_gear": [ "leg_hip_l", "leg_hip_r" ],
     "allowed_items": [ "ALLOWS_TAIL" ],
     "allow_soft_gear": true,
@@ -5052,7 +5099,7 @@
     "threshreq": [ "THRESH_SPIDER" ],
     "category": [ "SPIDER" ],
     "active": true,
-    "cost": 160,
+    "cost": 70,
     "kcal": true,
     "thirst": true,
     "spawn_item": { "type": "silk_thread", "message": "You spin up some fine silken threads." , "count": 2 }
