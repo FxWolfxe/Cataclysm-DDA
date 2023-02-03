@@ -791,7 +791,7 @@
     "proficiencies": [ { "proficiency": "prof_weaving" }],
     "autolearn": true,
     "qualities": [ { "id": "SEW", "level": 2 }, { "id": "KNIT", "level": 2 } ],
-    "components": [  [ [ "filament", 80, "LIST" ] ] ]
+    "components": [  [ [ "silk_thread", 80 ] ] ]
   },
   {
     "result": "sheet_canvas",

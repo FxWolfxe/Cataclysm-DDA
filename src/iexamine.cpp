@@ -184,6 +184,7 @@ static const json_character_flag json_flag_ATTUNEMENT( "ATTUNEMENT" );
 static const json_character_flag json_flag_SUPER_HEARING( "SUPER_HEARING" );
 static const json_character_flag json_flag_WALL_CLING( "WALL_CLING" );
 static const json_character_flag json_flag_WEB_RAPPEL( "WEB_RAPPEL" );
+static const json_character_flag json_flag_MULTI_ARMS( "MULTI_ARMS" ); 
 
 static const material_id material_bone( "bone" );
 static const material_id material_cac2powder( "cac2powder" );
@@ -1480,14 +1481,22 @@ void iexamine::chainfence( Character &you, const tripoint &examp )
 
     const item_location weapon = you.get_wielded_item();
     if( weapon && weapon->is_two_handed( you ) ) {
-        if( query_yn(
-                _( "You can't climb because you have to wield a %s with both hands.\n\nPut it away?" ),
-                weapon->tname() ) ) {
-            if( !you.unwield() ) {
+
+        if(you.has_flag(json_flag_MULTI_ARMS))
+        {
+            add_msg(m_info, _("your extra arms help you climb this obsticle while holding onto %s"), weapon->tname()); 
+        }
+        else {
+            if (query_yn(
+                _("You can't climb because you have to wield a %s with both hands.\n\nPut it away?"),
+                weapon->tname())) {
+                if (!you.unwield()) {
+                    return;
+                }
+            }
+            else {
                 return;
             }
-        } else {
-            return;
         }
     }
 

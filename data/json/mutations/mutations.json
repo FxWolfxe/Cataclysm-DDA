@@ -7109,7 +7109,8 @@
     "prereqs": [ "INSECT_ARMS" ],
     "prereqs2": [ "ANTENNAE" ],
     "threshreq": [ "THRESH_INSECT" ],
-    "category": [ "INSECT" ]
+    "category": [ "INSECT" ],
+    "flags":["MULTI_ARMS"]
   },
   {
     "type": "mutation",
@@ -7143,7 +7144,8 @@
     "prereqs": [ "ARACHNID_ARMS" ],
     "prereqs2": [ "POISONOUS", "POISONOUS2", "WEB_RAPPEL" ],
     "threshreq": [ "THRESH_SPIDER" ],
-    "category": [ "SPIDER" ]
+    "category": [ "SPIDER" ], 
+    "flags":["MULTI_ARMS"]
   },
   {
     "type": "mutation",
@@ -7199,6 +7201,7 @@
     "leads_to": [ "CLAWS_TENTACLE" ],
     "changes_to": [ "ARM_TENTACLES_8" ],
     "category": [ "CEPHALOPOD" ],
+    "flags":["MULTI_ARMS"],
     "wet_protection": [
       { "part": "arm_l", "neutral": 19 },
       { "part": "arm_r", "neutral": 19 },
@@ -7236,6 +7239,7 @@
     "types": [ "HANDS", "CLAWS" ],
     "prereqs": [ "ARM_TENTACLES_4" ],
     "leads_to": [ "CLAWS_TENTACLE" ],
+    "flags":["MULTI_ARMS"],
     "category": [ "CEPHALOPOD" ],
     "wet_protection": [
       { "part": "arm_l", "neutral": 19 },
