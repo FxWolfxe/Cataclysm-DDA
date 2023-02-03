@@ -1781,7 +1781,7 @@
     "vomit_multiplier": 2,
     "types": [ "CONSTITUTION" ],
     "changes_to": [ "NAUSEA" ],
-    "category": [ "ALPHA", "SLIME", "RAT", "MEDICAL", "ELFA", "BATRACHIAN", "TROGLOBITE", "RAPTOR", "CHIMERA", "GASTROPOD" ]
+    "category": [ "ALPHA", "SLIME", "RAT", "MEDICAL", "ELFA", "BATRACHIAN", "TROGLOBITE", "RAPTOR", "CHIMERA", "GASTROPOD", "SPIDER" ]
   },
   {
     "type": "mutation",
@@ -3926,7 +3926,7 @@
     "name": { "str": "Saprovore" },
     "points": 2,
     "description": "Your digestive system is specialized to allow you to consume decaying material.  You can eat rotten food, albeit for less nutrition than usual.",
-    "category": [ "TROGLOBITE", "CHIMERA", "GASTROPOD", "MOUSE" ],
+    "category": [ "TROGLOBITE", "CHIMERA", "GASTROPOD", "MOUSE", "SPIDER", "INSECT" ],
     "flags": [ "IMMUNE_SPOIL" ]
   },
   {
@@ -4007,9 +4007,9 @@
     "prereqs": [ "POISRESIST" ],
     "//": "Yes, you eventually got over the massive digestive upset.  Mutations aren't easy on a system!",
     "prereqs2": [ "SAPROVORE", "TOLERANCE" ],
-    "threshreq": [ "THRESH_TROGLOBITE", "THRESH_CHIMERA", "THRESH_RAPTOR", "THRESH_RAT", "THRESH_MOUSE", "THRESH_BATRACHIAN" ],
+    "threshreq": [ "THRESH_TROGLOBITE", "THRESH_CHIMERA", "THRESH_RAPTOR", "THRESH_RAT", "THRESH_MOUSE", "THRESH_BATRACHIAN" , "THRESH_SPIDER"],
     "vitamins_absorb_multi": [ [ "all", [ [ "mutant_toxin", 0.25 ] ] ] ],
-    "category": [ "TROGLOBITE", "RAPTOR", "RAT", "CHIMERA", "BATRACHIAN", "GASTROPOD" ]
+    "category": [ "TROGLOBITE", "RAPTOR", "RAT", "CHIMERA", "BATRACHIAN", "GASTROPOD" , "SPIDER"]
   },
   {
     "type": "mutation",
@@ -6165,7 +6165,7 @@
     "types": [ "CONSTITUTION" ],
     "prereqs": [ "WEAKSTOMACH" ],
     "changes_to": [ "VOMITOUS" ],
-    "category": [ "ALPHA", "SLIME", "RAT", "MEDICAL", "ELFA", "BATRACHIAN", "TROGLOBITE", "RAPTOR", "CHIMERA", "GASTROPOD" ],
+    "category": [ "ALPHA", "SLIME", "RAT", "MEDICAL", "SPIDER", "ELFA", "BATRACHIAN", "TROGLOBITE", "RAPTOR", "CHIMERA", "GASTROPOD" ],
     "active": true
   },
   {
@@ -6178,7 +6178,7 @@
     "types": [ "CONSTITUTION" ],
     "prereqs": [ "NAUSEA" ],
     "changes_to": [ "EATPOISON" ],
-    "category": [ "ALPHA", "SLIME", "RAT", "MEDICAL", "ELFA", "BATRACHIAN", "TROGLOBITE", "RAPTOR", "CHIMERA", "GASTROPOD" ],
+    "category": [ "ALPHA", "SLIME", "RAT", "SPIDER", "MEDICAL", "ELFA", "BATRACHIAN", "TROGLOBITE", "RAPTOR", "CHIMERA", "GASTROPOD" ],
     "active": true
   },
   {
