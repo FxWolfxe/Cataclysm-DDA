@@ -7160,6 +7160,7 @@
     "restricts_gear": [ "hand_l", "hand_r" ],
     "types": [ "HANDS", "CLAWS" ],
     "leads_to": [ "CLAWS_TENTACLE" ],
+    "movecost_swim_modifier":0.9,
     "changes_to": [ "ARM_TENTACLES_4" ],
     "category": [ "CEPHALOPOD" ],
     "wet_protection": [
@@ -7200,6 +7201,7 @@
     "prereqs": [ "ARM_TENTACLES" ],
     "leads_to": [ "CLAWS_TENTACLE" ],
     "changes_to": [ "ARM_TENTACLES_8" ],
+    "movecost_swim_modifier":0.8,
     "category": [ "CEPHALOPOD" ],
     "flags":["MULTI_ARMS"],
     "wet_protection": [
@@ -7238,6 +7240,7 @@
     "restricts_gear": [ "hand_l", "hand_r" ],
     "types": [ "HANDS", "CLAWS" ],
     "prereqs": [ "ARM_TENTACLES_4" ],
+    "movecost_swim_modifier":0.5,
     "leads_to": [ "CLAWS_TENTACLE" ],
     "flags":["MULTI_ARMS"],
     "category": [ "CEPHALOPOD" ],
