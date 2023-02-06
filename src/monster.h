@@ -580,6 +580,13 @@ class monster : public Creature
         void set_summon_time( const time_duration &length );
         // handles removing the monster if the timer runs out
         void decrement_summon_timer();
+
+        /**
+         * \brief try to find the best associated mutagen vitamin for this creature, returns null id if not found 
+         * \return the vitamin_id of the associated mutagen 
+         */
+        vitamin_id find_associated_mutagen() const; 
+
     private:
         void process_trigger( mon_trigger trig, int amount );
         void process_trigger( mon_trigger trig, const std::function<int()> &amount_func );
@@ -610,6 +617,9 @@ class monster : public Creature
 
         Character *find_dragged_foe();
         void nursebot_operate( Character *dragged_foe );
+
+        mutable bool mutagen_cached = false;
+        mutable vitamin_id cached_associated_mutagen; 
 
     protected:
         void store( JsonOut &json ) const;

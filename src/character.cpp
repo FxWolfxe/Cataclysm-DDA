@@ -57,6 +57,7 @@
 #include "game_constants.h"
 #include "gun_mode.h"
 #include "handle_liquid.h"
+#include "harvest.h"
 #include "input.h"
 #include "inventory.h"
 #include "item_location.h"
@@ -482,9 +483,16 @@ static const trait_id trait_WATERSLEEP( "WATERSLEEP" );
 static const trait_id trait_WEB_SPINNER( "WEB_SPINNER" );
 static const trait_id trait_WEB_WALKER( "WEB_WALKER" );
 static const trait_id trait_WEB_WEAVER( "WEB_WEAVER" );
+static const trait_id trait_HORIZONTAL_GENE_TRANSFER( "HORIZONTAL_GENE_TRANSFER" ); 
 
 static const vitamin_id vitamin_calcium( "calcium" );
 static const vitamin_id vitamin_iron( "iron" );
+static const vitamin_id vitamin_mutagen("mutagen");
+static const vitamin_id vitamin_chimera("mutagen_chimera");
+static const vitamin_id vitamin_slurry("mutagenic_slurry");
+static const vitamin_id vitamin_purifier("mutagen_human");
+
+static const species_id species_MUTANT("MUTANT"); 
 
 static const std::set<material_id> ferric = { material_iron, material_steel, material_budget_steel, material_ch_steel, material_hc_steel, material_lc_steel, material_mc_steel, material_qt_steel };
 
@@ -7521,6 +7529,76 @@ void Character::apply_damage( Creature *source, bodypart_id hurt, int dam,
     }
 }
 
+
+
+static void handle_gene_transfer(Character* damage_taker, Creature* source, const damage_instance &damage_source, const dealt_damage_instance& damage_done, float multiplier=1.0f)
+{
+	static int constexpr max_dist = 3; 
+    if (source == nullptr) return;
+	const monster* monster_source = source->as_monster();
+	if (monster_source == nullptr || monster_source->type == nullptr) return;
+	
+    int dist = rl_dist(damage_taker->pos(), source->pos());
+	if (dist > max_dist) return; 
+
+    static int constexpr damage_to_mutagen = 3;
+
+    const mtype *mon_type = monster_source->type;
+    const harvest_id &mon_harvest_type = mon_type->harvest;
+    const float adj_difficulty = std::sqrt( std::max(mon_type->difficulty + 1, 1));
+    const float mutagen_amount =  adj_difficulty * multiplier * 0.65f; //not sure why it's complex :/ 
+    float mutagen_intensity = std::max(static_cast<float>(damage_done.total_damage()),0.1f) * damage_to_mutagen * mutagen_amount;
+    int max_catalyst_amount = 350; 
+    vitamin_id mutagen = monster_source->find_associated_mutagen();
+    static constexpr int chimera_catalyst_amount = 950; 
+    if (mutagen == vitamin_purifier) mutagen = vitamin_id::NULL_ID(); //never give purafier 
+
+     if(!mutagen.is_valid() &&  monster_source->type->species.find(species_MUTANT) != monster_source->type->species.end())
+    {
+        //check for mutant case
+        if(rng(0, 2) <= 1)
+        {
+            mutagen = vitamin_chimera;
+        }else
+        {
+            mutagen = vitamin_slurry;
+            mutagen_intensity /= 1.6f; 
+        }
+
+        max_catalyst_amount = chimera_catalyst_amount; //higher catalyst threashold for mutants 
+
+    }else if(!mutagen.is_valid() && mon_harvest_type.is_valid() && mon_type->harvest.str().find("mutant") != std::string::npos) //another check for mutants, cache this? 
+    {
+        mutagen_intensity /= 1.7f; 
+        //check for mutant case
+        if (rng(0, 2) <= 1)
+        {
+            mutagen = vitamin_chimera;
+        }
+        else
+        {
+            mutagen = vitamin_slurry;
+            mutagen_intensity /= 1.6f;
+        }
+
+        max_catalyst_amount = chimera_catalyst_amount; //higher catalyst threashold for mutants 
+
+    }
+
+     if (mutagen == vitamin_chimera)
+         max_catalyst_amount = chimera_catalyst_amount; //incase it's assigned from the type 
+
+    if (mutagen.is_valid())
+    {
+        damage_taker->vitamin_mod(mutagen, static_cast<int>(std::round(mutagen_intensity)));
+        if (damage_taker->vitamin_get(vitamin_mutagen) < max_catalyst_amount)
+        {
+            damage_taker->vitamin_mod(vitamin_mutagen, static_cast<int>(std::round(mutagen_intensity * 0.55f)));
+        }
+    }
+}
+
+
 dealt_damage_instance Character::deal_damage( Creature *source, bodypart_id bp,
         const damage_instance &d, const weakpoint_attack &attack )
 {
@@ -7659,7 +7737,27 @@ dealt_damage_instance Character::deal_damage( Creature *source, bodypart_id bp,
     }
 
     on_hurt( source );
+
+    if(has_trait(trait_HORIZONTAL_GENE_TRANSFER))
+    {
+        handle_gene_transfer(this, source, d, dealt_dams, 1.7f); 
+    }
+
     return dealt_dams;
+}
+
+
+void Character::deal_melee_hit(Creature* source, int hit_spread, bool critical_hit,
+    damage_instance dam, dealt_damage_instance& dealt_dam,
+    const weakpoint_attack& attack,
+    const bodypart_id* bp )
+{
+    Creature::deal_melee_hit(source, hit_spread, critical_hit, dam, dealt_dam, attack, bp);
+
+    if(has_trait(trait_HORIZONTAL_GENE_TRANSFER))
+    {
+        handle_gene_transfer(this, source, dam, dealt_dam); 
+    }
 }
 
 int Character::reduce_healing_effect( const efftype_id &eff_id, int remove_med,

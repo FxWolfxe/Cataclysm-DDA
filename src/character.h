@@ -1080,6 +1080,13 @@ class Character : public Creature, public visitable
         dealt_damage_instance deal_damage( Creature *source, bodypart_id bp,
                                            const damage_instance &d,
                                            const weakpoint_attack &attack = weakpoint_attack() ) override;
+
+
+        void deal_melee_hit(Creature* source, int hit_spread, bool critical_hit,
+            damage_instance dam, dealt_damage_instance& dealt_dam,
+            const weakpoint_attack& attack = weakpoint_attack(),
+            const bodypart_id* bp = nullptr) override;
+
         /** Reduce healing effect intensity, return initial intensity of the effect */
         int reduce_healing_effect( const efftype_id &eff_id, int remove_med, const bodypart_id &hurt );
 

@@ -67,6 +67,9 @@
 #include "weakpoint.h"
 #include "weather.h"
 #include "harvest.h"
+#include "item_factory.h"
+#include "vitamin.h"
+#include "recipe_dictionary.h"
 
 static const anatomy_id anatomy_default_anatomy( "default_anatomy" );
 
@@ -160,6 +163,10 @@ static const trait_id trait_PHEROMONE_INSECT( "PHEROMONE_INSECT" );
 static const trait_id trait_PHEROMONE_MAMMAL( "PHEROMONE_MAMMAL" );
 static const trait_id trait_TERRIFYING( "TERRIFYING" );
 static const trait_id trait_THRESH_MYCUS( "THRESH_MYCUS" );
+
+static const harvest_drop_type_id harvest_type_mutagen( "mutagen_group" ); 
+
+static const item_group_id item_group_mutagen( "mutagens" ); 
 
 struct pathfinding_settings;
 
@@ -1502,6 +1509,119 @@ void monster::process_triggers()
     // Cap values at [-100, 100] to prevent perma-angry moose etc.
     morale = std::min( 100, std::max( -100, morale ) );
     anger  = std::min( 100, std::max( -100, anger ) );
+}
+
+vitamin_id monster::find_associated_mutagen() const
+{
+    if ( mutagen_cached ) return cached_associated_mutagen;
+
+    if ( type == nullptr )
+    {
+        return vitamin_id::NULL_ID(); //some sort of error? try again later
+    }
+
+    if ( type->dissect.is_empty() )
+    {
+        mutagen_cached = true;
+        return vitamin_id::NULL_ID();
+    }
+
+
+    const std::string sample_str = "sample";
+    const itype *sample_type = nullptr;
+    for ( const harvest_entry &dissect_product: *type->dissect )
+    {
+        if ( dissect_product.type == harvest_type_mutagen )
+        {
+            const item_group_id group_id = item_group_id(dissect_product.drop);
+            const Item_spawn_data *group = item_controller->get_group(group_id);
+            if (group == nullptr) continue; 
+
+            //if ( !group_id.is_valid() ) continue;
+
+            for ( const itype *iType: group->every_item() )
+            {
+                itype_id id = iType->get_id();
+                const auto pos = id.str().find(sample_str);
+                if ( pos == std::string::npos ) continue;
+                sample_type = iType;
+                //do a quick test to find a vitamin, save alot of work later if found
+
+                vitamin_id m_id = vitamin_id("mutagen_" + id.str().substr(0, pos - 1));
+                //assume the sample id is in the form of $mutagenType_sample and the vitamin mutagen is in the form of mutagen_$mutagenType
+                if ( !m_id.is_null() && m_id.is_valid() )
+                {
+                    cached_associated_mutagen = m_id;
+                    mutagen_cached = true;
+                }
+
+                break;
+            }
+        }
+
+        if ( sample_type != nullptr ) break;
+    }
+
+    if ( mutagen_cached )
+    {
+        return cached_associated_mutagen;
+    }
+
+    if ( sample_type == nullptr )
+    {
+        mutagen_cached = true;
+        return vitamin_id::NULL_ID();
+    }
+
+    const itype *associated_mutagen = nullptr;
+    auto group_ptr = item_controller->get_group(item_group_mutagen);
+    if(group_ptr == nullptr)
+    {
+        return cached_associated_mutagen;
+    }
+
+    for ( const itype *mutagen: group_ptr->every_item() )
+    {
+        const recipe &mutagen_recipe = recipe_dictionary::get_craft(sample_type->get_id());
+
+        if ( mutagen_recipe.is_null() ) continue;
+
+        const requirement_data &requirements = mutagen_recipe.simple_requirements();
+        for ( const std::vector<item_comp> &r: requirements.get_components() )
+        {
+            for ( const item_comp &rr: r )
+            {
+                if ( rr.type == sample_type->get_id() )
+                {
+                    associated_mutagen = mutagen;
+                    break;
+                }
+            }
+            if ( associated_mutagen != nullptr ) break;
+        }
+        if ( associated_mutagen != nullptr ) break;
+    }
+
+    if ( associated_mutagen == nullptr || associated_mutagen->comestible == nullptr )
+    {
+        mutagen_cached = true;
+        return vitamin_id::NULL_ID();
+    }
+
+    const std::string mutagen_str = "mutagen";
+    const nutrients &nutrients_added = associated_mutagen->comestible->default_nutrition;
+    for ( const std::pair<const string_id<vitamin>, int> &vit: nutrients_added.vitamins )
+    {
+        if ( vit.first.str().find(mutagen_str) != std::string::npos )
+        {
+            cached_associated_mutagen = vit.first;
+            break;
+        }
+    }
+
+    //end of the line, either we found something or there was nothing to find, 
+    mutagen_cached = true;
+    return cached_associated_mutagen;
 }
 
 // This adjusts anger/morale levels given a single trigger.

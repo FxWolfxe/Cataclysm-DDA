@@ -6586,6 +6586,19 @@
   },
   {
     "type": "mutation",
+    "id": "HORIZONTAL_GENE_TRANSFER",
+    "name": { "str": "Horizontal Gene Transfer" },
+    "points": -2,
+    "mixed_effect":true,
+    "purifiable": false,
+    "description": "Your body is especially unstable, getting close to mutants could cause you to look alot more like them. however you recover from instability much faster",
+    "category": [ "CHIMERA" ],
+    "starting_trait":true,
+    "cancels":["CHAOTIC", "CHAOTIC_BAD", "UNSTABLE"],
+    "vitamin_rates":[ [ "instability", 100 ], ["mutagen", -100]]
+  },
+  {
+    "type": "mutation",
     "id": "RADIOACTIVE1",
     "name": { "str": "Minor Radioactivity" },
     "points": -2,
