@@ -666,7 +666,8 @@
     "cooks_like": "mutant_bug_organs_cooked",
     "proportional": { "price": 0.1, "calories": 0.65 },
     "vitamins": [ [ "mutant_toxin", 25 ] ],
-    "extend": { "flags": [ "BAD_TASTE" ] }
+    "extend": { "flags": [ "BAD_TASTE" ] },
+    "gene_transfer_map":[["mutagen_insect", 10], ["mutagen", 10]]
   },
   {
     "id": "mutant_bug_organs_cooked",
@@ -927,7 +928,8 @@
     "looks_like": "lung",
     "proportional": { "price_postapoc": 0.1, "calories": 0.65 },
     "vitamins": [ [ "mutant_toxin", 25 ] ],
-    "extend": { "flags": [ "BAD_TASTE" ] }
+    "extend": { "flags": [ "BAD_TASTE" ] },
+    "gene_transfer_map":[["mutagen_insect", 15], ["mutagen", 10]]
   },
   {
     "id": "liver",
