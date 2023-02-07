@@ -2245,6 +2245,7 @@
     "prereqs": [ "MUZZLE_RAT", "RABBIT_NOSE" ],
     "threshreq": [ "THRESH_RAT", "THRESH_RABBIT" ],
     "category": [ "RAT", "RABBIT" ],
+    "integrated_armor":["integrated_incisors_rat"],
     "attacks": {
       "attack_text_u": "You bite into %s with your ratlike incisors",
       "attack_text_npc": "%1$s bites %2$s with their ratlike incisors",
@@ -6595,7 +6596,7 @@
     "category": [ "CHIMERA" ],
     "starting_trait":true,
     "cancels":["CHAOTIC", "CHAOTIC_BAD", "UNSTABLE"],
-    "vitamin_rates":[ [ "instability", 100 ], ["mutagen", -100]]
+    "vitamin_rates":[ [ "instability", 100 ]]
   },
   {
     "type": "mutation",

@@ -133,6 +133,7 @@ static const activity_id ACT_PICKAXE( "ACT_PICKAXE" );
 static const activity_id ACT_ROBOT_CONTROL( "ACT_ROBOT_CONTROL" );
 static const activity_id ACT_VIBE( "ACT_VIBE" );
 static const activity_id ACT_WASH( "ACT_WASH" );
+static const activity_id ACT_BURROW("ACT_BURROW");
 
 static const addiction_id addiction_marloss_b( "marloss_b" );
 static const addiction_id addiction_marloss_r( "marloss_r" );
@@ -386,7 +387,8 @@ static const trait_id trait_THRESH_MYCUS( "THRESH_MYCUS" );
 static const trait_id trait_THRESH_PLANT( "THRESH_PLANT" );
 static const trait_id trait_TOLERANCE( "TOLERANCE" );
 static const trait_id trait_WAYFARER( "WAYFARER" );
-static const trait_id trait_ACIDM_MUCUS("MUCUS_SECRETION2"); 
+static const trait_id trait_ACIDM_MUCUS("MUCUS_SECRETION2");
+static const trait_id trait_BURROW( "BURROW" );
 
 static const vitamin_id vitamin_blood( "blood" );
 static const vitamin_id vitamin_redcells( "redcells" );
@@ -3395,8 +3397,8 @@ cata::optional<int> iuse::pickaxe( Character *p, item *it, bool, const tripoint 
         {
 
             //reduce it by 1 / sqrt(dig quality) 
-            const float mull = 1.0f / std::sqrt(static_cast<float>(it->get_quality(qual_DIG)));
-            moves = std::round(mull * static_cast<float>(moves));
+            const float mull = 1.0f / std::max(static_cast<float>(it->get_quality(qual_DIG)),1.0f);
+            moves = static_cast<int>(std::round(mull * static_cast<float>(moves)));
         }
     }
 
@@ -3416,8 +3418,17 @@ cata::optional<int> iuse::pickaxe( Character *p, item *it, bool, const tripoint 
     for( std::size_t i = 0; i < helpersize; i++ ) {
         add_msg( m_info, _( "%s helps with this task…" ), helpers[i]->get_name() );
     }
+    activity_id act;
 
-    p->assign_activity( ACT_PICKAXE, moves, -1 );
+    if(p->has_trait(trait_BURROW) && std::find(trait_BURROW->integrated_armor.begin(), trait_BURROW->integrated_armor.end(), it->type->get_id()) != trait_BURROW->integrated_armor.end())
+    {
+        act = ACT_BURROW;
+    }else
+    {
+        act = ACT_PICKAXE;
+    }
+
+    p->assign_activity( act, moves, -1 );
     p->activity.targets.emplace_back( *p, it );
     p->activity.placement = here.getglobal( pnt );
 

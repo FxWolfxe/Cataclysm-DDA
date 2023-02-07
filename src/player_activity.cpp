@@ -63,6 +63,7 @@ static const activity_id ACT_WORKOUT_ACTIVE( "ACT_WORKOUT_ACTIVE" );
 static const activity_id ACT_WORKOUT_HARD( "ACT_WORKOUT_HARD" );
 static const activity_id ACT_WORKOUT_LIGHT( "ACT_WORKOUT_LIGHT" );
 static const activity_id ACT_WORKOUT_MODERATE( "ACT_WORKOUT_MODERATE" );
+static const activity_id ACT_BURROW("ACT_BURROW"); 
 
 static const efftype_id effect_nausea( "nausea" );
 
@@ -95,10 +96,10 @@ void player_activity::migrate_item_position( Character &guy )
 {
     const bool simple_action_replace =
         type == ACT_FIRSTAID || type == ACT_GAME ||
-        type == ACT_PICKAXE || type == ACT_START_FIRE ||
+        type == ACT_PICKAXE || type == ACT_START_FIRE || 
         type == ACT_HAND_CRANK || type == ACT_VIBE ||
         type == ACT_OXYTORCH || type == ACT_FISH ||
-        type == ACT_ATM;
+        type == ACT_ATM || type == ACT_BURROW;
 
     if( simple_action_replace ) {
         targets.emplace_back( guy, &guy.i_at( position ) );
@@ -201,7 +202,8 @@ cata::optional<std::string> player_activity::get_progress_message( const avatar 
             type == ACT_CHOP_TREE ||
             type == ACT_CHOP_LOGS ||
             type == ACT_CHOP_PLANKS ||
-            type == ACT_HEATING
+            type == ACT_HEATING ||
+            type == ACT_BURROW
           ) {
             const int percentage = ( ( moves_total - moves_left ) * 100 ) / moves_total;
 

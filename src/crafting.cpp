@@ -622,10 +622,10 @@ const inventory &Character::crafting_inventory( const tripoint &src_pos, int rad
         }
     }
 
-    /*if( has_trait( trait_BURROW ) || has_trait( trait_BURROWLARGE ) ) {
+    if( has_trait( trait_BURROW ) || has_trait( trait_BURROWLARGE ) ) {
         *crafting_cache.crafting_inventory += item( "pickaxe", calendar::turn );
-        *crafting_cache.crafting_inventory += item( "shovel", calendar::turn );
-    }*/
+        //*crafting_cache.crafting_inventory += item( "shovel", calendar::turn );
+    }
 
     crafting_cache.moves = moves;
     crafting_cache.time = calendar::turn;

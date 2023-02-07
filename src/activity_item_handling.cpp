@@ -2445,6 +2445,7 @@ static bool mine_activity( Character &you, const tripoint_bub_ms &src_loc )
     if( chosen_item == nullptr ) {
         return false;
     }
+
     int moves = to_moves<int>( powered ? 30_minutes : 20_minutes );
     if( !powered ) {
         moves += ( ( MAX_STAT + 4 ) - std::min( you.get_arm_str(),
@@ -2454,6 +2455,16 @@ static bool mine_activity( Character &you, const tripoint_bub_ms &src_loc )
         // We're breaking up some flat surface like pavement, which is much easier
         moves /= 2;
     }
+
+    
+    const auto& dig_level = chosen_item->type->qualities.find(qual_DIG);
+    if(dig_level != chosen_item->type->qualities.end())
+    {
+        float bonus =  1.0f/std::max(1, dig_level->second);
+        moves = static_cast<int>(std::round(static_cast<float>(moves) * bonus));
+    }
+
+
     you.assign_activity( powered ? ACT_JACKHAMMER : ACT_PICKAXE, moves );
     you.activity.targets.emplace_back( you, chosen_item );
     you.activity.placement = here.getglobal( src_loc );

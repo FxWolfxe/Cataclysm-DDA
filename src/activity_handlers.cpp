@@ -167,6 +167,7 @@ static const activity_id ACT_WAIT_NPC( "ACT_WAIT_NPC" );
 static const activity_id ACT_WAIT_STAMINA( "ACT_WAIT_STAMINA" );
 static const activity_id ACT_WAIT_WEATHER( "ACT_WAIT_WEATHER" );
 static const activity_id ACT_WASH( "ACT_WASH" );
+static const activity_id ACT_BURROW( "ACT_BURROW" );
 
 static const ammotype ammo_battery( "battery" );
 
@@ -218,6 +219,7 @@ using namespace activity_handlers;
 const std::map< activity_id, std::function<void( player_activity *, Character * )> >
 activity_handlers::do_turn_functions = {
     { ACT_FILL_LIQUID, fill_liquid_do_turn },
+    { ACT_BURROW, pickaxe_do_turn},
     { ACT_PICKAXE, pickaxe_do_turn },
     { ACT_PULP, pulp_do_turn },
     { ACT_GAME, game_do_turn },
@@ -275,6 +277,7 @@ activity_handlers::finish_functions = {
     { ACT_BLEED, butcher_finish },
     { ACT_BUTCHER, butcher_finish },
     { ACT_BUTCHER_FULL, butcher_finish },
+    { ACT_BURROW, pickaxe_finish },
     { ACT_FIELD_DRESS, butcher_finish },
     { ACT_SKIN, butcher_finish },
     { ACT_QUARTER, butcher_finish },
