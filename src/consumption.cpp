@@ -132,6 +132,7 @@ static const trait_id trait_PSYCHOPATH( "PSYCHOPATH" );
 static const trait_id trait_RUMINANT( "RUMINANT" );
 static const trait_id trait_SAPIOVORE( "SAPIOVORE" );
 static const trait_id trait_SAPROPHAGE( "SAPROPHAGE" );
+static const trait_id trait_SAPROPHAGE_ANIMAL( "SAPROPHAGE_ANIMAL" ); 
 static const trait_id trait_SAPROVORE( "SAPROVORE" );
 static const trait_id trait_SCHIZOPHRENIC( "SCHIZOPHRENIC" );
 static const trait_id trait_SLIMESPAWNER( "SLIMESPAWNER" );
@@ -196,7 +197,10 @@ static int compute_default_effective_kcal( const item &comest, const Character &
 
     const float relative_rot = comest.get_relative_rot();
     // Saprophages get full nutrition from rotting food
-    if( relative_rot > 1.0f && !you.has_trait( trait_SAPROPHAGE ) ) {
+    if( relative_rot > 1.0f && !(you.has_trait( trait_SAPROPHAGE )  || you.has_trait(trait_SAPROPHAGE_ANIMAL))) 
+    
+    {
+       
         // everyone else only gets a portion of the nutrition
         // Scaling linearly from 100% at just-rotten to 0 at halfway-rotten-away
         const float rottedness = clamp( 2 * relative_rot - 2.0f, 0.1f, 1.0f );
@@ -887,7 +891,7 @@ ret_val<edible_rating> Character::will_eat( const item &food, bool interactive )
         consequences.emplace_back( ret_val<edible_rating>::make_failure( code, msg ) );
     };
 
-    const bool saprophage = has_trait( trait_SAPROPHAGE );
+    const bool saprophage = has_trait( trait_SAPROPHAGE ) || has_trait(trait_SAPROPHAGE_ANIMAL);
     const auto &comest = food.get_comestible();
 
     if( food.rotten() ) {
@@ -1023,7 +1027,7 @@ static bool eat( item &food, Character &you, bool force )
                             rng( units::to_milliliter( you.stomach.capacity( you ) ) / 2,
                                  units::to_milliliter( you.stomach.contains() ) ) > units::to_milliliter(
                                 you.stomach.capacity( you ) );
-    const bool saprophage = you.has_trait( trait_SAPROPHAGE );
+    const bool saprophage = you.has_trait( trait_SAPROPHAGE ) || you.has_trait(trait_SAPROPHAGE_ANIMAL);
     if( spoiled && !saprophage ) {
         you.add_msg_if_player( m_bad, _( "Ick, this %s doesn't taste so good…" ), food.tname() );
         if( !you.has_flag( json_flag_IMMUNE_SPOIL ) ) {

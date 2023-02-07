@@ -3928,6 +3928,7 @@
     "points": 2,
     "description": "Your digestive system is specialized to allow you to consume decaying material.  You can eat rotten food, albeit for less nutrition than usual.",
     "category": [ "TROGLOBITE", "CHIMERA", "GASTROPOD", "MOUSE", "SPIDER", "INSECT" ],
+    "changes_to":["SAPROPHAGE_ANIMAL"],
     "flags": [ "IMMUNE_SPOIL" ]
   },
   {
@@ -3944,6 +3945,21 @@
     "threshreq": [ "THRESH_PLANT" ],
     "leads_to": [ "CHLOROMORPH" ],
     "category": [ "PLANT" ],
+    "flags": [ "IMMUNE_SPOIL" ]
+  },
+  {
+    "type": "mutation",
+    "id": "SAPROPHAGE_ANIMAL",
+    "name": { "str": "Saprophage" },
+    "points": 1,
+    "visibility": 5,
+    "mixed_effect":true,
+    "ugliness": 9,
+    "description": "Your digestive system as altered even further. Not only can you digest rotten food, you find it prefereable when it's spoiled",
+    "types": [ "DIET" ],
+    "prereqs": [ "SAPROVORE" ],
+    "threshreq": [ "THRESH_GASTROPOD"],
+    "category": [ "GASTROPOD" ],
     "flags": [ "IMMUNE_SPOIL" ]
   },
   {
@@ -4007,7 +4023,7 @@
     "changes_to": [ "EATDEAD" ],
     "prereqs": [ "POISRESIST" ],
     "//": "Yes, you eventually got over the massive digestive upset.  Mutations aren't easy on a system!",
-    "prereqs2": [ "SAPROVORE", "TOLERANCE" ],
+    "prereqs2": [ "SAPROVORE", "TOLERANCE" , "SAPROPHAGE_ANIMAL"],
     "threshreq": [ "THRESH_TROGLOBITE", "THRESH_CHIMERA", "THRESH_RAPTOR", "THRESH_RAT", "THRESH_MOUSE", "THRESH_BATRACHIAN" , "THRESH_SPIDER"],
     "vitamins_absorb_multi": [ [ "all", [ [ "mutant_toxin", 0.25 ] ] ] ],
     "category": [ "TROGLOBITE", "RAPTOR", "RAT", "CHIMERA", "BATRACHIAN", "GASTROPOD" , "SPIDER"]
