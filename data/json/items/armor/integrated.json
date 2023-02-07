@@ -476,6 +476,31 @@
       }
     ]
   },
+  {
+    "id":"integrated_incisors_rat",
+    "type":"ARMOR",
+    "category":"armor",
+    "name":{"str_sp":"incisors"},
+    "description":"Your front teeth have grown in fully, they are hard, sharp, and keep on growing making you want to gnaw on everything.",
+    "weight":"50 g",
+    "volume": "100 ml",
+    "price":0,
+    "price_postapoc": 0,
+    "material": [ "chitin" ],
+    "symbol": ";",
+    "color": "dark_gray",
+    "warmth": 1,
+    "qualities":[[ "CUT", 2 ],[ "BUTCHER", 3 ], [ "FABRIC_CUT", 2 ]],
+    "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "SKINTIGHT", "PADDED" ],
+    "armor": [
+      {
+        "material": [ { "type": "sclerotin", "covered_by_mat": 100, "thickness": 3.2 } ],
+        "covers": [ "mouth" ],
+        "coverage": 80,
+        "encumbrance": 0
+      }
+    ]
+  },
 
   {
     "id":"integrated_burrow_full",
