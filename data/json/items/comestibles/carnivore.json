@@ -37,7 +37,8 @@
     "cooks_like": "fish_scrap_cooked",
     "proportional": { "weight": 0.1, "volume": 0.1, "price": 0.1, "calories": 0.1 },
     "delete": { "flags": [ "SMOKABLE" ] },
-    "vitamins": [ [ "calcium", 1 ], [ "iron", 1 ] ]
+    "vitamins": [ [ "calcium", 1 ], [ "iron", 1 ] ],
+    "gene_transfer_map":[["mutagen_fish", 10]]
   },
   {
     "id": "fish_scrap_cooked",
@@ -47,7 +48,9 @@
     "parasites": 0,
     "spoils_in": "1 day",
     "flags": [ "NUTRIENT_OVERRIDE" ],
-    "calories": 51
+    "calories": 51,
+    "gene_transfer_map":[["mutagen_fish", 2]]
+
   },
   {
     "id": "fish_cooked",
@@ -59,7 +62,9 @@
     "spoils_in": "1 day",
     "price_postapoc": 100,
     "parasites": 0,
-    "flags": [ "EATEN_HOT" ]
+    "flags": [ "EATEN_HOT" ],
+    "gene_transfer_map":[["mutagen_fish", 5]]
+
   },
   {
     "id": "lobster",
@@ -76,7 +81,9 @@
     "flags": [ "SMOKABLE", "RAW" ],
     "smoking_result": "lobster_smoked",
     "vitamins": [ [ "vitC", 2 ], [ "calcium", 6 ], [ "iron", 14 ] ],
-    "calories": 250
+    "calories": 250,
+    "gene_transfer_map":[["mutagen_fish", 10]]
+
   },
   {
     "id": "lobster_cooked",
@@ -104,7 +111,9 @@
     "spoils_in": "12 hours",
     "flags": [ "SMOKABLE", "RAW" ],
     "vitamins": [ [ "vitC", 0 ], [ "calcium", 6 ], [ "iron", 2 ] ],
-    "calories": 260
+    "calories": 260,
+    "gene_transfer_map":[["mutagen_gastropod", 10]]
+
   },
   {
     "id": "mollusk_cooked",
@@ -116,7 +125,9 @@
     "spoils_in": "1 day",
     "price_postapoc": 150,
     "parasites": 0,
-    "flags": [ "EATEN_HOT" ]
+    "flags": [ "EATEN_HOT" ],
+    "gene_transfer_map":[["mutagen_gastropod", 5]]
+
   },
   {
     "id": "gastropod_purged",
@@ -132,6 +143,7 @@
     "spoils_in": "12 hours",
     "flags": [ "RAW" ],
     "vitamins": [ [ "vitC", 0 ], [ "calcium", 3 ], [ "iron", 1 ] ],
+    "gene_transfer_map":[["mutagen_gastropod", 10]],
     "calories": 15
   },
   {
@@ -144,7 +156,8 @@
     "spoils_in": "1 day",
     "price_postapoc": 150,
     "parasites": 0,
-    "flags": [ "EATEN_HOT" ]
+    "flags": [ "EATEN_HOT" ],
+    "gene_transfer_map":[["mutagen_gastropod", 5]]
   },
   {
     "id": "hstomach",
@@ -355,8 +368,24 @@
     "cooks_like": "mutant_meat_cooked",
     "proportional": { "price": 0.2, "calories": 0.5 },
     "vitamins": [ [ "vitC", 2 ], [ "calcium", 1 ], [ "iron", 6 ], [ "mutant_toxin", 25 ] ],
-    "flags": [ "SMOKABLE", "BAD_TASTE", "RAW", "PREDATOR_FUN" ]
+    "flags": [ "SMOKABLE", "BAD_TASTE", "RAW", "PREDATOR_FUN" ],
+    "gene_transfer_map":[["mutagen_chimera", 15], ["mutagen", 10]]
+
   },
+{ 
+  "id":"mutant_fish_meat",
+  "type":"COMESTIBLE",
+  "copy-from":"fish",
+  "name": { "str": "fillet of mutant fish", "str_pl": "fillets of mutant fish" },
+    "snippet_category": "mutant_meat_desc",
+    "description": "Raw fish fillet from a heavily mutated fish.",
+    "looks_like": "fish",
+    "cooks_like": "mutant_fish_cooked",
+    "proportional": { "price": 0.2, "calories": 0.5 },
+    "vitamins": [ [ "vitC", 2 ], [ "calcium", 1 ], [ "iron", 6 ], [ "mutant_toxin", 25 ] ],
+    "flags": [ "SMOKABLE", "BAD_TASTE", "RAW", "PREDATOR_FUN" ],
+    "gene_transfer_map":[["mutagen_chimera", 15], ["mutagen", 10]]
+},
   {
     "id": "mutant_blood",
     "type": "COMESTIBLE",
@@ -381,7 +410,21 @@
     "cooks_like": "mutant_meat_scrap_cooked",
     "proportional": { "price": 0.2, "calories": 0.5 },
     "vitamins": [ [ "mutant_toxin", 2 ] ],
-    "delete": { "flags": [ "SMOKABLE" ] }
+    "delete": { "flags": [ "SMOKABLE" ] },
+    "gene_transfer_map":[["mutagen_chimera", 10], ["mutagen", 5]]
+  },
+  {
+    "id": "mutant_fish_scrap",
+    "type": "COMESTIBLE",
+    "copy-from": "fish_scrap",
+    "name": { "str": "scrap of mutant meat", "str_pl": "scraps of mutant meat" },
+    "description": "A tiny scrap of raw meat from a heavily mutated animal.  It smells unappealing, to say the least.",
+    "looks_like": "fish_scrap",
+    "cooks_like": "mutant_meat_scrap_cooked",
+    "proportional": { "price": 0.2, "calories": 0.5 },
+    "vitamins": [ [ "mutant_toxin", 2 ] ],
+    "delete": { "flags": [ "SMOKABLE" ] },
+    "gene_transfer_map":[["mutagen_fish", 15], ["mutagen", 5]]
   },
   {
     "id": "mutant_human_flesh",
@@ -536,6 +579,19 @@
     "flags": [ "EATEN_HOT", "NUTRIENT_OVERRIDE", "BAD_TASTE" ]
   },
   {
+    "id": "mutant_fish_cooked",
+    "type": "COMESTIBLE",
+    "copy-from": "mutant_fish_meat",
+    "name": { "str": "cooked mutant fish fillet" },
+    "snippet_category": "cooked_mutant_meat_desc",
+    "description": "A cooked chunk of meat from a mutated animal.",
+    "looks_like": "fish_cooked",
+    "proportional": { "price": 1.5 },
+    "parasites": 0,
+    "fun": -1,
+    "flags": [ "EATEN_HOT", "NUTRIENT_OVERRIDE", "BAD_TASTE" ]
+  },
+  {
     "id": "mutant_meat_scrap_cooked",
     "type": "COMESTIBLE",
     "copy-from": "mutant_meat_scrap",
@@ -545,6 +601,17 @@
     "parasites": 0,
     "calories": 25,
     "fun": 0,
+    "flags": [ "NUTRIENT_OVERRIDE" ]
+  },
+  {
+    "id": "mutant_fish_scrap_cooked",
+    "type": "COMESTIBLE",
+    "copy-from": "mutant_fish_scrap",
+    "name": { "str": "cooked scrap of mutant fish", "str_pl": "cooked scraps of mutant fish" },
+    "description": "A tiny scrap of cooked mutant meat.  It is small enough that it's hard to tell how disgusting it is.",
+    "looks_like": "fish_scrap_cooked",
+    "parasites": 0,
+    "calories": 25,
     "flags": [ "NUTRIENT_OVERRIDE" ]
   },
   {

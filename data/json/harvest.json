@@ -355,7 +355,7 @@
     "id": "mutant_fish",
     "type": "harvest",
     "entries": [
-      { "drop": "mutant_meat", "type": "flesh", "mass_ratio": 0.38 },
+      { "drop": "mutant_fish_meat", "type": "flesh", "mass_ratio": 0.38 },
       { "drop": "mutant_blood", "type": "blood", "mass_ratio": 0.1 },
       { "drop": "mutant_liver", "type": "offal", "mass_ratio": 0.01 },
       { "drop": "bone", "type": "bone", "mass_ratio": 0.1 }

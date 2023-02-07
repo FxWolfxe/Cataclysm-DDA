@@ -199,6 +199,9 @@ struct islot_comestible {
         /** Chance the above monster group spawns*/
         int rot_spawn_chance = 10;
 
+        // map used if the consuming character has the horizontal gene transfer trait 
+        std::unordered_map<vitamin_id, int> gene_transfer_map; 
+
     private:
         /** effect on morale when consuming */
         int fun = 0;

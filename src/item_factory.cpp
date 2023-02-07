@@ -3061,6 +3061,18 @@ void Item_factory::load( islot_comestible &slot, const JsonObject &jo, const std
                                     jsobj.get_int( "probability" ) );
     }
 
+    if(jo.has_array("gene_transfer_map"))
+    {
+        for(JsonArray sub_object : jo.get_array("gene_transfer_map"))
+        {
+            vitamin_id vit = vitamin_id(sub_object.get_string(0));
+            if(vit.is_valid())
+            {
+                slot.gene_transfer_map[vit] = sub_object.get_int(1); 
+            }
+        }
+    }
+
     bool is_not_boring = false;
     if( jo.has_member( "primary_material" ) ) {
         std::string mat = jo.get_string( "primary_material" );

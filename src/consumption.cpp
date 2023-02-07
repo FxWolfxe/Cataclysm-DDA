@@ -151,7 +151,10 @@ static const trait_id trait_PRED3( "PRED3" );
 static const trait_id trait_PRED2( "PRED2" );
 static const trait_id trait_PRED1( "PRED1" ); 
 static const trait_id trait_PACK_HUNTER("PACK_HUNTER"); 
+static const trait_id trait_HORIZONTAL_GENE_TRANSFER("HORIZONTAL_GENE_TRANSFER");
 
+
+static const vitamin_id vitamin_mutagen("mutagen"); 
 
 // note: cannot use constants from flag.h (e.g. flag_ALLERGEN_VEGGY) here, as they
 // might be uninitialized at the time these const arrays are created
@@ -1029,6 +1032,24 @@ static bool eat( item &food, Character &you, bool force )
     } else if( spoiled && saprophage ) {
         you.add_msg_if_player( m_good, _( "Mmm, this %s tastes delicious…" ), food.tname() );
     }
+
+
+    if(you.has_trait(trait_HORIZONTAL_GENE_TRANSFER))
+    {
+        int accumulator = 0; 
+        for(const auto &pair: food.get_comestible()->gene_transfer_map)
+        {
+            accumulator += pair.second;
+            you.vitamin_mod(pair.first, pair.second); 
+        }
+
+        accumulator = static_cast<int>(std::round(static_cast<float>(accumulator) * 0.25f)); 
+        if(accumulator > 0)
+        {
+            you.vitamin_mod(vitamin_mutagen, accumulator); 
+        }
+    }
+
     if( !you.consume_effects( food ) ) {
         // Already consumed by using `food.type->invoke`?
         if( charges_used > 0 ) {
