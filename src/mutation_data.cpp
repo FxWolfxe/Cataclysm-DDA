@@ -399,6 +399,7 @@ void mutation_branch::load( const JsonObject &jo, const std::string & )
     optional(jo, was_loaded, "movecost_barefoot_modifier", movecost_barefoot_modifier, cata::nullopt);
     optional( jo, was_loaded, "movecost_flatground_modifier", movecost_flatground_modifier,
               cata::nullopt );
+    optional(jo, was_loaded, "movecost_wielded_modifier", movecost_wielded_modifier, cata::nullopt);
     optional( jo, was_loaded, "movecost_obstacle_modifier", movecost_obstacle_modifier, cata::nullopt );
     optional( jo, was_loaded, "movecost_swim_modifier", movecost_swim_modifier, cata::nullopt );
     optional( jo, was_loaded, "attackcost_modifier", attackcost_modifier, cata::nullopt );

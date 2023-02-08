@@ -65,6 +65,10 @@
   },
   {
     "type": "mutation_type",
+    "id": "POSTURE"
+  },
+  {
+    "type": "mutation_type",
     "id": "BODY_ARMOR"
   },
   {

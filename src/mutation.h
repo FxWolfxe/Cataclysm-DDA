@@ -223,6 +223,7 @@ struct mutation_branch {
         cata::optional<float> movecost_modifier = cata::nullopt;
         cata::optional<float> movecost_flatground_modifier = cata::nullopt;
         cata::optional<float> movecost_obstacle_modifier = cata::nullopt;
+        cata::optional<float> movecost_wielded_modifier = cata::nullopt;
         cata::optional<float> attackcost_modifier = cata::nullopt;
         cata::optional<float> cardio_multiplier = cata::nullopt;
         cata::optional<float> weight_capacity_modifier = cata::nullopt;

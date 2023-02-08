@@ -328,6 +328,9 @@ static const json_character_flag json_flag_UNCANNY_DODGE( "UNCANNY_DODGE" );
 static const json_character_flag json_flag_WATCH( "WATCH" );
 static const json_character_flag json_flag_WEBBED_FEET( "WEBBED_FEET" );
 static const json_character_flag json_flag_WEBBED_HANDS( "WEBBED_HANDS" );
+static const json_character_flag json_flag_BAREFOOT_OK("BAREFOOT_OK");
+
+
 
 static const limb_score_id limb_score_balance( "balance" );
 static const limb_score_id limb_score_breathing( "breathing" );
@@ -5783,6 +5786,7 @@ mutation_value_map = {
     { "bionic_mana_penalty", calc_mutation_value_multiplicative<&mutation_branch::bionic_mana_penalty> },
     { "casting_time_multiplier", calc_mutation_value_multiplicative<&mutation_branch::casting_time_multiplier> },
     { "movecost_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_modifier> },
+    { "movecost_wielded_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_wielded_modifier>},
     { "movecost_barefoot_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_barefoot_modifier>},
     { "movecost_flatground_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_flatground_modifier> },
     { "movecost_obstacle_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_obstacle_modifier> },
@@ -9303,7 +9307,17 @@ int Character::run_cost( int base_cost, bool diag ) const
             }
         }
 
-        
+        if(!weapon.is_null())
+        {
+            constexpr float epsilon = 0.01f; 
+            float modifier = mutation_value("movecost_wielded_modifier"); 
+            if(std::abs(1 - modifier) > epsilon && !weapon.is_two_handed(*this)) //if one hand is free reduce the effect either positive or negative 
+            {
+                constexpr float one_hand_param = 0.33f;
+                modifier = modifier * (1 - one_hand_param)  + one_hand_param; //equivalent to lerp(modifier, 1, one_hand_param) 
+            }
+            movecost *= modifier; 
+        }
 
         movecost *= get_modifier( is_prone() ? character_modifier_crawl_speed_movecost_mod :
                                   character_modifier_limb_run_cost_mod );
@@ -9312,7 +9326,7 @@ int Character::run_cost( int base_cost, bool diag ) const
         if( flatground ) {
             movecost *= mutation_value( "movecost_flatground_modifier" );
         }
-        if( has_trait( trait_PADDED_FEET ) && is_barefoot() ) {
+        if(  has_flag(json_flag_BAREFOOT_OK) && is_barefoot()) {
             movecost *= .9f;
         }
 
@@ -9368,7 +9382,7 @@ int Character::run_cost( int base_cost, bool diag ) const
         // whether you want them to or not.  ROOTS1 is just too squiggly without shoes
         // to give you some stability.  Plants are a bit of a slow-mover.  Deal.
         const bool mutfeet = has_trait( trait_LEG_TENTACLES ) || has_trait( trait_PADDED_FEET ) ||
-                             has_trait( trait_HOOVES ) || has_trait( trait_TOUGH_FEET ) || has_trait( trait_ROOTS2 );
+                             has_trait( trait_HOOVES ) || has_trait( trait_TOUGH_FEET ) || has_trait( trait_ROOTS2 ) || has_flag(json_flag_BAREFOOT_OK);
 
         if( !is_wearing_shoes( side::LEFT ) && !mutfeet ) {
             movecost += barefoot_modifier;

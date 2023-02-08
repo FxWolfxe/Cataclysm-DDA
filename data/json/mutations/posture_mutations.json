@@ -1,0 +1,72 @@
+[
+    {
+        "type": "mutation",
+        "id": "SEMI_QUADRUPED_BAD",
+        "name": {
+            "str": "Hunchback"
+        },
+        "points": -1,
+        "visibility": 4,
+        "ugliness": 2,
+        "changes_to":["SEMI_QUADRUPED_OK"],
+        "movecost_modifier":1.35,
+        "description": "Your chest has put on more muscle, and in response your spine has curved a bit. You're finding it harder to walk normally",
+        "types": [
+            "POSTURE"
+        ],
+        "category": [
+            "LUPINE", "FELINE", "CHIMERA", "CATTLE"
+        ], 
+        "passive_mods": { "str_mod": 1 }
+    }, 
+    {
+        "type": "mutation",
+        "id": "SEMI_QUADRUPED_OK",
+        "name": {
+            "str": "Semi Quadruped"
+        },
+        "points": 0,
+        "changes_to":["QUADRUPED"],
+        "visibility": 4,
+        "movecost_modifier":0.35,
+        "ugliness": 2,
+        "mixed":true,
+        "prereqs":["SEMI_QUADRUPED_BAD"],
+        "movecost_wielded_modifier":4.5,
+        "description": "Your posture has altered again. Whlie you can stand up to use tools or climb, walking on two legs for any period of time is very difficult. On all fours, however, has never felt better",
+        "types": [
+            "POSTURE"
+        ],
+        "threshreq": [
+            "THRESH_LUPINE", "THRESH_FELINE", "THRESH_CATTLE", "THRESH_CHIMERA" 
+        ],
+        "category": [
+            "LUPINE", "FELINE", "CHIMERA", "CATTLE"
+        ], 
+        "passive_mods": { "str_mod": 1 }
+    },
+    {
+        "type": "mutation",
+        "id": "QUADRUPED",
+        "name": {
+            "str": "Nearly Quadruped"
+        },
+        "points": 0,
+        "prereqs":["SEMI_QUADRUPED_OK"],
+        "visibility": 4,
+        "ugliness": 2,
+        "mixed":true,
+        "movecost_wielded_modifier":2.5,
+        "description": "Your spine and hips have continued to change. You find it even harder to walk on two legs but walking on 4 seems easier, and you find yourself doing so automatically so long as your hands are free",
+        "types": [
+            "POSTURE"
+        ],
+        "threshreq": [
+            "THRESH_LUPINE", "THRESH_FELINE", "THRESH_CATTLE", "THRESH_CHIMERA" 
+        ],
+        "category": [
+            "LUPINE", "FELINE", "CHIMERA", "CATTLE"
+        ], 
+        "passive_mods": { "str_mod": 1 }
+    }
+]
