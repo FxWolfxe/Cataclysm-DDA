@@ -3767,10 +3767,10 @@
     "types": [ "LEGS" ],
     "threshreq": ["THRESH_LUPINE"],
     "category": ["LUPINE" ],
-    "stamina_regen_modifier":0.1,
+    "stamina_regen_modifier":0.2,
     "restricts_gear":[ "leg_l" ,  "leg_r" ],
     "allow_soft_gear":true,
-    "movecost_modifier": 0.88
+    "movecost_modifier": 0.80
   },
   {
     "type": "mutation",
@@ -3784,10 +3784,10 @@
     "types": [ "LEGS" ],
     "threshreq": ["THRESH_CATTLE", "THRESH_CHIMERA"],
     "category": ["CATTLE" , "CHIMERA"],
-    "stamina_regen_modifier":0.1,
+    "stamina_regen_modifier":0.2,
     "restricts_gear":[ "leg_l" ,  "leg_r" ],
     "allow_soft_gear":true,
-    "movecost_modifier": 0.88
+    "movecost_modifier": 0.80
   },
   {
     "type": "mutation",
@@ -4182,7 +4182,8 @@
       "attack_text_u": "You headbutt %s with your curled horns",
       "attack_text_npc": "%1$s headbutts %2$s with their curled horns",
       "chance": 20,
-      "base_damage": { "damage_type": "bash", "amount": 14 }
+      "base_damage": { "damage_type": "bash", "amount": 14 },
+      "strength_damage":{"damage_type":"bash", "amount":2}
     }
   },
   {
@@ -4203,7 +4204,8 @@
       "attack_text_npc": "%1$s stabs %2$s with their pointed horns",
       "chance": 22,
       "base_damage": { "damage_type": "stab", "amount": 24 }
-    }
+    },
+    "category": [ "CHIMERA" ]
   },
   {
     "type": "mutation",
@@ -4502,8 +4504,10 @@
       "attack_text_u": "You club %s with your tail",
       "attack_text_npc": "%1$s clubs %2$s with their tail",
       "chance": 20,
-      "base_damage": { "damage_type": "bash", "amount": 18 }
-    }
+      "base_damage": { "damage_type": "bash", "amount": 18 },
+      "strength_damage":{ "damage_type":"bash", "amount":2}
+    },
+    "integrated_armor":["integrated_club_tail"]
   },
   {
     "type": "mutation",

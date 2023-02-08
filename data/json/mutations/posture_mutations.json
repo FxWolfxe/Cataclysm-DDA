@@ -28,12 +28,11 @@
         "points": 0,
         "changes_to":["QUADRUPED"],
         "visibility": 4,
-        "movecost_modifier":0.35,
         "ugliness": 2,
         "mixed":true,
         "prereqs":["SEMI_QUADRUPED_BAD"],
-        "movecost_wielded_modifier":4.5,
-        "description": "Your posture has altered again. Whlie you can stand up to use tools or climb, walking on two legs for any period of time is very difficult. On all fours, however, has never felt better",
+        "movecost_wielded_modifier":2.5,
+        "description": "Your posture has altered again. Whlie you can stand up to use tools or climb, walking on two legs is difficult. But being on all fours feels better",
         "types": [
             "POSTURE"
         ],
@@ -53,11 +52,13 @@
         },
         "points": 0,
         "prereqs":["SEMI_QUADRUPED_OK"],
+        "prereqs2":["FELINE_LEAP", "DIGITIGRADE_LEGS", "UNGULIGRADE_LEGS"],
         "visibility": 4,
         "ugliness": 2,
+        "movecost_modifier":0.35,
         "mixed":true,
-        "movecost_wielded_modifier":2.5,
-        "description": "Your spine and hips have continued to change. You find it even harder to walk on two legs but walking on 4 seems easier, and you find yourself doing so automatically so long as your hands are free",
+        "movecost_wielded_modifier":4.5,
+        "description": "Your spine and hips have continued to change. You find it extremlly difficult to walk on two legs for any period of time and you find yourself going down on all fours instinctivly",
         "types": [
             "POSTURE"
         ],
