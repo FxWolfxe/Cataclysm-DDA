@@ -155,7 +155,9 @@ static const trait_id trait_PACK_HUNTER("PACK_HUNTER");
 static const trait_id trait_HORIZONTAL_GENE_TRANSFER("HORIZONTAL_GENE_TRANSFER");
 
 
-static const vitamin_id vitamin_mutagen("mutagen"); 
+static const vitamin_id vitamin_mutagen( "mutagen" ); 
+static const vitamin_id vitamin_mutant_toxin( "mutant_toxin" );
+static const vitamin_id vitamin_chimera( "mutagen_chimera" ); 
 
 // note: cannot use constants from flag.h (e.g. flag_ALLERGEN_VEGGY) here, as they
 // might be uninitialized at the time these const arrays are created
@@ -1040,6 +1042,14 @@ static bool eat( item &food, Character &you, bool force )
 
     if(you.has_trait(trait_HORIZONTAL_GENE_TRANSFER))
     {
+        float chimera = 0; 
+        const auto& itr = food.get_comestible()->default_nutrition.vitamins.find(vitamin_mutant_toxin);
+        if (itr != food.get_comestible()->default_nutrition.vitamins.end())
+        {
+            chimera += itr->second; 
+        }
+
+
         int accumulator = 0; 
         for(const auto &pair: food.get_comestible()->gene_transfer_map)
         {
@@ -1047,9 +1057,16 @@ static bool eat( item &food, Character &you, bool force )
             you.vitamin_mod(pair.first, pair.second); 
         }
 
-        accumulator = static_cast<int>(std::round(static_cast<float>(accumulator) * 0.25f)); 
+        if (chimera > 0.1f)
+        {
+            you.vitamin_mod(vitamin_chimera, static_cast<int>(std::round(chimera * 1.15f))); 
+        }
+
+        accumulator = static_cast<int>(std::round(static_cast<float>(accumulator) * 0.25f + chimera * 1.25f)); 
+        
         if(accumulator > 0)
         {
+            
             you.vitamin_mod(vitamin_mutagen, accumulator); 
         }
     }

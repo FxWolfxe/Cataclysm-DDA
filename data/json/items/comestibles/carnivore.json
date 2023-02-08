@@ -367,9 +367,9 @@
     "looks_like": "meat",
     "cooks_like": "mutant_meat_cooked",
     "proportional": { "price": 0.2, "calories": 0.5 },
-    "vitamins": [ [ "vitC", 2 ], [ "calcium", 1 ], [ "iron", 6 ], [ "mutant_toxin", 25 ] ],
+    "vitamins": [ [ "vitC", 2 ], [ "calcium", 1 ], [ "iron", 6 ] ],
     "flags": [ "SMOKABLE", "BAD_TASTE", "RAW", "PREDATOR_FUN" ],
-    "gene_transfer_map":[["mutagen_chimera", 15], ["mutagen", 10]]
+    "gene_transfer_map":[["mutagen_chimera", 15]]
 
   },
 { 
@@ -384,7 +384,7 @@
     "proportional": { "price": 0.2, "calories": 0.5 },
     "vitamins": [ [ "vitC", 2 ], [ "calcium", 1 ], [ "iron", 6 ], [ "mutant_toxin", 25 ] ],
     "flags": [ "SMOKABLE", "BAD_TASTE", "RAW", "PREDATOR_FUN" ],
-    "gene_transfer_map":[["mutagen_chimera", 15], ["mutagen", 10]]
+    "gene_transfer_map":[["mutagen_chimera", 15]]
 },
   {
     "id": "mutant_blood",
@@ -411,7 +411,7 @@
     "proportional": { "price": 0.2, "calories": 0.5 },
     "vitamins": [ [ "mutant_toxin", 2 ] ],
     "delete": { "flags": [ "SMOKABLE" ] },
-    "gene_transfer_map":[["mutagen_chimera", 10], ["mutagen", 5]]
+    "gene_transfer_map":[["mutagen_chimera", 10]]
   },
   {
     "id": "mutant_fish_scrap",
@@ -424,7 +424,7 @@
     "proportional": { "price": 0.2, "calories": 0.5 },
     "vitamins": [ [ "mutant_toxin", 2 ] ],
     "delete": { "flags": [ "SMOKABLE" ] },
-    "gene_transfer_map":[["mutagen_fish", 15], ["mutagen", 5]]
+    "gene_transfer_map":[["mutagen_fish", 15]]
   },
   {
     "id": "mutant_human_flesh",
@@ -667,7 +667,7 @@
     "proportional": { "price": 0.1, "calories": 0.65 },
     "vitamins": [ [ "mutant_toxin", 25 ] ],
     "extend": { "flags": [ "BAD_TASTE" ] },
-    "gene_transfer_map":[["mutagen_insect", 10], ["mutagen", 10]]
+    "gene_transfer_map":[["mutagen_insect", 10]]
   },
   {
     "id": "mutant_bug_organs_cooked",
@@ -929,7 +929,7 @@
     "proportional": { "price_postapoc": 0.1, "calories": 0.65 },
     "vitamins": [ [ "mutant_toxin", 25 ] ],
     "extend": { "flags": [ "BAD_TASTE" ] },
-    "gene_transfer_map":[["mutagen_insect", 15], ["mutagen", 10]]
+    "gene_transfer_map":[["mutagen_insect", 15]]
   },
   {
     "id": "liver",
