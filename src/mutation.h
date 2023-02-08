@@ -233,6 +233,8 @@ struct mutation_branch {
         cata::optional<int> scent_intensity;
         cata::optional<int> scent_mask;
 
+        cata::optional<float> movecost_barefoot_modifier = cata::nullopt; 
+
 
         int butchering_quality = 0;
 

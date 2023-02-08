@@ -5783,6 +5783,7 @@ mutation_value_map = {
     { "bionic_mana_penalty", calc_mutation_value_multiplicative<&mutation_branch::bionic_mana_penalty> },
     { "casting_time_multiplier", calc_mutation_value_multiplicative<&mutation_branch::casting_time_multiplier> },
     { "movecost_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_modifier> },
+    { "movecost_barefoot_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_barefoot_modifier>},
     { "movecost_flatground_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_flatground_modifier> },
     { "movecost_obstacle_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_obstacle_modifier> },
     { "attackcost_modifier", calc_mutation_value_multiplicative<&mutation_branch::attackcost_modifier> },
@@ -9302,6 +9303,8 @@ int Character::run_cost( int base_cost, bool diag ) const
             }
         }
 
+        
+
         movecost *= get_modifier( is_prone() ? character_modifier_crawl_speed_movecost_mod :
                                   character_modifier_limb_run_cost_mod );
 
@@ -9357,16 +9360,21 @@ int Character::run_cost( int base_cost, bool diag ) const
             }
         }
 
+        constexpr float base_barefoot_movecost_add = 8.0f;
+        const float barefoot_modifier = base_barefoot_movecost_add * mutation_value("movecost_barefoot_modifier");
+
+
         // ROOTS3 does slow you down as your roots are probing around for nutrients,
         // whether you want them to or not.  ROOTS1 is just too squiggly without shoes
         // to give you some stability.  Plants are a bit of a slow-mover.  Deal.
         const bool mutfeet = has_trait( trait_LEG_TENTACLES ) || has_trait( trait_PADDED_FEET ) ||
                              has_trait( trait_HOOVES ) || has_trait( trait_TOUGH_FEET ) || has_trait( trait_ROOTS2 );
+
         if( !is_wearing_shoes( side::LEFT ) && !mutfeet ) {
-            movecost += 8;
+            movecost += barefoot_modifier;
         }
         if( !is_wearing_shoes( side::RIGHT ) && !mutfeet ) {
-            movecost += 8;
+            movecost += barefoot_modifier;
         }
 
         if( ( has_trait( trait_ROOTS3 ) || has_trait( trait_CHLOROMORPH ) ) &&
