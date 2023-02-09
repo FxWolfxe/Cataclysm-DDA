@@ -6654,7 +6654,7 @@
     "category": [ "CHIMERA" ],
     "starting_trait":true,
     "cancels":["CHAOTIC", "CHAOTIC_BAD", "UNSTABLE"],
-    "vitamin_rates":[ [ "instability", 100 ]]
+    "vitamin_rates":[ [ "instability", 300 ]]
   },
   {
     "type": "mutation",
