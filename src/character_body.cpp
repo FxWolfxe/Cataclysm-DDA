@@ -76,8 +76,12 @@ static const trait_id trait_NOPAIN( "NOPAIN" );
 static const trait_id trait_PYROMANIA( "PYROMANIA" );
 static const trait_id trait_SLIMY( "SLIMY" );
 static const trait_id trait_URSINE_FUR( "URSINE_FUR" );
+static const trait_id trait_HORIZONTAL_GENE_TRANSFER("HORIZONTAL_GENE_TRANSFER");
 
 static const vitamin_id vitamin_blood( "blood" );
+static const vitamin_id vitamin_toxin( "mutant_toxin" ); 
+static const vitamin_id vitamin_mutagen( "mutagen" ); 
+
 
 void Character::update_body_wetness( const w_point &weather )
 {
@@ -283,6 +287,16 @@ void Character::update_body( const time_point &from, const time_point &to )
         }
     }
 
+
+    const bool has_gene_transfer = has_trait(trait_HORIZONTAL_GENE_TRANSFER); 
+
+    int delta_toxin = 0; 
+
+    if(has_gene_transfer)
+    {
+        delta_toxin = vitamin_get(vitamin_toxin); 
+    }
+
     for( const auto &v : vitamin::all() ) {
         const time_duration rate = vitamin_rate( v.first );
 
@@ -290,6 +304,8 @@ void Character::update_body( const time_point &from, const time_point &to )
         if( v.first == vitamin_blood && has_effect( effect_hypovolemia ) && get_thirst() > 240 ) {
             continue;
         }
+        
+        
 
         if( rate > 0_turns ) {
             int qty = ticks_between( from, to, rate );
@@ -316,6 +332,15 @@ void Character::update_body( const time_point &from, const time_point &to )
 
             // once we've checked daily intake we should reset it
             reset_daily_vitamin( v.first );
+        }
+    }
+
+    if(has_gene_transfer)
+    {
+        delta_toxin = vitamin_get(vitamin_toxin) - delta_toxin;
+        if(delta_toxin < 0) //we lost some toxin in the update 
+        {
+            vitamin_mod(vitamin_mutagen, -delta_toxin); 
         }
     }
 

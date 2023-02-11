@@ -7552,7 +7552,7 @@ static void handle_gene_transfer(Character* damage_taker, Creature* source, cons
     const harvest_id &mon_harvest_type = mon_type->harvest;
     const float adj_difficulty = std::sqrt( std::max(mon_type->difficulty + 1, 1));
     const float mutagen_amount =  adj_difficulty * multiplier * 0.65f; //not sure why it's complex :/ 
-    float mutagen_intensity = std::max(static_cast<float>(damage_done.total_damage()),0.1f) * damage_to_mutagen * mutagen_amount;
+    float mutagen_intensity = std::max(static_cast<float>(damage_done.total_damage()),0.5f) * damage_to_mutagen * mutagen_amount;
     int max_catalyst_amount = 350; 
     vitamin_id mutagen = monster_source->find_associated_mutagen();
     static constexpr int chimera_catalyst_amount = 950; 

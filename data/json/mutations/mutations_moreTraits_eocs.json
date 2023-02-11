@@ -1,0 +1,52 @@
+[ 
+    {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_wolf",
+        "recurrence": [ "1 days", "2 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_WOLF" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_WOLF" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_lupine" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 1250 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_wolf_complete",
+              "condition": { "u_has_trait": "THRESH_LUPINE" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_WOLF" }, { "u_add_trait": "MANIFESTED_DESTINY_WOLF" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_wolf",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_WOLF" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_lupine" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_wolf",
+              "condition": { "u_has_trait": "THRESH_LUPINE" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_WOLF" } ]
+            }
+          }
+        ]
+      }
+]

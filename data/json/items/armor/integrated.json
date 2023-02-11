@@ -617,6 +617,7 @@
     "symbol": ";",
     "color": "brown",
     "warmth": 2,
+    "qualities":[["CUT",2], ["FABRIC_CUT", 2]],
     "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "PERSONAL", "WATER_FRIENDLY", "PADDED" ],
     "armor": [
       {
@@ -854,7 +855,7 @@
     "bashing": 4,
     "cutting": 8,
     "to_hit": 1,
-    "qualities": [ [ "CUT", 2 ], [ "BUTCHER", 4 ], [ "PRY", 1 ] ],
+    "qualities": [ [ "CUT", 2 ], [ "BUTCHER", 4 ], [ "PRY", 2 ] ],
     "environmental_protection": 1,
     "techniques": [ "RAPID" ],
     "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "OUTER", "PADDED" ],
@@ -863,7 +864,7 @@
         "material": [ { "type": "sclerotin", "covered_by_mat": 100, "thickness": 3.2 } ],
         "covers": [ "hand_l", "hand_r" ],
         "coverage": 80,
-        "encumbrance": 7
+        "encumbrance": 2
       }
     ]
   },

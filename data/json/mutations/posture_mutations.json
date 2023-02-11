@@ -9,6 +9,7 @@
         "visibility": 4,
         "ugliness": 2,
         "changes_to":["SEMI_QUADRUPED_OK"],
+        "prereqs":["STRONG_LEGS", "DIGITIGRADE_LEGS", "UNGULIGRADE_LEGS"],
         "movecost_modifier":1.25,
         "description": "Your chest has put on more muscle, and in response your spine has curved a bit. You're finding it harder to walk normally",
         "types": [

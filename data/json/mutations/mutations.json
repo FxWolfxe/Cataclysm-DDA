@@ -3458,7 +3458,7 @@
     "types": [ "PHEROMONE" ],
     "threshreq": [ "THRESH_SPIDER"],
     "category": [ "SPIDER" ],
-    "faction_anger_offsets":[["spider_web", -35], ["spider_cellar", -20]]
+    "faction_anger_offsets":[["spider_web", -45], ["spider_cellar", -40]]
   },
   {
     "type": "mutation",
@@ -6654,7 +6654,8 @@
     "category": [ "CHIMERA" ],
     "starting_trait":true,
     "cancels":["CHAOTIC", "CHAOTIC_BAD", "UNSTABLE"],
-    "vitamin_rates":[ [ "instability", 300 ]]
+    "vitamins_absorb_multi": [ [ "all", [ [ "mutant_toxin", 1.15 ] ] ] ],
+    "vitamin_rates":[ [ "instability", 300 ], ["mutant_toxin", 400]]
   },
   {
     "type": "mutation",

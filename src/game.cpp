@@ -307,7 +307,7 @@ static const trait_id trait_THICKSKIN( "THICKSKIN" );
 static const trait_id trait_VINES2( "VINES2" );
 static const trait_id trait_VINES3( "VINES3" );
 static const trait_id trait_WAYFARER( "WAYFARER" );
-
+static const trait_id trait_NIGHTVISION3( "NIGHTVISION3" );
 static const zone_type_id zone_type_LOOT_CUSTOM( "LOOT_CUSTOM" );
 static const zone_type_id zone_type_NO_AUTO_PICKUP( "NO_AUTO_PICKUP" );
 
@@ -8802,12 +8802,12 @@ static void butcher_submenu( const std::vector<map_stack::iterator> &corpses, in
     smenu.desc_enabled = true;
     smenu.desc_lines_hint += dissect_wp_hint_lines;
     smenu.text = _( "Choose type of butchery:" );
-
+    const bool has_nv3 = player_character.has_trait(trait_NIGHTVISION3); 
     const std::string cannot_see = colorize( _( "can't see!" ), c_red );
 
-    smenu.addentry_col( static_cast<int>( butcher_type::QUICK ), enough_light,
+    smenu.addentry_col( static_cast<int>( butcher_type::QUICK ), enough_light || has_nv3,
                         'B', _( "Quick butchery" ),
-                        enough_light ? cut_time( butcher_type::QUICK ) : cannot_see,
+                        enough_light || has_nv3 ? cut_time( butcher_type::QUICK ) : cannot_see,
                         string_format( "%s  %s",
                                        _( "This technique is used when you are in a hurry, "
                                           "but still want to harvest something from the corpse. "
