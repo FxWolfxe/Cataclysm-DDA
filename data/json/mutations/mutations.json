@@ -4563,7 +4563,7 @@
     "threshreq": [ "THRESH_URSINE", "THRESH_CATTLE" ],
     "cancels": [ "FLIMSY", "FLIMSY2", "FLIMSY3", "GLASSJAW" ],
     "category": [ "URSINE", "CATTLE" ],
-    "hp_modifier_secondary": 0.4
+    "hp_modifier_secondary": 1.3
   },
 
   {
