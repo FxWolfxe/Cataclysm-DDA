@@ -3384,8 +3384,11 @@ cata::optional<int> iuse::pickaxe( Character *p, item *it, bool, const tripoint 
     }
 
     
-    int moves = to_moves<int>( time_duration::from_minutes(20_minutes) );
-    moves += ( ( MAX_STAT + 4 ) - std::min( p->get_arm_str(), MAX_STAT ) ) * to_moves<int>( 5_minutes );
+    int moves = to_moves<int>( time_duration::from_minutes(25_minutes) );
+
+    float str_bonus = std::sqrt( std::max(8.0f/ p->get_arm_str(), 0.1f));
+    moves = static_cast<int>(std::round(str_bonus * moves));
+    //moves += ( ( MAX_STAT + 4 ) - std::min( p->get_arm_str(), MAX_STAT ) ) * to_moves<int>( 5_minutes );
     if( here.move_cost( pnt ) == 2 ) {
         // We're breaking up some flat surface like pavement, which is much easier
         moves /= 2;
