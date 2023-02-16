@@ -5,9 +5,9 @@
     "name": "No Fungal Monsters",
     "authors": [ "Chaosvolt" ],
     "description": "Removes fungal monsters and regions from the game.",
-    "category": "monster_exclude",
+    "category": "rebalance",
     "dependencies": [ "dda" ],
-    "obsolete": true
+    "obsolete": false
   },
   {
     "type": "MONSTER_BLACKLIST",
