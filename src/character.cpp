@@ -5806,7 +5806,8 @@ mutation_value_map = {
     { "vomit_multiplier", calc_mutation_value_multiplicative<&mutation_branch::vomit_multiplier> },
     { "consume_time_modifier", calc_mutation_value_multiplicative<&mutation_branch::consume_time_modifier> },
     { "sweat_multiplier", calc_mutation_value_multiplicative<&mutation_branch::sweat_multiplier> },
-    { "skill_rust_multiplier", calc_mutation_value_multiplicative<&mutation_branch::skill_rust_multiplier>}
+    { "skill_rust_multiplier", calc_mutation_value_multiplicative<&mutation_branch::skill_rust_multiplier>},
+    { "climbing_difficulty_modifier", calc_mutation_value_multiplicative < &mutation_branch::climbing_difficulty_modifier> }
 };
 
 float Character::mutation_value( const std::string &val ) const
