@@ -1250,6 +1250,7 @@ Creature::Attitude monster::attitude_to( const Creature &other ) const
             return Attitude::FRIENDLY;
         }
 
+        const auto& fac = faction.obj(); 
         mf_attitude faction_att = faction.obj().attitude( m->faction );
         if( ( friendly != 0 && m->friendly != 0 ) ||
             ( friendly == 0 && m->friendly == 0 && faction_att == MFA_FRIENDLY ) ) {
@@ -1336,6 +1337,22 @@ monster_attitude monster::attitude( const Character *u ) const
             return MATT_FRIEND;
         }
 
+        const mfaction_id &u_mfac = u->get_monster_faction();
+        if(u_mfac != mfaction_str_id::NULL_ID())
+        {
+            const mf_attitude m_attitude = faction->attitude(u_mfac); 
+            switch(m_attitude)
+            {
+            case MFA_FRIENDLY:
+                return MATT_FRIEND;
+            case MFA_HATE:
+                effective_anger += 50;
+            default:
+                break;
+            }
+        }
+
+
         if( type->in_species( species_FUNGUS ) && ( u->has_trait( trait_THRESH_MYCUS ) ||
                 u->has_trait( trait_MYCUS_FRIEND ) ) ) {
             return MATT_FRIEND;
@@ -1353,7 +1370,7 @@ monster_attitude monster::attitude( const Character *u ) const
 
         if( ( faction == monfaction_acid_ant || faction == monfaction_ant || faction == monfaction_bee ||
               faction == monfaction_wasp ) && effective_anger >= 10 && u->has_trait( trait_PHEROMONE_INSECT ) ) {
-            effective_anger -= 20;
+            effective_anger -= 25;
         }
 
         for(const auto& trait: u->get_mutations())

@@ -2246,12 +2246,34 @@
     "threshreq": [ "THRESH_RAT", "THRESH_RABBIT" ],
     "category": [ "RAT", "RABBIT" ],
     "integrated_armor":["integrated_incisors_rat"],
+    "changes_to":["HARDENED_INCISORS"],
     "attacks": {
       "attack_text_u": "You bite into %s with your ratlike incisors",
       "attack_text_npc": "%1$s bites %2$s with their ratlike incisors",
       "body_part": "mouth",
       "chance": 18,
       "base_damage": [ { "damage_type": "cut", "amount": 3 }, { "damage_type": "bash", "amount": 3 } ]
+    }
+  },
+  {
+    "type": "mutation",
+    "id": "HARDENED_INCISORS",
+    "name": { "str": "Hardened Incisors" },
+    "points": 3,
+    "visibility": 3,
+    "ugliness": 3,
+    "description": "Your big teeth have grown even shaprer and harder, and are able to gnaw through just about anything",
+    "types": [ "TEETH" ],
+    "prereqs": [ "INCISORS" ],
+    "threshreq": [ "THRESH_RAT"],
+    "category": [ "RAT" ],
+    "integrated_armor":["integrated_hardened_incisors_rat"],
+    "attacks": {
+      "attack_text_u": "You bite into %s with your ratlike incisors",
+      "attack_text_npc": "%1$s bites %2$s with their ratlike incisors",
+      "body_part": "mouth",
+      "chance": 20,
+      "base_damage": [ { "damage_type": "cut", "amount": 4 }, { "damage_type": "bash", "amount": 3 } ]
     }
   },
   {
@@ -3757,6 +3779,20 @@
   },
   {
     "type": "mutation",
+    "id": "FOOT_PAWS_RAT",
+    "name": { "str": "Ratty Feet" },
+    "points": 1,
+    "visibility": 1,
+    "description": "Your feet have turned into rat like 'foot paws'. you can't fit them in boots anymore but you feel more nimble barefoot now",
+    "types": [ "SOLES" ],
+    "category": [ "RAT" ],
+    "movecost_modifier":0.85,
+    "restricts_gear":[ "foot_l", "foot_r", "foot_sole_l", "foot_sole_l", "foot_toes_l", "foot_toes_r"],
+    "allow_soft_gear":true,
+    "flags":["BAREFOOT_OK"]
+  },
+  {
+    "type": "mutation",
     "id": "DIGITIGRADE_LEGS",
     "name": { "str": "Digitigrade Legs" },
     "points": 2,
@@ -4069,7 +4105,7 @@
     "purifiable": false,
     "description": "Your dextrous paws and long teeth allow you to dig through dirt and rubble with ease.",
     "prereqs": [ "CLAWS_ST", "PAWS", "PAWS_LITTLE" ],
-    "prereqs2": [ "INCISORS" ],
+    "prereqs2": [ "INCISORS", "HARDENED_INCISORS" ],
     "threshreq": [ "THRESH_RAT", "THRESH_RABBIT" ],
     "category": [ "RAT", "RABBIT" ],
     "integrated_armor":["integrated_burrow_full"],

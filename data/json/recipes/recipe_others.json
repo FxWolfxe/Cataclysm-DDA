@@ -3229,5 +3229,22 @@
       { "id": "CHISEL_WOOD", "level": 1 }
     ],
     "components": [ [ [ "2x4", 2 ] ], [ [ "nail", 10 ] ], [ [ "stick", 1 ] ] ]
+  }, 
+  {
+    "result": "clay_lump",
+    "id_suffix":"dirt_use",
+    "type": "recipe",
+    "batch_time_factors": [ 83, 3 ],
+    "activity_level": "LIGHT_EXERCISE",
+    "category": "CC_OTHER",
+    "subcategory": "CSC_OTHER_OTHER",
+    "skill_used": "fabrication",
+    "result_mult": 2,
+    "byproducts": [ [ "pebble", 1 ] ],
+    "difficulty": 1,
+    "time": "10 m",
+    "autolearn": true,
+   
+    "components": [ [ [ "water", 2 ], [ "water_clean", 2 ] ], [ [ "material_soil", 15 ] ] ]
   }
 ]

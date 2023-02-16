@@ -322,6 +322,8 @@ struct mutation_branch {
         /**anger offset for monster factions*/
         std::map<mfaction_str_id, int> faction_anger_offsets;
 
+        /** if specified causes the holder to be treated as part of this faction for anger checks  */
+        mfaction_str_id faction_override = mfaction_str_id::NULL_ID();
 
         /**List of material required for food to be be edible*/
         std::set<material_id> can_only_eat;

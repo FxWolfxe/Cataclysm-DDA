@@ -3481,8 +3481,13 @@ mfaction_id npc::get_monster_faction() const
         return monfaction_player.id();
     }
 
-    if( has_trait( trait_BEE ) ) {
+    if (has_trait(trait_BEE)) {
         return monfaction_bee.id();
+    }
+
+    for(const auto& t: get_mutations())
+    {
+        if (!t->faction_override.is_null()) return t->faction_override;
     }
 
     return monfaction_human.id();

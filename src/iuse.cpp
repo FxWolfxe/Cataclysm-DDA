@@ -3423,6 +3423,7 @@ cata::optional<int> iuse::pickaxe( Character *p, item *it, bool, const tripoint 
     if(p->has_trait(trait_BURROW) && std::find(trait_BURROW->integrated_armor.begin(), trait_BURROW->integrated_armor.end(), it->type->get_id()) != trait_BURROW->integrated_armor.end())
     {
         act = ACT_BURROW;
+        moves = std::max(1, moves / 2); 
     }else
     {
         act = ACT_PICKAXE;
