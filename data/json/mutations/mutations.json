@@ -4871,6 +4871,28 @@
     "types": [ "WINGS" ],
     "prereqs": [ "WINGS_STUB" ],
     "category": [ "INSECT" ],
+    "changes_to":["GIANT_WASP_WINGS"],
+    "active": true,
+    "cost": 3,
+    "time": "1 s",
+    "fatigue": true,
+    "kcal": true,
+    "thirst": true,
+    "movecost_modifier": 0.75
+  },
+  {
+    "type": "mutation",
+    "id": "GIANT_WASP_WINGS",
+    "name": { "str": "Giant Wasp Wings" },
+    "points": 2,
+    "visibility": 4,
+    "ugliness": 2,
+    "description": "Your insect wings have grown even larger. in a addition to being able to greatly boost your speed, you can hover very briefly, safely breaking a fall from any height",
+    "types": [ "WINGS" ],
+    "prereqs": [ "WINGS_INSECT" ],
+    "threshreq": [ "THRESH_INSECT" ],
+    "category": [ "INSECT" ],
+    "flags": [ "WINGS_2" ], 
     "active": true,
     "cost": 3,
     "time": "1 s",
@@ -6691,7 +6713,7 @@
     "starting_trait":true,
     "cancels":["CHAOTIC", "CHAOTIC_BAD", "UNSTABLE"],
     "vitamins_absorb_multi": [ [ "all", [ [ "mutant_toxin", 1.15 ] ] ] ],
-    "vitamin_rates":[ [ "instability", 300 ], ["mutant_toxin", 400]]
+    "vitamin_rates":[ [ "instability", 600 ], ["mutant_toxin", 400]]
   },
   {
     "type": "mutation",
