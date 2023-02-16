@@ -5806,6 +5806,7 @@ mutation_value_map = {
     { "vomit_multiplier", calc_mutation_value_multiplicative<&mutation_branch::vomit_multiplier> },
     { "consume_time_modifier", calc_mutation_value_multiplicative<&mutation_branch::consume_time_modifier> },
     { "sweat_multiplier", calc_mutation_value_multiplicative<&mutation_branch::sweat_multiplier> },
+    { "skill_rust_multiplier", calc_mutation_value_multiplicative<&mutation_branch::skill_rust_multiplier>}
 };
 
 float Character::mutation_value( const std::string &val ) const
@@ -11677,7 +11678,16 @@ int Character::climbing_cost( const tripoint &from, const tripoint &to ) const
         return 0;
     }
 
-    return 50 + diff * 100;
+    //0 means impossible for some reason
+    constexpr auto min_cost = 1;
+
+    float cost = 50.0f + diff * 100; //float so only rounding and conversion happens at the end 
+
+    cost = std::max<float>(min_cost, cost * mutation_value("climbing_difficulty_modifier"));
+
+
+    return static_cast<int>(std::round(cost));
+
     // TODO: All sorts of mutations, equipment weight etc.
 }
 

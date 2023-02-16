@@ -364,6 +364,7 @@ void mutation_branch::load( const JsonObject &jo, const std::string & )
     optional( jo, was_loaded, "threshold", threshold, false );
     optional( jo, was_loaded, "profession", profession, false );
     optional( jo, was_loaded, "debug", debug, false );
+    optional(jo, was_loaded, "climbing_difficulty_modifier", climbing_difficulty_modifier, cata::nullopt); 
     optional( jo, was_loaded, "player_display", player_display, true );
     optional( jo, was_loaded, "vanity", vanity, false );
     optional( jo, was_loaded, "dummy", dummy, false );

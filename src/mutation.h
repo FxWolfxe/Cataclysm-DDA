@@ -304,6 +304,9 @@ struct mutation_branch {
         // Multiplier for consume time, defaulting to 1.
         cata::optional<float> consume_time_modifier = cata::nullopt;
 
+        //multiplier affecting climbing difficulty 
+        cata::optional<float> climbing_difficulty_modifier = cata::nullopt; 
+
         // Bonus or penalty to social checks (additive).  50 adds 50% to success, -25 subtracts 25%
         social_modifiers social_mods;
 
