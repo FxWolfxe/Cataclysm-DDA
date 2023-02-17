@@ -75,10 +75,11 @@
     "difficulty":2,
     "time": "7 m",
     "autolearn": true,
-    "batch_time_factors": [ 50, 1 ],
+    "batch_time_factors": [ 75, 1 ],
     "qualities": [ { "id": "BOIL", "level": 1 } ],
     "tools": [ [ [ "water_boiling_heat", 3, "LIST" ] ] ],
-    "components": [ [ [ "water_sewage", 1 ] ], [ ["bleach", 1] , ["oxy_powder", 10] ] ]
+    "result_mult":4,
+    "components": [ [ [ "water_sewage", 4 ] ], [ ["bleach", 1] , ["oxy_powder", 10] ] ]
   },
   {
     "type": "recipe",

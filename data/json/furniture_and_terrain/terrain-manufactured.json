@@ -473,6 +473,16 @@
     "move_cost": 0,
     "coverage": 50,
     "flags": [ "NOITEM", "REDUCE_SCENT", "MOUNTABLE" ],
+    "deconstruct":{ 
+      "ter_set": "t_sewage",
+      "items": [ 
+        { "item": "well_pump", "count": 1 }, 
+        { "item": "pipe", "count": [ 1, 6 ] }, 
+        { "item": "pipe_fittings", "count": [ 3, 8 ] },
+        { "item": "steel_plate", "count":[1,2]},
+        { "item": "sheet_metal", "count":[3,5]}
+        ] 
+      },
     "bash": {
       "str_min": 20,
       "str_max": 150,

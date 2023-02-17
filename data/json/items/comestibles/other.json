@@ -81,6 +81,8 @@
     "price_postapoc": 400,
     "volume": "250 ml",
     "flags": [ "EDIBLE_FROZEN", "NUTRIENT_OVERRIDE" ],
+    "vitamins":[["mutagen_insect", 500], ["instability", -100], ["mutant_toxin", -100]],
+    "gene_transfer_map":[["mutagen_insect", 100]],
     "fun": -5
   },
   {
@@ -100,7 +102,8 @@
     "flags": [ "NUTRIENT_OVERRIDE" ],
     "vitamins": [ [ "mutant_toxin", 6 ] ],
     "//": "It takes about 30 portions of honeydew to feed an adult (~2000 kkal). 2000 kkal is about 10 raw chunks of mutant meat, which is 250% toxins. Honeydew probably isn't as toxic as meat, so 30 portions of it would give you 180% of toxins.",
-    "volume": "250 ml"
+    "volume": "250 ml", 
+    "gene_transfer_map":[["mutagen_insect", 50]]
   },
   {
     "type": "COMESTIBLE",
@@ -878,7 +881,7 @@
     "name": { "str": "nectar" },
     "weight": "100 g",
     "color": "green",
-    "comestible_type": "FOOD",
+    "comestible_type": "DRINK",
     "symbol": "%",
     "calories": 130,
     "vitamins": [  ],

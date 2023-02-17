@@ -3180,7 +3180,7 @@
     "description": "Your fingernails are long and sharp.  If you aren't wearing gloves, your unarmed attacks deal a minor amount of cutting damage.",
     "types": [ "CLAWS" ],
     "changes_to": [ "CLAWS", "TALONS" ],
-    "category": [ "RAPTOR", "BIRD", "CHIMERA", "BEAST", "RAT", "URSINE", "LIZARD", "FELINE", "RABBIT", "LUPINE" ]
+    "category": [ "RAPTOR", "BIRD", "CHIMERA", "BEAST", "RAT", "URSINE", "LIZARD", "FELINE", "RABBIT", "LUPINE", "INSECT" ]
   },
   {
     "type": "mutation",
@@ -3196,7 +3196,7 @@
     "types": [ "CLAWS" ],
     "prereqs": [ "NAILS" ],
     "changes_to": [ "CLAWS_RETRACT", "CLAWS_RAT" ],
-    "category": [ "BEAST", "RAT", "URSINE", "FELINE", "LUPINE" ]
+    "category": [ "BEAST", "RAT", "URSINE", "FELINE", "LUPINE", "INSECT" ]
   },
   {
     "type": "mutation",
@@ -5020,6 +5020,7 @@
     "points": 3,
     "visibility": 2,
     "ugliness": 2,
+    "flags": [ "ACID_IMMUNE" ],
     "description": "Your mucus has developed an acidic component that seems to soften your prey up.",
     "attacks": {
       "attack_text_u": "You smear slime on %s",
