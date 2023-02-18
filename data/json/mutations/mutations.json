@@ -4827,7 +4827,7 @@
     "social_modifiers": { "intimidate": 4 },
     "purifiable": false,
     "types": [ "PREDATION" ],
-    "prereqs": [ "CARNIVORE" ],
+    "prereqs": [ "CARNIVORE_FAKE", "CARNIVORE" ],
     "prereqs2": [ "PRED3" ],
     "threshreq": [ "THRESH_LUPINE" ],
     "category": [ "LUPINE" ],
@@ -6851,11 +6851,11 @@
   {
     "type": "mutation",
     "id": "CARNIVORE",
-    "name": { "str": "Carnivore" },
+    "name": { "str": "Obligate Carnivore" },
     "points": -4,
     "description": "Your body's ability to digest fruits, vegetables, grains and nuts is severely hampered.  You cannot eat anything besides meat.",
     "types": [ "DIET" ],
-    "category": [ "LIZARD", "SPIDER", "CHIMERA", "RAPTOR", "FELINE", "BATRACHIAN", "BEAST", "LUPINE" ],
+    "category": [ "LIZARD", "SPIDER", "CHIMERA", "RAPTOR", "FELINE", "BATRACHIAN", "BEAST" ],
     "vitamin_rates": [ [ "vitC", -1200 ] ]
   },
   {
@@ -8627,12 +8627,12 @@
   {
     "type": "mutation",
     "id": "CARNIVORE_FAKE",
-    "name": { "str": "Imitation Carnivore" },
+    "name": { "str": "Carnivore" },
     "points": 0,
-    "description": "Fake mutation to allow post-threshold Ursine mutants access to mutations normally gated behind Carnivore.  This is not meant to be visible in-game.",
-    "category": [ "URSINE" ],
-    "threshreq": [ "THRESH_URSINE" ],
-    "player_display": false
+    "//": "figure out how this should actually work",
+    "description": "You find yourself craving meat more and more. You can still digest plant matter but wil go for meat over fruit or veg every time",
+    "category": [ "URSINE", "LUPINE" ],
+    "player_display": true
   },
   {
     "//": "Like Resilient, but Medical-flavored, and doesn't need huge/strong",
