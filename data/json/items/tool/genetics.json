@@ -1,0 +1,29 @@
+[ 
+    {
+        "id": "electric_pcr_machine",
+        "type": "TOOL",
+        "name": { "str": "pcr machine" },
+        "description": "An advanced piece of lab equipment meant to aid in duplication of existing genetic material using a broth of raw nucleic acids and the existing sample",
+        "weight": "12000 g",
+        "volume": "7500 ml",
+        "price": 500000,
+        "looks_like":"kiln",
+        "price_postapoc": 7500,
+        "to_hit": -3,
+        "bashing": 12,
+        "material": [ "steel" ],
+        "symbol": ";",
+        "qualities":[["GENETIC_DUPLICATION",1]],
+        "color": "dark_gray",
+        "ammo": [ "battery" ],
+        "flags": [ "ALLOWS_REMOTE_USE", "WATER_BREAK", "ELECTRONIC" ],
+        "pocket_data": [
+          {
+            "pocket_type": "MAGAZINE_WELL",
+            "rigid": true,
+            "flag_restriction": [ "BATTERY_MEDIUM" ],
+            "default_magazine": "medium_battery_cell"
+          }
+        ]
+      }
+]

@@ -1,0 +1,264 @@
+[ 
+ { 
+    "type": "recipe",
+    "result": "raw_genetic_material", 
+    "batch_time_factors": [55, 10],
+    "skill_used": "chemistry", 
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_MUTAGEN",
+    "activity_level":"NO_EXERCISE",
+    "difficulty": 5,
+    "proficiencies": [ 
+        { 
+            "proficiency":"prof_biochemistry",
+            "time_multiplier":2.0,
+            "fail_multiplier":1.5
+        }
+    ],
+    "book_learn":{ 
+        "recipe_labchem": { 
+            "skill_level":5
+        }, 
+        "recipe_maiar": { 
+            "skill_level":5
+        }, 
+        "recipe_serum": { 
+            "skill_level":5
+        }, 
+        "adv_chemistry": { 
+            "skill_level": 6
+        }
+    },
+    "time":"15 m",
+    "tools": 
+    [ 
+        [["electric_pcr_machine", 10]]
+    ],
+    "using":
+    [
+         ["any_mutagen_sample", 1]
+    ]
+ }, 
+ { 
+    "type": "recipe",
+    "result": "ursine_sample", 
+    "id_suffix": "duplication", 
+    "using":[["genetic_duplication", 1]], 
+    "batch_time_factors": [55, 10],
+    "skill_used": "chemistry", 
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_MUTAGEN",
+    "activity_level":"NO_EXERCISE",
+    "difficulty": 5,
+    "proficiencies": [ 
+        { 
+            "proficiency":"prof_biochemistry",
+            "time_multiplier":2.0,
+            "fail_multiplier":1.5
+        }
+    ],
+    "book_learn":{ 
+        "recipe_labchem": { 
+            "skill_level":5
+        }, 
+        "recipe_maiar": { 
+            "skill_level":5
+        }, 
+        "recipe_serum": { 
+            "skill_level":5
+        }, 
+        "adv_chemistry": { 
+            "skill_level": 6
+        }
+    },
+    "time":"15 m", 
+    "result_mult":2, 
+    "components": [
+        [["ursine_sample", 1]]
+    ]
+ }, 
+ { 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"troglobite_sample",
+    "id_suffix": "duplication", 
+    "components": [
+       [ ["troglobite_sample", 1]]
+    ]
+ },
+ { 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"spider_sample",
+    "id_suffix": "duplication", 
+    "components": [
+        [["spider_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"slime_sample",
+    "id_suffix": "duplication", 
+    "components": [
+       [ ["slime_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"rat_sample",
+    "id_suffix": "duplication", 
+    "components": [
+       [ ["rat_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"rabbit_sample",
+    "id_suffix": "duplication", 
+    "components": [
+       [ ["rabbit_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"plant_sample",
+    "id_suffix": "duplication", 
+    "components": [
+        [["plant_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"mouse_sample",
+    "id_suffix": "duplication", 
+    "components": [
+       [ ["mouse_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"medical_sample",
+    "id_suffix": "duplication", 
+    "components": [
+        [["medical_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"lupine_sample",
+    "id_suffix": "duplication", 
+    "components": [
+       [ ["lupine_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"insect_sample",
+    "id_suffix": "duplication", 
+    "components": [
+        [["insect_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"human_sample",
+    "id_suffix": "duplication", 
+    "components": [
+        [["human_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"gastropod_sample",
+    "id_suffix": "duplication", 
+    "components": [
+        [["gastropod_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"fish_sample",
+    "id_suffix": "duplication", 
+    "components": [
+        [["fish_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"feline_sample",
+    "id_suffix": "duplication", 
+    "components": [
+       [ ["feline_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"elfa_sample",
+    "id_suffix": "duplication", 
+    "components": [
+       [ ["elfa_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"chimera_sample",
+    "id_suffix": "duplication", 
+    "components": [
+       [ ["chimera_sample", 1]]
+    ]
+ },{ 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"cephalopod_sample", 
+    "id_suffix": "duplication", 
+    "components": [
+        [["cephalopod_sample", 1]]
+    ]
+ },
+ { 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"cattle_sample", 
+    "id_suffix": "duplication", 
+    "components": [
+        [["cattle_sample", 1]]
+    ]
+ },
+ { 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"bird_sample", 
+    "id_suffix": "duplication", 
+    "components": [
+        [["bird_sample", 1]]
+    ]
+ },
+ { 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"beast_sample", 
+    "id_suffix": "duplication", 
+    "components": [
+        [["beast_sample", 1]]
+    ]
+ },
+ { 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"batrachian_sample",    
+    "id_suffix": "duplication", 
+    "components": [
+        [["batrachian_sample", 1]]
+    ]
+ },
+ { 
+    "type":"recipe",
+    "copy-from": "ursine_sample_duplication", 
+    "result":"alpha_sample", 
+    "id_suffix": "duplication", 
+    "components": [
+        [["alpha_sample", 1]]
+    ]
+ }
+ 
+]

@@ -1465,6 +1465,11 @@
     "info": "Used in the <neutral>creation of mutagenic drugs</neutral>."
   },
   {
+    "id": "MUTAGEN_GENTIC_MATERIAL",
+    "type": "json_flag",
+    "info": "Used in the <neutral>creation of mutagenic samples</neutral>."
+  },
+  {
     "id": "MUTAGEN_CATALYST",
     "type": "json_flag",
     "info": "Injecting it will <neutral>jumpstart mutation</neutral>."

@@ -262,5 +262,15 @@
     "description": "A slurry of toughness.",
     "looks_like": "medical_sample",
     "material": [ "flesh", "fur", "gutskin" ]
+  }, 
+  {
+    "type": "GENERIC",
+    "id": "raw_genetic_material",
+    "copy-from": "mutagen_sample",
+    "color": "white",
+    "name": { "str": "raw genetic material" },
+    "description": "A slurry of unassociated genetic material. useless in it's current form.",
+    "looks_like": "medical_sample",
+    "material": [ "flesh"]
   }
 ]

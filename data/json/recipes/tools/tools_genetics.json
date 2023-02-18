@@ -1,0 +1,37 @@
+[ 
+    {
+        "type": "recipe",
+        "activity_level": "BRISK_EXERCISE",
+        "result": "electric_pcr_machine",
+        "category": "CC_OTHER",
+        "subcategory": "CSC_OTHER_TOOLS",
+        "skill_used": "fabrication",
+        "skills_required": ["electronics", 4],
+        "difficulty": 6,
+        "time": "3 h",
+        "reversible": true,
+        "decomp_learn": 4,
+        "autolearn": true,
+        "book_learn": [ [ "textbook_fabrication", 4 ], [ "manual_fabrication", 4 ] ],
+        "using": [ [ "welding_standard", 5 ], [ "steel_standard", 4 ] , ["soldering_standard", 3]],
+        "proficiencies": [
+          { "proficiency": "prof_metalworking" },
+          { "proficiency": "prof_welding_basic", "fail_multiplier": 1.5 },
+          { "proficiency": "prof_welding" }
+        ],
+        "qualities": [
+          { "id": "HAMMER", "level": 3 },
+          { "id": "SAW_M", "level": 1 },
+          { "id": "SCREW", "level": 1 },
+          { "id": "WRENCH", "level": 1 }
+        ],
+        "components": [
+          [ [ "motor_small", 2 ] ],
+          [ [ "cable", 4 ] ],
+          [ [ "power_supply", 1 ] ],
+          [ [ "metal_tank_little", 1 ] ],
+          [ [ "pipe", 8 ] ],
+          [ [ "pipe_fittings", 4 ] ]
+        ]
+      }
+]

@@ -4363,5 +4363,40 @@
     "description": "Recipes related to constructing all planks.",
     "skill_used": "fabrication",
     "nested_category_data": [ "nested_planks_short", "nested_planks_normal", "plank_long" ]
+  }, 
+  {
+    "id": "nested_mutagen_duplication",
+    "type": "nested_category",
+    "activity_level": "NO_EXERCISE",
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_MUTAGEN",
+    "name": "mutagen sample duplication",
+    "description": "duplicating mutagen samples with a pcr machine",
+    "skill_used": "chemistry",
+    "nested_category_data": [
+      "ursine_sample_duplication",
+      "troglobite_sample_duplication",
+      "spider_sample_duplication",
+      "slime_sample_duplication",
+      "rat_sample_duplication",
+      "rabbit_sample_duplication",
+      "plant_sample_duplication",
+      "mouse_sample_duplication",
+      "medical_sample_duplication",
+      "lupine_sample_duplication",
+      "insect_sample_duplication",
+      "human_sample_duplication",
+      "gastropod_sample_duplication",
+      "fish_sample_duplication",
+      "feline_sample_duplication",
+      "elfa_sample_duplication",
+      "chimera_sample_duplication",
+      "cephalopod_sample_duplication",
+      "cattle_sample_duplication",
+      "bird_sample_duplication",
+      "beast_sample_duplication",
+      "batrachian_sample_duplication",
+      "alpha_sample_duplication"
+     ]
   }
 ]

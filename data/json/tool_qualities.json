@@ -403,5 +403,10 @@
     "type": "tool_quality",
     "id": "CUT_GLASS",
     "name": { "str": "glass cutting" }
+  }, 
+  { 
+    "type": "tool_quality",
+    "id": "GENETIC_DUPLICATION",
+    "name": {"str": "genetic duplication"}
   }
 ]
