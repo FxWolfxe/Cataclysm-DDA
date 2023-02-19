@@ -65,6 +65,7 @@ static const mutation_category_id mutation_category_ANY( "ANY" );
 static const trait_id trait_BURROW( "BURROW" );
 static const trait_id trait_BURROWLARGE( "BURROWLARGE" );
 static const trait_id trait_CHAOTIC_BAD( "CHAOTIC_BAD" );
+static const trait_id trait_CHAOTIC( "CHAOTIC" ); 
 static const trait_id trait_DEBUG_BIONIC_POWER( "DEBUG_BIONIC_POWER" );
 static const trait_id trait_DEBUG_BIONIC_POWERGEN( "DEBUG_BIONIC_POWERGEN" );
 static const trait_id trait_DEX_ALPHA( "DEX_ALPHA" );
@@ -1400,7 +1401,7 @@ bool Character::mutate_towards( const trait_id &mut, const mutation_category_id 
 
     // Check for threshold mutation, if needed
     bool mut_is_threshold = mdata.threshold;
-    bool c_has_threshreq = false;
+    bool c_has_threshreq = has_trait(trait_CHAOTIC)&& !use_vitamins; //if has genetic chaos and not using vitamins allow any mutation  
     bool mut_is_profession = mdata.profession;
     std::vector<trait_id> threshreq = mdata.threshreq;
 
