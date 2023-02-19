@@ -134,7 +134,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the cephalopod mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_cephalopod", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_cephalopod", 550, 650 ] ]
     }
   },
   {
@@ -153,7 +153,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the chimera mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_chimera", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_chimera", 550, 650 ] ]
     }
   },
   {
@@ -169,7 +169,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the Elf-A mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_elfa", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_elfa", 450, 650 ] ]
     }
   },
   {
@@ -184,7 +184,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the feline mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_feline", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_feline", 550, 650 ] ]
     }
   },
   {
@@ -199,7 +199,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the fish mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_fish", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_fish", 550, 650 ] ]
     }
   },
   {

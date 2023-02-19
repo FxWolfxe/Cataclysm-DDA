@@ -5887,7 +5887,7 @@
     "description": "You have a pair of stubby little wings projecting from your shoulderblades.  They can be wiggled at will, but are useless.",
     "types": [ "WINGS" ],
     "changes_to": [ "WINGS_BIRD", "WINGS_BAT", "WINGS_INSECT", "WINGS_BUTTERFLY" ],
-    "category": [ "BIRD", "BEAST", "INSECT" ]
+    "category": [ "BIRD", "BEAST", "INSECT" , "CHIMERA"]
   },
   {
     "type": "mutation",
@@ -5899,8 +5899,8 @@
     "description": "You have a pair of large, leathery wings.  You can move them a little, but they are useless, and in fact put you off balance, reducing your ability to dodge slightly.",
     "types": [ "WINGS" ],
     "prereqs": [ "WINGS_STUB" ],
-    "category": [ "BEAST" ],
-    "threshreq": [ "THRESH_BEAST" ],
+    "category": [ "BEAST" , "CHIMERA"],
+    "threshreq": [ "THRESH_BEAST", "THRESH_CHIMERA" ],
     "dodge_modifier": -2
   },
   {

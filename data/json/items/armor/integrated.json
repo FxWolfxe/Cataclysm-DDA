@@ -1120,7 +1120,7 @@
     "symbol": "c",
     "color": "brown",
     "warmth": 2,
-    "qualities":[ [ "CUT", 2 ], [ "CUT_FINE", 1 ], [ "BUTCHER", 19 ]],
+    "qualities":[ [ "CUT", 3 ], [ "CUT_FINE", 1 ], [ "BUTCHER", 19 ]],
     "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "PERSONAL", "WATER_FRIENDLY", "PADDED" ],
     "armor": [
       {
