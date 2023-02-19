@@ -1765,7 +1765,7 @@
     "type": "effect_type",
     "id": "pkill1",
     "max_duration": "4 m",
-    "base_mods": { "pkill_tick": [ 42 ], "pkill_min": [ 1 ], "pkill_max_val": [ 15 ] },
+    "base_mods": { "pkill_tick": [ 42 ], "pkill_min": [ 1 ], "pkill_max_val": [ 45 ] },
     "rating": "good",
     "blood_analysis_description": "Minor Painkiller"
   },
