@@ -26,7 +26,8 @@
     "flags": [ "SMOKABLE", "RAW" ],
     "smoking_result": "fish_smoked",
     "vitamins": [ [ "vitC", 2 ], [ "calcium", 6 ], [ "iron", 14 ] ],
-    "calories": 260
+    "calories": 260, 
+    "gene_transfer_map":[["mutagen_fish", 100]]
   },
   {
     "id": "fish_scrap",
@@ -49,7 +50,7 @@
     "spoils_in": "1 day",
     "flags": [ "NUTRIENT_OVERRIDE" ],
     "calories": 51,
-    "gene_transfer_map":[["mutagen_fish", 2]]
+    "gene_transfer_map":[["mutagen_fish", 5]]
 
   },
   {
@@ -63,7 +64,7 @@
     "price_postapoc": 100,
     "parasites": 0,
     "flags": [ "EATEN_HOT" ],
-    "gene_transfer_map":[["mutagen_fish", 5]]
+    "gene_transfer_map":[["mutagen_fish", 25]]
 
   },
   {
@@ -82,7 +83,7 @@
     "smoking_result": "lobster_smoked",
     "vitamins": [ [ "vitC", 2 ], [ "calcium", 6 ], [ "iron", 14 ] ],
     "calories": 250,
-    "gene_transfer_map":[["mutagen_fish", 10]]
+    "gene_transfer_map":[["mutagen_fish", 100]]
 
   },
   {
@@ -95,7 +96,8 @@
     "spoils_in": "1 day",
     "price_postapoc": 150,
     "parasites": 0,
-    "flags": [ "EATEN_HOT" ]
+    "flags": [ "EATEN_HOT" ], 
+    "gene_transfer_map":[["mutagen_fish", 50]]
   },
   {
     "id": "mollusk",
@@ -112,7 +114,7 @@
     "flags": [ "SMOKABLE", "RAW" ],
     "vitamins": [ [ "vitC", 0 ], [ "calcium", 6 ], [ "iron", 2 ] ],
     "calories": 260,
-    "gene_transfer_map":[["mutagen_gastropod", 10]]
+    "gene_transfer_map":[["mutagen_gastropod", 100]]
 
   },
   {
@@ -126,7 +128,7 @@
     "price_postapoc": 150,
     "parasites": 0,
     "flags": [ "EATEN_HOT" ],
-    "gene_transfer_map":[["mutagen_gastropod", 5]]
+    "gene_transfer_map":[["mutagen_gastropod", 25]]
 
   },
   {

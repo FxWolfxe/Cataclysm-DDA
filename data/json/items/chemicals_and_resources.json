@@ -198,8 +198,8 @@
     "color": "brown",
     "description": "A pile of loosely-packed, slightly damp loamy soil.  This mixture of sand, silt and clay is ideal for growing plants.",
     "material": [ "soil" ],
-    "volume": "5L",
-    "weight": "6500 g",
+    "volume": "1L",
+    "weight": "650 g",
     "ammo_type": "components",
     "stack_size": 1
   },
