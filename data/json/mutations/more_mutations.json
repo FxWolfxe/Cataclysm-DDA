@@ -9,6 +9,6 @@
         "prereqs":["PACK_HUNTER"],
         "threshreq": [ "THRESH_LUPINE"],
         "category": [ "LUPINE" ],
-        "faction_override":["wolf"]
+        "faction_override":"wolf"
       }
 ]
