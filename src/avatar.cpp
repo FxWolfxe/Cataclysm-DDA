@@ -1128,14 +1128,19 @@ static const std::array<int, 20> xp_cutoffs = { {
 int avatar::free_upgrade_points() const
 {
     int lvl = 0;
-    for( const int &xp_lvl : xp_cutoffs ) {
-        if( kill_xp >= xp_lvl ) {
-            lvl++;
-        } else {
-            break;
-        }
-    }
-    return lvl - spent_upgrade_points;
+
+    constexpr float xp_to_level_const = 31.0f;
+    lvl = static_cast<int>(std::sqrt(kill_xp / xp_to_level_const));
+    return std::max(0, lvl - spent_upgrade_points);
+
+    //for( const int &xp_lvl : xp_cutoffs ) {
+    //    if( kill_xp >= xp_lvl ) {
+    //        lvl++;
+    //    } else {
+    //        break;
+    //    }
+    //}
+    //return lvl - spent_upgrade_points;
 }
 
 void avatar::upgrade_stat_prompt( const character_stat &stat )
