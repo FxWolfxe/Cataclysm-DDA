@@ -254,7 +254,8 @@
     "looks_like": "blood",
     "symbol": "~",
     "phase": "liquid",
-    "delete": { "flags": [ "SMOKABLE" ] }
+    "delete": { "flags": [ "SMOKABLE" ] }, 
+    "gene_transfer_map":[["mutagen_beast", 100]]
   },
   {
     "id": "porkbelly",

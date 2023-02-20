@@ -6713,7 +6713,7 @@
     "category": [ "CHIMERA" ],
     "starting_trait":true,
     "cancels":["CHAOTIC", "CHAOTIC_BAD", "UNSTABLE"],
-    "vitamins_absorb_multi": [ [ "all", [ [ "mutant_toxin", 1.15 ] ] ] ],
+    "vitamins_absorb_multi": [ [ "all", [ [ "mutant_toxin", 1.75 ] ] ] ],
     "vitamin_rates":[ [ "instability", 600 ], ["mutant_toxin", 400]]
   },
   {
