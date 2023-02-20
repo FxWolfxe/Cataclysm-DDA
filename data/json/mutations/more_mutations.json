@@ -1,0 +1,14 @@
+[ 
+    {
+        "type": "mutation",
+        "id": "PHEROMONE_LUPINE",
+        "name": { "str": "Pack Member" },
+        "points": 3,
+        "description": "You find canine body language and communication so much more natural now, and do so instinctually. Fellow canines now treat you as one of them",
+        "types": [ "PHEROMONE" ],
+        "prereqs":["PACK_HUNTER"],
+        "threshreq": [ "THRESH_LUPINE"],
+        "category": [ "LUPINE" ],
+        "faction_override":["wolf"]
+      }
+]
