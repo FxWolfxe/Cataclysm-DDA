@@ -905,6 +905,12 @@ int avatar::print_info( const catacurses::window &w, int vStart, int, int column
 
 mfaction_id avatar::get_monster_faction() const
 {
+
+    for(const auto& trait: get_mutations())
+    {
+        if (!trait->faction_override.is_null()) return trait->faction_override; //may cause issues, we'll see 
+    }
+
     return monfaction_player.id();
 }
 
