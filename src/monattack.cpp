@@ -2094,7 +2094,7 @@ bool mattack::fungus_fortify( monster *z )
         // You have the other two.  Is it really necessary for us to fight?
         add_msg( m_info, _( "The %s spreads its tendrils.  It seems as though it's expecting you…" ),
                  z->name() );
-        if( rl_dist( z->pos(), player_character.pos() ) < 3 ) {
+        if( rl_dist( z->pos(), player_character.pos() ) < 10 ) {
             if( query_yn( _( "The tower extends and aims several tendrils from its depths.  Hold still?" ) ) ) {
                 add_msg( m_warning,
                          _( "The %s works several tendrils into your arms, legs, torso, and even neck…" ),

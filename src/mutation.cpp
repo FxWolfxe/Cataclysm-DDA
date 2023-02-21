@@ -1493,9 +1493,12 @@ bool Character::mutate_towards( const trait_id &mut, const mutation_category_id 
     const std::string &variant_id = chosen_var != nullptr ? chosen_var->id : "";
     const std::string gained_name = mdata.name( variant_id );
 
-    if(mdata.has_transformation_text())
+    if(mdata.has_transformation_text() && as_avatar() != nullptr)
     {
-        add_msg_if_player(m_mixed, mdata.transformation_text().value()); 
+        g->invalidate_main_ui_adaptor();
+        popup(mdata.transformation_text().value()); 
+        
+        //add_msg_if_player(m_mixed, mdata.transformation_text().value()); 
     }
 
     mutation_chain_cooldown_cache[mut] = calendar::turn; // record when the mutation was added 
