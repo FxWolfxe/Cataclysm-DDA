@@ -1012,6 +1012,55 @@ bool Character::mutation_ok( const trait_id &mutation, bool allow_good, bool all
 
     static constexpr time_duration mutation_save_time = 3_days; 
 
+    //enforce morphreq here to
+    if(!mdata.morph_req.empty())
+    {
+        //check if they're morphed
+        trait_id already_morphed = trait_id::NULL_ID();
+        for(const auto& t: get_mutations())
+        {
+            if(t->morph)
+            {
+                already_morphed = t; 
+                break;
+            }
+        }
+
+        if(already_morphed.is_valid())
+        {
+            bool invalid_morph = true; 
+            for(const auto& m: mdata.morph_req)
+            {
+                if(m == already_morphed)
+                {
+                    invalid_morph = false;
+                    break; 
+                }
+            }
+            if ( invalid_morph ) return false; //they're already morphed to a different line, never give this mutation
+        }
+        else //check if they crossed the threshold of a different line
+        {
+            auto crossed_threshold = false, valid_threshold = false;
+            for ( const auto &t: get_mutations() )
+            {
+                if ( t->threshold )
+                {
+                    crossed_threshold = true;
+                    for(const auto& m: mdata.morph_req) //if a threshold is found, make sure it's a prereq to one of the morph reqs, if it's not they can never get the prerequisite morph 
+                    {
+                        valid_threshold |= std::find(m->threshreq.begin(), m->threshreq.end(), t) != m->threshreq.end(); 
+                    }
+                    break; //only ever need to check 1 threshold as there can only be 1 
+                }
+            }
+
+            if (!crossed_threshold || !valid_threshold) return false; //if they've crossed a threshold but it's not a threshold that can get any of the required morphs 
+                //also return false if they've not crossed a threshold as that's required before they can get a morph so no reason to even consider it 
+        }
+    }
+
+
     //check if there are ay recently added mutations that would get removed
     const auto& mutations_of_type = get_mutations_in_types(mdata.types);
     for(const auto& pair: mutation_chain_cooldown_cache)
@@ -1403,9 +1452,11 @@ bool Character::mutate_towards( const trait_id &mut, const mutation_category_id 
 
     // Check for threshold mutation, if needed
     bool mut_is_threshold = mdata.threshold;
-    bool c_has_threshreq = has_trait(trait_CHAOTIC)&& !use_vitamins; //if has genetic chaos and not using vitamins allow any mutation  
+    bool c_has_threshreq = has_trait(trait_CHAOTIC) && !use_vitamins; //if has genetic chaos and not using vitamins allow any mutation  
+    bool c_has_morphreq = false; 
     bool mut_is_profession = mdata.profession;
     std::vector<trait_id> threshreq = mdata.threshreq;
+    const std::vector<trait_id> &morphreq = mdata.morph_req; 
 
     // It shouldn't pick a Threshold anyway--they're supposed to be non-Valid
     // and aren't categorized. This can happen if someone makes a threshold mutation into a prerequisite.
@@ -1432,10 +1483,48 @@ bool Character::mutate_towards( const trait_id &mut, const mutation_category_id 
         }
     }
 
+    constexpr char no_threshreq_msg[] = "You feel something straining deep inside you, yearning to be free…";
+
     // No crossing The Threshold by simply not having it
     if( !c_has_threshreq && !threshreq.empty() ) {
-        add_msg_if_player( _( "You feel something straining deep inside you, yearning to be free…" ) );
+        add_msg_if_player( _(no_threshreq_msg) );
         return false;
+    }
+
+
+    for(size_t i = 0 ; !c_has_morphreq && i < morphreq.size(); i++)
+    {
+        if( has_trait(morphreq[i]))
+        {
+            c_has_morphreq = true;
+            break; 
+        }
+    }
+
+    if( !c_has_morphreq && !morphreq.empty())
+    {
+
+        bool any_threshold = false;
+        for(const auto& t: get_mutations())
+        {
+            if(t->threshold)
+            {
+                any_threshold = true; 
+                break;
+            }
+        }
+
+
+        if ( any_threshold )
+        {
+            add_msg_if_player(_(
+                "You feel a different straining take place, as if you need to go further somehow. mutagen alone won't cut it"));
+        }
+        else
+        {
+            add_msg_if_player(_(no_threshreq_msg));
+        }
+        
     }
 
     const vitamin_id mut_vit = mut_cat == mutation_category_ANY ||
