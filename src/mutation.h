@@ -426,7 +426,12 @@ struct mutation_branch {
         std::vector<matype_id>
         initial_ma_styles; // Martial art styles that can be chosen upon character generation
 
-        cata::optional<std::string> looks_like; 
+        cata::optional<std::string> looks_like;
+
+        //if defined, this mutation will cause the attached creature to be drawn as if they were the specified monster
+        //a character should only ever be able to have 1 of these at a time 
+        mtype_id draw_override; 
+
     private:
         std::map<bodypart_str_id, int> bionic_slot_bonuses;
         translation raw_name;

@@ -449,6 +449,8 @@ void mutation_branch::load( const JsonObject &jo, const std::string & )
     optional( jo, was_loaded, "bionic_mana_penalty", bionic_mana_penalty, cata::nullopt );
     optional( jo, was_loaded, "casting_time_multiplier", casting_time_multiplier, cata::nullopt );
 
+    optional(jo, was_loaded, "draw_override", draw_override, mtype_id::NULL_ID()); 
+
     if( jo.has_object( "rand_cut_bonus" ) ) {
         JsonObject sm = jo.get_object( "rand_cut_bonus" );
         rand_cut_bonus.first = sm.get_int( "min" );

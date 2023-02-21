@@ -1,3 +1,4 @@
+#include "mutation.h"
 #if defined(TILES)
 #include "cata_tiles.h"
 
@@ -3665,7 +3666,46 @@ bool cata_tiles::draw_critter_at( const tripoint &p, lit_level ll, int &height_3
         }
         const Character *pl = dynamic_cast<const Character *>( &critter );
         if( pl != nullptr ) {
-            draw_entity_with_overlays( *pl, p, ll, height_3d );
+
+            mtype_id override_id = mtype_id::NULL_ID();
+            for(const auto& mut : pl->get_mutations())
+            {
+                if(!mut->draw_override.is_null())
+                {
+                    override_id = mut->draw_override;
+                    break;
+                }
+            }
+
+            if(!override_id.is_null())
+            {
+                const TILE_CATEGORY ent_category = TILE_CATEGORY::MONSTER;
+                std::string ent_subcategory = empty_string;
+                if (!override_id->species.empty()) {
+                    ent_subcategory = override_id->species.begin()->str();
+                }
+                const int subtile = corner;
+                // depending on the toggle flip sprite left or right
+                int rot_facing = -2;
+                if (pl->facing == FacingDirection::RIGHT) {
+                    rot_facing = 0;
+                }
+                else if (pl->facing == FacingDirection::LEFT) {
+                    rot_facing = -1;
+                }
+                if (rot_facing >= -1) {
+                    const auto ent_name = override_id->id;
+                    std::string chosen_id = ent_name.str();
+
+                    result = draw_from_id_string(chosen_id, ent_category, ent_subcategory, p,
+                        subtile, rot_facing, ll, false, height_3d);
+              
+                }
+            }else
+            {
+                draw_entity_with_overlays(*pl, p, ll, height_3d);
+            }
+
             result = true;
             if( pl->is_avatar() ) {
                 is_player = true;

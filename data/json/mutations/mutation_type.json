@@ -147,6 +147,10 @@
     "type": "mutation_type",
     "id": "PHEROMONE"
   },
+  { 
+    "type":"mutation_type",
+    "id":"METAMORPHOSES"
+  },
   {
     "type": "mutation_type",
     "id": "HANDS"

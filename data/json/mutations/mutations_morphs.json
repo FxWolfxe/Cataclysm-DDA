@@ -1,0 +1,19 @@
+[ 
+    {
+        "type": "mutation",
+        "id": "METAMORPHOSES_SNAIL",
+        "name": { "str": "Snail Mutant" },
+        "points": 3,
+        "mixed_effect":true,
+        "threshreq":["THRESH_GASTROPOD"],
+        "types": [ "METAMORPHOSES" ],
+        "description": "Your mucus now contains various chemicals that signal to other mollusks you are one of them.",
+        "prereqs": [ "MUCUS_SECRETION" , "SNAIL_TRAIL"],
+        "category": [ "GASTROPOD" ],
+        "anger_relations":[["MOLLUSK", -50]],
+        "faction_override":"slug",
+        "morph":true,
+        "restricted":true,
+        "draw_override":"mon_human_snail"
+    }
+]
