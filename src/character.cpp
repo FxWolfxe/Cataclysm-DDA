@@ -3002,10 +3002,15 @@ std::vector<std::pair<std::string, std::string>> Character::get_overlay_ids() co
 
     // then get mutations
     for( const std::pair<const trait_id, trait_data> &mut : my_mutations ) {
+
+      
         if( !mut.second.show_sprite ) {
             continue;
         }
-        overlay_id = ( mut.second.powered ? "active_" : "" ) + mut.first.str();
+
+        std::string id_str = mut.first->looks_like.has_value() ? mut.first->looks_like.value() : mut.first.str();
+
+        overlay_id = (mut.second.powered ? "active_" : "") + id_str; 
         order = get_overlay_order_of_mutation( overlay_id );
         std::string variant;
         if( mut.second.variant != nullptr ) {

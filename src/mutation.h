@@ -425,6 +425,8 @@ struct mutation_branch {
         std::vector<itype_id> integrated_armor; // Armor pseudo-items that are put on by this mutation
         std::vector<matype_id>
         initial_ma_styles; // Martial art styles that can be chosen upon character generation
+
+        cata::optional<std::string> looks_like; 
     private:
         std::map<bodypart_str_id, int> bionic_slot_bonuses;
         translation raw_name;
