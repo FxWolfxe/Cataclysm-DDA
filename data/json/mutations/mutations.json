@@ -4883,6 +4883,7 @@
     "type": "mutation",
     "id": "GIANT_WASP_WINGS",
     "name": { "str": "Giant Wasp Wings" },
+    "looks_like":"WINGS_INSECT",
     "points": 2,
     "visibility": 4,
     "ugliness": 2,
