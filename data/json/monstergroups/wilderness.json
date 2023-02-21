@@ -2669,7 +2669,7 @@
         "monster": "mon_slug_forest",
         "weight": 15,
         "cost_multiplier": 2,
-        "ends": "42 hours",
+        "ends": "72 hours",
         "conditions": [ "SPRING", "SUMMER", "AUTUMN" ]
       },
       {
@@ -2684,7 +2684,7 @@
         "monster": "mon_slug_small",
         "weight": 25,
         "cost_multiplier": 2,
-        "starts": "84 hours",
+        "starts": "64 hours",
         "ends": "180 hours",
         "conditions": [ "SPRING", "SUMMER", "AUTUMN" ]
       },

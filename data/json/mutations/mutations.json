@@ -4000,22 +4000,21 @@
     "threshreq": [ "THRESH_PLANT" ],
     "leads_to": [ "CHLOROMORPH" ],
     "category": [ "PLANT" ],
-    "flags": [ "IMMUNE_SPOIL" ]
+    "flags": [ "IMMUNE_SPOIL", "SAPROPHAGE" ]
   },
   {
     "type": "mutation",
     "id": "SAPROPHAGE_ANIMAL",
     "name": { "str": "Saprophage" },
-    "points": 1,
+    "points": -1,
     "visibility": 5,
     "mixed_effect":true,
     "ugliness": 9,
     "description": "Your digestive system as altered even further. Not only can you digest rotten food, you find it prefereable when it's spoiled",
-    "types": [ "DIET" ],
     "prereqs": [ "SAPROVORE" ],
     "threshreq": [ "THRESH_GASTROPOD"],
     "category": [ "GASTROPOD" ],
-    "flags": [ "IMMUNE_SPOIL" ]
+    "flags": [ "IMMUNE_SPOIL", "SAPROPHAGE" ]
   },
   {
     "type": "mutation",
@@ -5056,7 +5055,7 @@
     "prereqs": [ "MUCUS_SECRETION", "MUCUS_SECRETION2"],
     "category": [ "GASTROPOD" ],
     "active": true,
-    "cost": 104,
+    "cost": 4,
     "time": "100 s",
     "thirst": true,
     "kcal": true
@@ -6714,7 +6713,7 @@
     "starting_trait":true,
     "cancels":["CHAOTIC", "CHAOTIC_BAD", "UNSTABLE"],
     "vitamins_absorb_multi": [ [ "all", [ [ "mutant_toxin", 1.75 ] ] ] ],
-    "vitamin_rates":[ [ "instability", 600 ], ["mutant_toxin", 400]]
+    "vitamin_rates":[ [ "instability", 600 ], ["mutant_toxin", 500]]
   },
   {
     "type": "mutation",

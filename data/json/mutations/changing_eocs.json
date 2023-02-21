@@ -20,7 +20,7 @@
   {
     "type": "effect_on_condition",
     "id": "changing_failed",
-    "condition": { "one_in_chance": 4 },
+    "condition": { "one_in_chance": 51 },
     "effect": [ { "u_message": "<CHANGING_FAILED>", "type": "bad" } ]
   },
   {
@@ -31,7 +31,7 @@
   {
     "type": "effect_on_condition",
     "id": "changing_reqs_not_met",
-    "condition": { "one_in_chance": 100 },
+    "condition": { "one_in_chance": 300 },
     "effect": [
       { "u_message": "<CHANGING_ENDS>", "type": "bad" },
       { "u_lose_trait": "CHANGING" },
