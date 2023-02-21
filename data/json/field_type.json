@@ -259,7 +259,7 @@
     "description_affix": "covered_in",
     "is_splattering": true,
     "priority": 2,
-    "half_life": "30 minutes",
+    "half_life": "72 minutes",
     "phase": "liquid",
     "display_field": true,
     "immunity_data": { "flags": [ "SLUDGE_IMMUNE" ] },

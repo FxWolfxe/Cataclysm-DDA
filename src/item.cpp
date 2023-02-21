@@ -12639,6 +12639,12 @@ bool item::process_temperature_rot( float insulation, const tripoint &pos, map &
     time_point time = last_temp_check;
     item_internal::scoped_goes_bad_cache _cache( this );
     const bool process_rot = goes_bad() && spoil_modifier != 0;
+    if (!carried && (flag == temperature_flag::NORMAL || flag == temperature_flag::HEATER) && get_map().has_field_at(pos, fd_sludge))
+    {
+        //sludge field will make things rot faster but stick around longer to be eaten rotten 
+        spoil_modifier *= (get_relative_rot() <  1.75f ? 15.0f : 0.5f);
+
+    }
 
     if( now - time > 1_hours ) {
         // This code is for items that were left out of reality bubble for long time
@@ -12707,13 +12713,7 @@ bool item::process_temperature_rot( float insulation, const tripoint &pos, map &
             // Calculate item rot
             if( process_rot ) {
 
-                if(!carried && (flag == temperature_flag::NORMAL || flag == temperature_flag::HEATER) && get_map().has_field_at(pos, fd_sludge))
-                {
-                    //sludge field will make things rot faster but stick around longer to be eaten rotten 
-                    spoil_modifier *= (get_relative_rot() > 1.75f ? 5.0f : 0.5f);
-
-                }
-
+              
 
                 calc_rot( env_temperature, spoil_modifier, time_delta );
 
