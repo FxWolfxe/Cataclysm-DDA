@@ -97,6 +97,7 @@ static const json_character_flag json_flag_PRED2( "PRED2" );
 static const json_character_flag json_flag_PRED3( "PRED3" );
 static const json_character_flag json_flag_PRED4( "PRED4" );
 static const json_character_flag json_flag_STRICT_HUMANITARIAN( "STRICT_HUMANITARIAN" );
+static const json_character_flag json_flag_SAPROPHAGE("SAPROPHAGE"); 
 
 static const material_id material_all( "all" );
 
@@ -433,8 +434,12 @@ std::pair<int, int> Character::fun_for(const item& comest, bool ignore_already_a
     }
     // Rotten food should be pretty disgusting
     const float relative_rot = comest.get_relative_rot();
-    if (relative_rot > 1.0f && !has_trait(trait_SAPROPHAGE) && !has_trait(trait_SAPROVORE)) {
+    if (relative_rot > 1.0f && !has_trait(trait_SAPROPHAGE) && !has_trait(trait_SAPROVORE) && !has_trait(trait_SAPROPHAGE_ANIMAL)) {
         const float rottedness = clamp(2 * relative_rot - 2.0f, 0.1f, 1.0f);
+
+
+
+
         // Three effects:
         // penalty for rot goes from -2 to -20
         // bonus for tasty food drops from 90% to 0%
@@ -446,7 +451,16 @@ std::pair<int, int> Character::fun_for(const item& comest, bool ignore_already_a
         else {
             fun *= (1.0f + rottedness);
         }
-    }
+    }else if(has_trait(trait_SAPROPHAGE_ANIMAL)) //saprophages have the inverse relationship, they want more rotten food, inverse of the relationship above 
+    {
+        const float min_fun = std::min<float>(- 2, fun);
+        float max_adj_fun = std::max(fun * 0.75f, 0.0f);
+        //lerp between -2 and max_adjusted_fun for rotness, where rel_rotness is between [0,2]
+        const float t = clamp(relative_rot / 2, 0.0f, 1.0f); 
+        fun = lerp(min_fun, max_adj_fun, t); //rot fully rotten food cancel 
+
+        
+    }   
 
     // Food is less enjoyable when eaten too often.
     if (!ignore_already_ate && (fun > 0 || comest.has_flag(flag_NEGATIVE_MONOTONY_OK))) {
@@ -894,6 +908,7 @@ ret_val<edible_rating> Character::will_eat( const item &food, bool interactive )
     };
 
     const bool saprophage = has_trait( trait_SAPROPHAGE ) || has_trait(trait_SAPROPHAGE_ANIMAL);
+    const bool plant_saprophage = has_trait(trait_SAPROPHAGE ); 
     const auto &comest = food.get_comestible();
 
     if( food.rotten() ) {
@@ -929,7 +944,7 @@ ret_val<edible_rating> Character::will_eat( const item &food, bool interactive )
         add_consequence( _( "Your stomach won't be happy (allergy)." ), ALLERGY );
     }
 
-    if( saprophage && edible && food.rotten() && !food.has_flag( flag_FERTILIZER ) ) {
+    if(plant_saprophage && edible && food.rotten() && !food.has_flag( flag_FERTILIZER ) ) {
         // Note: We're allowing all non-solid "food". This includes drugs
         // Hard-coding fertilizer for now - should be a separate flag later
         //~ No, we don't eat "rotten" food. We eat properly aged food, like a normal person.
@@ -1059,7 +1074,7 @@ static bool eat( item &food, Character &you, bool force )
 
         if (chimera > 0.1f)
         {
-            you.vitamin_mod(vitamin_chimera, static_cast<int>(std::round(chimera * 1.15f))); 
+            you.vitamin_mod(vitamin_chimera, static_cast<int>(std::round(chimera * 0.25f))); 
         }
 
         accumulator = static_cast<int>(std::round(static_cast<float>(accumulator) * 0.25f + chimera * 1.25f)); 

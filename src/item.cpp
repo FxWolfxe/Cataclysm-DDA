@@ -12662,7 +12662,7 @@ bool item::process_temperature_rot( float insulation, const tripoint &pos, map &
 
         // Process the past of this item in 1h chunks until there is less than 1h left.
         time_duration time_delta = 1_hours;
-
+        
         while( now - time > 1_hours ) {
             time += time_delta;
 
@@ -12706,6 +12706,15 @@ bool item::process_temperature_rot( float insulation, const tripoint &pos, map &
 
             // Calculate item rot
             if( process_rot ) {
+
+                if(!carried && (flag == temperature_flag::NORMAL || flag == temperature_flag::HEATER) && get_map().has_field_at(pos, fd_sludge))
+                {
+                    //sludge field will make things rot faster but stick around longer to be eaten rotten 
+                    spoil_modifier *= (get_relative_rot() > 1.75f ? 5.0f : 0.5f);
+
+                }
+
+
                 calc_rot( env_temperature, spoil_modifier, time_delta );
 
                 if( has_rotten_away() && carrier == nullptr ) {
