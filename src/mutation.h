@@ -162,6 +162,13 @@ struct mutation_branch {
         bool purifiable = false;
         // True if it's a threshold itself, and shouldn't be obtained *easily* (False by default).
         bool threshold = false;
+
+        //  True if this is a metamorphoses, and shouldn't be given out easily 
+        bool morph = false; 
+
+        // True if this mutation is part of a category but shouldn't be given out during normal mutations 
+        bool restricted = false; 
+
         // True if this is a trait associated with professional training/experience, so profession/quest ONLY.
         bool profession = false;
         // True if the mutation is obtained through the debug menu
@@ -388,6 +395,7 @@ struct mutation_branch {
         std::vector<trait_id> prereqs; // Prerequisites; Only one is required
         std::vector<trait_id> prereqs2; // Prerequisites; need one from here too
         std::vector<trait_id> threshreq; // Prerequisites; dedicated slot to needing thresholds
+        std::vector<trait_id> morph_req; //Prerequisites; dedicated slot for morph 
         std::set<std::string> types; // Mutation types, you can't have two mutations that share a type
         std::vector<trait_id> cancels; // Mutations that conflict with this one
         std::vector<trait_id> replacements; // Mutations that replace this one

@@ -362,13 +362,15 @@ void mutation_branch::load( const JsonObject &jo, const std::string & )
 
     optional( jo, was_loaded, "bodytemp_sleep", bodytemp_sleep, 0 );
     optional( jo, was_loaded, "threshold", threshold, false );
+    optional( jo, was_loaded, "morph", morph, false);
+    optional( jo, was_loaded, "restricted", restricted, false);
     optional( jo, was_loaded, "profession", profession, false );
     optional( jo, was_loaded, "debug", debug, false );
-    optional(jo, was_loaded, "climbing_difficulty_modifier", climbing_difficulty_modifier, cata::nullopt); 
+    optional( jo, was_loaded, "climbing_difficulty_modifier", climbing_difficulty_modifier, cata::nullopt); 
     optional( jo, was_loaded, "player_display", player_display, true );
     optional( jo, was_loaded, "vanity", vanity, false );
     optional( jo, was_loaded, "dummy", dummy, false );
-    optional(jo, was_loaded, "faction_override", faction_override, mfaction_str_id::NULL_ID());
+    optional( jo, was_loaded, "faction_override", faction_override, mfaction_str_id::NULL_ID());
 
     for( JsonArray pair : jo.get_array( "vitamin_rates" ) ) {
         vitamin_rates.emplace( vitamin_id( pair.get_string( 0 ) ),
@@ -471,6 +473,7 @@ void mutation_branch::load( const JsonObject &jo, const std::string & )
     optional( jo, was_loaded, "prereqs", prereqs, trait_reader{} );
     optional( jo, was_loaded, "prereqs2", prereqs2, trait_reader{} );
     optional( jo, was_loaded, "threshreq", threshreq, trait_reader{} );
+    optional( jo, was_loaded, "morph_req", morph_req, trait_reader{});
     optional( jo, was_loaded, "cancels", cancels, trait_reader{} );
     optional( jo, was_loaded, "changes_to", replacements, trait_reader{} );
     optional( jo, was_loaded, "leads_to", additions, trait_reader{} );

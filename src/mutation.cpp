@@ -1008,6 +1008,8 @@ bool Character::mutation_ok( const trait_id &mutation, bool allow_good, bool all
         return false;
     }
 
+    if (mdata.restricted) return false; 
+
     static constexpr time_duration mutation_save_time = 3_days; 
 
     //check if there are ay recently added mutations that would get removed
