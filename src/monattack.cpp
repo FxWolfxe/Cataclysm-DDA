@@ -238,6 +238,11 @@ static const trait_id trait_PROF_SWAT( "PROF_SWAT" );
 static const trait_id trait_TAIL_CATTLE( "TAIL_CATTLE" );
 static const trait_id trait_THRESH_MARLOSS( "THRESH_MARLOSS" );
 static const trait_id trait_THRESH_MYCUS( "THRESH_MYCUS" );
+static const trait_id trait_THRESH_INSECT("THRESH_INSECT");
+
+//morphs
+static const trait_id trait_METAMORPHOSES_DERMATIK( "METAMORPHOSES_DERMATIK" );
+
 
 // shared utility functions
 static bool within_visual_range( monster *z, int max_range )
@@ -2329,6 +2334,15 @@ bool mattack::dermatik( monster *z )
     target->add_msg_if_player( m_bad, _( "The %1$s sinks its ovipositor into your %2$s!" ),
                                z->name(),
                                body_part_name_accusative( targeted ) );
+
+    //dermatik morph check
+    if(foe->can_morph_to(trait_METAMORPHOSES_DERMATIK) && dice(1, 20) == 20)
+    {
+        foe->mutate_towards(trait_METAMORPHOSES_DERMATIK); 
+        return true; //no eggs if they become a dermatik themselves 
+    }
+
+
     if( !foe->has_trait( trait_PARAIMMUNE ) && !foe->has_trait( trait_ACIDBLOOD ) ) {
         foe->add_effect( effect_dermatik, 1_turns, targeted, true );
         get_event_bus().send<event_type::dermatik_eggs_injected>( foe->getID() );

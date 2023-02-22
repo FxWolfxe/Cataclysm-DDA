@@ -1061,6 +1061,11 @@ bool Character::mutation_ok( const trait_id &mutation, bool allow_good, bool all
     }
 
 
+    if(!mdata.threshreq.empty() && threshold().is_valid() && !has_trait(trait_CHAOTIC))
+    {
+        if (std::find(mdata.threshreq.begin(), mdata.threshreq.end(), threshold()) == mdata.threshreq.end()) return false; //if they've already crossed a threshold that's not a threashreq don't bother considering it
+    }
+
     //check if there are ay recently added mutations that would get removed
     const auto& mutations_of_type = get_mutations_in_types(mdata.types);
     for(const auto& pair: mutation_chain_cooldown_cache)
@@ -2293,3 +2298,68 @@ std::string Character::visible_mutations( const int visibility_cap ) const
     } );
 }
 
+bool Character::can_be_morphed() const
+{
+    bool has_threshold = false, has_morph = false;
+    for(const auto& t: get_mutations())
+    {
+        has_threshold |= t->threshold; //cache the threshold(s) and morphs? 
+        has_morph |= t->morph; 
+    }
+    return has_threshold && !has_morph; 
+}
+
+bool Character::can_morph_to(const trait_id& morph) const
+{
+
+    if(!morph->morph)
+    {
+        debugmsg("trying to check if character can morph to %s but it isn't a morph!", morph.str()); 
+        return false; 
+    }
+
+    bool right_threshold = false, no_morph = false;
+    for (const auto& t : get_mutations())
+    {
+
+        if (t->morph) return false; //if we already have a morph don't bother checking anything else 
+
+        if(t->threshold)
+        {
+            right_threshold = std::find(morph->threshreq.begin(), morph->threshreq.end(), t) != morph->threshreq.end(); 
+            break; //can only have 1 threshold so don't bother checking others 
+        }
+    }
+
+    return right_threshold;
+}
+
+trait_id Character::threshold() const 
+{
+    if (threshold_cache.is_valid()) return threshold_cache; 
+    for(const auto& t: get_mutations())
+    {
+        if(t->threshold)
+        {
+            threshold_cache = t;
+            break; 
+        }
+    }
+    return threshold_cache; 
+
+}
+
+trait_id Character::morph() const
+{
+    if (threshold_cache.is_valid()) return threshold_cache;
+    for (const auto& t : get_mutations())
+    {
+        if (t->morph)
+        {
+            threshold_cache = t;
+            break;
+        }
+    }
+    return threshold_cache;
+
+}

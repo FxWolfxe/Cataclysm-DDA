@@ -2200,6 +2200,17 @@ class Character : public Creature, public visitable
         // tests only!
         void set_proficiency_practice( const proficiency_id &id, const time_duration &amount );
 
+        // if this character can accept a morph or not 
+        bool can_be_morphed() const; 
+
+        // if this character can 
+        bool can_morph_to(const trait_id& morph) const; 
+
+        trait_id threshold() const;
+
+        trait_id morph() const; 
+
+
         // --------------- Other Stuff ---------------
 
         /** return the calendar::turn the character expired */
@@ -3592,6 +3603,10 @@ class Character : public Creature, public visitable
         int pkill;
 
         int radiation;
+
+        mutable trait_id threshold_cache = trait_id::NULL_ID();
+        mutable trait_id morph_cache = trait_id::NULL_ID(); 
+
 
         std::vector<tripoint_bub_ms> auto_move_route;
         // Used to make sure auto move is canceled if we stumble off course
