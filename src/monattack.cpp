@@ -167,6 +167,10 @@ static const limb_score_id limb_score_reaction( "reaction" );
 
 static const matec_id tec_none( "tec_none" );
 
+
+static const vitamin_id mutagen_insect( "mutagen_insect" );
+
+
 static const material_id material_budget_steel( "budget_steel" );
 static const material_id material_ch_steel( "ch_steel" );
 static const material_id material_flesh( "flesh" );
@@ -237,6 +241,7 @@ static const trait_id trait_PROF_POLICE( "PROF_POLICE" );
 static const trait_id trait_PROF_SWAT( "PROF_SWAT" );
 static const trait_id trait_TAIL_CATTLE( "TAIL_CATTLE" );
 static const trait_id trait_THRESH_MARLOSS( "THRESH_MARLOSS" );
+static const trait_id trait_HORIZONTAL_GENE_TRANSFER( "HORIZONTAL_GENE_TRANSFER" );
 static const trait_id trait_THRESH_MYCUS( "THRESH_MYCUS" );
 static const trait_id trait_THRESH_INSECT("THRESH_INSECT");
 
@@ -2334,6 +2339,12 @@ bool mattack::dermatik( monster *z )
     target->add_msg_if_player( m_bad, _( "The %1$s sinks its ovipositor into your %2$s!" ),
                                z->name(),
                                body_part_name_accusative( targeted ) );
+
+    if(foe->has_trait(trait_HORIZONTAL_GENE_TRANSFER))
+    {
+        foe->vitamin_mod(mutagen_insect, 250);
+    }
+
 
     //dermatik morph check
     if(foe->can_morph_to(trait_METAMORPHOSES_DERMATIK) && dice(1, 20) == 20)

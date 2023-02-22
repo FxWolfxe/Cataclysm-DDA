@@ -2318,7 +2318,10 @@
   {
     "type": "effect_type",
     "id": "dermatik",
-    "blood_analysis_description": "Insect Parasite"
+    "blood_analysis_description": "Insect Parasite", 
+    "name":["dermatik"], 
+    "desc":["dermatik"], 
+    "rating":"bad"
   },
   {
     "type": "effect_type",

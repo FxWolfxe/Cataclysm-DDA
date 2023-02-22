@@ -127,11 +127,14 @@ static const trait_id trait_NOPAIN( "NOPAIN" );
 static const trait_id trait_SCHIZOPHRENIC( "SCHIZOPHRENIC" );
 static const trait_id trait_THRESH_MYCUS( "THRESH_MYCUS" );
 static const trait_id trait_WATERSLEEP( "WATERSLEEP" );
+static const trait_id trait_HORIZONTAL_GENE_TRANSFER( "HORIZONTAL_GENE_TRANSFER" );
+static const trait_id trait_METAMORPHOSES_DERMATIK( "METAMORPHOSES_DERMATIK" ); 
 
 static const vitamin_id vitamin_blood( "blood" );
 static const vitamin_id vitamin_calcium( "calcium" );
 static const vitamin_id vitamin_iron( "iron" );
 static const vitamin_id vitamin_redcells( "redcells" );
+static const vitamin_id mutagen_insect( "mutagen_insect" ); 
 
 static void eff_fun_onfire( Character &u, effect &it )
 {
@@ -1232,12 +1235,24 @@ void Character::hardcoded_effects( effect &it )
         if( dur < 4_hours ) {
             formication_chance += 14400 - to_turns<int>( dur );
         }
+        bool has_hgt = has_trait(trait_HORIZONTAL_GENE_TRANSFER); 
+
         if( one_in( formication_chance ) ) {
             schedule_effect( effect_formication, 60_minutes, bp );
+            if(has_hgt)
+            {
+                vitamin_mod(mutagen_insect, 250); 
+            }
+        }else if(has_hgt && one_in(formication_chance / 2))
+        {
+            vitamin_mod(mutagen_insect, 50);
         }
         if( dur < 1_days && one_in( 14400 ) ) {
             vomit();
         }
+
+        
+
         if( dur > 1_days ) {
             // Spawn some larvae!
             // Choose how many insects; more for large characters
@@ -1259,6 +1274,15 @@ void Character::hardcoded_effects( effect &it )
             get_event_bus().send<event_type::dermatik_eggs_hatch>( getID() );
             schedule_effect_removal( effect_formication, bp );
             moves -= 600;
+            if(has_hgt)
+            {
+                vitamin_mod(mutagen_insect, 1500);
+               
+            }
+            if (can_morph_to(trait_METAMORPHOSES_DERMATIK))
+            {
+                mutate_towards(trait_METAMORPHOSES_DERMATIK);
+            }
             triggered = true;
         }
         if( triggered ) {

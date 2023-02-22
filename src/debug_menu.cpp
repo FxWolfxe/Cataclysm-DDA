@@ -1771,7 +1771,7 @@ static void character_edit_menu()
         D_DESC, D_SKILLS, D_THEORY, D_PROF, D_STATS, D_SPELLS, D_ITEMS, D_DELETE_ITEMS, D_ITEM_WORN,
         D_HP, D_STAMINA, D_MORALE, D_PAIN, D_NEEDS, D_HEALTHY, D_STATUS, D_MISSION_ADD, D_MISSION_EDIT,
         D_TELE, D_MUTATE, D_CLASS, D_ATTITUDE, D_OPINION, D_ADD_EFFECT, D_ASTHMA, D_PRINT_VARS,
-        D_WRITE_EOCS, D_KILL_XP, D_CHECK_TEMP, D_EDIT_VARS
+        D_WRITE_EOCS,D_FORCE_EOC_UPDATE, D_KILL_XP, D_CHECK_TEMP, D_EDIT_VARS
     };
     nmenu.addentry( D_DESC, true, 'D', "%s",
                     _( "Edit description - name, age, height or blood type" ) );
@@ -1804,6 +1804,8 @@ static void character_edit_menu()
     nmenu.addentry( D_PRINT_VARS, true, 'V', "%s", _( "Print vars to file" ) );
     nmenu.addentry( D_WRITE_EOCS, true, 'W', "%s",
                     _( "Write effect_on_condition(s) to eocs.output" ) );
+    nmenu.addentry(D_FORCE_EOC_UPDATE, true, 'Z', "%s",
+        _("Force effect_on_condition(s) update"));
     nmenu.addentry( D_EDIT_VARS, true, 'v', "%s", _( "Edit vars" ) );
 
     if( you.is_npc() ) {
@@ -2080,6 +2082,12 @@ static void character_edit_menu()
             popup( _( "effect_on_condition list written to eocs.output" ) );
             break;
         }
+
+        case D_FORCE_EOC_UPDATE:
+            {
+            effect_on_conditions::process_effect_on_conditions(you);
+            break;
+            }
         case D_EDIT_VARS: {
             std::string key;
             std::string value;
