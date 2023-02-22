@@ -307,6 +307,46 @@ nutrients Character::compute_effective_nutrients( const item &comest ) const
     }
 }
 
+
+nutrients Character::compute_effective_gene_transfer(const item &comest) const
+{
+
+    if(!comest.is_comestible())
+    {
+        return {}; 
+    }
+
+    // if comest has components, will derive calories from that instead.
+    if (!comest.components.empty() && !comest.has_flag(flag_NUTRIENT_OVERRIDE)) {
+        nutrients tally{};
+        if (comest.recipe_charges == 0) {
+            // Avoid division by zero
+            return tally;
+        }
+        for (const item& component : comest.components) {
+            nutrients component_value =
+                compute_effective_gene_transfer(component) * component.charges;
+            if (component.has_flag(flag_BYPRODUCT)) {
+                tally -= component_value;
+            }
+            else {
+                tally += component_value;
+            }
+        }
+        return tally / comest.recipe_charges;
+    }
+    else {
+        nutrients ret_val;
+        for(const auto& pair: comest.get_comestible()->gene_transfer_map)
+        {
+            ret_val.vitamins[pair.first] = pair.second; 
+        }
+        return ret_val; 
+
+    }
+
+}
+
 // Calculate range of nutrients obtainable for a given item when crafted via
 // the given recipe
 std::pair<nutrients, nutrients> Character::compute_nutrient_range(
@@ -1055,37 +1095,7 @@ static bool eat( item &food, Character &you, bool force )
     }
 
 
-    if(you.has_trait(trait_HORIZONTAL_GENE_TRANSFER))
-    {
-        float chimera = 0; 
-        const auto& itr = food.get_comestible()->default_nutrition.vitamins.find(vitamin_mutant_toxin);
-        if (itr != food.get_comestible()->default_nutrition.vitamins.end())
-        {
-            chimera += itr->second; 
-        }
-
-
-        int accumulator = 0; 
-        for(const auto &pair: food.get_comestible()->gene_transfer_map)
-        {
-            accumulator += pair.second;
-            you.vitamin_mod(pair.first, pair.second); 
-        }
-
-        if (chimera > 0.1f)
-        {
-            you.vitamin_mod(vitamin_chimera, static_cast<int>(std::round(chimera * 0.25f))); 
-        }
-
-        accumulator = static_cast<int>(std::round(static_cast<float>(accumulator) * 0.25f + chimera * 1.25f)); 
-        
-        if(accumulator > 0)
-        {
-            
-            you.vitamin_mod(vitamin_mutagen, accumulator); 
-        }
-    }
-
+  
     if( !you.consume_effects( food ) ) {
         // Already consumed by using `food.type->invoke`?
         if( charges_used > 0 ) {
@@ -1646,6 +1656,41 @@ bool Character::consume_effects( item &food )
 
     // GET IN MAH BELLY!
     stomach.ingest( ingested );
+
+    if (has_trait(trait_HORIZONTAL_GENE_TRANSFER))
+    {
+        float chimera = 0;
+
+        nutrients gene_transfer = compute_effective_gene_transfer(food);
+
+        const auto& itr = food_nutrients.vitamins.find(vitamin_mutant_toxin);
+        if (itr != food_nutrients.vitamins.end())
+        {
+            chimera += itr->second;
+        }
+
+        int accumulator = 0;
+        for (const auto& pair : gene_transfer.vitamins)
+        {
+            accumulator += pair.second;
+            vitamin_mod(pair.first, pair.second);
+        }
+
+        if (chimera > 0.1f)
+        {
+            vitamin_mod(vitamin_chimera, static_cast<int>(std::round(chimera * 0.25f)));
+        }
+
+        accumulator = static_cast<int>(std::round(static_cast<float>(accumulator) * 0.25f + chimera * 1.25f));
+
+        if (accumulator > 0)
+        {
+
+            vitamin_mod(vitamin_mutagen, accumulator);
+        }
+    }
+
+
 
     // update speculative values
     get_avatar().add_ingested_kcal( ingested.nutr.calories / 1000 );
