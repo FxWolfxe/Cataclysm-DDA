@@ -1844,10 +1844,13 @@ std::string Character::get_category_dream( const mutation_category_id &cat,
         int strength ) const
 {
     std::vector<dream> valid_dreams;
+
+    trait_id m = morph(); 
+
     //Pull the list of dreams
     for( dream &i : dreams ) {
         //Pick only the ones matching our desired category and strength
-        if( ( i.category == cat ) && ( i.strength == strength ) ) {
+        if( ( i.category == cat ) && ( i.strength == strength ) && (!i.morph.is_valid() || i.morph == m)) {
             // Put the valid ones into our list
             valid_dreams.push_back( i );
         }

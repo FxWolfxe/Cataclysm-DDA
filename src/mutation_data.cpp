@@ -1042,6 +1042,7 @@ void dream::load( const JsonObject &jsobj )
     newdream.strength = jsobj.get_int( "strength" );
     jsobj.read( "category", newdream.category, true );
     jsobj.read( "messages", newdream.raw_messages );
+    optional(jsobj, newdream.was_loaded, "morph", newdream.morph);
 
     dreams.push_back( newdream );
 }

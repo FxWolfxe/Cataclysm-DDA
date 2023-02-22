@@ -40,12 +40,13 @@ extern std::map<mutation_category_id, std::vector<trait_id> > mutations_category
 struct dream {
     private:
         std::vector<translation> raw_messages; // The messages that the dream will give
-
+        bool was_loaded; 
     public:
         std::vector<std::string> messages() const;
 
         mutation_category_id category; // The category that will trigger the dream
         int strength; // The category strength required for the dream
+        trait_id morph = trait_id::NULL_ID(); 
 
         dream() {
             strength = 0;
