@@ -245,5 +245,12 @@
     "fear_triggers": [ "FIRE" ],
     "death_drops": { "groups": [ [ "shia_stuff", 1 ] ] },
     "flags": [ "SEES", "HEARS", "WARM", "BASHES", "POISON", "NO_BREATHE", "PATH_AVOID_DANGER_1", "PRIORITIZE_TARGETS", "FILTHY" ]
-  }
+  },
+  {
+      "id":"mon_zombie_nemesis", 
+      "type": "MONSTER",
+      "copy-from":"mon_zombie_nemesis",
+      "name":{"str": "relentless Shi LeHulk"},
+      "description":"Living in the woods,\nkilling for sport,\neating all the bodies--\nactual cannibal Shia LaBeouf."
+    }
 ]
