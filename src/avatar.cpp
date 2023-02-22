@@ -1124,13 +1124,12 @@ static const std::array<int, 20> xp_cutoffs = { {
         225000, 265000, 305000, 355000, 405000
     }
 };
-
+static constexpr float level_to_xp_const = 31.0f;
 int avatar::free_upgrade_points() const
 {
     int lvl = 0;
 
-    constexpr float xp_to_level_const = 31.0f;
-    lvl = static_cast<int>(std::sqrt(kill_xp / xp_to_level_const));
+    lvl = static_cast<int>(std::sqrt(kill_xp / level_to_xp_const));
     return std::max(0, lvl - spent_upgrade_points);
 
     //for( const int &xp_lvl : xp_cutoffs ) {
@@ -1148,12 +1147,10 @@ void avatar::upgrade_stat_prompt( const character_stat &stat )
     const int free_points = free_upgrade_points();
 
     if( free_points <= 0 ) {
-        const std::size_t lvl = spent_upgrade_points + free_points;
-        if( lvl >= xp_cutoffs.size() ) {
-            popup( _( "You've already reached maximum level." ) );
-        } else {
-            popup( _( "Needs %d more experience to gain next level." ), xp_cutoffs[lvl] - kill_xp );
-        }
+        const std::size_t lvl = spent_upgrade_points + free_points + 1;
+       
+        popup( _( "Needs %d more experience to gain next level." ), static_cast<int>(lvl * lvl * level_to_xp_const) - kill_xp );
+        
         return;
     }
 

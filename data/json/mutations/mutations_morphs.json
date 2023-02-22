@@ -15,5 +15,20 @@
         "morph":true,
         "restricted":true,
         "draw_override":"mon_human_snail"
+    }, 
+    { 
+        "type": "mutation", 
+        "id":"METAMORPHOSES_DERMATIK", 
+        "name": {"str": "Dermatik Mutant"}, 
+        "points": 0, 
+        "threshreq":["THRESH_INSECT"], 
+        "types":["METAMORPHOSES"], 
+        "description": "your body has adapted even further, integrating you into a dermatik hive.", 
+        "category":["INSECT"], 
+        "morph":true, 
+        "restricted":true, 
+        "purifiable":false,
+        "faction_override":"dermatik", 
+        "transformation_text":"as you're struck with by the dermatik your mutated body convulses and a splitting headache overtakes you as you shift further. It's subtle, but everything about you seems to shift, and as you look upon your attacker, you know you will always be one of them now"
     }
 ]
