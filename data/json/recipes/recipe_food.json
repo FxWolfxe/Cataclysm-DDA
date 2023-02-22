@@ -8499,7 +8499,7 @@
         [ "milk_powder", 1 ]
       ],
       [ [ "water", 1 ], [ "water_clean", 1 ] ],
-      [ [ "sugar", 5 ], [ "artificial_sweetener", 5 ] ]
+      [ [ "sugar", 5 ], [ "artificial_sweetener", 5 ], ["honeydew", 2] ]
     ]
   },
   {
@@ -8541,7 +8541,7 @@
     "time": "3 m",
     "charges": 8,
     "qualities": [ { "id": "CONTAIN", "level": 1 } ],
-    "components": [ [ [ "sugar", 10 ] ], [ [ "salt", 1 ] ], [ [ "water_clean", 8 ] ], [ [ "chem_baking_soda", 2 ] ] ]
+    "components": [ [ [ "sugar", 10 ], ["honeydew", 5] ], [ [ "salt", 1 ] ], [ [ "water_clean", 8 ] ], [ [ "chem_baking_soda", 2 ] ] ]
   },
   {
     "result": "oatmeal",
