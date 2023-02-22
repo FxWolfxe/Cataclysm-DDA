@@ -2076,9 +2076,28 @@
     "description": "Your vision has become particularly acute: you suspect you could pick out zombies much farther away.  Perception +4.",
     "types": [ "EYES" ],
     "prereqs": [ "PER_UP" , "PER_UP_2", "PER_UP_3" ],
+    "changes_to": "EAGLE_EYE",
     "threshreq": [ "THRESH_BIRD" ],
     "category": [ "BIRD" ],
     "passive_mods": { "per_mod": 4 }
+  },
+  {
+    "type": "mutation",
+    "id": "EAGLE_EYE",
+    "name": { "str": "Eagle Eyes" },
+    "points": 5,
+    "visibility": 1,
+    "description": "your eyes have changed further, even at extreme ranges you can pick out minute details, and you find yourself automatically honing in on the weakpoints on your targets",
+    "types": [ "EYES" ],
+    "prereqs": [ "PER_UP" , "PER_UP_2", "PER_UP_3" ],
+    "prereqs2": [ "BIRD_EYE" ],
+    "threshreq": [ "THRESH_BIRD" ],
+    "category": [ "BIRD" ],
+    "passive_mods": { "per_mod": 4 }, 
+    "enchantments":  
+    [
+       { "condition": "ALWAYS", "values": [ { "value": "WEAPON_DISPERSION", "multiply": -0.25 } ] } 
+    ]
   },
   {
     "type": "mutation",
