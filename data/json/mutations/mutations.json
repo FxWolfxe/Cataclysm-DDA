@@ -3778,7 +3778,7 @@
     "visibility": 1,
     "description": "The bottoms of your feet are strongly padded.  You receive no movement penalty for not wearing shoes, and even receive a 10% bonus when moving barefoot.",
     "types": [ "SOLES" ],
-    "category": [ "BATRACHIAN", "RABBIT", "URSINE", "FELINE", "LUPINE", "SPIDER" ],
+    "category": [ "BATRACHIAN", "RABBIT", "URSINE", "FELINE", "LUPINE", "SPIDER" , "BEAST"],
     "flags":["BAREFOOT_OK"]
   },
   {
@@ -4066,7 +4066,7 @@
     "description": "You seem to get full faster now, and food goes through you more rapidly as well.",
     "purifiable": false,
     "stomach_size_multiplier": 0.9,
-    "prereqs": [ "BEAK", "BEAK_PECK", "BEAK_HUM" ],
+    "prereqs": [ "BEAK", "BEAK_PECK", "BEAK_HUM", "BEAK_RAPTOR" ],
     "prereqs2": [ "LIGHTEATER" ],
     "threshreq": [ "THRESH_BIRD" ],
     "cancels": [ "GOURMAND" ],
@@ -6663,7 +6663,7 @@
     "mixed_effect": true,
     "description": "You have a beak for a mouth.  You can occasionally use it to peck at your enemies, but it is impossible for you to wear mouth gear.  Slightly reduces wet effects.",
     "types": [ "TEETH", "MUZZLE" ],
-    "changes_to": [ "BEAK_HUM", "BEAK_PECK" ],
+    "changes_to": [ "BEAK_HUM", "BEAK_PECK" , "BEAK_RAPTOR"],
     "category": [ "BIRD", "CEPHALOPOD" ],
     "wet_protection": [ { "part": "mouth", "ignored": 1 } ],
     "restricts_gear": [ "mouth" ],
@@ -6674,6 +6674,31 @@
       "body_part": "mouth",
       "chance": 15,
       "base_damage": { "damage_type": "stab", "amount": 15 }
+    }
+  }, {
+    "type": "mutation",
+    "id": "BEAK_RAPTOR",
+    "name": { "str": "Beak" },
+    "points": -3,
+    "visibility": 8,
+    "ugliness": 3,
+    "mixed_effect": true,
+    "description": "Your beak has changed shape, hardening and growing curved with sharp point; and it's edge looks sharp as a knife.",
+    "types": [ "TEETH", "MUZZLE" ],
+    "category": [ "BIRD" ],
+    "threshreq":["THRESH_BIRD"],
+    "wet_protection": [ { "part": "mouth", "ignored": 1 } ],
+    "restricts_gear": [ "mouth" ],
+    "destroys_gear": true,
+    "attacks": {
+      "attack_text_u": "You bite %s",
+      "attack_text_npc": "%1$s bites %2$s",
+      "body_part": "mouth",
+      "chance": 15,
+      "base_damage": [
+        { "damage_type": "cut", "amount": 15 }, 
+        { "damage_type": "stab", "amount": 5}
+      ]
     }
   },
   {
