@@ -1267,11 +1267,11 @@
       "hurt_min": [ 1 ],
       "hurt_max": [ 2 ],
       "hurt_chance": [ -22 ],
-      "hurt_tick": [ 50 ],
+      "hurt_tick": [ 450 ],
       "pain_min": [ 1 ],
       "pain_max": [ 2 ],
-      "pain_chance": [ 100 ],
-      "pain_tick": [ 125 ]
+      "pain_chance": [ 40 ],
+      "pain_tick": [ 75 ]
     },
     "scaling_mods": { "dex_mod": [ 1 ], "int_mod": [ -1.5 ], "hurt_chance": [ 21, 0 ], "pain_chance": [ -30 ] },
     "rating": "bad",
@@ -1299,7 +1299,7 @@
       "hurt_tick": [ 450 ],
       "pain_min": [ 1 ],
       "pain_max": [ 2 ],
-      "pain_chance": [ 100 ],
+      "pain_chance": [ 50 ],
       "pain_tick": [ 75 ]
     },
     "scaling_mods": {

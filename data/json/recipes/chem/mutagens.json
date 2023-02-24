@@ -913,7 +913,7 @@
     "skills_required": [ "firstaid", 3 ],
     "difficulty": 8,
     "time": "2 h",
-    "batch_time_factors": [ 20, 5 ],
+    "batch_time_factors": [ 80, 2 ],
     "book_learn": [ [ "recipe_chimera", 6 ] ],
     "using": [ [ "serum_production_standard", 37 ] ],
     "components": [ [ [ "mutagen_chimera", 1 ] ], [ [ "chimera_sample", 1 ] ] ],

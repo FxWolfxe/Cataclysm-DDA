@@ -2122,7 +2122,7 @@
     "social_modifiers": { "persuade": -1, "intimidate": 1 },
     "types": [ "EYES" ],
     "leads_to": [ "LIZ_IR" ],
-    "category": [ "LIZARD", "RAPTOR" ]
+    "category": [ "LIZARD", "RAPTOR", "CHIMERA" ]
   },
   {
     "type": "mutation",
@@ -4468,7 +4468,7 @@
     "description": "You have a long, thick, lizardlike tail.  It helps you balance a bit but also makes a serviceable whip.  Prevents wearing non-fabric pants.",
     "types": [ "TAIL" ],
     "prereqs": [ "TAIL_STUB" ],
-    "changes_to": [ "TAIL_CLUB" ],
+    "changes_to": [ "TAIL_CLUB", "TAIL_GATOR" ],
     "category": [ "LIZARD", "CHIMERA" ],
     "restricts_gear": [ "leg_hip_l", "leg_hip_r" ],
     "allowed_items": [ "ALLOWS_TAIL" ],
@@ -4478,6 +4478,32 @@
       "attack_text_npc": "%1$s whaps %2$s with their tail",
       "chance": 20,
       "base_damage": { "damage_type": "bash", "amount": 8 }
+    },
+    "dodge_modifier": 1
+  },
+  {
+    "type": "mutation",
+    "id": "TAIL_GATOR",
+    "name": { "str": "Gator Tail" },
+    "looks_like":"TAIL_THICK",
+    "points": 1,
+    "visibility": 8,
+    "ugliness": 2,
+    "description": "Your tail has lengthened, and sides flattened. A distinctive aligator tail, it's grown stronger and helps you swim considerably faster ",
+    "types": [ "TAIL" ],
+    "prereqs": [ "TAIL_THICK" ],
+    "category": [ "LIZARD" ],
+    "restricts_gear": [ "leg_hip_l", "leg_hip_r" ],
+    "allowed_items": [ "ALLOWS_TAIL" ],
+    "threshreq":["THRESH_LIZARD"],
+    "allow_soft_gear": true,
+    "movecost_swim_modifier":0.8,
+    "attacks": {
+      "attack_text_u": "You whap %s with your tail",
+      "attack_text_npc": "%1$s whaps %2$s with their tail",
+      "chance": 20,
+      "base_damage": { "damage_type": "bash", "amount": 8 }, 
+      "strength_damage": {"damage_type": "bash", "amount": 1}
     },
     "dodge_modifier": 1
   },
@@ -6781,7 +6807,7 @@
     "starting_trait":true,
     "cancels":["CHAOTIC", "CHAOTIC_BAD", "UNSTABLE"],
     "vitamins_absorb_multi": [ [ "all", [ [ "mutant_toxin", 1.75 ] ] ] ],
-    "vitamin_rates":[ [ "instability", 600 ], ["mutant_toxin", 500]]
+    "vitamin_rates":[ [ "instability", 600 ], ["mutant_toxin", 250]]
   },
   {
     "type": "mutation",
