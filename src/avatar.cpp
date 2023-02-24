@@ -1149,7 +1149,7 @@ void avatar::upgrade_stat_prompt( const character_stat &stat )
     if( free_points <= 0 ) {
         const std::size_t lvl = spent_upgrade_points + free_points + 1;
        
-        popup( _( "Needs %d more experience to gain next level." ), static_cast<int>(lvl * lvl * level_to_xp_const) - kill_xp );
+        popup( _( "Needs %d more experience to gain next level." ), static_cast<int>(lvl * lvl * level_to_xp_const ) - kill_xp );
         
         return;
     }
