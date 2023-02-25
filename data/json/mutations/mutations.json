@@ -3342,7 +3342,8 @@
     "description": "Your short stubby tail has grown and turned into a small abdomen, like on a bug",
     "types": [ "TAIL" ],
     "changes_to": [ "TAIL_STING",  "TAIL_SPIDER_ABDOMEN"],
-    "category": [ "SPIDER", "INSECT", "CHIMERA" ]
+    "category": [ "SPIDER", "INSECT", "CHIMERA" ], 
+    "looks_like":"TAIL_STUB"
   },
 
   {
@@ -3360,7 +3361,9 @@
     "threshreq": [ "THRESH_SPIDER" ], 
     "allowed_items": [ "ALLOWS_TAIL" ],
     "allow_soft_gear": true,
-    "restricts_gear": [ "leg_hip_l", "leg_hip_r" ]
+    "restricts_gear": [ "leg_hip_l", "leg_hip_r" ], 
+    "looks_like":"TAIL_STUB"
+
   },
   {
     "type": "mutation",
