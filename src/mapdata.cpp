@@ -10,6 +10,7 @@
 
 #include "assign.h"
 #include "calendar.h"
+#include "character.h"
 #include "color.h"
 #include "debug.h"
 #include "enum_conversions.h"
@@ -1440,7 +1441,7 @@ void ter_t::load( const JsonObject &jo, const std::string &src )
     optional( jo, was_loaded, "light_emitted", light_emitted );
     optional( jo, was_loaded, "floor_bedding_warmth", floor_bedding_warmth, 0 );
     optional( jo, was_loaded, "comfort", comfort, 0 );
-
+    optional(jo, was_loaded, "hardness", hardness, 20); 
     load_symbol( jo, "terrain " + id.str() );
 
     trap = tr_null;
@@ -1588,6 +1589,15 @@ void ter_t::check() const
             debugmsg( "ter %s has invalid emission %s set", id.c_str(), e.str().c_str() );
         }
     }
+}
+
+time_duration ter_t::get_minecost(const Character &miner, bool check_strength) const
+{
+    constexpr float hardness_to_minutes = 4;
+    const float str_bonus = std::sqrt((10.0f / std::max<float>(1, miner.get_arm_str())));
+    const float minutes = std::max<float>(2, hardness * hardness_to_minutes * ( check_strength ? str_bonus : 1.0f));
+    
+    return time_duration::from_minutes(minutes);
 }
 
 furn_t::furn_t() : open( furn_str_id::NULL_ID() ), close( furn_str_id::NULL_ID() ) {}

@@ -2453,8 +2453,14 @@ static bool mine_activity( Character &you, const tripoint_bub_ms &src_loc )
     if( chosen_item == nullptr ) {
         return false;
     }
+    const auto &mining_terrain = here.ter(src_loc); 
 
-    int moves = to_moves<int>( powered ? 30_minutes : 20_minutes );
+    time_duration base_time = mining_terrain->get_minecost(you, !powered);
+    if(powered)
+    {
+        base_time /= 1.5;
+    }
+    int moves = to_moves<int>( base_time);
     if( !powered ) {
         moves += ( ( MAX_STAT + 4 ) - std::min( you.get_arm_str(),
                                                 MAX_STAT ) ) * to_moves<int>( 5_minutes );

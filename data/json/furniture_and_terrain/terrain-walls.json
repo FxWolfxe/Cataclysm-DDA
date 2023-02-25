@@ -1185,6 +1185,7 @@
     "color": "cyan",
     "move_cost": 0,
     "coverage": 100,
+    "hardness": 27,
     "roof": "t_metal_flat_roof",
     "flags": [ "NOITEM", "SUPPORTS_ROOF", "WALL", "NO_SCENT", "AUTO_WALL_SYMBOL", "MINEABLE", "BLOCK_WIND" ],
     "oxytorch": {
@@ -2102,6 +2103,7 @@
     "coverage": 100,
     "flags": [ "NOITEM", "SUPPORTS_ROOF", "WALL", "NO_SCENT", "MINEABLE", "BLOCK_WIND" ],
     "roof": "t_dirt",
+    "hardness": 5,
     "bash": {
       "str_min": 100,
       "str_max": 400,
@@ -2123,6 +2125,7 @@
     "coverage": 100,
     "flags": [ "NOITEM", "SUPPORTS_ROOF", "WALL", "NO_SCENT", "MINEABLE", "BLOCK_WIND" ],
     "roof": "t_rock_floor_no_roof",
+    "hardness": 17,
     "bash": {
       "str_min": 100,
       "str_max": 400,

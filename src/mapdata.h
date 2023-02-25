@@ -602,6 +602,8 @@ struct ter_t : map_data_common_t {
     std::set<emit_id> emissions;
     std::set<itype_id> allowed_template_id;
 
+    int hardness = 20; //how hard it is to mine through, 10 corresponds to 10 minutes to mine through with standard strength with a pickaxe 
+
     ter_t();
 
     static size_t count();
@@ -610,6 +612,14 @@ struct ter_t : map_data_common_t {
 
     void load( const JsonObject &jo, const std::string &src ) override;
     void check() const override;
+
+    /**
+     * \brief get the cost in time_duration it takes to mine this piece of terrain with a standard pickaxe 
+     * \param miner the character mining the terrain 
+     * \return the time it takes to mine through this piece of terrain 
+     */
+    time_duration get_minecost(const Character &miner, bool check_strength = true) const;
+
 };
 
 void set_ter_ids();
