@@ -13779,9 +13779,9 @@ bool item::is_bp_comfortable( const T &bp ) const
 {
     // overrides for the item overall
     // NO_WEAR_EFFECT is there for jewelry and the like which is too small to be considered
-    if( has_flag( flag_SOFT ) || has_flag( flag_PADDED ) || has_flag( flag_NO_WEAR_EFFECT ) ) {
+    if( has_flag( flag_SOFT ) || has_flag( flag_PADDED ) || has_flag( flag_NO_WEAR_EFFECT ) || has_flag(flag_INTEGRATED)) {
         return true;
-    } else if( has_flag( flag_HARD ) && !has_flag(flag_INTEGRATED)) {
+    } else if( has_flag( flag_HARD )) {
         return false;
     }
 
