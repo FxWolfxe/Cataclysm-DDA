@@ -35,10 +35,35 @@
         "id": "genetic_duplication", 
         "type": "requirement",
         "tools": [ 
-         [["electric_pcr_machine", 10]]
+         [["electric_pcr_machine", 5]]
         ],
         "components":[
-            [["raw_genetic_material", 10]]
+            [["raw_genetic_material", 3]]
+        ]
+      }, 
+      { 
+        "id": "iv_duplication", 
+        "type": "requirement",
+        "tools": [ 
+         [["electric_pcr_machine", 5]]
+        ],
+        "components":[
+            [["raw_genetic_material", 15]], 
+            [["mutagen", 5]]
+        ]
+      }, 
+      { 
+        "id": "mutagen_sources_req", 
+        "type":"requirement", 
+        "components":[ 
+            [
+                [ "tallow_tainted", 2 ],
+                [ "meat_tainted", 3 ],
+                [ "dry_meat_tainted", 3 ],
+                [ "fetus", 1 ],
+                [ "arm", 2 ],
+                [ "leg", 2 ]
+              ]
         ]
       }
 ]

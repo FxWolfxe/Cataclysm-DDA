@@ -40,7 +40,7 @@
     "addiction_potential": 6,
     "container": "test_tube",
     "tool": "syringe",
-    "flags": [ "NO_INGEST", "MUTAGEN_PRIMER" ]
+    "flags": [ "NO_INGEST", "MUTAGEN_PRIMER", "NUTRIENT_OVERRIDE" ]
   },
   {
     "id": "iv_mutagen",
@@ -74,7 +74,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the alpha mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_alpha", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_alpha", 660, 1200 ] ]
     }
   },
   {
@@ -89,7 +89,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the beast mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_beast", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_beast", 660, 1200 ] ]
     }
   },
   {
@@ -104,7 +104,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the bird mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_bird", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_bird", 660, 1200 ] ]
     }
   },
   {
@@ -119,7 +119,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the cattle mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_cattle", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_cattle", 660, 1200 ] ]
     }
   },
   {
@@ -134,7 +134,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the cephalopod mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_cephalopod", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_cephalopod", 660, 1200 ] ]
     }
   },
   {
@@ -153,7 +153,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the chimera mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_chimera", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_chimera", 660, 1200 ] ]
     }
   },
   {
@@ -169,7 +169,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the Elf-A mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_elfa", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_elfa", 660, 1200 ] ]
     }
   },
   {
@@ -184,7 +184,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the feline mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_feline", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_feline", 660, 1200 ] ]
     }
   },
   {
@@ -199,7 +199,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the fish mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_fish", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_fish", 660, 1200 ] ]
     }
   },
   {
@@ -214,7 +214,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the insect mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_insect", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_insect", 660, 1200 ] ]
     }
   },
   {
@@ -229,7 +229,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the lizard mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_lizard", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_lizard", 660, 1200 ] ]
     }
   },
   {
@@ -244,7 +244,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the lupine mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_lupine", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_lupine", 660, 1200 ] ]
     }
   },
   {
@@ -261,7 +261,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the medical mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_medical", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_medical", 660, 1200 ] ]
     }
   },
   {
@@ -276,7 +276,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the plant mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_plant", 550, 650 ] ]
+      "vitamins": [ [ "mutagen_plant", 660, 1200 ] ]
     }
   },
   {
@@ -292,7 +292,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the raptor mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_raptor", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_raptor", 660, 1200 ] ]
     }
   },
   {
@@ -307,7 +307,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the rat mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_rat", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_rat", 660, 1200 ] ]
     }
   },
   {
@@ -322,7 +322,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the slime mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_slime", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_slime", 660, 1200 ] ]
     }
   },
   {
@@ -337,7 +337,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the spider mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_spider", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_spider", 660, 1200 ] ]
     }
   },
   {
@@ -352,7 +352,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the snail mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_gastropod", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_gastropod", 660, 1200 ] ]
     }
   },
   {
@@ -367,7 +367,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the batrachian mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_batrachian", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_batrachian", 660, 1200 ] ]
     }
   },
   {
@@ -382,7 +382,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the troglobite mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_troglobite", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_troglobite", 660, 1200 ] ]
     }
   },
   {
@@ -397,7 +397,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the ursine mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_ursine", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_ursine", 660, 1200 ] ]
     }
   },
   {
@@ -412,7 +412,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the mouse mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_mouse", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_mouse", 660, 1200 ] ]
     }
   },
   {
@@ -426,7 +426,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the rabbit mutagenic primer.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_rabbit", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_rabbit", 660, 1200 ] ]
     }
   },
   {
@@ -789,7 +789,7 @@
       "type": "consume_drug",
       "activation_message": "You inject the processed purifier.",
       "tools_needed": { "syringe": -1 },
-      "vitamins": [ [ "mutagen_human", 450, 550 ] ]
+      "vitamins": [ [ "mutagen_human", 660, 1200 ] ]
     }
   },
   {

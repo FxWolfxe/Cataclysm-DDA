@@ -1,4 +1,57 @@
 [ 
+   { 
+      "type": "recipe",
+      "result": "raw_genetic_material", 
+      "id_suffix": "from_meat",
+      "batch_time_factors": [55, 10],
+      "skill_used": "chemistry", 
+      "category": "CC_CHEM",
+      "subcategory": "CSC_CHEM_MUTAGEN",
+      "activity_level":"NO_EXERCISE",
+      "difficulty": 5,
+      "proficiencies": [  
+          { 
+           "proficiency":"prof_organic_chemistry", 
+           "time_multiplier":1.6,
+           "fail_multiplier":1.3
+          }, 
+          { 
+           "proficiency":"prof_intro_chemistry", 
+           "time_multiplier":1.1,
+           "fail_multiplier":1.01
+          }
+      ],
+      "book_learn":{ 
+          "recipe_labchem": { 
+              "skill_level":5
+          }, 
+          "recipe_maiar": { 
+              "skill_level":5
+          }, 
+          "recipe_serum": { 
+              "skill_level":5
+          }, 
+          "adv_chemistry": { 
+              "skill_level": 6
+          }
+      },
+      "time":"15 m",
+      "tools": 
+      [ 
+          [["electric_pcr_machine", 10]]
+
+      ],
+      "using": 
+      [ 
+         ["mutagen_sources_req", 3], 
+         [ "mutagen_production_standard", 15 ]
+      ],
+      "components":
+      [
+         [ [ "bleach", 1 ], [ "oxy_powder", 100 ] ],
+         [ [ "ammonia_liquid", 1 ], [ "lye_powder", 50 ] ]
+      ]
+   }, 
  { 
     "type": "recipe",
     "result": "raw_genetic_material", 
@@ -18,6 +71,11 @@
          "proficiency":"prof_organic_chemistry", 
          "time_multiplier":2.6,
          "fail_multiplier":1.3
+        }, 
+        { 
+         "proficiency":"prof_intro_chemistry", 
+         "time_multiplier":1.1,
+         "fail_multiplier":1.01
         }
     ],
     "book_learn":{ 
@@ -264,6 +322,197 @@
     "components": [
         [["alpha_sample", 1]]
     ]
+ },
+ { 
+   "type": "recipe", 
+   "id_suffix": "iv_duplication", 
+   "result": "iv_mutagen_beast", 
+   "using": [["iv_duplication", 1]], 
+   "batch_time_factors": [55, 10],
+   "skill_used": "chemistry", 
+   "category": "CC_CHEM",
+   "subcategory": "CSC_CHEM_MUTAGEN",
+   "activity_level":"NO_EXERCISE",
+   "difficulty": 5,
+   "proficiencies": [ 
+       { 
+           "proficiency":"prof_biochemistry",
+           "time_multiplier":2.0,
+           "fail_multiplier":1.5
+       }
+   ],
+   "book_learn":{ 
+       "recipe_labchem": { 
+           "skill_level":5
+       }, 
+       "recipe_maiar": { 
+           "skill_level":5
+       }, 
+       "recipe_serum": { 
+           "skill_level":5
+       }, 
+       "adv_chemistry": { 
+           "skill_level": 6
+       }
+   },
+   "time":"15 m", 
+   "result_mult":2, 
+   "components": [ 
+      [["iv_mutagen_beast", 1]]
+   ] 
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_alpha",
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_alpha", 1]]],
+   "id_suffix": "iv_duplication"
+ }, 
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_bird",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_bird", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_cattle",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_cattle", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_cephalopod",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_cephalopod", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_chimera",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_chimera", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_elfa",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_elfa", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_feline",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_feline", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_fish",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_fish", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_insect",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_insect", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_lizard",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_lizard", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_lupine",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_lupine", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_medical",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_medical", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_plant",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_plant", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_raptor",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_raptor", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_rat",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_rat", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_slime",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_slime", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_spider",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_spider", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_snail",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_snail", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_batrachian",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_batrachian", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_troglobite",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_troglobite", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_ursine",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_ursine", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_rabbit",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_rabbit", 1]]]
  }
- 
 ]

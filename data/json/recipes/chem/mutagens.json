@@ -9,6 +9,7 @@
     "skills_required": [ "firstaid", 1 ],
     "difficulty": 6,
     "time": "45 m",
+    "result_mult":2,
     "batch_time_factors": [ 80, 20 ],
     "book_learn": [
       [ "recipe_creepy", 6 ],

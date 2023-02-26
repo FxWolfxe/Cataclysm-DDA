@@ -4398,5 +4398,41 @@
       "batrachian_sample_duplication",
       "alpha_sample_duplication"
      ]
+  }, 
+  {
+    "id": "nested_iv_mutagen_mutagen_iv_duplication",
+    "type": "nested_category",
+    "activity_level": "NO_EXERCISE",
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_MUTAGEN",
+    "name": "mutagen primer duplication",
+    "description": "duplicating mutagen samples with a pcr machine",
+    "skill_used": "chemistry",
+    "nested_category_data": [
+      "iv_mutagen_ursine_iv_duplication",
+      "iv_mutagen_troglobite_iv_duplication",
+      "iv_mutagen_spider_iv_duplication",
+      "iv_mutagen_slime_iv_duplication",
+      "iv_mutagen_rat_iv_duplication",
+      "iv_mutagen_rabbit_iv_duplication",
+      "iv_mutagen_plant_iv_duplication",
+      "iv_mutagen_mouse_iv_duplication",
+      "iv_mutagen_medical_iv_duplication",
+      "iv_mutagen_lupine_iv_duplication",
+      "iv_mutagen_insect_iv_duplication",
+      "iv_mutagen_human_iv_duplication",
+      "iv_mutagen_gastropod_iv_duplication",
+      "iv_mutagen_fish_iv_duplication",
+      "iv_mutagen_feline_iv_duplication",
+      "iv_mutagen_elfa_iv_duplication",
+      "iv_mutagen_chimera_iv_duplication",
+      "iv_mutagen_cephalopod_iv_duplication",
+      "iv_mutagen_cattle_iv_duplication",
+      "iv_mutagen_bird_iv_duplication",
+      "iv_mutagen_beast_iv_duplication",
+      "iv_mutagen_batrachian_iv_duplication",
+      "iv_mutagen_alpha_iv_duplication"
+     ]
   }
+  
 ]
