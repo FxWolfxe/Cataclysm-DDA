@@ -2509,6 +2509,9 @@ void options_manager::add_options_world_default()
          14, 127, 91
        );
 
+    add("PLANT_GROWTH_SPEED", "world_default", to_translation("Plat growth speed"), to_translation("multiplier for how fast plants grow"),
+        1, 2000, 100); 
+
     add( "CONSTRUCTION_SCALING", "world_default", to_translation( "Construction scaling" ),
          to_translation( "Sets the time of construction in percents.  '50' is two times faster than default, '200' is two times longer.  '0' automatically scales construction time to match the world's season length." ),
          0, 1000, 100
