@@ -3723,7 +3723,7 @@
     "visibility": 2,
     "ugliness": 2,
     "changes_to":["SPIDER_EYES_GOOD"],
-    "description": "You have grown 2 smaller eyes next to your normal ones. you're brain can barely make sense of the information they're feeding you, and it's quite distracting",
+    "description": "You have grown 2 smaller eyes next to your normal ones. Your brain can barely make sense of the information they're feeding you, and it's quite distracting",
     "types": [ "EYES" ],
     "category": [ "SPIDER" ],
     "passive_mods":{"per_mod":-1}
@@ -3738,7 +3738,7 @@
     "prereqs":["SPIDER_EYES_BAD"],
     "visibility": 8,
     "ugliness": 5,
-    "description": "You're 'extra' eyes have fully matured and your original pair have turned black to match them, giving you 4 black spider eyes. You're more preceptive but can't wear eye gear",
+    "description": "Your 'extra' eyes have fully matured and your original pair have turned black to match them, giving you 4 black spider eyes. You're more preceptive but can't wear eye gear",
     "types": [ "EYES" ],
     "category": [ "SPIDER" ],
     "restricts_gear":[ "eyes" ], 
