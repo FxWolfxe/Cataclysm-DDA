@@ -3815,11 +3815,27 @@
     "id": "PADDED_FEET",
     "name": { "str": "Padded Feet" },
     "points": 1,
-    "changes_to":["FOOT_PAWS"],
+    "changes_to":["FOOT_PAWS", "BAT_FEET"],
     "visibility": 1,
     "description": "The bottoms of your feet are strongly padded.  You receive no movement penalty for not wearing shoes, and even receive a 10% bonus when moving barefoot.",
     "types": [ "SOLES" ],
     "category": [ "BATRACHIAN", "RABBIT", "URSINE", "FELINE", "LUPINE", "SPIDER" , "BEAST"],
+    "flags":["BAREFOOT_OK"]
+  },
+  {
+    "type": "mutation",
+    "id": "BAT_FEET",
+    "name": { "str": "Grasping Feet" },
+    "points": 1,
+    "visibility": 1,
+    "mixed_effect":true,
+    "prereqs": [ "PADDED_FEET" ],
+    "description": "Your feet have reshaped further, toes lengthening and becoming more dexterous, as well as tipped with long claws. You an almost hold things in them. You can't fit them in shoes or boots anymore, but they help quite a bit with climbing",
+    "types": [ "SOLES" ],
+    "category": [ "BEAST" ],
+    "climbing_difficulty_modifier":0.6,
+    "restricts_gear":[ "foot_l", "foot_r", "foot_sole_l", "foot_sole_l", "foot_toes_l", "foot_toes_r"],
+    "allow_soft_gear":true,
     "flags":["BAREFOOT_OK"]
   },
   {
@@ -6065,6 +6081,7 @@
     "name": { "str": "Large Bat Wings" },
     "points": -5,
     "visibility": 9,
+    "looks_like":"WINGS_BAT",
     "ugliness": 4,
     "description": "Your wings have grown larger still, and they feel more natural on your back. They still get in your way, alot, but you can use them to break your fall, from any height",
     "types": [ "WINGS" ],
@@ -6779,7 +6796,25 @@
     "prereqs": [ "CLAWS", "CLAWS_RETRACT", "CLAWS_RAT" ],
     "cancels": [ "TALONS" ],
     "changes_to": [ "PAWS_LARGE" ],
-    "category": [ "LUPINE", "RAT", "FELINE", "BEAST", "URSINE" ]
+    "category": [ "LUPINE", "RAT", "FELINE", "URSINE" ]
+  },
+  {
+    "type": "mutation",
+    "id": "PAWS_BAT",
+    "name": { "str": "Grasping Paws" },
+    "points": -3,
+    "visibility": 3,
+    "ugliness": 2,
+    "mixed_effect": true,
+    "description": "Your hands have altered further, fingers strenghtening and elongating, and now tipped with long wicked claws. You can't wear normal gloves anymore but climbing is easier, and those claws can do some serious damage",
+    "encumbrance_always": [ [ "hand_l", 10 ], [ "hand_r", 10 ] ],
+    "restricts_gear": [ "hand_l", "hand_r" ],
+    "craft_skill_bonus": [ [ "electronics", -2 ], [ "tailor", -2 ], [ "mechanics", -2 ] ],
+    "types": [ "HANDS" ],
+    "prereqs": [ "CLAWS"],
+    "cancels": [ "TALONS" ],
+    "climbing_difficulty_modifier":0.8,
+    "category": [ "BEAST" ]
   },
   {
     "type": "mutation",
@@ -6806,7 +6841,7 @@
     "types": [ "HANDS" ],
     "prereqs": [ "PAWS" ],
     "cancels": [ "TALONS" ],
-    "category": [ "BEAST", "URSINE" ]
+    "category": [ "URSINE" ]
   },
   {
     "type": "mutation",
