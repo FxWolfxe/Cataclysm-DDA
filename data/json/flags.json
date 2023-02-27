@@ -1682,6 +1682,10 @@
     "id": "SMOKABLE",
     "type": "json_flag"
   },
+  { 
+    "id": "BLOOD", 
+    "type":"json_flag"
+  },
   {
     "id": "SMOKED",
     "type": "json_flag"

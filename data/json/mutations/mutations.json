@@ -2215,8 +2215,8 @@
     "ugliness": 2,
     "description": "Your teeth have grown into two-inch-long fangs, allowing you to make an extra attack when conditions favor it.",
     "types": [ "TEETH" ],
-    "changes_to": [ "SABER_TEETH", "SHARKTEETH" ],
-    "category": [ "LIZARD", "FISH", "LUPINE", "FELINE", "CHIMERA" ],
+    "changes_to": [ "SABER_TEETH", "SHARKTEETH" , "BAT_FANGS"],
+    "category": [ "LIZARD", "FISH", "LUPINE", "FELINE", "CHIMERA", "BEAST" ],
     "attacks": [
       {
         "attack_text_u": "You sink your fangs into %s",
@@ -2233,6 +2233,44 @@
         "body_part": "mouth",
         "chance": 18,
         "base_damage": { "damage_type": "stab", "amount": 20 }
+      },
+      {
+        "attack_text_u": "You sink your fangs into %s",
+        "attack_text_npc": "%1$s sinks their fangs into %2$s",
+        "required_mutations": [ "MUZZLE_LONG" ],
+        "body_part": "mouth",
+        "chance": 15,
+        "base_damage": { "damage_type": "stab", "amount": 20 }
+      },
+      {
+        "attack_text_u": "You sink your fangs into %s",
+        "attack_text_npc": "%1$s sinks their fangs into %2$s",
+        "required_mutations": [ "MUZZLE_RAT" ],
+        "body_part": "mouth",
+        "chance": 19,
+        "base_damage": { "damage_type": "stab", "amount": 20 }
+      }
+    ]
+  },
+  {
+    "type": "mutation",
+    "id": "BAT_FANGS",
+    "name": { "str": "Long Fangs" },
+    "points": 2,
+    "visibility": 2,
+    "ugliness": 2,
+    "description": "Your fangs have grown even longer and sharper, capable of inflicting terrible puncture wounds in your prey",
+    "types": [ "TEETH" ],
+    "category": ["BEAST"],
+    "attacks": [
+
+      {
+        "attack_text_u": "You sink your fangs into %s",
+        "attack_text_npc": "%1$s sinks their fangs into %2$s",
+        "required_mutations": [ "MUZZLE" ],
+        "body_part": "mouth",
+        "chance": 28,
+        "base_damage": { "damage_type": "stab", "amount": 23 }
       },
       {
         "attack_text_u": "You sink your fangs into %s",
@@ -4021,6 +4059,26 @@
     "category": [ "TROGLOBITE" ],
     "passive_mods": { "str_mod": 2, "dex_mod": -2 }
   },
+  { 
+    "type":"mutation", 
+    "id": "HEMOVORE", 
+    "name": {"str":"Hemovore"}, 
+    "description":"Your digestive system is altered to be especially good at digesting blood", 
+    "changes_to":["HEMOPHAGE"],
+    "points":1, 
+    "category":["BEAST"]
+  }, 
+  { 
+    "type": "mutation",
+    "points":0, 
+    "mixed_effect":true, 
+    "id": "HEMOPHAGE", 
+    "description":"Your digestive system has become speciallized in digesting blood, you gain more calories and vitamins from blood or things containing it, but less from other sources",
+    "name":{"str":"Hemophage"},
+    "category":["BEAST"], 
+    "threshreq":["THRESH_BEAST"]
+  
+  },
   {
     "type": "mutation",
     "id": "SAPROVORE",
@@ -4343,8 +4401,20 @@
     "ugliness": 2,
     "description": "You have a short, stubby tail, like a rabbit's.  It serves no purpose.",
     "types": [ "TAIL" ],
-    "changes_to": [ "TAIL_LONG",  "TAIL_THICK", "TAIL_FIN", "TAIL_RAT", "TAIL_RAPTOR" , "TAIL_INTERMEDIAT_ABDOMEN", "TAIL_BIRD"],
+    "changes_to": [ "TAIL_LONG",  "TAIL_THICK", "TAIL_FIN", "TAIL_RAT", "TAIL_RAPTOR" , "TAIL_INTERMEDIAT_ABDOMEN", "TAIL_BIRD", "TAIL_BAT"],
     "category": [ "BIRD", "URSINE", "FELINE", "LIZARD", "FISH", "RAT", "MOUSE", "RAPTOR", "LUPINE", "INSECT", "SPIDER" ,"CATTLE", "CHIMERA", "BEAST" ]
+  },
+  { 
+    "type":"mutation", 
+    "id":"TAIL_BAT", 
+    "name":{"str": "Stubby Bat Tail"}, 
+    "points": 0, 
+    "visibility":1, 
+    "prereqs":["TAIL_STUB"],
+    "ugliness":2,
+    "looks_like":"TAIL_STUB",
+    "description":"Your tail has lengthened, and looks very batty. it's functionally useless but you can't help but like the feel of it", 
+    "category":["BEAST"] 
   },
   { 
     "type": "mutation",
@@ -5141,7 +5211,7 @@
     "ugliness": 1,
     "description": "Your ears have extended into long, pointed ones, like those of a canine.  They enhance your hearing, allowing you to hear at greater distances.",
     "types": [ "EARS" ],
-    "category": [ "BEAST", "CATTLE", "CHIMERA", "LUPINE" ],
+    "category": [ "CATTLE", "CHIMERA", "LUPINE" ],
     "changes_to": [ "LUPINE_EARS" ],
     "hearing_modifier": 1.5
   },
@@ -5156,6 +5226,19 @@
     "types": [ "EARS" ],
     "category": [ "LUPINE" ],
     "hearing_modifier": 1.75
+  },
+  {
+    "type": "mutation",
+    "id": "BAT_EARS",
+    "name": { "str": "Bat Ears" },
+    "points": 1,
+    "visibility": 4,
+    "ugliness": 1,
+    "description": "Your ears have extended into very large pointy ears that dominate your head, making you look very bat like",
+    "types": [ "EARS" ],
+    "category": [ "BEAST" ],
+    "hearing_modifier": 1.75, 
+    "looks_like":"LUPINE_EARS"
   },
   {
     "type": "mutation",
@@ -5969,10 +6052,28 @@
     "ugliness": 4,
     "description": "You have a pair of large, leathery wings.  You can move them a little, but they are useless, and in fact put you off balance, reducing your ability to dodge slightly.",
     "types": [ "WINGS" ],
+    "changes_to":["WINGS_BAT_LARGE"], 
     "prereqs": [ "WINGS_STUB" ],
     "category": [ "BEAST" , "CHIMERA"],
     "threshreq": [ "THRESH_BEAST", "THRESH_CHIMERA" ],
     "dodge_modifier": -2
+  
+  },
+  { 
+    "type": "mutation",
+    "id": "WINGS_BAT_LARGE",
+    "name": { "str": "Large Bat Wings" },
+    "points": -5,
+    "visibility": 9,
+    "ugliness": 4,
+    "description": "Your wings have grown larger still, and they feel more natural on your back. They still get in your way, alot, but you can use them to break your fall, from any height",
+    "types": [ "WINGS" ],
+    "prereqs": [ "WINGS_BAT" ],
+    "category": [ "BEAST" ],
+    "threshreq": [ "THRESH_BEAST" ],
+    "dodge_modifier": -2,
+    "flags":["WINGS_2"]
+  
   },
   {
     "type": "mutation",
@@ -6145,7 +6246,8 @@
       "MUZZLE_BEAR",
       "MUZZLE_LONG",
       "MUZZLE_RAT",
-      "RABBIT_NOSE"
+      "RABBIT_NOSE", 
+      "BAT_MUZZLE"
     ],
     "category": [ "BIRD", "FISH" ,"CEPHALOPOD", "FELINE", "INSECT", "RAPTOR", "CATTLE", "BEAST", "LUPINE", "URSINE", "LIZARD", "RAT", "RABBIT", "MOUSE" , "CHIMERA"]
   },
@@ -6188,9 +6290,33 @@
     "description": "Your jaw and nose have extended into a wolfish muzzle.  It lends itself to biting in combat and looks impressive, but prevents wearing mouthgear.",
     "types": [ "MUZZLE" ],
     "prereqs": [ "SNOUT" ],
-    "category": [ "BEAST", "LUPINE" , "CHIMERA"],
+    "category": [ "LUPINE" , "CHIMERA"],
     "restricts_gear": [ "mouth" ],
     "social_modifiers": { "intimidate": 6 },
+    "attacks": {
+      "attack_text_u": "You nip at %s",
+      "attack_text_npc": "%1$s nips and harries %2$s",
+      "blocker_mutations": [ "FANGS" ],
+      "body_part": "mouth",
+      "chance": 18,
+      "base_damage": { "damage_type": "cut", "amount": 4 }
+    }
+  },
+  {
+    "type": "mutation",
+    "id": "BAT_MUZZLE",
+    "name": { "str": "Bat Muzzle" },
+    "points": -2,
+    "visibility": 5,
+    "ugliness": 4,
+    "mixed_effect": true,
+    "description": "Your jaw and nose have extended into long pointy bat muzzle.  It lends itself to biting in combat and looks impressive, but prevents wearing mouthgear.",
+    "types": [ "MUZZLE" ],
+    "prereqs": [ "SNOUT" ],
+    "category": [ "BEAST"],
+    "restricts_gear": [ "mouth" ],
+    "social_modifiers": { "intimidate": 6 },
+    "looks_like":"MUZZLE",
     "attacks": {
       "attack_text_u": "You nip at %s",
       "attack_text_npc": "%1$s nips and harries %2$s",

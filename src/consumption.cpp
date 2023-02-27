@@ -154,9 +154,15 @@ static const trait_id trait_PRED2( "PRED2" );
 static const trait_id trait_PRED1( "PRED1" ); 
 static const trait_id trait_PACK_HUNTER("PACK_HUNTER"); 
 static const trait_id trait_HORIZONTAL_GENE_TRANSFER("HORIZONTAL_GENE_TRANSFER");
+static const trait_id trait_HEMOVORE( "HEMOVORE" );
+static const trait_id trait_HEMOPHAGE( "HEMOPHAGE" );
+static const vitamin_id vitamin_mutagen( "mutagen" );
 
 
-static const vitamin_id vitamin_mutagen( "mutagen" ); 
+static const vitamin_id vitamin_vitc("vitC");
+static const vitamin_id vitamin_iron("iron");
+static const vitamin_id vitamin_calcium("calcium"); 
+
 static const vitamin_id vitamin_mutant_toxin( "mutant_toxin" );
 static const vitamin_id vitamin_chimera( "mutagen_chimera" ); 
 
@@ -175,6 +181,10 @@ static const std::array<flag_id, 2> herbivore_blacklist {{
 static int compute_default_effective_kcal( const item &comest, const Character &you,
         const cata::flat_set<flag_id> &extra_flags = {} )
 {
+    static constexpr float hemovore_bonus = 1.2f;
+    static constexpr float hemophage_bonus = 1.6f;
+    static constexpr float hemophage_malus = 0.7f;
+
     if( !comest.get_comestible() ) {
         return 0;
     }
@@ -214,9 +224,35 @@ static int compute_default_effective_kcal( const item &comest, const Character &
     if( you.has_bionic( bio_digestion ) ) {
         kcal *= 1.5f;
     }
+    float bonus = 1;
+    if(comest.has_flag(flag_BLOOD))
+    {
+        if(you.has_trait(trait_HEMOVORE))
+        {
+            bonus = hemovore_bonus;
+        }else if(you.has_trait(trait_HEMOPHAGE))
+        {
+            bonus = hemophage_bonus;
+        }
+    }else if(you.has_trait(trait_HEMOPHAGE))
+    {
+        bonus = hemophage_malus;
+    }
+
+    kcal *= bonus; 
 
     return static_cast<int>( kcal );
 }
+
+
+
+static const std::vector<vitamin_id> hemovore_vit_list = 
+{
+    vitamin_vitc,
+    vitamin_iron,
+    vitamin_calcium
+};
+
 
 // Compute default effective vitamins for an item, taking into account player
 // traits, but not components of the item.
@@ -262,6 +298,34 @@ static std::map<vitamin_id, int> compute_default_effective_vitamins(
             vit.second *= bid->vitamin_absorb_mod;
         }
     }
+
+    static constexpr float hemovore_bonus = 1.2f;
+    static constexpr float hemophage_bonus = 1.9f;
+    static constexpr float hemophage_malus = 0.7f;
+
+
+    float bonus = 1;
+
+    if ( it.has_flag(flag_BLOOD) )
+    {
+        if ( you.has_trait(trait_HEMOPHAGE) )
+            bonus = hemophage_bonus;
+        else if ( you.has_trait(trait_HEMOVORE) )
+        {
+            bonus = hemovore_bonus;
+        }
+    }
+    else if ( it.is_food() && you.has_trait(trait_HEMOPHAGE) )
+    {
+        bonus = hemophage_malus;
+    }
+
+    for ( const auto &v: hemovore_vit_list )
+    {
+        const float eff_vit = static_cast<float>(res[v]) * bonus;
+        res[v] = static_cast<int>(std::round(eff_vit));
+    }
+
     return res;
 }
 
@@ -270,6 +334,8 @@ static std::map<vitamin_id, int> compute_default_effective_vitamins(
 static nutrients compute_default_effective_nutrients( const item &comest,
         const Character &you, const cata::flat_set<flag_id> &extra_flags = {} )
 {
+
+
     // Multiply by 1000 to get it in calories
     return { compute_default_effective_kcal( comest, you, extra_flags ) * 1000,
              compute_default_effective_vitamins( comest, you ) };
@@ -472,6 +538,10 @@ std::pair<int, int> Character::fun_for(const item& comest, bool ignore_already_a
     if ((has_effect(effect_common_cold) || has_effect(effect_flu)) && fun > 0) {
         fun /= 3;
     }
+
+
+   
+
     // Rotten food should be pretty disgusting
     const float relative_rot = comest.get_relative_rot();
     if (relative_rot > 1.0f && !has_trait(trait_SAPROPHAGE) && !has_trait(trait_SAPROVORE) && !has_trait(trait_SAPROPHAGE_ANIMAL)) {
@@ -587,6 +657,21 @@ std::pair<int, int> Character::fun_for(const item& comest, bool ignore_already_a
         fun_max += predator_max_bonus; 
 
 
+    }
+
+    //blood tagged food is min 0 base fun for hemovores, min 3 for hemophages
+    if (comest.has_flag(flag_BLOOD))
+    {
+        if (has_trait(trait_HEMOVORE))
+        {
+            fun = std::max<float>(fun, 0); 
+        }else if(has_trait(trait_HEMOPHAGE))
+        {
+            fun = std::max<float>(fun + 4, 0); 
+        }
+    }else if(comest.is_food() && !has_trait(trait_HEMOPHAGE))
+    {
+        fun = std::max<float>(fun - 3, 0);
     }
 
 
@@ -1531,106 +1616,129 @@ static void activate_consume_eocs( Character &you, item &target )
     }
 }
 
-bool Character::consume_effects( item &food )
+bool Character::consume_effects(item& food)
 {
-    if( !food.is_comestible() ) {
-        debugmsg( "called Character::consume_effects with non-comestible" );
+    if (!food.is_comestible()) {
+        debugmsg("called Character::consume_effects with non-comestible");
         return false;
     }
 
-    if( has_trait( trait_THRESH_PLANT ) && food.type->can_use( "PLANTBLECH" ) ) {
+    if (has_trait(trait_THRESH_PLANT) && food.type->can_use("PLANTBLECH")) {
         // Was used to cap nutrition and thirst, but no longer does this
         return false;
     }
-    if( ( has_trait( trait_HERBIVORE ) || has_trait( trait_RUMINANT ) ) &&
-        food.has_any_flag( herbivore_blacklist ) ) {
+    if ((has_trait(trait_HERBIVORE) || has_trait(trait_RUMINANT)) &&
+        food.has_any_flag(herbivore_blacklist)) {
         // No good can come of this.
         return false;
     }
 
-    const islot_comestible &comest = *food.get_comestible();
+    const islot_comestible& comest = *food.get_comestible();
 
     // Rotten food causes health loss
     const float relative_rot = food.get_relative_rot();
-    if( relative_rot > 1.0f && !has_flag( json_flag_IMMUNE_SPOIL ) ) {
-        const float rottedness = clamp( 2 * relative_rot - 2.0f, 0.1f, 1.0f );
+    if (relative_rot > 1.0f && !has_flag(json_flag_IMMUNE_SPOIL)) {
+        const float rottedness = clamp(2 * relative_rot - 2.0f, 0.1f, 1.0f);
         // ~-1 health per 1 nutrition at halfway-rotten-away, ~0 at "just got rotten"
         // But always round down
         int h_loss = -rottedness * comest.get_default_nutr();
-        mod_daily_health( h_loss, -200 );
-        add_msg_debug( debugmode::DF_FOOD, "%d health from %0.2f%% rotten food", h_loss, rottedness );
+        mod_daily_health(h_loss, -200);
+        add_msg_debug(debugmode::DF_FOOD, "%d health from %0.2f%% rotten food", h_loss, rottedness);
     }
 
     // Used in hibernation messages.
-    const int nutr = nutrition_for( food );
-    const bool skip_health = has_trait( trait_PROJUNK2 ) && comest.healthy < 0;
+    const int nutr = nutrition_for(food);
+    const bool skip_health = has_trait(trait_PROJUNK2) && comest.healthy < 0;
     // We can handle junk just fine
-    if( !skip_health ) {
-        modify_health( comest );
+    if (!skip_health) {
+        modify_health(comest);
     }
-    modify_stimulation( comest );
-    modify_fatigue( comest );
-    modify_radiation( comest );
-    modify_addiction( comest );
-    modify_morale( food, nutr );
+    modify_stimulation(comest);
+    modify_fatigue(comest);
+    modify_radiation(comest);
+    modify_addiction(comest);
+    modify_morale(food, nutr);
 
-    const bool hibernate = has_active_mutation( trait_HIBERNATE );
-    if( hibernate ) {
-        if( ( nutr > 0 && get_hunger() < -60 ) || ( comest.quench > 0 && get_thirst() < -60 ) ) {
+    const bool hibernate = has_active_mutation(trait_HIBERNATE);
+    if (hibernate) {
+        if ((nutr > 0 && get_hunger() < -60) || (comest.quench > 0 && get_thirst() < -60)) {
             // Tell the player what's going on
-            add_msg_if_player( _( "You gorge yourself, preparing to hibernate." ) );
-            if( one_in( 2 ) ) {
+            add_msg_if_player(_("You gorge yourself, preparing to hibernate."));
+            if (one_in(2)) {
                 // 50% chance of the food tiring you
-                mod_fatigue( nutr );
+                mod_fatigue(nutr);
             }
         }
-        if( ( nutr > 0 && get_hunger() < -200 ) || ( comest.quench > 0 && get_thirst() < -200 ) ) {
+        if ((nutr > 0 && get_hunger() < -200) || (comest.quench > 0 && get_thirst() < -200)) {
             // Hibernation should cut burn to 60/day
-            add_msg_if_player( _( "You feel stocked for a day or two.  Got your bed all ready and secured?" ) );
-            if( one_in( 2 ) ) {
+            add_msg_if_player(_("You feel stocked for a day or two.  Got your bed all ready and secured?"));
+            if (one_in(2)) {
                 // And another 50%, intended cumulative
-                mod_fatigue( nutr );
+                mod_fatigue(nutr);
             }
         }
 
-        if( ( nutr > 0 && get_hunger() < -400 ) || ( comest.quench > 0 && get_thirst() < -400 ) ) {
+        if ((nutr > 0 && get_hunger() < -400) || (comest.quench > 0 && get_thirst() < -400)) {
             add_msg_if_player(
-                _( "Mmm.  You can still fit some more in… but maybe you should get comfortable and sleep." ) );
-            if( !one_in( 3 ) ) {
+                _("Mmm.  You can still fit some more in… but maybe you should get comfortable and sleep."));
+            if (!one_in(3)) {
                 // Third check, this one at 66%
-                mod_fatigue( nutr );
+                mod_fatigue(nutr);
             }
         }
-        if( ( nutr > 0 && get_hunger() < -600 ) || ( comest.quench > 0 && get_thirst() < -600 ) ) {
-            add_msg_if_player( _( "That filled a hole!  Time for bed…" ) );
+        if ((nutr > 0 && get_hunger() < -600) || (comest.quench > 0 && get_thirst() < -600)) {
+            add_msg_if_player(_("That filled a hole!  Time for bed…"));
             // At this point, you're done.  Schlaf gut.
-            mod_fatigue( nutr );
+            mod_fatigue(nutr);
         }
     }
     // Moved here and changed a bit - it was too complex
     // Incredibly minor stuff like this shouldn't require complexity
-    if( !is_npc() && has_trait( trait_SLIMESPAWNER ) &&
-        ( get_healthy_kcal() < get_stored_kcal() + 4000 &&
-          get_thirst() - stomach.get_water() / 5_ml < -20 ) && get_thirst() < 40 ) {
-        add_msg_if_player( m_mixed,
-                           _( "You feel as though you're going to split open!  In a good way?" ) );
-        mod_pain( 5 );
+    if (!is_npc() && has_trait(trait_SLIMESPAWNER) &&
+        (get_healthy_kcal() < get_stored_kcal() + 4000 &&
+            get_thirst() - stomach.get_water() / 5_ml < -20) && get_thirst() < 40) {
+        add_msg_if_player(m_mixed,
+            _("You feel as though you're going to split open!  In a good way?"));
+        mod_pain(5);
         int numslime = 1;
-        for( int i = 0; i < numslime; i++ ) {
-            if( monster *const slime = g->place_critter_around( mon_player_blob, pos(), 1 ) ) {
+        for (int i = 0; i < numslime; i++) {
+            if (monster* const slime = g->place_critter_around(mon_player_blob, pos(), 1)) {
                 slime->friendly = -1;
             }
         }
-        mod_hunger( 40 );
-        mod_thirst( 40 );
+        mod_hunger(40);
+        mod_thirst(40);
         //~ slimespawns have *small voices* which may be the Nice equivalent
         //~ of the Rat King's ALL CAPS invective.  Probably shared-brain telepathy.
-        add_msg_if_player( m_good, _( "hey, you look like me!  let's work together!" ) );
+        add_msg_if_player(m_good, _("hey, you look like me!  let's work together!"));
     }
 
-    nutrients food_nutrients = compute_effective_nutrients( food );
-    const units::volume water_vol = ( food.get_comestible()->quench > 0 ) ?
-                                    food.get_comestible()->quench *
+    nutrients food_nutrients = compute_effective_nutrients(food);
+
+    float quench_bonus = 1;
+
+    static constexpr float hemovore_q_bonus = 1.25f;
+    static constexpr float hemophage_q_bonus = 2.75f; 
+
+    if (food.has_flag(flag_BLOOD))
+    {
+        if (has_trait(trait_HEMOVORE))
+            quench_bonus = hemovore_q_bonus;
+        else if (has_trait(trait_HEMOPHAGE))
+            quench_bonus = hemophage_q_bonus; 
+    }
+
+    int quench = food.get_comestible()->quench; 
+
+    if(quench_bonus > 1 && quench > 0)
+    {
+        quench = static_cast<int>(std::round(quench * quench_bonus)); 
+    }
+
+
+
+    const units::volume water_vol = ( quench > 0 ) ?
+                                    quench *
                                     5_ml : 0_ml;
     units::volume food_vol = masticated_volume( food );
     if( food.count() == 0 ) {

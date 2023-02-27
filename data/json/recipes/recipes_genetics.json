@@ -391,6 +391,13 @@
  },
  {
    "type":"recipe",
+   "result":"iv_mutagen_snail",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_snail", 1]]]
+ },
+ {
+   "type":"recipe",
    "result":"iv_mutagen_chimera",
    "id_suffix": "iv_duplication", 
    "copy-from":"iv_mutagen_beast_iv_duplication", 
@@ -423,6 +430,13 @@
    "id_suffix": "iv_duplication", 
    "copy-from":"iv_mutagen_beast_iv_duplication", 
    "components":[[["iv_mutagen_insect", 1]]]
+ },
+ {
+   "type":"recipe",
+   "result":"iv_mutagen_mouse",
+   "id_suffix": "iv_duplication", 
+   "copy-from":"iv_mutagen_beast_iv_duplication", 
+   "components":[[["iv_mutagen_mouse", 1]]]
  },
  {
    "type":"recipe",

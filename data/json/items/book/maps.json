@@ -70,6 +70,20 @@
     }
   },
   {
+    "id": "sewer_map",
+    "copy-from": "abstractmap",
+    "type": "GENERIC",
+    "name": { "str": "sewer map" },
+    "description": "This is a hand-drawn map of the local area.  Whoever created it has marked down the locations of nearby supply sources including gun stores and gas stations.  Using it will add points of interest to your map.",
+    "color": "white",
+    "use_action": {
+      "type": "reveal_map",
+      "radius": 90,
+      "terrain": [ "sewer_sub_station", "pump_station_1", "pump_station_2", "pump_station_3", "pump_station_4", "sewage_treatment" ],
+      "message": "You add roads and possible supply points to your map."
+    }
+  },
+  {
     "id": "roadmap",
     "copy-from": "abstractmap",
     "type": "GENERIC",
