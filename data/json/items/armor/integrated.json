@@ -659,6 +659,31 @@
     ]
   },
   {
+    "id": "integrated_fangs_bat",
+    "type": "ARMOR",
+    "category": "armor",
+    "name": { "str_sp": "vampire fangs" },
+    "description": "Your fangs are like hard steel needles, capable of peircing the toughest armor or hide",
+    "weight": "30 g",
+    "volume": "20 ml",
+    "price": 0,
+    "price_postapoc": 0,
+    "material": [ "bone" ],
+    "symbol": ";",
+    "color": "brown",
+    "warmth": 2,
+    "qualities":[["DRILL",2], ["PUNCH", 2]],
+    "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "PERSONAL", "WATER_FRIENDLY", "PADDED" ],
+    "armor": [
+      {
+        "material": [ { "type": "bone", "covered_by_mat": 100, "thickness": 3 } ],
+        "covers": [ "mouth" ],
+        "coverage": 40,
+        "encumbrance": 0
+      }
+    ]
+  },
+  {
     "id": "integrated_spider_spinneret",
     "type": "ARMOR",
     "category": "armor",

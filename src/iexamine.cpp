@@ -252,6 +252,7 @@ static const trait_id trait_SHELL2( "SHELL2" );
 static const trait_id trait_SHELL3( "SHELL3" );
 static const trait_id trait_THRESH_MARLOSS( "THRESH_MARLOSS" );
 static const trait_id trait_THRESH_MYCUS( "THRESH_MYCUS" );
+static const trait_id trait_BAT_FANGS_VAMPIRE( "BAT_FANGS_VAMPIRE" ); 
 
 // @TODO maybe make this a property of the item (depend on volume/type)
 static const time_duration milling_time = 6_hours;
@@ -2146,6 +2147,12 @@ static bool can_drink_nectar( const Character &you )
            ( you.get_hunger() > 0 ) && ( !you.wearing_something_on( bodypart_id( "mouth" ) ) );
 }
 
+
+static bool can_drink_blood( const Character &you)
+{
+    return (you.has_trait(trait_BAT_FANGS_VAMPIRE) && you.get_hunger() > 0 && (!you.wearing_something_on(bodypart_id("mouth"))));
+}
+
 /**
  * Consume Nectar. -15 hunger.
  */
@@ -2158,6 +2165,18 @@ bool iexamine_helper::drink_nectar( Character &you )
         return true;
     }
 
+    return false;
+}
+
+bool iexamine_helper::drink_blood(Character &you, const itype_id &blood_type)
+{
+    if( can_drink_blood(you))
+    {
+        add_msg(_("You drink some blood"));
+        item blood(blood_type, calendar::turn, 1);
+        you.assign_activity(player_activity(consume_activity_actor(blood))); 
+        return true; 
+    }
     return false;
 }
 
@@ -6695,6 +6714,8 @@ void iexamine::invalid( Character &/*you*/, const tripoint &examp )
 {
     debugmsg( "Called invalid iexamine function on %s!", get_map().tername( examp ) );
 }
+
+
 
 /**
  * Given then name of one of the above functions, returns the matching function

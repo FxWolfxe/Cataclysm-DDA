@@ -143,7 +143,6 @@ void workbench_internal( Character &you, const tripoint &examp,
                          const cata::optional<vpart_reference> &part );
 void workout( Character &you, const tripoint &examp );
 void invalid( Character &you, const tripoint &examp );
-
 bool pour_into_keg( const tripoint &pos, item &liquid );
 cata::optional<tripoint> getGasPumpByNumber( const tripoint &p, int number );
 bool toPumpFuel( const tripoint &src, const tripoint &dst, int units );
@@ -173,6 +172,7 @@ void practice_survival_while_foraging( Character &who );
 namespace iexamine_helper
 {
 bool drink_nectar( Character &you );
+bool drink_blood(Character& you, const itype_id &blood_type); 
 void handle_harvest( Character &you, const std::string &itemid, bool force_drop );
 } // namespace iexamine_helper
 

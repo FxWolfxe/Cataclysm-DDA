@@ -486,7 +486,10 @@ static const trait_id trait_WATERSLEEP( "WATERSLEEP" );
 static const trait_id trait_WEB_SPINNER( "WEB_SPINNER" );
 static const trait_id trait_WEB_WALKER( "WEB_WALKER" );
 static const trait_id trait_WEB_WEAVER( "WEB_WEAVER" );
-static const trait_id trait_HORIZONTAL_GENE_TRANSFER( "HORIZONTAL_GENE_TRANSFER" ); 
+static const trait_id trait_HORIZONTAL_GENE_TRANSFER( "HORIZONTAL_GENE_TRANSFER" );
+static const trait_id trait_ECHOLOCATION("ECHOLOCATION");
+static const trait_id trait_SCREECHER( "SCREECHER" );
+static const trait_id trait_SCREECHER_OK( "SCREECHER_OK" ); 
 
 static const vitamin_id vitamin_calcium( "calcium" );
 static const vitamin_id vitamin_iron( "iron" );
@@ -5584,6 +5587,18 @@ bool Character::sees_with_specials( const Creature &critter ) const
         return true;
     }
 
+    if(has_trait(trait_ECHOLOCATION) && !is_deaf())
+    {
+        int range = 1000;
+        const int i = get_effect_int(effect_deaf); 
+        if (i > 0)
+            range /= (i + 1); 
+
+        
+        return rl_dist_exact(pos(), critter.pos()) <= range; 
+    }
+
+
     if( critter.digging() && has_active_bionic( bio_ground_sonar ) ) {
         // Bypass the check below, the bionic sonar also bypasses the sees(point) check because
         // walls don't block sonar which is transmitted in the ground, not the air.
@@ -6779,7 +6794,14 @@ int Character::get_shout_volume() const
     } else if( has_trait( trait_SHOUT2 ) ) {
         base = 15;
         shout_multiplier = 3;
+    }else if( has_trait(trait_SCREECHER) || has_trait(trait_SCREECHER_OK))
+    {
+        base = 25;
+        shout_multiplier = 4;
     }
+
+
+
     if( has_trait( trait_BOOMING_VOICE ) ) {
         base += 10;
     }
@@ -6838,6 +6860,13 @@ void Character::shout( std::string msg, bool order )
         if( msg.empty() ) {
             msg = is_avatar() ? _( "yourself scream loudly!" ) : _( "a loud scream!" );
             shout = "scream";
+        }
+    }else if(has_trait(trait_SCREECHER) || has_trait(trait_SCREECHER_OK))
+    {
+        base = 25;
+        if(msg.empty())
+        {
+            msg = is_avatar() ? _("yourself let out a piercing screech") : _("a piercing screech");
         }
     }
 

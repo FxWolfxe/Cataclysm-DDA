@@ -1719,20 +1719,24 @@ bool Character::consume_effects(item& food)
 
     static constexpr float hemovore_q_bonus = 1.25f;
     static constexpr float hemophage_q_bonus = 2.75f; 
-
+    bool hemophage = false; 
     if (food.has_flag(flag_BLOOD))
     {
         if (has_trait(trait_HEMOVORE))
             quench_bonus = hemovore_q_bonus;
         else if (has_trait(trait_HEMOPHAGE))
-            quench_bonus = hemophage_q_bonus; 
+        {
+            hemophage = true; 
+            quench_bonus = hemophage_q_bonus;
+        }
+
     }
 
     int quench = food.get_comestible()->quench; 
 
     if(quench_bonus > 1 && quench > 0)
     {
-        quench = static_cast<int>(std::round(quench * quench_bonus)); 
+        quench = static_cast<int>(std::round(quench * quench_bonus + hemophage ? 30: 0)); 
     }
 
 

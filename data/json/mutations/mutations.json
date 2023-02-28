@@ -2261,35 +2261,47 @@
     "ugliness": 2,
     "description": "Your fangs have grown even longer and sharper, capable of inflicting terrible puncture wounds in your prey",
     "types": [ "TEETH" ],
+    "changes_to":["BAT_FANGS_VAMPIRE"],
+    "category": ["BEAST"],
+    "prereqs":["FANGS"],
+    "attacks": [
+
+      {
+        "attack_text_u": "You sink your fangs into %s",
+        "attack_text_npc": "%1$s sinks their fangs into %2$s",
+        "required_mutations": [ "BAT_MUZZLE" ],
+        "body_part": "mouth",
+        "chance": 28,
+        "base_damage": { "damage_type": "stab", "amount": 24 }
+      }
+    ]
+  },
+  
+  {
+    "type": "mutation",
+    "id": "BAT_FANGS_VAMPIRE",
+    "name": { "str": "Piercing Fangs" },
+    "points": 2,
+    "visibility": 2,
+    "ugliness": 2,
+    "description": "Your fangs have hardened and lengthened considerably and your saliva now contains a potent anticoagulant, any bite wounds you make will bleed, alot. And that thought makes your mouth water",
+    "types": [ "TEETH" ],
+    "prereqs":["BAT_FANGS"],
+    "integrated_armor":["integrated_fangs_bat"],
     "category": ["BEAST"],
     "attacks": [
 
       {
         "attack_text_u": "You sink your fangs into %s",
         "attack_text_npc": "%1$s sinks their fangs into %2$s",
-        "required_mutations": [ "MUZZLE" ],
+        "required_mutations": [ "BAT_MUZZLE" ],
         "body_part": "mouth",
         "chance": 28,
-        "base_damage": { "damage_type": "stab", "amount": 23 }
-      },
-      {
-        "attack_text_u": "You sink your fangs into %s",
-        "attack_text_npc": "%1$s sinks their fangs into %2$s",
-        "required_mutations": [ "MUZZLE_LONG" ],
-        "body_part": "mouth",
-        "chance": 15,
-        "base_damage": { "damage_type": "stab", "amount": 20 }
-      },
-      {
-        "attack_text_u": "You sink your fangs into %s",
-        "attack_text_npc": "%1$s sinks their fangs into %2$s",
-        "required_mutations": [ "MUZZLE_RAT" ],
-        "body_part": "mouth",
-        "chance": 19,
-        "base_damage": { "damage_type": "stab", "amount": 20 }
+        "base_damage": { "damage_type": "stab", "amount": 24, "armor_penetration": 20 }
       }
     ]
   },
+  
   {
     "type": "mutation",
     "id": "INCISORS",
@@ -4081,6 +4093,7 @@
     "name": {"str":"Hemovore"}, 
     "description":"Your digestive system is altered to be especially good at digesting blood", 
     "changes_to":["HEMOPHAGE"],
+    "types":["DIET_MOD"],
     "points":1, 
     "category":["BEAST"]
   }, 
@@ -4092,7 +4105,9 @@
     "description":"Your digestive system has become speciallized in digesting blood, you gain more calories and vitamins from blood or things containing it, but less from other sources",
     "name":{"str":"Hemophage"},
     "category":["BEAST"], 
-    "threshreq":["THRESH_BEAST"]
+    "prereqs":["HEMOVORE"],
+    "threshreq":["THRESH_BEAST"], 
+    "types":["DIET_MOD"]
   
   },
   {
@@ -5256,6 +5271,18 @@
     "hearing_modifier": 1.75, 
     "looks_like":"LUPINE_EARS"
   },
+  { 
+    "type":"mutation", 
+    "id":"ECHOLOCATION", 
+    "name": {"str": "Echolocation"}, 
+    "points":5, 
+    "visibility":1, 
+    "description":"Your brain has caught up to your massive ears, not only is your hearing exceptional, your brain can piece together a picture from the echos of your shouts, letting you 'see' in perfect darkness. But becareful of loud noises", 
+    "category":["BEAST"], 
+    "threshreq":["THRESH_BEAST"], 
+    "prereqs":["BAT_EARS"], 
+    "prereqs2":["SCREECHER", "SCREECHER_OK"]
+  }, 
   {
     "type": "mutation",
     "id": "FELINE_EARS",
@@ -7440,6 +7467,29 @@
     "changes_to": [ "SHOUT3" ],
     "category": [ "BEAST", "CHIMERA", "LUPINE" ]
   },
+  { 
+    "type": "mutation",
+    "id": "SCREECHER",
+    "name": { "str": "Screecher" },
+    "points": -3,
+    "description": "You sometimes let out a high pitched screach",
+    "prereqs": [ "SHOUT1" ],
+    "changes_to":["SCREECHER_OK"],
+    "prereqs2":["BAT_MUZZLE"],
+    "category": [ "BEAST" ]
+  
+  }, 
+  { 
+    "type": "mutation",
+    "id": "SCREECHER_OK",
+    "name": { "str": "Ultrasonic Screecher" },
+    "points": 0,
+    "description": "Your impulsive screeching has now gone above the frequency range of most creatures. It's just as loud, if not louder, to you, but most creatures are oblivious to it",
+    "prereqs": [ "SCREECHER" ],
+    "prereqs2":["BAT_MUZZLE"],
+    "category": [ "BEAST" ]
+  
+  }, 
   {
     "type": "mutation",
     "id": "SHOUT3",

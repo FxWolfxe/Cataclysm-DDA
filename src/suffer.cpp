@@ -180,6 +180,8 @@ static const trait_id trait_VOMITOUS( "VOMITOUS" );
 static const trait_id trait_WEB_SPINNER( "WEB_SPINNER" );
 static const trait_id trait_WEB_WEAVER( "WEB_WEAVER" );
 static const trait_id trait_WINGS_INSECT( "WINGS_INSECT" );
+static const trait_id trait_SCREECHER("SCREECHER");
+
 
 static const vitamin_id vitamin_vitC( "vitC" );
 
@@ -478,6 +480,10 @@ void suffer::while_awake( Character &you, const int current_stim )
     }
     if( you.has_trait( trait_SHOUT3 ) && one_turn_in( 3_hours ) ) {
         you.shout();
+    }
+    if( you.has_trait(trait_SCREECHER) && one_turn_in(3_hours))
+    {
+        you.shout(); 
     }
     if( you.has_trait( trait_M_SPORES ) && one_turn_in( 4_hours ) ) {
         you.spores();

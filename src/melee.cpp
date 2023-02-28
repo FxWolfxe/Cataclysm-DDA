@@ -103,6 +103,7 @@ static const efftype_id effect_venom_player1( "venom_player1" );
 static const efftype_id effect_venom_player2( "venom_player2" );
 static const efftype_id effect_venom_weaken( "venom_weaken" );
 static const efftype_id effect_winded( "winded" );
+static const efftype_id effect_bleed("bleed"); 
 
 static const itype_id itype_fur( "fur" );
 static const itype_id itype_leather( "leather" );
@@ -154,6 +155,7 @@ static const trait_id trait_POISONOUS2( "POISONOUS2" );
 static const trait_id trait_PROF_SKATER( "PROF_SKATER" );
 static const trait_id trait_VINES2( "VINES2" );
 static const trait_id trait_VINES3( "VINES3" );
+static const trait_id trait_BAT_FANGS_VAMPIRE( "BAT_FANGS_VAMPIRE" ); 
 
 static void player_hit_message( Character *attacker, const std::string &message,
                                 Creature &t, int dam, bool crit = false, bool technique = false, const std::string &wp_hit = {} );
@@ -810,7 +812,9 @@ bool Character::melee_attack_abstract( Creature &t, bool allow_special,
             if( dealt_special_dam.type_damage( damage_type::CUT ) > 0 ||
                 dealt_special_dam.type_damage( damage_type::STAB ) > 0 ||
                 ( !cur_weapon && ( dealt_dam.type_damage( damage_type::CUT ) > 0 ||
-                                   dealt_dam.type_damage( damage_type::STAB ) > 0 ) ) ) {
+                                   dealt_dam.type_damage( damage_type::STAB ) > 0 ) ) ) 
+            {
+
                 if( has_trait( trait_POISONOUS ) ) {
                     if( t.is_monster() ) {
                         t.add_effect( effect_venom_player1, 1_minutes );
@@ -825,7 +829,8 @@ bool Character::melee_attack_abstract( Creature &t, bool allow_special,
                             t.add_effect( effect_stunned, 1_turns );
                         }
                     }
-                } else if( has_trait( trait_POISONOUS2 ) ) {
+                }
+                else if( has_trait( trait_POISONOUS2 ) ) {
                     if( t.is_monster() ) {
                         t.add_effect( effect_venom_player2, 1_minutes );
                     } else {
@@ -841,7 +846,19 @@ bool Character::melee_attack_abstract( Creature &t, bool allow_special,
                         }
                     }
                 }
+
+
+                if(has_trait(trait_BAT_FANGS_VAMPIRE))
+                {
+                    //make bleeding even worse on the hit limb
+                    add_msg_if_player(m_good, _("%s's wound refuses to clot"), t.disp_name());
+                    t.make_bleed(effect_source(this), target_bp, 2_minutes * rng(1, dealt_dam.total_damage()) + 1_minutes);
+                }
+
             }
+
+            
+
             // Make a rather quiet sound, to alert any nearby monsters
             if( !is_quiet() ) { // check martial arts silence
                 //sound generated later

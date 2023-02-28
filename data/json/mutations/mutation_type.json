@@ -83,6 +83,10 @@
     "type": "mutation_type",
     "id": "DIET"
   },
+  { 
+    "type": "mutation_type", 
+    "id": "DIET_MOD"
+  },
   {
     "type": "mutation_type",
     "id": "CARDIO"
