@@ -383,7 +383,8 @@
     "weight": "50 g",
     "volume": "250 ml",
     "to_hit": -4,
-    "fun": -25
+    "fun": -25, 
+    "gene_transfer_map":[["mutagen_insect", 155]]
   },
   {
     "type": "GENERIC",

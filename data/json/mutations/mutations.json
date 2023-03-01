@@ -2797,9 +2797,10 @@
     "description": "Your epidermis has turned into a thin, flexible layer of chitin.  It provides decent physical protection.  Slightly reduces wet effects.",
     "types": [ "SKIN" ],
     "prereqs": [ "SKIN_ROUGH" ],
-    "leads_to": [ "CHITIN2", "CHITIN_FUR", "CHITIN_FUR2", "CHITIN_FUR3" ],
+    "leads_to": [ "CHITIN_FUR", "CHITIN_FUR2", "CHITIN_FUR3" ],
     "category": [ "SPIDER", "INSECT" ],
     "integrated_armor": [ "integrated_chitin" ],
+    "changes_to":["CHITIN2"],
     "wet_protection": [
       { "part": "head", "ignored": 1 },
       { "part": "leg_l", "ignored": 5 },
@@ -2824,7 +2825,7 @@
     "description": "You've grown a chitin exoskeleton, much like that of an insect.  It provides considerable physical protection, and make your punches hit a little harder.  Somewhat reduces wet effects.",
     "types": [ "BODY_ARMOR" ],
     "prereqs": [ "CHITIN" ],
-    "leads_to": [ "CHITIN3" ],
+    "changes_to": [ "CHITIN3" ],
     "category": [ "SPIDER", "INSECT" ],
     "integrated_armor": [ "integrated_chitin2" ],
     "wet_protection": [
@@ -2879,7 +2880,7 @@
     "bodytemp_sleep": 50,
     "description": "You've developed some sort of hair growing out of your chitin.  It's a bit warmer than not having hair.",
     "types": [ "BODY_ARMOR_EXTRA" ],
-    "prereqs": [ "CHITIN" ],
+    "prereqs": [ "CHITIN", "CHITIN2", "CHITIN3" ],
     "category": [ "SPIDER" ],
     "changes_to": [ "CHITIN_FUR2" ]
   },
@@ -5381,8 +5382,8 @@
     "threshreq": [ "THRESH_SPIDER" ],
     "category": [ "SPIDER" ],
     "active": true,
-    "cost": 95,
-    "kcal": true,
+    "cost": 1,
+    "kcal": false,
     "active_flags": [ "WEB_RAPPEL" ]
   },
   {
@@ -5396,7 +5397,7 @@
     "threshreq": [ "THRESH_SPIDER" ],
     "category": [ "SPIDER" ],
     "active": true,
-    "cost": 260,
+    "cost": 26,
     "kcal": true,
     "thirst": true,
     "spawn_item": { "type": "rope_30", "message": "You spin a rope from your silk." }
