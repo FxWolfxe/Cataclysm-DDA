@@ -20,7 +20,8 @@
     "phase": "liquid",
     "flags": [ "EATEN_COLD" ],
     "vitamins": [ [ "vitC", 4 ], [ "calcium", 25 ] ],
-    "fun": 1
+    "fun": 1, 
+    "gene_transfer_map":[["mutagen_cattle", 25]]
   },
   {
     "type": "COMESTIBLE",
@@ -30,7 +31,9 @@
     "color": "brown",
     "description": "Baby cow food, with chocolate added for human enjoyment.  Spoils rapidly.",
     "calories": 272,
-    "fun": 6
+    "fun": 6, 
+    "gene_transfer_map":[["mutagen_cattle", 15]]
+
   },
   {
     "type": "COMESTIBLE",
@@ -48,7 +51,8 @@
     "price": 19,
     "price_postapoc": 50,
     "contamination": [ { "disease": "bad_food", "probability": 5 } ],
-    "description": "This is raw, unhomogenized and unpasteurized milk from a cow.  It couldn't be any fresher unless you drank it straight from the cow, which might upset it.  Depending on your dietary sensibilities, you might want to pasteurize or even boil this before drinking."
+    "description": "This is raw, unhomogenized and unpasteurized milk from a cow.  It couldn't be any fresher unless you drank it straight from the cow, which might upset it.  Depending on your dietary sensibilities, you might want to pasteurize or even boil this before drinking.",
+    "gene_transfer_map":[["mutagen_cattle", 150]]
   },
   {
     "type": "COMESTIBLE",

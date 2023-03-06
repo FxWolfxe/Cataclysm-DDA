@@ -6913,7 +6913,7 @@
   }, {
     "type": "mutation",
     "id": "BEAK_RAPTOR",
-    "name": { "str": "Beak" },
+    "name": { "str": "Raptor Beak" },
     "points": -3,
     "visibility": 8,
     "ugliness": 3,
@@ -6934,7 +6934,8 @@
         { "damage_type": "cut", "amount": 15 }, 
         { "damage_type": "stab", "amount": 5}
       ]
-    }
+    }, 
+    "looks_like":"BEAK"
   },
   {
     "type": "mutation",
