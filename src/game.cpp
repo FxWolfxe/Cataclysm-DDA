@@ -827,11 +827,12 @@ bool game::start_game()
             omtstart = start_loc.find_player_initial_location( u.world_origin.value_or( point_abs_om() ) );
         }
         if( omtstart == overmap::invalid_tripoint ) {
-            if( query_yn(
+
+            MAPBUFFER.clear();
+            overmap_buffer.clear();
+
+            if( !query_yn(
                     _( "Try again?\n\nIt may require several attempts until the game finds a valid starting location." ) ) ) {
-                MAPBUFFER.clear();
-                overmap_buffer.clear();
-            } else {
                 return false;
             }
         }
@@ -2076,7 +2077,7 @@ int game::inventory_item_menu( item_location locThisItem,
                     if( !locThisItem.get_item()->is_container() ) {
                         avatar_action::eat( u, locThisItem );
                     } else {
-                        avatar_action::eat( u, game_menus::inv::consume( u, locThisItem ) );
+                        avatar_action::eat_or_use( u, game_menus::inv::consume( u, locThisItem ) );
                     }
                     break;
                 case 'W': {
@@ -2452,7 +2453,7 @@ input_context get_default_mode_input_context()
     ctxt.register_action( "toggle_auto_foraging" );
     ctxt.register_action( "toggle_auto_pickup" );
     ctxt.register_action( "toggle_thief_mode" );
-    ctxt.register_action( "toggle_iso_walls" );
+    ctxt.register_action( "toggle_prevent_occlusion" );
     ctxt.register_action( "diary" );
     ctxt.register_action( "action_menu" );
     ctxt.register_action( "main_menu" );
@@ -6902,7 +6903,7 @@ void game::zones_manager()
             const zone_data &zone = zones[active_index].get();
             zone_start = m.getlocal( zone.get_start_point() );
             zone_end = m.getlocal( zone.get_end_point() );
-            ctxt.set_timeout( BLINK_SPEED );
+            ctxt.set_timeout( get_option<int>( "BLINK_SPEED" ) );
         } else {
             blink = false;
             zone_start = zone_end = cata::nullopt;
@@ -7027,7 +7028,7 @@ look_around_result game::look_around(
     int &lz = lp.z();
 
     int soffset = get_option<int>( "FAST_SCROLL_OFFSET" );
-    bool fast_scroll = false;
+    static bool fast_scroll = false;
 
     std::unique_ptr<ui_adaptor> ui;
     catacurses::window w_info;
@@ -7205,7 +7206,7 @@ look_around_result game::look_around(
         ui_manager::redraw();
 
         if( ( select_zone && has_first_point ) || is_moving_zone ) {
-            ctxt.set_timeout( BLINK_SPEED );
+            ctxt.set_timeout( get_option<int>( "BLINK_SPEED" ) );
         }
 
         //Wait for input

@@ -1773,8 +1773,8 @@ bool monster::is_immune_damage( const damage_type dt ) const
     }
 }
 
-void monster::make_bleed( const effect_source &source, const bodypart_id &bp,
-                          time_duration duration, int intensity, bool permanent, bool force, bool defferred )
+void monster::make_bleed( const effect_source &source, time_duration duration, int intensity,
+                          bool permanent, bool force, bool defferred )
 {
     if( type->bleed_rate == 0 ) {
         return;
@@ -1782,9 +1782,10 @@ void monster::make_bleed( const effect_source &source, const bodypart_id &bp,
 
     duration = ( duration * type->bleed_rate ) / 100;
     if( type->in_species( species_ROBOT ) ) {
-        add_effect( source, effect_dripping_mechanical_fluid, duration, bp );
+        add_effect( source, effect_dripping_mechanical_fluid, duration, bodypart_str_id::NULL_ID() );
     } else {
-        add_effect( source, effect_bleed, duration, bp, permanent, intensity, force, defferred );
+        add_effect( source, effect_bleed, duration, bodypart_str_id::NULL_ID(), permanent, intensity, force,
+                    defferred );
     }
 }
 
@@ -2045,6 +2046,7 @@ void monster::deal_projectile_attack( Creature *source, dealt_projectile_attack 
 void monster::deal_damage_handle_type( const effect_source &source, const damage_unit &du,
                                        bodypart_id bp, int &damage, int &pain )
 {
+    const int adjusted_damage = du.amount * du.damage_multiplier * du.unconditional_damage_mult;
     switch( du.type ) {
         case damage_type::ELECTRIC:
             if( has_flag( MF_ELECTRIC ) ) {
@@ -2075,10 +2077,12 @@ void monster::deal_damage_handle_type( const effect_source &source, const damage
         // typeless damage, should always go through
         case damage_type::BIOLOGICAL:
         // internal damage, like from smoke or poison
+        case damage_type::HEAT:
+            break;
         case damage_type::CUT:
         case damage_type::STAB:
         case damage_type::BULLET:
-        case damage_type::HEAT:
+            make_bleed( source, 1_minutes * rng( 1, adjusted_damage ) );
         default:
             break;
     }
@@ -2309,7 +2313,7 @@ int monster::get_worn_armor_val( damage_type dt ) const
         return 0;
     }
     if( armor_item ) {
-        return armor_item->damage_resist( dt );
+        return armor_item->resist( dt );
     }
     return 0;
 }
