@@ -30,5 +30,32 @@
         "purifiable":false,
         "faction_override":"dermatik", 
         "transformation_text":"as you're struck with by the dermatik your mutated body convulses and a splitting headache overtakes you as you shift further. It's subtle, but everything about you seems to shift, and as you look upon your attacker, you know you will always be one of them now"
+    }, 
+    {
+        "type":"mutation", 
+        "id":"METAMORPHOSES_WASP", 
+        "name":{"str":"Wasp Mutant"}, 
+        "description":"The nest has embraced you, and you them. You're one of them now, and your stinger twitches slightly, eager to meet those who dare enter the territory of your nest", 
+        "morph":true,
+        "points":0,
+        "threshreq":["THRESH_INSECT"], 
+        "purifiable":false, 
+        "faction_override":"wasp", 
+        "transformation_text":"looking upon the wasps, and the paper walls of the nest awakens something in you. You know your place now, you're a memeber of the swarm, and this nest is your home now"
+    },
+    { 
+        "type":"mutation", 
+        "id":"METAMORPHOSES_MUTANT", 
+        "name":{"str": "Evolved Mutant"}, 
+        "description":"You have evolved further, discarding your humanity and embrancing the metamorphosis you have started",
+        "points":0, 
+        "threshreq":["THRESH_CHIMERA"],
+        "mixed_effect":true, 
+        "restricted":true, 
+        "purifiable":false, 
+        "category":["CHIMERA"], 
+        "morph":true,
+        "faction_override": "lab_mutant", 
+        "transformation_text":"Something within you shifts, and you find yourself looking upon the world with new eyes. You started down the path of rejecting your humanity long ago, and now you're eager to take your new place in the world. As one of the mutants destined to inherit it"
     }
 ]

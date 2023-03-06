@@ -469,7 +469,7 @@
     "symbol": ";",
     "color": "dark_gray",
     "warmth": 1,
-    "qualities":[[ "CUT", 2 ], ["PRY", 1]],
+    "qualities":[[ "CUT", 2 ], ["PRY", 2]],
     "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "SKINTIGHT", "PADDED" ],
     "armor": [
       {

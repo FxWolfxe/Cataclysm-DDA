@@ -32,7 +32,7 @@
         "ugliness": 2,
         "mixed":true,
         "prereqs":["SEMI_QUADRUPED_BAD"],
-        "movecost_wielded_modifier": 1.5,
+        "movecost_wielded_modifier": 1.0,
         "description": "Your posture has altered again. Whlie you can stand up to use tools or climb, walking on two legs is difficult. But being on all fours feels better",
         "types": [
             "POSTURE"
@@ -43,7 +43,7 @@
         "category": [
             "LUPINE", "FELINE", "CHIMERA", "CATTLE"
         ], 
-        "passive_mods": { "str_mod": 1 }
+        "passive_mods": { "str_mod": 2 }
     },
     {
         "type": "mutation",
@@ -58,7 +58,7 @@
         "ugliness": 2,
         "movecost_modifier":0.8,
         "mixed":true,
-        "movecost_wielded_modifier":2.5,
+        "movecost_wielded_modifier":2.0,
         "description": "Your spine and hips have continued to change. You find it extremlly difficult to walk on two legs for any period of time and you find yourself going down on all fours instinctivly",
         "types": [
             "POSTURE"
@@ -69,6 +69,6 @@
         "category": [
             "LUPINE", "FELINE", "CHIMERA", "CATTLE"
         ], 
-        "passive_mods": { "str_mod": 1 }
+        "passive_mods": { "str_mod": 2 }
     }
 ]

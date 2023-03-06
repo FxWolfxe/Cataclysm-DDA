@@ -2089,7 +2089,7 @@
     "visibility": 1,
     "description": "your eyes have changed further, even at extreme ranges you can pick out minute details, and you find yourself automatically honing in on the weakpoints on your targets",
     "types": [ "EYES" ],
-    "prereqs": [ "PER_UP" , "PER_UP_2", "PER_UP_3" ],
+    "prereqs": [ "PER_UP_3" , "PER_UP_4"],
     "prereqs2": [ "BIRD_EYE" ],
     "threshreq": [ "THRESH_BIRD" ],
     "category": [ "BIRD" ],
@@ -4463,8 +4463,8 @@
     "allow_soft_gear": true,
     "dodge_modifier": 2,
     "category":["BIRD"],
-    "threshreq":["THRESH_BIRD"]
-  
+    "threshreq":["THRESH_BIRD"],
+    "looks_like":"TAIL_STUB"  
   },
   {
     "type": "mutation",
@@ -6490,11 +6490,28 @@
     "description": "You have Avian Bone Syndrome--your bones are nearly hollow.  Your body is very light as a result, enabling you to move and attack 20% faster, but also frail; you can carry 40% less, and bashing attacks injure you more.",
     "types": [ "BONES" ],
     "prereqs": [ "LIGHT_BONES" ],
+    "changes_to":["HOLLOW_BONES_OK"],
     "category": [ "BIRD", "SLIME", "ELFA" ],
     "movecost_modifier": 0.8,
     "attackcost_modifier": 0.8,
     "weight_capacity_modifier": 0.6,
     "enchantments": [ { "condition": "ALWAYS", "values": [ { "value": "EXTRA_BASH", "multiply": 0.8 } ] } ]
+  },
+  {
+    "type": "mutation",
+    "id": "HOLLOW_BONES_OK",
+    "name": { "str": "Pneumatized Bones" },
+    "points": 2,
+    "mixed_effect": true,
+    "description": "Your bones have altered further, instead of large air pockets your bones are made of a much finer, reinforced foam like structure. They're just as light but much stronger, almost as strong as they were originally.",
+    "types": [ "BONES" ],
+    "threshreq":["THRESH_BIRD"],
+    "prereqs": [ "HOLLOW_BONES" ],
+    "category": [ "BIRD"],
+    "movecost_modifier": 0.8,
+    "attackcost_modifier": 0.8,
+    "weight_capacity_modifier": 0.85,
+    "enchantments": [ { "condition": "ALWAYS", "values": [ { "value": "EXTRA_BASH", "multiply": 0.9 } ] } ]
   },
   {
     "type": "mutation",

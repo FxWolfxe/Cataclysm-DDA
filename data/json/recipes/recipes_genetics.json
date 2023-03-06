@@ -100,7 +100,8 @@
     "using":
     [
          ["any_mutagen_sample", 1]
-    ]
+    ], 
+    "result_mult": 2
  }, 
  { 
     "type": "recipe",
