@@ -6486,30 +6486,6 @@
   },
   {
     "type": "mutation",
-    "id": "MUZZLE_RAPTOR",
-    "name": { "str": "Reptilian Muzzle" },
-    "points": -3,
-    "visibility": 8,
-    "ugliness": 8,
-    "mixed_effect": true,
-    "description": "Your face and jaws are a shorter version of those you've seen in pictures of raptors, a pointy muzzle filled with sharp dagger like teeth.  They look NASTY--as do the bite wounds they can inflict--but prevent wearing mouthgear.",
-    "types": [ "MUZZLE" ],
-    "prereqs": [ "SNOUT" ],
-    "category": [ "RAPTOR"],
-    "threshreq": ["THRESH_RAPTOR"],
-    "restricts_gear": [ "mouth" ],
-    "social_modifiers": { "intimidate": 20 },
-    "attacks": {
-      "attack_text_u": "You bite a chunk out of %s",
-      "attack_text_npc": "%1$s bites a chunk out of %2$s",
-      "blocker_mutations": [ "FANGS" ],
-      "body_part": "mouth",
-      "chance": 18,
-      "base_damage": [{ "damage_type": "stab", "amount": 10 }, {"damage_type":"cut", "amount":8}]
-    }
-  },
-  {
-    "type": "mutation",
     "id": "WIDE_MOUTH",
     "name": { "str": "Wide Mouth" },
     "points": 0,

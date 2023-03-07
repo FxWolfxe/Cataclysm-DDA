@@ -848,7 +848,7 @@ bool Character::melee_attack_abstract( Creature &t, bool allow_special,
                 {
                     //make bleeding even worse on the hit limb
                     add_msg_if_player(m_good, _("%s's wound refuses to clot"), t.disp_name());
-                    t.make_bleed(effect_source(this), target_bp, 2_minutes * rng(1, dealt_dam.total_damage()) + 1_minutes);
+                    t.add_effect(effect_bleed,2_minutes * rng(1, dealt_dam.total_damage()) + 1_minutes, target_bp);
                 }
 
             }

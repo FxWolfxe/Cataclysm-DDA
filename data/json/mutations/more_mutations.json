@@ -10,5 +10,18 @@
         "threshreq": [ "THRESH_LUPINE"],
         "category": [ "LUPINE" ],
         "faction_override":"wolf"
+      }, 
+      {
+        "type": "mutation",
+        "id": "CANINE_EYE",
+        "name": { "str": "Canine Eyes" },
+        "points": 0,
+        "looks_like":"LIZ_EYE",
+        "visibility": 2,
+        "ugliness": 1,
+        "description": "Your eyes have mutated, whatever your previous eye color, they're now a wild orange/yellow. It's easy to tell you have the eyes of a wild creature. Also, greens and purples aren't quite as vivid as you remember",
+        "social_modifiers": { "persuade": -1, "intimidate": 1 },
+        "types": [ "EYES" ],
+        "category": [ "LUPINE" ]
       }
 ]

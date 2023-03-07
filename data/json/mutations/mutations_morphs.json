@@ -57,5 +57,20 @@
         "morph":true,
         "faction_override": "lab_mutant", 
         "transformation_text":"Something within you shifts, and you find yourself looking upon the world with new eyes. You started down the path of rejecting your humanity long ago, and now you're eager to take your new place in the world. As one of the mutants destined to inherit it"
+    }, 
+    { 
+        "type":"mutation", 
+        "id":"METAMORPHOSES_WOLF", 
+        "name":{"str": "True Lupine"}, 
+        "description":"You've fully embraced your lupine transformation. You're a wolf now, a proud wild creature, and left your human life behind",
+        "points":0, 
+        "threshreq":["THRESH_LUPINE"],
+        "mixed_effect":true, 
+        "restricted":true, 
+        "purifiable":false, 
+        "category":["LUPINE"], 
+        "morph":true,
+        "faction_override": "wolf", 
+        "transformation_text":"you feel a sudden shift deep inside. You let out a joyful howl as you feel your changes reach their end. You'll always be a wolf"
     }
 ]
