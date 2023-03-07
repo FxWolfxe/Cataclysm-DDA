@@ -6946,6 +6946,75 @@ void Character::shout( std::string msg, bool order )
                    "shout", shout );
 }
 
+std::string Character::get_default_shout() const
+{
+    std::string shout;
+
+    // You can't shout without your face
+    if ( has_trait(trait_PROF_FOODP) && !(is_wearing(itype_foodperson_mask) ||
+        is_wearing(itype_foodperson_mask_on)) )
+    {
+        shout = ""; 
+    }
+
+    // Mutations make shouting louder, they also define the default message
+    if ( has_trait(trait_SHOUT3) )
+    {
+        shout = "howl";
+    }
+    else if ( has_trait(trait_SHOUT2) )
+    {
+        shout = "scream";
+    }
+    else if ( has_trait(trait_SCREECHER) || has_trait(trait_SCREECHER_OK) )
+    {
+        shout = "screech";
+    }
+
+
+    shout = "shout";
+
+    return shout;
+}
+
+std::string Character::get_default_shout_message() const
+{
+    std::string msg; 
+    // You can't shout without your face
+    if (has_trait(trait_PROF_FOODP) && !(is_wearing(itype_foodperson_mask) ||
+        is_wearing(itype_foodperson_mask_on)))
+    {
+        return ""; 
+    }
+
+    // Mutations make shouting louder, they also define the default message
+    if (has_trait(trait_SHOUT3)) {
+        if (msg.empty()) {
+            msg = is_avatar() ? _("yourself let out a piercing howl!") : _("a piercing howl!");
+           
+        }
+    }
+    else if (has_trait(trait_SHOUT2)) {
+        if (msg.empty()) {
+            msg = is_avatar() ? _("yourself scream loudly!") : _("a loud scream!");
+           
+        }
+    }
+    else if (has_trait(trait_SCREECHER) || has_trait(trait_SCREECHER_OK))
+    {
+       
+        if (msg.empty())
+        {
+            msg = is_avatar() ? _("yourself let out a piercing screech") : _("a piercing screech");
+        }
+    }
+
+    if (msg.empty()) {
+        msg = is_avatar() ? _("yourself shout loudly!") : _("a loud shout!");
+    }
+    return msg; 
+}
+
 void Character::signal_nemesis()
 {
     const tripoint_abs_omt ompos = global_omt_location();

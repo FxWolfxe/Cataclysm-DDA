@@ -699,7 +699,7 @@ void game::chat()
         }
         case NPC_CHAT_YELL:
             is_order = false;
-            message = _( "loudly." );
+            message = u.get_default_shout_message();
             break;
         case NPC_CHAT_SENTENCE: {
             std::string popupdesc = _( "Enter a sentence to yell" );
@@ -847,7 +847,7 @@ void game::chat()
         message = string_format( _( "\"%s\"" ), yell_msg );
     }
     if( !message.empty() ) {
-        add_msg( _( "You yell %s" ), message );
+        add_msg( _( "You hear %s" ),  message );
         u.shout( string_format( _( "%s yelling %s" ), u.disp_name(), message ), is_order );
     }
     if( !think_msg.empty() ) {
