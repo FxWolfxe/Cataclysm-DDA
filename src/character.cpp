@@ -4067,7 +4067,9 @@ void Character::mod_stored_calories( int ncal, const bool ignore_weariness )
     if( !ignore_weariness ) {
         activity_history.calorie_adjust( ncal );
     }
-    set_stored_calories( stored_calories + ncal );
+    if( ncal < 0 || std::numeric_limits<int>::max() - ncal > stored_calories ) {
+        set_stored_calories( stored_calories + ncal );
+    }
 }
 
 void Character::set_stored_kcal( int kcal )
@@ -9763,7 +9765,7 @@ std::vector<std::string> Character::short_description_parts() const
 
 std::string Character::short_description() const
 {
-    return join( short_description_parts(), ";   " );
+    return string_join( short_description_parts(), ";   " );
 }
 
 void Character::process_one_effect( effect &it, bool is_new )
