@@ -3413,9 +3413,7 @@
     "threshreq": [ "THRESH_SPIDER" ], 
     "allowed_items": [ "ALLOWS_TAIL" ],
     "allow_soft_gear": true,
-    "restricts_gear": [ "leg_hip_l", "leg_hip_r" ], 
-    "looks_like":"TAIL_STUB"
-
+    "restricts_gear": [ "leg_hip_l", "leg_hip_r" ]
   },
   {
     "type": "mutation",
