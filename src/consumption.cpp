@@ -391,15 +391,21 @@ nutrients Character::compute_effective_gene_transfer(const item &comest) const
             // Avoid division by zero
             return tally;
         }
-        for (const item& component : comest.components) {
-            nutrients component_value =
-                compute_effective_gene_transfer(component) * component.charges;
-            if (component.has_flag(flag_BYPRODUCT)) {
-                tally -= component_value;
+        for (const auto& component : comest.components) {
+
+            for( const item &itm: component.second)
+            {
+                nutrients component_value =
+                    compute_effective_gene_transfer(itm) * itm.charges;
+                if (itm.has_flag(flag_BYPRODUCT)) {
+                    tally -= component_value;
+                }
+                else {
+                    tally += component_value;
+                }
             }
-            else {
-                tally += component_value;
-            }
+
+          
         }
         return tally / comest.recipe_charges;
     }
