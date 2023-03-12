@@ -215,8 +215,12 @@ class recipe
         std::vector<proficiency_id> used_proficiencies() const;
         // The time malus due to proficiencies lacking
         float proficiency_time_maluses( const Character &crafter ) const;
+        // The time malus if all the proficiencies were lacking
+        float max_proficiency_time_maluses( const Character &crafter ) const;
         // The skill malus due to proficiencies lacking
         float proficiency_skill_maluses( const Character &crafter ) const;
+        // The max skill malus due to proficiencies lacking
+        float max_proficiency_skill_maluses( const Character &crafter ) const;
 
         // How active of exercise this recipe is
         float exertion_level() const;
@@ -230,8 +234,11 @@ class recipe
 
         // Create an item instance as if the recipe was just finished,
         // Contain charges multiplier
-        item create_result() const;
-        std::vector<item> create_results( int batch = 1 ) const;
+    private:
+        std::vector<item> create_result( bool set_components, bool is_food,
+                                         item_components *used = nullptr ) const;
+    public:
+        std::vector<item> create_results( int batch = 1, item_components *used = nullptr ) const;
 
         // Create byproduct instances as if the recipe was just finished
         std::vector<item> create_byproducts( int batch = 1 ) const;
