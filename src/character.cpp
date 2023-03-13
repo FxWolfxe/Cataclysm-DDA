@@ -482,6 +482,7 @@ static const trait_id trait_HORIZONTAL_GENE_TRANSFER( "HORIZONTAL_GENE_TRANSFER"
 static const trait_id trait_ECHOLOCATION("ECHOLOCATION");
 static const trait_id trait_SCREECHER( "SCREECHER" );
 static const trait_id trait_SCREECHER_OK( "SCREECHER_OK" ); 
+static const trait_id trait_LIZ_IR("LIZ_IR"); 
 
 static const vitamin_id vitamin_calcium( "calcium" );
 static const vitamin_id vitamin_iron( "iron" );
@@ -2288,7 +2289,7 @@ void Character::recalc_sight_limits()
     if( has_active_mutation( trait_ELFA_NV ) ) {
         vision_mode_cache.set( ELFA_VISION );
     }
-    if( has_active_mutation( trait_NIGHTVISION2 ) ) {
+    if( has_active_mutation( trait_NIGHTVISION2 ) || has_trait( trait_LIZ_IR )) {
         vision_mode_cache.set( NIGHTVISION_2 );
     }
     if( has_active_mutation( trait_FEL_NV ) ) {
