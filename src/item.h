@@ -1050,6 +1050,12 @@ class item : public visitable
         void set_rot( time_duration val );
 
         /**
+         * Set item @ref rot to a random value. If the item is a container
+         * (such as MRE) - processes its contents recursively.
+         */
+        void randomize_rot();
+
+        /**
          * Get minimum time for this item or any of its contents to rot, ignoring
          * fridge. If this item is a container, its spoil multiplier is taken into
          * account, but the spoil multiplier of the parent container of this item,
@@ -2924,10 +2930,9 @@ class item : public visitable
         };
 
         cata::value_ptr<craft_data> craft_data_;
-
+    public:
         // any relic data specific to this item
         cata::value_ptr<relic> relic_data;
-    public:
         int charges = 0;
         units::energy energy = 0_mJ; // Amount of energy currently stored in a battery
 

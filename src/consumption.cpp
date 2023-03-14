@@ -1780,6 +1780,7 @@ bool Character::consume_effects(item& food)
     if( has_effect( effect_tapeworm ) ) {
         ingested.nutr /= 2;
     }
+    // to do: reduce nutrition by a factor of the amount of muscle to be rebuilt?
     activate_consume_eocs( *this, food );
 
     // GET IN MAH BELLY!
