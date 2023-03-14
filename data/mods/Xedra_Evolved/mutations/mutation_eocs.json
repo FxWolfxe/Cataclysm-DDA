@@ -109,8 +109,8 @@
   {
     "type": "effect_on_condition",
     "id": "manifest_destiny_spider",
-    "recurrence": [ "3 days", "5 days" ],
-    "condition": { "u_has_trait": "MANIFESTED_DESTINY_SPIDER" },
+    "recurrence": [ "2 days", "5 days" ],
+    "condition": { "u_has_trait": "MANIFEST_DESTINY_SPIDER" },
     "deactivate_condition": { "not": { "u_has_trait": "MANIFESTED_DESTINY_SPIDER" } },
     "effect": [
       {
@@ -128,9 +128,8 @@
   {
     "type": "effect_on_condition",
     "id": "manifested_destiny_spider",
-    "recurrence": [ "3 days", "5 days" ],
+    "recurrence": [ "3 days", "7 days" ],
     "condition": { "u_has_trait": "MANIFESTED_DESTINY_SPIDER" },
-    "deactivate_condition": { "not": { "u_has_trait": "MANIFESTED_DESTINY_SPIDER" } },
     "effect": [
       {
         "arithmetic": [

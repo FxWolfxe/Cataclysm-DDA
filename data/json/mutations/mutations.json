@@ -662,7 +662,8 @@
       "TROGLOBITE"
     ],
     "active": true,
-    "starts_active": true
+    "starts_active": true, 
+    "flags":["NIGHTVISION"]
   },
   {
     "type": "mutation",
@@ -1940,7 +1941,8 @@
     "changes_to": [ "NIGHTVISION3" ],
     "category": [ "FISH", "BEAST", "INSECT", "RAT", "CHIMERA", "LUPINE", "MOUSE", "TROGLOBITE", "SPIDER" ],
     "active": true,
-    "starts_active": true
+    "starts_active": true, 
+    "flags":["NIGHTVISION2"]
   },
   {
     "type": "mutation",
@@ -1953,7 +1955,8 @@
     "types": [ "VISION" ],
     "category": [ "FISH", "TROGLOBITE", "SPIDER", "INSECT" ],
     "active": true,
-    "starts_active": true
+    "starts_active": true, 
+    "flags":["NIGHTVISION3"]
   },
   {
     "type": "mutation",
@@ -1990,7 +1993,8 @@
     "prereqs": [ "CEPH_EYES" ],
     "category": [ "CEPHALOPOD" ],
     "active": true,
-    "starts_active": true
+    "starts_active": true, 
+    "flags":["NIGHTVISION3"]
   },
   {
     "type": "mutation",
@@ -2001,7 +2005,8 @@
     "types": [ "EYES" ],
     "leads_to": [ "ELFA_NV" ],
     "category": [ "ELFA" ],
-    "social_modifiers": { "lie": 5, "persuade": 5, "intimidate": -5 }
+    "social_modifiers": { "lie": 5, "persuade": 5, "intimidate": -5 }, 
+    "flags":["NIGHTVISION3"]
   },
   {
     "type": "mutation",

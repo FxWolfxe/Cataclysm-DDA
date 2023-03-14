@@ -46,11 +46,11 @@
     "type": "mutation",
     "id": "MANIFEST_DESTINY_SPIDER",
     "name": { "str": "Transforming into Spider" },
-    "points": 0,
-    "starting_trait": false,
+    "points": -1,
+    "starting_trait": true,
     "purifiable": false,
     "valid": false,
-    "player_display": false,
+    "player_display": true,
     "description": "You don't feel very well.  On an existential level."
   },
   {
