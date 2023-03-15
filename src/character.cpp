@@ -329,7 +329,7 @@ static const json_character_flag json_flag_WATCH( "WATCH" );
 static const json_character_flag json_flag_WEBBED_FEET( "WEBBED_FEET" );
 static const json_character_flag json_flag_WEBBED_HANDS( "WEBBED_HANDS" );
 static const json_character_flag json_flag_BAREFOOT_OK("BAREFOOT_OK");
-
+static const json_character_flag json_flag_SWIMS("SWIMS");
 
 
 static const limb_score_id limb_score_balance( "balance" );
@@ -1327,6 +1327,43 @@ int Character::swim_speed() const
         iret = 30;
     }
     return iret;
+}
+
+int Character::calc_movecost(const tripoint &dest) const
+{
+    return calc_movecost(pos(), dest); 
+}
+
+int Character::calc_movecost(const tripoint &start_point, const tripoint &end_point) const
+{
+    int movecost = 0;
+
+    const auto& here = get_map();
+
+    const int source_cost = here.move_cost(start_point);
+    const int dest_cost = here.move_cost(end_point);
+
+    const bool swims = has_flag(json_flag_SWIMS);
+
+    if (swims) {
+        if (here.has_flag(ter_furn_flag::TFLAG_SWIMMABLE, start_point)) {
+            movecost += 25;
+        }
+        else {
+            movecost += 50 * here.move_cost(start_point);
+        }
+        if (here.has_flag(ter_furn_flag::TFLAG_SWIMMABLE, end_point)) {
+            movecost += 25;
+        }
+        else {
+            movecost += 50 * here.move_cost(end_point);
+        }
+    }
+    else
+    {
+        movecost = ((50 * source_cost) + (50 * dest_cost)) / 2.0;
+    }
+    return movecost; 
 }
 
 bool Character::is_on_ground() const

@@ -70,6 +70,7 @@ static const bionic_id bio_fitnessband( "bio_fitnessband" );
 static const bionic_id bio_painkiller( "bio_painkiller" );
 
 static const flag_id json_flag_CALORIES_INTAKE( "CALORIES_INTAKE" );
+static const json_character_flag json_flag_DRINK_SPILLS("DRINK_SPILLS"); 
 
 static const itype_id itype_fitness_band( "fitness_band" );
 
@@ -82,6 +83,7 @@ static const trait_id trait_NOPAIN( "NOPAIN" );
 static const trait_id trait_SAPROPHAGE( "SAPROPHAGE" );
 static const trait_id trait_SAPROPHAGE_ANIMAL("SAPROPHAGE_ANIMAL");
 static const trait_id trait_SAPROVORE( "SAPROVORE" );
+static const trait_id trait_GASTROPOD_FOOT("GASTROPOD_FOOT"); 
 
 using item_filter = std::function<bool ( const item & )>;
 using item_location_filter = std::function<bool ( const item_location & )>;
@@ -749,7 +751,7 @@ class comestible_inventory_preset : public inventory_selector_preset
             if(
                 ( loc->made_of_from_type( phase_id::LIQUID ) &&
                   loc.where() != item_location::type::container ) &&
-                !get_map().has_flag_furn( ter_furn_flag::TFLAG_LIQUIDCONT, loc.position() ) ) {
+                !get_map().has_flag_furn( ter_furn_flag::TFLAG_LIQUIDCONT, loc.position() )  && !you.has_flag(json_flag_DRINK_SPILLS)) {
                 return _( "Can't drink spilt liquids." );
             }
             if(

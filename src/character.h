@@ -696,6 +696,11 @@ class Character : public Creature, public visitable
         bool is_on_ground() const override;
         /** Returns the player's movecost for swimming across water tiles. NOT SPEED! */
         int  swim_speed() const;
+
+        int calc_movecost(const tripoint& dest) const; 
+
+        int calc_movecost(const tripoint& start_point, const tripoint& end_point) const; 
+
         /** Returns melee skill level, to be used to throttle dodge practice. **/
         float get_melee() const override;
         /**

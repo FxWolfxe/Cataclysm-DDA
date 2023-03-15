@@ -5210,7 +5210,7 @@
     "leads_to": [ "GASTROPOD_BALANCE" ],
     "purifiable":false,
     "integrated_armor":["integrated_gastropod_foot"],
-    "flags": [ "SLUDGE_IMMUNE" ],
+    "flags": [ "SLUDGE_IMMUNE", "DRINK_SPILLS" , "SWIMS"],
     "visibility": 8,
     "ugliness": 9,
     "encumbrance_always": [ [ "leg_l", 10 ], [ "leg_r", 10 ], [ "foot_l", 10 ], [ "foot_r", 10 ] ],
@@ -5218,6 +5218,7 @@
     "restricts_gear": [ "leg_l", "leg_r", "foot_l", "foot_r" ],
     "noise_modifier": 0.25,
     "destroys_gear": true
+    
   },
   {
     "type": "mutation",
@@ -5285,7 +5286,7 @@
     "prereqs": [ "MUCUS_SECRETION", "MUCUS_SECRETION2"],
     "category": [ "GASTROPOD" ],
     "active": true,
-    "cost": 4,
+    "cost": 1,
     "time": "100 s",
     "thirst": true,
     "kcal": true
@@ -6118,7 +6119,7 @@
     "category": [ "GASTROPOD" ],
     "armor": [ { "parts": "eyes", "cut": 3, "bash": 1 } ],
     "restricts_gear": [ "eyes" ],
-    "passive_mods": { "per_mod": 2 }
+    "passive_mods": { "per_mod": 4 }
   },
   {
     "type": "mutation",
@@ -6511,6 +6512,7 @@
     "purifiable": false,
     "prereqs": [ "MANDIBLES" ],
     "category": [ "INSECT" ],
+    "flags":["DRINK_SPILLS"],
     "active": true,
     "restricts_gear": [ "mouth" ]
   },
@@ -6874,7 +6876,7 @@
     "threshreq":["THRESH_FISH"],
     "purifiable":false,
     "category": [ "FISH" ],
-    "flags": [ "WEBBED_FEET" ],
+    "flags": [ "WEBBED_FEET", "TOUGH_FEET", "SWIMS" ],
     "wet_protection": [ { "part": "foot_l", "good": 6 }, { "part": "foot_r", "good": 6 } ]
   },
   {
@@ -7870,7 +7872,7 @@
     "restricts_gear": [ "foot_l", "foot_r" ],
     "movecost_modifier": 1.2,
     "noise_modifier": 0.0,
-    "flags": [ "TOUGH_FEET" ]
+    "flags": [ "TOUGH_FEET", "SWIMS" ]
   },
   {
     "type": "mutation",
