@@ -1297,7 +1297,7 @@
     "description": "Without glasses, your seeing radius is severely reduced!  However, you are guaranteed to start with a pair of glasses.",
     "starting_trait": true,
     "cancels": [ "URSINE_EYE" ],
-    "category": [ "BEAST", "TROGLOBITE" ],
+    "category": [  "TROGLOBITE" ],
     "flags": [ "MYOPIC" ]
   },
   {
@@ -2599,7 +2599,7 @@
     "name": { "str": "Feathers" },
     "points": 2,
     "visibility": 10,
-    "ugliness": 3,
+    "ugliness": -3,
     "bodytemp_modifiers": [ 50, 100 ],
     "description": "Iridescent feathers have grown to cover your entire body, providing a marginal protection against attacks and minor protection from cold.  They also provide a natural waterproofing.",
     "types": [ "SKIN" ],
@@ -2614,7 +2614,7 @@
     "name": { "str": "Down" },
     "points": 0,
     "visibility": 4,
-    "ugliness": 1,
+    "ugliness": -1,
     "bodytemp_modifiers": [ 300, 800 ],
     "bodytemp_sleep": 250,
     "description": "You shan't need to migrate south with your layer of down.  It's even better with no apes around to kill you for it!",
@@ -3664,7 +3664,7 @@
     "rand_cut_bonus": { "min": 2, "max": 3 },
     "description": "The skin on your hands is now a mucous membrane that produces a thick, acrid slime.  Attacks using your hand will cause minor acid damage.  Slightly increases wet benefits.",
     "prereqs": [ "SLIMY" ],
-    "category": [ "SLIME" ],
+    "category": [ "SLIME", "GASTROPOD" ],
     "wet_protection": [ { "part": "hand_l", "good": 5 }, { "part": "hand_r", "good": 5 } ]
   },
   {
@@ -3736,7 +3736,6 @@
     "description": "You've developed an extremely long and mobile tongue capped with teeth.  You may use it to attack your enemies and pull them towards you.",
     "types": [ "TONGUE" ],
     "changes_to": [ "GASTROPOD_EXTREMITY3" ],
-    "threshreq": [ "THRESH_GASTROPOD" ],
     "category": [ "GASTROPOD" ],
     "cancels": [ "FANGS", "MANDIBLES" ],
     "active": true,
@@ -5194,7 +5193,7 @@
       "blocker_mutations": [ "MANDIBLES" ],
       "body_part": "mouth",
       "chance": 22,
-      "base_damage": { "damage_type": "stab", "amount": 15 }
+      "base_damage": { "damage_type": "stab", "amount": 15 , "armor_penetration":2}
     }
   },
   {

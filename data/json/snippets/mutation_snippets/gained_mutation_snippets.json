@@ -1,0 +1,1230 @@
+[
+    {
+        "type": "snippet",
+        "category": "GAINED_BIOLUM0",
+        "text": [
+            "a long fleshy lure grows from your head, and begins to glow",
+            "a long glowing lure grows from your forehead"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_BIOLUM1",
+        "text": [
+            "you learn how to make your phosphore glow on command",
+            "you finially gain some control over your lure"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_NIGHTVISION",
+        "text": [
+            "the night suddenly feels so alive",
+            "the darkness isn't so dark anymore"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_NIGHTVISION2",
+        "text": [
+            "the night suddenly feels so alive",
+            "the darkness isn't so dark anymore"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_NIGHTVISION3",
+        "text": [
+            "the night suddenly feels so alive",
+            "the darkness isn't so dark anymore"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TOUGH_FEET",
+        "text": [
+            "the soles of your feeth thicken",
+            "the skin of your feet thicken",
+            "your feet feel tougher"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CEPH_EYES",
+        "text": [
+            "you eyes bulge and change, and water doesn't bother them much anymore",
+            "your eyes change shape, becoming very alien looking"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_FANGS",
+        "text": [
+            "your canine teeth lengthen considerably",
+            "your teeth shapren and lengthen"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_BAT_FANGS",
+        "text": [
+            "your canine teeth lengthen considerably",
+            "your teeth shapren and lengthen",
+            "your fangs grow even longer",
+            "your fangs sharpen further"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_BAT_FANGS_VAMPIRE",
+        "text": [
+            "your fangs grow even longer, and poke out of your mouth even when closed",
+            "your fangs grow so long they're always out",
+            "your fangs become needle like, and your mouth waters"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_INCISORS",
+        "text": [
+            "your front teeth lengthen",
+            "your front teeth grow longer, and you have an urge to chew on something",
+            "your front teeth grow longer"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_HARDENED_INCISORS",
+        "text": [
+            "your front teeth lengthen and harden further",
+            "your incisors grow even longer, and you want to chew on something",
+            "your front teeth grow longer and you want to gnaw on something"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_GILLS",
+        "text": [
+            "slits open up on your neck, and dry out in the open air",
+            "slits open on your neck, and you feel a need to get into water"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_GILLS_CEPH",
+        "text": [
+            "slits open up on your neck, and dry out in the open air",
+            "slits open on your neck, and you feel a need to get into water"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SCALES",
+        "text": [
+            "your skin dries out and hardens",
+            "patches of your skin have turned tough and scaly",
+            "your skin has grown rough and scaly"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_THICK_SCALES",
+        "text": [
+            "your skin had hardened into tough scales",
+            "you have grown a tough scaly hide",
+            "your hide has become covered in thick scales"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SLEEK_SCALES",
+        "text": [
+            "your skin has grown into sleek shiny scales",
+            "you have grown a hide of sleek shiny scales",
+            "you're covered in sleek shiny scales"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_LIGHT_BONES",
+        "text": [
+            "you feel fragile",
+            "you suddenly feel very light and fragile",
+            "you feel very fragile"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_FEATHERS",
+        "text": [
+            "feathers cover your entire body",
+            "pretty feathers cover your entire body",
+            "you've grown a coat of pretty feathers"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_DOWN",
+        "text": [
+            "you've grown a coat of insulating down",
+            "you've grown some insulating down",
+            "you've gained insulating down"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_LIGHTFUR",
+        "text": [
+            "you've grown a light dusting of fur",
+            "you've grown a dusting of fur",
+            "you've gained a light fur coat"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_FUR",
+        "text": [
+            "you've grown a coat of fur",
+            "you've grown a fur coat",
+            "you've grown furry"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_URSINE_FUR",
+        "text": [
+            "you've grown a coat of shaggy fur",
+            "you're covered in shaggy fur",
+            "shaggy fur coveres your entire body"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_LUPINE_FUR",
+        "text": [
+            "you're covered in a thick fur coat",
+            "you've gained a thick fur coat",
+            "you're grown the fur of a proud wild animal"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_FELINE_FUR",
+        "text": [
+            "you're covered in a sleek fur coat",
+            "you've gained a sleek fur coat",
+            "you're grown the fur of a proud animal",
+            "you're grown a sleek fur coat, and feel an urge to lick it"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_LYNX_FUR",
+        "text": [
+            "you're neck and cheeks are covered in thick fur",
+            "thick fur covers your neck and cheeks",
+            "your're neck is completly covered in thick fur"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_PATCHSKIN1",
+        "text": [
+            "your skin turned into a chaotic jumble",
+            "you've grown a chaotic hide of all kinds of skin, scales, fur and chitin",
+            "you have no idea what your skin is turning into"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_PATCHSKIN2",
+        "text": [
+            "your chaotic hide thickened further",
+            "you're hide grew thicker, but you're still not sure what it is",
+            "you're inhuman hide grew even tougher",
+            "your skin has been completly replaced by a chaotic jumple of hide, fur, scales and chitin"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_PATCHSKIN3",
+        "text": [
+            "your chaotic hide thikens into an armor of chitin, scales and bone that rivals some balistic armor",
+            "your chatic hide grew even tougher",
+            "you've become covered in armor like jumble of chitin, scales, fur and bone"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CHITIN",
+        "text": [
+            "your skin thickened and hardened",
+            "your skin hardened into a flexible chitin",
+            "you've grown a flexible layer of chitin"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CHITIN2",
+        "text": [
+            "your chitin hardened and thickened",
+            "your chitin grew even harded",
+            "your chitin is even harder now, but less flexible"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CHITIN3",
+        "text": [
+            "your chitin grew into a natural armor plate",
+            "you've grown natural plate aromor",
+            "your chitin grows thicker and harder, not much can break it"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CHITIN_FUR",
+        "text": [
+            "hair has grown over your chitin",
+            "your chitinous body has grown a layer of hair",
+            "thin hair has grown over your chitinous body"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CHITIN_FUR2",
+        "text": [
+            "the hair on your chitin has thickened into a furry coat",
+            "your chitin is now properly furry",
+            "your chitin is covered in a furry coat"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CHITIN_FUR3",
+        "text": [
+            "your chitin armor has grown a thick fur coat",
+            "your chitin is covered in fine, prickly hair",
+            "chitin 'whiskers' coat your chitin armor"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CF_HAIR",
+        "text": [
+            "your chitinous hair losens a bit",
+            "some of your chitin whiskers losen and fall off, only to be quickly replaced",
+            "your fur coat feel loser"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SPINES",
+        "text": [
+            "spines have grown over your skin",
+            "fine spiny growths cover your body",
+            "thin spines coat your body"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_QUILLS",
+        "text": [
+            "your spines lengthen into long barbs",
+            "your spines lengthen into long pointy quills",
+            "your spins lengthen into long quills, ready to embed into anything foolish enough to hit you"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_BARBS",
+        "text": [
+            "your quills on your arms feel looser and ready to fall off",
+            "the quills on your arms feel looser",
+            "the quills on your arms feel looser and ready to fall off"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_NAILS",
+        "text": [
+            "your nails lengthen",
+            "your finger nails have grown much longer",
+            "your finger nails have grown longer and sharper"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CLAWS",
+        "text": [
+            "your nails lengthend further into claws",
+            "you grew claws at the end of your hands",
+            "your nails turned into sharp claws"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CLAWS_RAT",
+        "text": [
+            "your claws turned ratty and gnawled",
+            "your claws becamy very ratty",
+            "you grew rat like claws"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CLAWS_ST",
+        "text": [
+            "your ratty claws harneded further",
+            "your ratty claws became hard as steel"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CLAWS_RETRACT",
+        "text": [
+            "your sharp claws became retractable",
+            "you grew retractable feline claws",
+            "you grew sharp feline claws"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CLAWS_TENTACLE",
+        "text": [
+            "wicked hooks grew from the ends of your tentacles",
+            "sharp rakes grew from the ends of your upper tentacles",
+            "your upper tentacles grew sharp rakes"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_INTERMEDIAT_ABDOMEN",
+        "text": [
+            "your tail grew into a small abdomen",
+            "your tail became a small bug like abdomen",
+            "you grew a bug like abdomen"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_SPIDER_ABDOMEN",
+        "text": [
+            "your abdomen grew larger and spider like",
+            "your abdomen grew even larger and developed spinnerets",
+            "you grew a spider like abdomen"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TALONS",
+        "text": [
+            "your nailes grew into large talons",
+            "your index finger has grown a wicked sharp talon",
+            "your finger is tipped with a wicked talon"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_GASTROPOD_EXTREMITY2",
+        "text": [
+            "your tongue has grown much longer and barbed"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_GASTROPOD_EXTREMITY3",
+        "text": [
+            "your tongue legnthened even further",
+            "your tongue turned into a fleshy harpoon"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SPIDER_EYES_BAD",
+        "text": [
+            "you grew a pair of red beady eyes",
+            "you grew a pair of additional eyes",
+            "you grew a pair of small arachnid eyes"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SPIDER_EYES_GOOD",
+        "text": [
+            "your additional eyes matured",
+            "you're finally able to make sense of the input from your extra eyes",
+            "your extra arachnid eyes fully matured"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SPIDER_EYES_GREAT",
+        "text": [
+            "you gained a third set of spider eyes",
+            "you grew an additional set of arachnid eyes",
+            "you have 3 sets of arachnid eyes now"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_COMPOUND_EYES",
+        "text": [
+            "your eyes turned into large bug eyes",
+            "you eyes have turned into bulging compound eyes"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_PADDED_FEET",
+        "text": [
+            "your feet have gained soft padding to them",
+            "your feet have grown soft, squishy paw pads",
+            "you've gain soft paw pads on your feet"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_BAT_FEET",
+        "text": [
+            "your feet have turned into long batty grasping feet",
+            "your feet have turned into bat like feet",
+            "your feet have grown long, finger like toes with sharp claws"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_FOOT_PAWS",
+        "text": [
+            "your feet turned into large paws",
+            "your feet have become dog like paws",
+            "your feet are now canine like hind paws"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_FOOT_PAWS_RAT",
+        "text": [
+            "your feet have become very ratty",
+            "your feet turned into large ratty paws",
+            "your feet turned very ratty"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_DIGITIGRADE_LEGS",
+        "text": [
+            "your legs changed shape and look very dog like",
+            "your legs have become very canine in shape"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_UNGULIGRADE_LEGS",
+        "text": [
+            "your legs changed shape and look like they belong on horse or bull",
+            "your legs have become very bull like"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_RAP_TALONS",
+        "text": [
+            "you've grown wicked sharp talons on your toe",
+            "your big toes have grown razer sharp talons",
+            "razer sharp talons have grown from your toes"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_INSECT_FEET",
+        "text": [
+            "your feet have grown into segmented bug feet",
+            "your feet look very bug like",
+            "your feet look very buggy, with long segmented toes fit for grasping and climbing"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_BIRD_LEGS",
+        "text": [
+            "your feet have turned into large avian talons",
+            "your feet have been replaced with avian talons",
+            "your feet have turned into bird like talons"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_HOOVES",
+        "text": [
+            "your feet have turned into stuby hooves",
+            "you've grown a pair of hard hooves in place of your feet",
+            "your feet have turned into bovine hooves"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SABER_TEETH",
+        "text": [
+            "your canine teeth have grown into large saber cat like fangs",
+            "you've grown a pair of large saber cat like fangs"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_HORNS",
+        "text": [
+            "you grew a pair of pointy horns",
+            "your grew a pair of short pointy horns",
+            "your grew a pair of short pointy horns, they make you feel quite naughty"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_HORNS_CURLED",
+        "text": [
+            "your short horns have grown into large ram like horns",
+            "you have a pair of ram like horns"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_HORNS_POINTED",
+        "text": [
+            "your short horns have grown longer and sharper",
+            "you have a pair of long pointy skewers for horns"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_ANTENNAE",
+        "text": [
+            "you gained a pair of fluffy antenna",
+            "a pair of wiggling antenna has grown from your forehead",
+            "you grew a pair of antenna, making you feel rather mothy"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_STUB",
+        "text": [
+            "your spine has lengthened into a small stubby tail",
+            "you've grown a small stubby tail",
+            "you grown a small tail"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_BIRD",
+        "text": [
+            "large pretty feathers cover your stubby tail",
+            "your tail tichened and grew a broad fan of pretty feathers",
+            "you've grown a very pretty fan of tail feathers"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_FIN",
+        "text": [
+            "your tail lengthened into a long shark tail",
+            "your tail lengthened into a long fish tail",
+            "you've grown a long, thick tail fin"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_FIN_STUB",
+        "text": [
+            "you've grown a stubby protrusion on you back",
+            "you've grown something on your back",
+            "you feel a large bumb on your back"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_DORSAL_FIN",
+        "text": [
+            "you've grown a large dorsal fin on your back",
+            "your back has grown a large dorsal fin",
+            "you've grown a large shark like dorsal fin"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_LONG",
+        "text": [
+            "your tail has lengthed and grown cat like",
+            "you've grown a long, thin and fluffy tail",
+            "you've grown a long figity tail "
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_CATTLE",
+        "text": [
+            "your tail has lengthed and grown cattle like",
+            "you've grown a long, thin bull tail",
+            "you've grown a long bull tail"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_RAT",
+        "text": [
+            "your tail has lengthed into a long pink rat tail",
+            "you've grown a ratty pink tail",
+            "you've grown a long pink roden tail"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_THICK",
+        "text": [
+            "your tail has legthened and thickened into a lizard like tail",
+            "you've grown a tick lizard like tail",
+            "you've grown a thick, flexible, lizard tail"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_GATOR",
+        "text": [
+            "your tail has bulked up into a gator like tail",
+            "you've grown a thick, powerful, croc tail",
+            "you've grown a thick, powerful, reptillian tail"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_MUZZLE_RAPTOR",
+        "text": [
+            "your snout legnthened into a pointy, reptillian muzzle",
+            "you've grown a pointy reptile muzzle",
+            "you've grown a predatory reptile muzzle",
+            "you've grown a long saurian muzzle"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_RAPTOR",
+        "text": [
+            "you've grown a long thick, but not very flexible reptile tail with long feathers",
+            "you've grown a thick, rigid lizard like tail tipped with long feathers",
+            "you've grown a thick saurian tail, covered in",
+            "you've grown a long dinosaur tail tipped with a plumage of feathers"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_FLUFFY",
+        "text": [
+            "your tail has lengthened, as has the fur on it. It looks very canine now",
+            "your tail has turned very canine, and often waggs uncontrollably",
+            "you've grown a very canine like tail, you find yourself wagging it subconsciously"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_STING",
+        "text": [
+            "your abdomen has grown a deadly stinger at the end of it",
+            "a wasp like stinger has grown from your abodmen",
+            "your abdomen has grown a venomous stinger at the tip"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_TAIL_CLUB",
+        "text": [
+            "your thick tail has grown a large bony club at the end",
+            "your tail has grown a bony club at the end, making it very mace like",
+            "your tail has grown a large bony club. When youu swing it, it makes a very satisfying 'woosh' sound"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_WINGS_BIRD",
+        "text": [
+            "the stubs on your back have developed into large bird like wings",
+            "you've grown a large pair of feathery wings on your back",
+            "you've developed a large pair of wings"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_WINGS_INSECT",
+        "text": [
+            "the stubs on your back have developed into large wasp like wings",
+            "you've gained a pair of buzzing insect wings",
+            "you've grown a pair of translucent bug wings"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_GIANT_WASP_WINGS",
+        "text": [
+            "you've grown an additonal pair of insect wings",
+            "your wings have grown larger still, and you have a second pair now"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_MOUTH_TENTACLES",
+        "text": [
+            "tentacles have grown from your lip",
+            "a set of tentacles have grown around your mouth",
+            "tentacles have grown in around your mouth"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_MANDIBLES",
+        "text": [
+            "your mouth has grown into a pair of bug like mandibles",
+            "your mouth has turned into a pair of mandibles"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_FANGS_SPIDER",
+        "text": [
+            "your mandables have grown into spider like folding fangs",
+            "you've grown a pair of arachnid fangs",
+            "you've grown a pair of folding spider fangs",
+            "you've gained a pair of spider fangs, and you can feel the venom glands in them"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_GASTROPOD_FOOT",
+        "text": [
+            "your feet merged into a giant slug body",
+            "your lower body turned into a single slug like foot",
+            "your whole lower body turned into a slug like foot, you're going nowhere fast",
+            "your lower body merged into a single slug foot"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_MUCUS_SECRETION",
+        "text": [
+            "you started leaving a trail of slime everywhere you go",
+            "you leave everything slick and sticky",
+            "everything that touches you is covered in slime"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SNAIL_TRAIL",
+        "text": [
+            "everything is coated in slime in your wake",
+            "you leave trails of slime everywhere you go now",
+            "mucus coveres everything you touch now"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CANINE_EARS",
+        "text": [
+            "your ears turned very dog like",
+            "you've grown large pointy canine ears",
+            "you've got a pair of dog like ears"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_BAT_EARS",
+        "text": [
+            "your ears have grown huge and bat like",
+            "you have huge batty ears",
+            "your ears are massive bat ears"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_WEB_SPINNER",
+        "text": [
+            "you started leaving sticky web in your wake",
+            "you started leaving webbing whever you go"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_WEB_WEAVER",
+        "text": [
+            "you can now make nice big webs",
+            "you can make nice spider webs now"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_WHISKERS",
+        "text": [
+            "long wiry whiskers have grown from your face",
+            "you have long sensitive whiskers on your face",
+            "your face has long sensitive whiskers now"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_WHISKERS_RAT",
+        "text": [
+            "long wiry whiskers have grown from your face",
+            "you have long sensitive whiskers on your face",
+            "your face has long sensitive whiskers now"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_FORKED_TONGUE",
+        "text": [
+            "your tongue has grown long and forked",
+            "you have a long forked tongue",
+            "you've grown a long serpintine forked tongue"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_EYEBULGE",
+        "text": [
+            "your eyes bulge out slightly",
+            "your eyes bugle out in an unsettling maner",
+            "your eyes are larger and bulging"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_EYESTALKS1",
+        "text": [
+            "your eyes protrude slightly from their sockets",
+            "your eyes protrude on short, thick tentacles",
+            "your eyes bugle out further one short tentacles"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_EYESTALKS2",
+        "text": [
+            "your eyes are settled on long flexible tentacles",
+            "your eyes turned into long flexible eye stalks",
+            "your eyes pushed completly out, and move about on fleshy tentacles"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_MOUTH_FLAPS",
+        "text": [
+            "you've grown fleshy flaps on your mouth",
+            "fleshy flaps have grown around your mouth"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_WINGS_STUB",
+        "text": [
+            "short stubs have grown on your back"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_WINGS_BAT",
+        "text": [
+            "you grew a pair of large bat wings",
+            "you gained a pair of large bat wings"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_WINGS_BUTTERFLY",
+        "text": [
+            "you grew large butterfly wings",
+            "your stubs grew a pair of large, pretty, butterfly wings"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SNOUT",
+        "text": [
+            "your jaw has begin pushing out into a short snout",
+            "you've grown a short snout",
+            "your jaw looks very animal like"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_FISH_SNOUT",
+        "text": [
+            "your snout turned into a long pointy shark muzzle",
+            "you've grown a pointy shark muzzle",
+            "you have a pointy shark muzzle"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_MUZZLE",
+        "text": [
+            "your short snout lengthened into a long lupine muzzle",
+            "your face lengthened into a long wolf muzzle",
+            "you face lengthened into a large wolf like muzzle, you often feel the need to howl"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_MUZZLE_RAT",
+        "text": [
+            "you have a long ratty muzzle",
+            "your snout turned into a long ratty muzzle"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_MUZZLE_LONG",
+        "text": [
+            "you have a long gator like muzzle",
+            "you have a long, intimidating, crocodile snout"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_PROBOSCIS",
+        "text": [
+            "your mouth and toungue fuzed into a long proboscis",
+            "you grew a long proboscis, and will need to drink your food from now on"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_WEBBED",
+        "text": [
+            "your hands have grown webbed",
+            "webbing has grown in between your fingers"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_WEBBED_FEET",
+        "text": [
+            "your feet have grown webbed",
+            "webbing has grown in between your toes"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_FIN_FEET",
+        "text": [
+            "your feet have turned into long, broad fin like feet",
+            "your feet look alot more like fins then feet now"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_PAWS",
+        "text": [
+            "your hands started looking alot more like paws now",
+            "your hands are very paw like",
+            "you have very paw like hands now"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_PAWS_BAT",
+        "text": [
+            "your hands turned into long batty paws",
+            "you have a pair of long grapsy paws with short claws"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_BEAK",
+        "text": [
+            "you've grown a short pointy beak",
+            "your face turned into a short beak"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_BEAK_RAPTOR",
+        "text": [
+            "your beak grew sharper and hooked",
+            "you grew the beak of a bird of prey",
+            "your beak now looks very proud and a bit intimidating"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_BEAK_PECK",
+        "text": [
+            "your beak turned long and hard",
+            "you've grown a long, hard, wood pecker beak",
+            "your beak is very hard and sharp, perfect for drilling into woods to get tasty grubs"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_BEAK_HUM",
+        "text": [
+            "your beak is long and thin, with a long tongue for drinking nector",
+            "you have a long humming bird beak for drinking nector"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SLIMY",
+        "text": [
+           "you started feeling very slimy",
+           "your skin is always wet and sticky",
+           "you're always covered in a thin coat of slime"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_VISCOUS",
+        "text": [
+           "you're always covered in a thick layer of slime",
+           "your slime is even thicker now",
+           "your slime is thicker and even stickier"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_INSECT_ARMS",
+        "text": [
+            "you grew a pair of insect limbs",
+            "you grew an extra pair of arms",
+            "an extra pair of arms grew from your torso"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_INSECT_ARMS_OK",
+        "text": [
+            "your extra arms lengthen",
+            "you gained control over your insect limbs",
+            "your insect limbs feel as natural as your old arms"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_ARACHNID_ARMS",
+        "text": [
+            "you grew another pair of bug like arms",
+            "you grew a pair of spider like arms",
+            "a third pair of arms grew from your torso"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_ARACHNID_ARMS_OK",
+        "text": [
+            "your spider arms have matured",
+            "you learned how to control your spider limbs",
+            "you learned how to control your arachnid limbs"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_ARM_TENTACLES",
+        "text": [
+            "your arms turned into tenticles",
+            "your arms lose all rigidity and turn into tenticles",
+            "your arms become long flexible tenticles"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_ARM_TENTACLES_4",
+        "text": [
+            "your arm tenticles split into 2",
+            "you grow an additional sets of tenticle 'arms'"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_ARM_TENTACLES_8",
+        "text": [
+            "you gain an additional pair of tenticle 'arms'",
+            "you grow even more tenticles"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SHELL",
+        "text": [
+            "you grow a thick shell from your back",
+            "a thick shell grows from your back",
+            "your torso is covered in a thick shell",
+            "a shell grows from your back"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SHELL2",
+        "text": [
+            "your shell grows larger and thicker",
+            "your shell grows even larger"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SHELL3",
+        "text": [
+            "your shell grows larger and thicker, and developes a shiny coating",
+            "your shell grows even larger and grows a pretty pearly coat"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_LEG_TENTACLES",
+        "text": [
+            "your legs turn into tenticles",
+            "your legs lose all their rigidity and become thick tenticles"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_LEG_TENT_BRACE",
+        "text": [
+            "suckers have grown on your tenticles",
+            "suckers have developed on your legs"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_ACIDBLOOD",
+        "text": [
+            "you feel a sharp, searing pain for a moment, then it quickly fades, something deep has changed",
+            "you feel like your blood is on fire, then it cools just as quickly"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_ELECTRORECEPTORS",
+        "text": [
+            "There's a sudden itching on your face as you grow aware of the electricty around you"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_SHARKTEETH",
+        "text": [
+            "your teetch fall out, and are quickly replaced with row upon row of razor sharp shark teeth",
+            "your mouth begins to bleed as deadly shark teeth fill it"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_FELINE_FLEXIBILITY",
+        "text": [
+            "your body suddenly feels incredibly limber"
+        ]
+    },
+    {
+        "type": "snippet",
+        "category": "GAINED_CARNIVORE_FAKE",
+        "text": [
+            "you have a sudden craving for meat",
+            "you suddenly feel very hungery for some steak",
+            "suddenly, fruit seems far less enjoyable"
+        ]
+    }
+]

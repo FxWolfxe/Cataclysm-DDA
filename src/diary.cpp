@@ -20,6 +20,7 @@
 #include "path_info.h"
 #include "skill.h"
 #include "string_formatter.h"
+#include "text_snippets.h"
 #include "type_id.h"
 
 diary_page::diary_page() = default;
@@ -404,11 +405,17 @@ void diary::trait_changes()
 
                 if( std::find( prevpage->traits.begin(), prevpage->traits.end(),
                                elem ) == prevpage->traits.end() ) {
+
+
+                    std::string snippit_cat = "GAINED_" + elem.trait->id.str(); 
+                    bool has_category = SNIPPET.has_category(snippit_cat); 
+
+
                     if( flag ) {
                         add_to_change_list( _( "Gained Mutation: " ) );
                         flag = false;
                     }
-                    add_to_change_list( colorize( elem.name(), elem.trait->get_display_color() ), elem.desc() );
+                    add_to_change_list( colorize( has_category? SNIPPET.random_from_category(snippit_cat)->translated() : elem.name(), elem.trait->get_display_color() ), elem.desc() );
                 }
 
             }

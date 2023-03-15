@@ -21,6 +21,7 @@
 #include "make_static.h"
 #include "memory_fast.h"
 #include "string_formatter.h"
+#include "text_snippets.h"
 #include "trait_group.h"
 #include "translations.h"
 
@@ -672,6 +673,19 @@ std::string mutation_branch::desc( const std::string &variant ) const
 bool mutation_branch::has_transformation_text() const
 {
     return raw_transformation_text.has_value();
+}
+
+cata::optional<translation> mutation_branch::get_random_gain_snippet() const
+{
+    std::string snippet_cat = "GAINED_" + id.str();
+    if(SNIPPET.has_category(snippet_cat))
+    {
+        return SNIPPET.random_from_category(snippet_cat);
+    }
+
+    return cata::nullopt;
+
+
 }
 
 

@@ -448,6 +448,9 @@ struct mutation_branch {
          */
         bool has_transformation_text() const;
 
+
+        cata::optional<translation> get_random_gain_snippet() const;
+
         /**
          * \brief gets the translated text to display before the default transformation message 
          * \return the translated text to display before the default transformation message if available, cata::nullopt otherwise 

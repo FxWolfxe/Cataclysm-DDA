@@ -1,0 +1,134 @@
+[ 
+    { 
+        "type":"snippet", 
+        "category":"GAINED_THRESH_LIZARD", 
+        "text":[
+            "you embrace the reptillian changes", 
+            "you reject your humanity, embracing your new lizard like nature", 
+            "you embrace the reptile growing within"
+        ]
+    }, 
+    { 
+        "type":"snippet",
+        "category":"GAINED_THRESH_GASTROPOD", 
+        "text":[
+            "you embrace your new snail like nature", 
+            "you embrace the slug within", 
+            "you slow down, content with your simple existance",
+            "you'll always be home now, in your shell"
+        ]
+    }, 
+    { 
+        "type":"snippet",
+        "category":"GAINED_THRESH_BIRD", 
+        "text":[
+            "you let out a happy chirp as your humanity fades", 
+            "you embrace the bird within", 
+            "you let out a happy caw as your humanity fades"
+        ]
+    }, 
+    { 
+        "type":"snippet",
+        "category":"GAINED_THRESH_FISH", 
+        "text":[ 
+            "you feel a deep longing towards the ocean, your new home", 
+            "land suddenly feels very alien to you", 
+            "you finally embrace the ocean's call", 
+            "you finally reject the land"
+        ]
+    }, 
+    { 
+        "type":"snippet",
+        "category":"GAINED_THRESH_BEAST", 
+        "text":[ 
+            "you emabrace your role as a creature of the night", 
+            "you feel a churning and a deep hunger for blood", 
+            "you embrace your bat like instincts, and reject your humanity", 
+            "you let out a loud screech, oh so happy to let your humanity fade"
+        ]
+    }, 
+    { 
+        "type":"snippet",
+        "category":"GAINED_THRESH_FELINE", 
+        "text":[ 
+            "you let out a loud yowel as you feel your humanity fade", 
+            "you begin purring, embracing these feline instincts", 
+            "your feline instincts finially win, and with a pur your humanity fades"
+        ]
+    }, 
+    { 
+        "type":"snippet",
+        "category":"GAINED_THRESH_LUPINE", 
+        "text":[ 
+            "you let out a loud joyous howel as you embrace your lupine instincts", 
+            "you finially reject your humanity and let these lupine changes roll over you",
+            "you embrace your wolf like nature", 
+            "you feel a deep longing, you need a family, a pack", 
+            "your canine instincts well up one more time, and you give in, letting your humanity fade" 
+        ]
+    }, 
+    { 
+        "type":"snippet",
+        "category":"GAINED_THRESH_URSINE", 
+        "text":[ 
+            "you feel your ursine side take over, your place is in the woods or a cave, not with humanity", 
+            "you give into your bearish nature, letting it wash over you and take over", 
+            "your ursine side wells up one more time, and you let it overcome the last of your humanity"
+        ]
+    }, 
+    { 
+        "type":"snippet",
+        "category":"GAINED_THRESH_CATTLE", 
+        "text":[ 
+            "you let out an involentary moo as your mind slows down again, and you feel your humanity submerge, permenatnly", 
+            "you give into these peaceful feelings, rejecting your humanity", 
+            "you let out a low moo and begin looking for grass, pleased with your new existance"
+        ]
+    }, 
+    { 
+        "type":"snippet",
+        "category":"GAINED_THRESH_INSECT", 
+        "text":[ 
+            "these alien, bug like impulses well up again, and you give in, letting them overtake your humanity", 
+            "you feel the insect side of you grow, and you finally embrace it", 
+            "you need a hive, a nest, a queen."
+        ]
+    }, 
+    { 
+        "type":"snippet",
+        "category":"GAINED_THRESH_CEPHALOPOD", 
+        "text":[ 
+           "Octopus used to feel so alien to you, now it's humanity that's alien to you"
+        ]
+    }, 
+    { 
+        "type":"snippet",
+        "category":"GAINED_THRESH_SPIDER", 
+        "text":[ 
+           "Your arachnid side wells up once more, and it overcomes what's left of your humanity", 
+           "you feel these arachnid changes well up, and you embrace it", 
+           "the webs, the arms, the fangs, you want them so bad. And you finally give in", 
+           "the arachnid urges overwhelm you finally, and you daydream about lying in a web, home"
+        ]
+    }, 
+    {
+        "type":"snippet",
+        "category":"GAINED_THRESH_RAT", 
+        "text":[ 
+            "you let out a happy squeak as you feel these rodent impulses finally over take you", 
+            "you give into your rodent side", 
+            "rat. it used to feel insulting, but suddenly it just feels right. You're a rat"
+        ]
+    },
+    {
+       
+        "type":"snippet",
+        "category":"GAINED_THRESH_CHIMERA", 
+        "text":[ 
+            "you feel a deep straining and then your let out a roar, as if purging the last of your humanity from you", 
+            "this world is filled with monsters now, and now you're one of them", 
+            "there's a sudden wash of conflicting instincts, then a peace as you let out a deep growl and your humanity fades", 
+            "you embrace your mutant nature, you're a monster, and you're pleased with that"
+        ]
+      }
+]

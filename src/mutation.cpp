@@ -1728,6 +1728,13 @@ bool Character::mutate_towards( const trait_id &mut, const mutation_category_id 
             rating = m_neutral;
         }
 
+        const auto snippet = mdata.get_random_gain_snippet(); 
+
+        if(mdata.player_display && snippet.has_value())
+        {
+            add_msg_if_player(snippet.value()); 
+        }
+
         if( mdata.player_display && replace_mdata.player_display ) {
             add_msg_player_or_npc( rating,
                                    _( "Your %1$s mutation turns into %2$s!" ),
