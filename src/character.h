@@ -701,6 +701,10 @@ class Character : public Creature, public visitable
 
         int calc_movecost(const tripoint& start_point, const tripoint& end_point) const; 
 
+        int calc_movecost_point(const tripoint& point) const;
+
+        int calc_movecost_from() const { return calc_movecost_point(pos()); }
+
         /** Returns melee skill level, to be used to throttle dodge practice. **/
         float get_melee() const override;
         /**

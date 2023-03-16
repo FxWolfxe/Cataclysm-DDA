@@ -245,6 +245,8 @@ struct mutation_branch {
         cata::optional<float> movecost_barefoot_modifier = cata::nullopt; 
 
 
+        field_type_str_id blood_override; 
+
         int butchering_quality = 0;
 
         cata::value_ptr<mut_transform> transform;

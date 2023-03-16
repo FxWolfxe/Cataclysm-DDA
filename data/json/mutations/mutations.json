@@ -3765,7 +3765,7 @@
       "attack_text_npc": "%1$s stabs into %2$s with their harpoon tongue",
       "body_part": "mouth",
       "chance": 25,
-      "base_damage": { "damage_type": "stab", "amount": 15 },
+      "base_damage": { "damage_type": "stab", "amount": 15, "armor_penetration":2 },
       "strength_damage": { "damage_type": "stab", "amount": 3 }
     }
   },
@@ -6117,6 +6117,8 @@
     "description": "Your eyes protrude from your head on flexible tentacles, preventing the use of any eyewear.  On the plus side, you can see in two directions at once, and they automatically retract to reduce damage.  Perception +2",
     "types": [ "EYES" ],
     "category": [ "GASTROPOD" ],
+    "prereqs":["EYESTALKS1"],
+    "threshreq":["THRESH_GASTROPOD"],
     "armor": [ { "parts": "eyes", "cut": 3, "bash": 1 } ],
     "restricts_gear": [ "eyes" ],
     "passive_mods": { "per_mod": 4 }
@@ -7906,7 +7908,8 @@
     "description": "You feel bad for all the creatures that don't carry their home on their backs.",
     "valid": false,
     "purifiable": false,
-    "threshold": true
+    "threshold": true, 
+    "blood_override":"fd_blood_invertebrate"
   },
   {
     "type": "mutation",

@@ -549,6 +549,9 @@ class map
                                const vehicle *ignored_vehicle = nullptr,
                                int modifier = 0, bool flying = false, bool via_ramp = false ) const;
 
+        int combined_movecost(const Character& character, const tripoint& from, const tripoint& to, const vehicle* ignored_vehicle = nullptr, int modifier = 0,
+            bool flying = false, bool via_ramp = false) const; 
+
         /**
          * Returns true if a creature could walk from `from` to `to` in one step.
          * That is, if the tiles are adjacent and either on the same z-level or connected

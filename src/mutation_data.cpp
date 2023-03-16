@@ -331,6 +331,7 @@ void mutation_branch::load( const JsonObject &jo, const std::string & )
     optional( jo, was_loaded, "fatigue", fatigue, false );
     optional( jo, was_loaded, "valid", valid, true );
     optional( jo, was_loaded, "purifiable", purifiable, true );
+    optional( jo, was_loaded, "blood_override", blood_override, field_type_str_id::NULL_ID()); 
     std::vector<mutation_variant> _variants;
     optional( jo, was_loaded, "variants", _variants );
     for( mutation_variant &var : _variants ) {

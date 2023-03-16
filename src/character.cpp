@@ -717,6 +717,15 @@ field_type_id Character::bloodType() const
     if( has_trait( trait_THRESH_CEPHALOPOD ) ) {
         return fd_blood_invertebrate;
     }
+
+    for(const auto& t: get_mutations())
+    {
+        if(t->blood_override.is_valid())
+        {
+            return t->blood_override;
+        }
+    }
+
     return fd_blood;
 }
 field_type_id Character::gibType() const
@@ -1347,23 +1356,45 @@ int Character::calc_movecost(const tripoint &start_point, const tripoint &end_po
 
     if (swims) {
         if (here.has_flag(ter_furn_flag::TFLAG_SWIMMABLE, start_point)) {
-            movecost += 25;
+            movecost += 2;
         }
         else {
-            movecost += 50 * here.move_cost(start_point);
+            movecost +=  here.move_cost(start_point);
         }
         if (here.has_flag(ter_furn_flag::TFLAG_SWIMMABLE, end_point)) {
-            movecost += 25;
+            movecost += 2;
         }
         else {
-            movecost += 50 * here.move_cost(end_point);
+            movecost += here.move_cost(end_point);
         }
     }
     else
     {
-        movecost = ((50 * source_cost) + (50 * dest_cost)) / 2.0;
+        movecost = ((source_cost) + (dest_cost)) / 2.0;
     }
     return movecost; 
+}
+
+int Character::calc_movecost_point(const tripoint &point) const
+{
+    int movecost = 0;
+    const auto& here = get_map(); 
+    const bool swims = has_flag(json_flag_SWIMS);
+
+    if (swims) {
+        if (here.has_flag(ter_furn_flag::TFLAG_SWIMMABLE, point)) {
+            movecost += 2;
+        }
+        else {
+            movecost += here.move_cost(point);
+        }
+       
+    }
+    else
+    {
+        movecost = here.move_cost(point);
+    }
+    return movecost;
 }
 
 bool Character::is_on_ground() const

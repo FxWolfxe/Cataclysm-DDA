@@ -2328,6 +2328,28 @@ int map::combined_movecost( const tripoint &from, const tripoint &to,
     return ( cost1 + cost2 + modifier ) * mults[match] / 2;
 }
 
+int map::combined_movecost(const Character &character, const tripoint &from, const tripoint &to,
+    const vehicle *ignored_vehicle, int modifier, bool flying, bool via_ramp) const
+{
+    static constexpr std::array<int, 4> mults = { 0, 50, 71, 100 };
+    const int cost1 = character.calc_movecost_point(from);
+    const int cost2 = character.calc_movecost_point(to);
+    // Multiply cost depending on the number of differing axes
+    // 0 if all axes are equal, 100% if only 1 differs, 141% for 2, 200% for 3
+    size_t match = trigdist ? (from.x != to.x) + (from.y != to.y) + (from.z != to.z) : 1;
+    if (flying || from.z == to.z) {
+        return (cost1 + cost2 + modifier) * mults[match] / 2;
+    }
+
+    // Inter-z-level movement by foot (not flying)
+    if (!valid_move(from, to, false, via_ramp)) {
+        return 0;
+    }
+
+    // TODO: Penalize for using stairs
+    return (cost1 + cost2 + modifier) * mults[match] / 2;
+}
+
 bool map::valid_move( const tripoint &from, const tripoint &to,
                       const bool bash, const bool flying, const bool via_ramp ) const
 {

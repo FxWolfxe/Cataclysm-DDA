@@ -9933,16 +9933,17 @@ bool game::walk_move( const tripoint &dest_loc, const bool via_ramp, const bool 
         }
     }
     // Used to decide whether to print a 'moving is slow message
-    const int mcost_from =  m.move_cost( u.pos() ); //calculate this _before_ calling grabbed_move
+    const int mcost_from =  u.calc_movecost_from( ); //calculate this _before_ calling grabbed_move
 
     int modifier = 0;
     if( grabbed && u.get_grab_type() == object_type::FURNITURE && u.pos() + u.grab_point == dest_loc ) {
         modifier = -m.furn( dest_loc ).obj().movecost;
     }
 
-    const int mcost = m.combined_movecost( u.pos(), dest_loc, grabbed_vehicle, modifier,
+    const int mcost = m.combined_movecost(  u.pos(), dest_loc, grabbed_vehicle, modifier,
                                            via_ramp );
-    const int a_mcost = u.calc_movecost(dest_loc);
+    const int a_mcost = m.combined_movecost(u,u.pos(), dest_loc, grabbed_vehicle, modifier,
+        via_ramp);
 
 
     if( !furniture_move && grabbed_move( dest_loc - u.pos(), via_ramp ) ) {
@@ -9988,7 +9989,7 @@ bool game::walk_move( const tripoint &dest_loc, const bool via_ramp, const bool 
     u.last_target_pos = cata::nullopt;
 
     // Print a message if movement is slow
-    const int mcost_to = u.calc_movecost( dest_loc ); //calculate this _after_ calling grabbed_move
+    const int mcost_to = u.calc_movecost_point( dest_loc ); //calculate this _after_ calling grabbed_move
     const bool fungus = m.has_flag_ter_or_furn( ter_furn_flag::TFLAG_FUNGUS, u.pos() ) ||
                         m.has_flag_ter_or_furn( ter_furn_flag::TFLAG_FUNGUS,
                                 dest_loc ); //fungal furniture has no slowing effect on Mycus characters
