@@ -20,7 +20,9 @@
     "flags": [ "FREEZERBURN", "RAW" ],
     "rot_spawn": "GROUP_EGG_BIRD_WILD",
     "vitamins": [ [ "calcium", 3 ], [ "iron", 4 ] ],
-    "rot_spawn_chance": 50
+    "rot_spawn_chance": 50,
+    "gene_transfer_map":[["mutagen_bird", 45]]
+
   },
   {
     "type": "COMESTIBLE",
@@ -37,7 +39,9 @@
     "looks_like": "egg_bird",
     "name": { "str": "unfertilized bird egg" },
     "description": "A nutritious egg laid by a bird.  This one is unfertilized and probably from a farm.",
-    "rot_spawn_chance": 0
+    "rot_spawn_chance": 0,
+    "gene_transfer_map":[["mutagen_bird", 25]]
+
   },
   {
     "type": "COMESTIBLE",
