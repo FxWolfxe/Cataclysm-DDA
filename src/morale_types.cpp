@@ -323,7 +323,7 @@ void morale_type_data::load(const JsonObject& jo, const std::string& src)
     }
 }
 
-cata::optional<replacement_morale_data> morale_type_data::get_replacement_morale(const Character& character) const
+std::optional<replacement_morale_data> morale_type_data::get_replacement_morale(const Character& character) const
 {
     for(const auto& replacements: replacement_morales)
     {
@@ -332,7 +332,7 @@ cata::optional<replacement_morale_data> morale_type_data::get_replacement_morale
             return replacements.second; 
         }
     }
-    return cata::nullopt; 
+    return std::nullopt; 
 }
 
 void morale_type_data::check() const

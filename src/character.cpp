@@ -3730,7 +3730,7 @@ void Character::apply_mut_encumbrance( std::map<bodypart_id, encumbrance_data> &
     // Lower penalty for bps covered only by XL armor
     // Initialized on demand for performance reasons:
     // (calculation is costly, most of players and npcs are don't have encumbering mutations)
-    cata::optional<body_part_set> oversize;
+    std::optional<body_part_set> oversize;
     
 
     for( const trait_id &mut : all_muts ) {
@@ -5936,7 +5936,7 @@ mutation_value_map = {
     { "bionic_mana_penalty", calc_mutation_value_multiplicative<&mutation_branch::bionic_mana_penalty> },
     { "casting_time_multiplier", calc_mutation_value_multiplicative<&mutation_branch::casting_time_multiplier> },
     { "movecost_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_modifier> },
-    { "movecost_wielded_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_wielded_modifier>},
+    { "movecost_wielded_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_weilded_modifier>},
     { "movecost_barefoot_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_barefoot_modifier>},
     { "movecost_flatground_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_flatground_modifier> },
     { "movecost_obstacle_modifier", calc_mutation_value_multiplicative<&mutation_branch::movecost_obstacle_modifier> },

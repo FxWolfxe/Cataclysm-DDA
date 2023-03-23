@@ -51,7 +51,7 @@ class morale_type_data
          * \param character to look for a replacement for 
          * \return the replacement data if found 
          */
-        cata::optional<replacement_morale_data> get_replacement_morale(const Character& character) const; 
+        std::optional<replacement_morale_data> get_replacement_morale(const Character& character) const; 
 
         void load( const JsonObject &jo, const std::string &src );
         void check() const;
