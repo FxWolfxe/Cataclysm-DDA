@@ -376,14 +376,24 @@ nutrients Character::compute_effective_nutrients( const item &comest ) const
 }
 
 
-nutrients Character::compute_effective_gene_transfer(const item &comest) const
+static nutrients scale_nutrients(const nutrients &n, float s)
 {
-
-    if(!comest.is_comestible())
+    nutrients ret_val; 
+    for(const auto& p: n.vitamins)
     {
-        return {}; 
+        ret_val.vitamins[p.first] = static_cast<int>(std::round(p.second * s));
     }
+    return ret_val; 
 
+}
+
+static nutrients compute_effective_gene_transfer_impl(const Character& chara, const item &comest, int depth=0)
+{
+    if (!comest.is_comestible())
+    {
+        return {};
+    }
+    float depth_scalar = std::max(std::sqrt(1 / (1.0 + depth)), 0.0);
     // if comest has components, will derive calories from that instead.
     if (!comest.components.empty() && !comest.has_flag(flag_NUTRIENT_OVERRIDE)) {
         nutrients tally{};
@@ -393,31 +403,42 @@ nutrients Character::compute_effective_gene_transfer(const item &comest) const
         }
         for (const auto& component : comest.components) {
 
-            for( const item &itm: component.second)
+            for (const item& itm : component.second)
             {
                 nutrients component_value =
-                    compute_effective_gene_transfer(itm) * itm.charges;
+                    compute_effective_gene_transfer_impl(chara, itm, depth+1) * itm.charges;
                 if (itm.has_flag(flag_BYPRODUCT)) {
-                    tally -= component_value;
+                    tally -= scale_nutrients(component_value, depth_scalar);
                 }
                 else {
-                    tally += component_value;
+                    tally += scale_nutrients(component_value, depth_scalar);
                 }
             }
 
-          
+
         }
         return tally / comest.recipe_charges;
     }
     else {
         nutrients ret_val;
-        for(const auto& pair: comest.get_comestible()->gene_transfer_map)
+        for (const auto& pair : comest.get_comestible()->gene_transfer_map)
         {
-            ret_val.vitamins[pair.first] = pair.second; 
+            ret_val.vitamins[pair.first] = pair.second;
         }
-        return ret_val; 
+        return ret_val;
 
     }
+}
+
+nutrients Character::compute_effective_gene_transfer(const item &comest) const
+{
+
+    if(!comest.is_comestible())
+    {
+        return {}; 
+    }
+
+    return compute_effective_gene_transfer_impl(*this, comest); 
 
 }
 

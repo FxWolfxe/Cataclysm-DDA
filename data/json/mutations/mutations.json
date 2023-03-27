@@ -4958,17 +4958,7 @@
     "types": [ "PREDATION" ],
     "changes_to": [ "PRED2" ],
     "prereqs": [ "CARNIVORE", "CARNIVORE_FAKE" ],
-    "threshreq": [
-      "THRESH_BEAST",
-      "THRESH_RAPTOR",
-      "THRESH_CHIMERA",
-      "THRESH_LUPINE",
-      "THRESH_FELINE",
-      "THRESH_URSINE",
-      "THRESH_LIZARD",
-      "THRESH_SPIDER",
-      "THRESH_BATRACHIAN"
-    ],
+    
     "cancels": [ "MANSBESTFRIEND" ],
     "category": [ "BEAST", "RAPTOR", "CHIMERA", "LUPINE", "FELINE", "URSINE", "LIZARD", "SPIDER", "BATRACHIAN" ],
     "flags": [ "PRED1" ]
