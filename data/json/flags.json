@@ -1389,6 +1389,11 @@
     "type": "json_flag",
     "info": "This is <info>integrated into the body</info>."
   },
+  { 
+    "id":"MULTIARM_OK",
+    "type":"json_flag",
+    "info":"this clothing <good>does not impeed your arms </good>"
+  },
   {
     "id": "IR_EFFECT",
     "type": "json_flag"

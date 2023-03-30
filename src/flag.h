@@ -164,6 +164,7 @@ extern const flag_id flag_INEDIBLE;
 extern const flag_id flag_INITIAL_PART;
 extern const flag_id flag_INSPIRATIONAL;
 extern const flag_id flag_INSTALL_DIFFICULT;
+extern const flag_id flag_MULTIARM_OK;
 extern const flag_id flag_IN_CBM;
 extern const flag_id flag_INTEGRATED;
 extern const flag_id flag_IRREMOVABLE;
