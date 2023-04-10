@@ -3749,7 +3749,7 @@
     "types": [ "TONGUE" ],
     "changes_to": [ "GASTROPOD_EXTREMITY3" ],
     "category": [ "GASTROPOD" ],
-    "cancels": [ "FANGS", "MANDIBLES" ],
+    "cancels": [ "MANDIBLES" ],
     "active": true,
     "attacks": {
       "attack_text_u": "You tear into %s with your rasping tongue",
@@ -3938,9 +3938,9 @@
     "description": "Your legs have gained muscle mass to propel you across any terrain.",
     "types": [ "LEGS" ],
     "leads_to": [ "LEAPING_LEGS", "FELINE_LEAP" ],
-    "changes_to": ["DIGITIGRADE_LEGS", "UNGULIGRADE_LEGS"],
+    "changes_to": ["DIGITIGRADE_LEGS", "UNGULIGRADE_LEGS", "RAPT_LEGS"],
     "movecost_modifier": 0.88,
-    "category": [ "BATRACHIAN", "RABBIT", "FELINE", "LUPINE", "SPIDER" , "CHIMERA", "CATTLE"]
+    "category": [ "BATRACHIAN", "RABBIT", "FELINE", "LUPINE", "SPIDER" , "CHIMERA", "CATTLE", "RAPTOR"]
   },
   {
     "type": "mutation",
@@ -4002,7 +4002,8 @@
       "attack_text_npc": "%1$s slashes %2$s with a talon",
       "chance": 20,
       "strength_damage": { "damage_type": "cut", "amount": 4 }
-    }
+    }, 
+    "flags":["BAREFOOT_OK"]
   },
   {
     "type": "mutation",
@@ -5261,7 +5262,7 @@
       "chance": 23,
       "base_damage": { "damage_type": "acid", "amount": 6 }
     },
-    "prereqs": [ "MUCUS_SECRETION" ],
+    "prereqs": [ "MUCUS_SECRETION", "SNAIL_TRAIL" ],
     "category": [ "GASTROPOD" ]
   },
   {
@@ -5285,7 +5286,7 @@
     "visibility": 4,
     "ugliness": 4,
     "description": "You've developed some ability to control your slime emissions.  As a result of this you can leave trails of slime anywhere you walk.",
-    "prereqs": [ "MUCUS_SECRETION", "MUCUS_SECRETION2"],
+    "prereqs": [ "MUCUS_SECRETION"],
     "category": [ "GASTROPOD" ],
     "active": true,
     "cost": 1,

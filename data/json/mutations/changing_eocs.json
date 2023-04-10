@@ -6,7 +6,7 @@
     "recurrence": [ "30 m", "90 m" ],
     "condition": {
       "and": [
-        { "compare_num": [ { "u_val": "vitamin", "name": "mutagen" }, ">=", { "const": 450 } ] },
+        { "compare_num": [ { "u_val": "vitamin", "name": "mutagen" }, ">=", { "const": 150 } ] },
         { "not": { "u_has_flag": "CHANGING" } }
       ]
     },

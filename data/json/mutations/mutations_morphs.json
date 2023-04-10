@@ -13,8 +13,7 @@
         "anger_relations":[["MOLLUSK", -50]],
         "faction_override":"slug",
         "morph":true,
-        "restricted":true,
-        "draw_override":"mon_human_snail"
+        "restricted":true
     }, 
     { 
         "type": "mutation", 

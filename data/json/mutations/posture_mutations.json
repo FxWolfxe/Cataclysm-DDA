@@ -20,6 +20,7 @@
         ], 
         "passive_mods": { "str_mod": 1 }
     }, 
+    
     {
         "type": "mutation",
         "id": "SEMI_QUADRUPED_OK",
@@ -70,5 +71,22 @@
             "LUPINE", "FELINE", "CHIMERA", "CATTLE"
         ], 
         "passive_mods": { "str_mod": 2 }
-    }
+    }, 
+    {
+        "type": "mutation",
+        "id": "RAPT_LEGS",
+        "name": { "str": "Raptor Legs" },
+        "points": 2,
+        "visibility": 2,
+        "prereqs":[ "STRONG_LEGS"],
+        "prereqs2":[ "RAP_TALONS" ],
+        "description": "Your legs have changed structure significantly, you're always standing on your 'toes' with a significantly longer heel. they like they fit on a dinosaur not a human. You can only wear cloth pants but moving for long periods feels less taxing",
+        "types": [ "LEGS" ],
+        "threshreq": ["THRESH_LUPINE"],
+        "category": ["RAPTOR" ],
+        "stamina_regen_modifier":0.2,
+        "restricts_gear":[ "leg_l" ,  "leg_r" ],
+        "allow_soft_gear":true,
+        "movecost_modifier": 0.70
+      }
 ]
