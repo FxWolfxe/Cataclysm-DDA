@@ -1251,7 +1251,7 @@ void suffer::from_other_mutations( Character &you )
         here.add_field( position, fd_web, 1 );
     }
 
-    if( you.has_trait( trait_MUCUS_SECRETION ) && !you.in_vehicle && one_in( 2033 ) ) {
+    if( (you.has_trait( trait_MUCUS_SECRETION )|| you.has_trait(trait_SNAIL_TRAIL)) && !you.in_vehicle && one_in(233)) {
         here.add_field( position, fd_sludge, 1 );
     }
 

@@ -157,6 +157,7 @@ static const trait_id trait_HORIZONTAL_GENE_TRANSFER("HORIZONTAL_GENE_TRANSFER")
 static const trait_id trait_HEMOVORE( "HEMOVORE" );
 static const trait_id trait_HEMOPHAGE( "HEMOPHAGE" );
 static const vitamin_id vitamin_mutagen( "mutagen" );
+static const trait_id trait_GASTROPOD_FOOT( "GASTROPOD_FOOT" ); 
 
 
 static const vitamin_id vitamin_vitc("vitC");
@@ -598,7 +599,7 @@ std::pair<int, int> Character::fun_for(const item& comest, bool ignore_already_a
         else {
             fun *= (1.0f + rottedness);
         }
-    }else if(has_trait(trait_SAPROPHAGE_ANIMAL)) //saprophages have the inverse relationship, they want more rotten food, inverse of the relationship above 
+    }else if(has_trait(trait_SAPROPHAGE_ANIMAL) && comest.is_food() && comest.goes_bad()) //saprophages have the inverse relationship, they want more rotten food, inverse of the relationship above 
     {
         const float min_fun = std::min<float>(- 2, fun);
         float max_adj_fun = std::max(fun * 0.75f, 0.0f);
@@ -949,7 +950,7 @@ ret_val<edible_rating> Character::can_eat( const item &food ) const
         return ret_val<edible_rating>::make_failure( _( "That doesn't look edible in its current form." ) );
     }
 
-    if( food.has_own_flag( flag_DIRTY ) ) {
+    if( food.has_own_flag( flag_DIRTY )  && !has_trait(trait_GASTROPOD_FOOT)) {
         return ret_val<edible_rating>::make_failure(
                    _( "This is full of dirt after being on the ground." ) );
     }
