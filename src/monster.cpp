@@ -62,6 +62,7 @@
 #include "text_snippets.h"
 #include "translations.h"
 #include "trap.h"
+#include "type_id.h"
 #include "units.h"
 #include "viewer.h"
 #include "weakpoint.h"
@@ -411,7 +412,7 @@ void monster::try_upgrade( bool pin_time )
                         for( int i = 0; i < mgr.pack_size; i++ ) {
                             tripoint spawn_pos;
                             if( g->find_nearby_spawn_point( pos(), mgr.name, 1, *type->upgrade_multi_range,
-                                                            spawn_pos, false ) ) {
+                                                            spawn_pos, false, false ) ) {
                                 monster *spawned = g->place_critter_at( mgr.name, spawn_pos );
                                 if( spawned ) {
                                     spawned->friendly = friendly;
@@ -1051,6 +1052,11 @@ bool monster::avoid_trap( const tripoint & /* pos */, const trap &tr ) const
     if( digging() || flies() ) {
         return true;
     }
+
+    if( type->trap_avoids.count( tr.id ) > 0 ) {
+        return true;
+    }
+
     return dice( 3, type->sk_dodge + 1 ) >= dice( 3, tr.get_avoidance() );
 }
 
@@ -2571,25 +2577,9 @@ void monster::explode()
     hp = INT_MIN + 1;
 }
 
-void monster::set_summon_time( const time_duration &length )
-{
-    lifespan_end = calendar::turn + length;
-}
-
-void monster::decrement_summon_timer()
-{
-    if( !lifespan_end ) {
-        return;
-    }
-    if( lifespan_end.value() <= calendar::turn ) {
-        die( nullptr );
-    }
-}
-
 void monster::process_turn()
 {
     map &here = get_map();
-    decrement_summon_timer();
     if( !is_hallucination() ) {
         for( const std::pair<const emit_id, time_duration> &e : type->emit_fields ) {
             if( !calendar::once_every( e.second ) ) {
@@ -2773,7 +2763,7 @@ void monster::die( Creature *nkiller )
 
     if( type->mdeath_effect.has_effect ) {
         //Not a hallucination, go process the death effects.
-        spell death_spell = type->mdeath_effect.sp.get_spell();
+        spell death_spell = type->mdeath_effect.sp.get_spell( *this );
         if( killer != nullptr && !type->mdeath_effect.sp.self &&
             death_spell.is_target_in_range( *this, killer->pos() ) ) {
             death_spell.cast_all_effects( *this, killer->pos() );
@@ -2782,7 +2772,18 @@ void monster::die( Creature *nkiller )
         }
     }
 
-    item *corpse = nullptr;
+    // scale overkill damage by enchantments
+    if( nkiller && ( nkiller->is_npc() || nkiller->is_avatar() ) ) {
+        int current_hp = get_hp();
+        current_hp = nkiller->as_character()->enchantment_cache->modify_value(
+                         enchant_vals::mod::OVERKILL_DAMAGE, current_hp );
+        set_hp( current_hp );
+    }
+
+
+
+
+    item_location corpse;
     // drop a corpse, or not - this needs to happen after the spell, for e.g. revivification effects
     switch( type->mdeath_effect.corpse_type ) {
         case mdeath_type::NORMAL:
@@ -2816,8 +2817,8 @@ void monster::die( Creature *nkiller )
     }
 
     if( death_drops && !no_extra_death_drops ) {
-        drop_items_on_death( corpse );
-        spawn_dissectables_on_death( corpse );
+        drop_items_on_death( corpse.get_item() );
+        spawn_dissectables_on_death( corpse.get_item() );
     }
     if( death_drops && !is_hallucination() ) {
         for( const item &it : inv ) {
@@ -2837,6 +2838,10 @@ void monster::die( Creature *nkiller )
                 get_map().add_item( pos(), it );
             }
         }
+    }
+    if( corpse ) {
+        corpse->process( get_map(), nullptr, corpse.position() );
+        corpse.make_active();
     }
 
     // Adjust anger/morale of nearby monsters, if they have the appropriate trigger and are friendly
