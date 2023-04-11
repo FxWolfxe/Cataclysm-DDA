@@ -694,7 +694,7 @@
   },
   {
     "id": "integrated_spider_spinneret",
-    "type": "ARMOR",
+    "type": "TOOL_ARMOR",
     "category": "armor",
     "name": { "str_sp": "spinneret" },
     "description": "you have developed strong spinnerets capable of spinning strong, lightweight and sticky silk",

@@ -4,7 +4,7 @@
         "id": "MANIFEST_DESTINY_WOLF",
         "name": { "str": "Transforming into Wolf" },
         "points": 0,
-        "mixed":true,
+        "mixed_effect":true,
         "starting_trait": true,
         "purifiable": false,
         "valid": true,

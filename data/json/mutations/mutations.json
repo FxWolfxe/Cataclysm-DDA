@@ -5475,10 +5475,10 @@
     "threshreq": [ "THRESH_SPIDER" ],
     "category": [ "SPIDER" ],
     "active": true,
-    "cost": 70,
+    "cost": 5,
     "kcal": true,
     "thirst": true,
-    "spawn_item": { "type": "silk_thread", "message": "You spin up some fine silken threads." , "count": 2 }
+    "spawn_item": { "type": "silk_thread", "message": "You spin up some fine silken threads." }
   },
   {
     "type": "mutation",

@@ -390,6 +390,8 @@ void conditional_t<T>::set_has_martial_art( const JsonObject &jo, const std::str
 template<class T>
 void conditional_t<T>::set_reached_any_threshold(const JsonObject& jo, const std::string& member, bool is_npc )
 {
+    jo.allow_omitted_members();
+
     condition = [is_npc](const T& d)
     {
         return d.actor(is_npc)->crossed_threshold();

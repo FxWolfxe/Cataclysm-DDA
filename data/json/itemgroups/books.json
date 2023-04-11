@@ -578,8 +578,8 @@
       { "item": "book_pneumatics", "prob": 8 },
       { "item": "cookbook_bloodforgood", "prob": 50 },
       { "group": "memorial_mansion", "prob": 10 },
-      { "group": "rare_martial_arts_books", "prop":15 }, 
-      { "group": "dojo_manuals", "prop":5 }
+      { "group": "rare_martial_arts_books", "prob":15 }, 
+      { "group": "dojo_manuals", "prob":5 }
 
     ]
   },

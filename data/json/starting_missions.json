@@ -348,7 +348,7 @@
     "name": { "str": "Continue with your evolution" },
     "description": "Your evolution to a more perfect form was interrupted by the Cataclysm.  Restart your transformation process whatever it costs.",
     "goal": "MGOAL_CONDITION",
-    "goal_condition": { "u_reached_any_threshold": "" },
+    "goal_condition": { "u_reached_any_threshold": "junk" },
     "difficulty": 5,
     "value": 0,
     "end": {
