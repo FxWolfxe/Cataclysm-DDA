@@ -23,5 +23,22 @@
         "social_modifiers": { "persuade": -1, "intimidate": 1 },
         "types": [ "EYES" ],
         "category": [ "LUPINE" ]
+      },
+      {
+        "type": "mutation",
+        "id": "EXOSKELITON",
+        "name": { "str": "Exoskeliton" },
+        "points": 3,
+        "mixed_effect": true,
+        "description": "Your bones have almost entirely dissolved, the calcium being used to reinforce your chitin exoskeliton, which now hold you up. Moving is harder but you feel stronger",
+        "types": [ "BONES" ],
+        "prereqs":["LIGHT_BONES"],
+        "prereqs2":["CHITIN", "CHITIN2", "CHITIN3", "CHITIN_FUR2", "CHITIN_FUR3" ],
+        "threshreq":["THRESH_SPIDER","THRESH_INSECT"],
+        "category": [ "INSECT", "SPIDER" ],
+        "movecost_modifier": 1.2,
+        "attackcost_modifier": 1.2,
+        "weight_capacity_modifier": 1.5,
+        "enchantments": [ { "condition": "ALWAYS", "values": [  { "value": "ARMOR_CUT", "multiply": -0.05 }, { "value": "ARMOR_STAB", "multiply": -0.05 } ] } ]
       }
 ]

@@ -1,0 +1,15 @@
+[ 
+    {
+        "type": "construction",
+        "id": "constr_paper_wall_wasp",
+        "group":"build_a_paper_wall",
+        "category": "CONSTRUCT",
+        "time": "20 m",
+        "components": [ [ [ "paper", 120 ] , ["toilet_paper", 120]] ],
+        "required_skills": [ [ "fabrication", 1 ], [ "survival", 1 ] ],
+
+        "pre_special": "check_empty",
+        "required_mutations":["WASP_MANDIBLES"],
+        "post_terrain": "t_paper"
+      }
+]

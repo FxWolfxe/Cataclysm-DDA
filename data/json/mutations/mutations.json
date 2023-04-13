@@ -2589,7 +2589,7 @@
     "mixed_effect": true,
     "description": "Your bones are very light.  This enables you to move and attack 10% faster, but also reduces your carrying weight by 20% and makes bashing attacks hurt a little more.",
     "types": [ "BONES" ],
-    "category": [ "MOUSE", "RABBIT", "BIRD", "SLIME", "ELFA", "SPIDER" ],
+    "category": [ "MOUSE", "RABBIT", "BIRD", "SLIME", "ELFA", "SPIDER", "INSECT" ],
     "changes_to": [ "HOLLOW_BONES" ],
     "movecost_modifier": 0.9,
     "attackcost_modifier": 0.9,
@@ -5031,8 +5031,8 @@
     "types": [ "PREDATION" ],
     "prereqs": [ "CARNIVORE", "CARNIVORE_FAKE" ],
     "prereqs2": [ "PRED3" ],
-    "threshreq": [ "THRESH_BEAST", "THRESH_RAPTOR", "THRESH_CHIMERA", "THRESH_URSINE" ],
-    "category": [ "BEAST", "RAPTOR", "CHIMERA", "URSINE" ],
+    "threshreq": [ "THRESH_BEAST", "THRESH_RAPTOR", "THRESH_CHIMERA", "THRESH_URSINE", "THRESH_SPIDER" ],
+    "category": [ "BEAST", "RAPTOR", "CHIMERA", "URSINE" , "SPIDER"],
     "passive_mods": { "int_mod": -3 },
     "flags": [ "PRED4" ]
   },
@@ -5163,7 +5163,7 @@
     "description": "A set of insect-like mandibles have grown around your mouth.  They allow you to eat faster and provide a slicing unarmed attack.  Slightly reduces wet effects.",
     "types": [ "TEETH", "MUZZLE" ],
     "prereqs": [ "MOUTH_FLAPS" ],
-    "changes_to": [ "FANGS_SPIDER" ],
+    "changes_to": [ "FANGS_SPIDER" , "WASP_MANDIBLES"],
     "leads_to": [ "PROBOSCIS" ],
     "category": [ "INSECT", "SPIDER" ],
     "wet_protection": [ { "part": "mouth", "ignored": 1 } ],
@@ -6818,7 +6818,7 @@
     "description": "Sunlight makes you uncomfortable.  If you are outdoors and the weather is Sunny, you suffer -1 to all stats.",
     "types": [ "SUNLIGHT" ],
     "changes_to": [ "TROGLO2" ],
-    "category": [ "LIZARD", "BEAST", "INSECT", "SLIME", "SPIDER", "BATRACHIAN", "RAT", "TROGLOBITE" ]
+    "category": [ "LIZARD", "BEAST", "INSECT", "SLIME",  "BATRACHIAN", "RAT", "TROGLOBITE" ]
   },
   {
     "type": "mutation",
@@ -7460,7 +7460,7 @@
     "types": [ "ECTOTHERMIC" ],
     "prereqs": [ "COLDBLOOD" ],
     "changes_to": [ "COLDBLOOD3" ],
-    "category": [ "INSECT", "LIZARD", "BATRACHIAN", "PLANT" ],
+    "category": [ "INSECT", "LIZARD", "BATRACHIAN", "PLANT", "SPIDER" ],
     "temperature_speed_modifier": 0.333,
     "metabolism_modifier": -0.5
   },
@@ -7475,7 +7475,7 @@
     "types": [ "ECTOTHERMIC" ],
     "prereqs": [ "COLDBLOOD2" ],
     "changes_to": [ "COLDBLOOD4" ],
-    "category": [ "INSECT", "LIZARD", "BATRACHIAN", "PLANT" ],
+    "category": [ "INSECT", "LIZARD", "BATRACHIAN", "PLANT" , "SPIDER"],
     "temperature_speed_modifier": 0.5,
     "metabolism_modifier": -0.5
   },
@@ -7489,9 +7489,9 @@
     "description": "Your body has become permanently cold-blooded.  Your speed lowers or raises 1% for every 2 (1.1) degrees below or above 65 F (18.3 C).  You eat much less than you otherwise would.",
     "types": [ "ECTOTHERMIC" ],
     "prereqs": [ "COLDBLOOD3" ],
-    "threshreq": [ "THRESH_LIZARD", "THRESH_PLANT", "THRESH_BATRACHIAN" ],
+    "threshreq": [ "THRESH_LIZARD", "THRESH_PLANT", "THRESH_BATRACHIAN", "THRESH_SPIDER" ],
     "purifiable": false,
-    "category": [ "LIZARD", "PLANT", "BATRACHIAN" ],
+    "category": [ "LIZARD", "PLANT", "BATRACHIAN", "SPIDER" ],
     "temperature_speed_modifier": 0.5,
     "metabolism_modifier": -0.5
   },

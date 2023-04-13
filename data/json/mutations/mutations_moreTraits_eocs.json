@@ -2,13 +2,13 @@
     {
         "type": "effect_on_condition",
         "id": "manifest_destiny_wolf",
-        "recurrence": [ "1 days", "2 days" ],
+        "recurrence": [ "1 days", "5 days" ],
         "condition": { "u_has_trait": "MANIFEST_DESTINY_WOLF" },
         "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_WOLF" },
         "effect": [
           {
             "arithmetic": [ 
-              { "u_val": "vitamin", "name": "mutagen_lupine" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 1250 } ] } 
+              { "u_val": "vitamin", "name": "mutagen_lupine" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
            
             ]
           },
@@ -48,5 +48,106 @@
             }
           }
         ]
+      }, 
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_snail",
+        "recurrence": [ "1 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_SNAIL" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_SNAIL" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_gastropod" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_snail_complete",
+              "condition": { "u_has_trait": "THRESH_GASTROPOD" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_SNAIL" }, { "u_add_trait": "MANIFESTED_DESTINY_SNAIL" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_snail",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_SNAIL" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_gastropod" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_snail",
+              "condition": { "u_has_trait": "THRESH_GASTROPOD" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_SNAIL" } ]
+            }
+          }
+        ]
+      }, 
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_lizard",
+        "recurrence": [ "1 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_LIZARD" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_LIZARD" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_lizard" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_lizard_complete",
+              "condition": { "u_has_trait": "THRESH_GASTROPOD" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_LIZARD" }, { "u_add_trait": "MANIFESTED_DESTINY_LIZARD" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_lizard",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_LIZARD" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_lizard" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_lizard",
+              "condition": { "u_has_trait": "THRESH_GASTROPOD" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_LIZARD" } ]
+            }
+          }
+        ]
       }
+      
 ]

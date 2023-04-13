@@ -110,6 +110,10 @@ struct construction {
         bool strict = false;
 
         float activity_level = MODERATE_EXERCISE;
+
+        //mutations required for this construction option to even show up 
+        std::vector<trait_id> required_mutations; 
+
     private:
         std::string get_time_string() const;
 };
@@ -126,6 +130,7 @@ construction_id construction_menu( bool blueprint );
 void complete_construction( Character *you );
 bool can_construct_furn_ter( const construction &con, furn_id const &furn, ter_id const &ter );
 bool can_construct( const construction &con, const tripoint_bub_ms &p );
+bool can_see(const construction& con, const Character& you); 
 bool player_can_build( Character &you, const read_only_visitable &inv, const construction &con,
                        bool can_construct_skip = false );
 std::vector<construction *> constructions_by_group( const construction_group_str_id &group );

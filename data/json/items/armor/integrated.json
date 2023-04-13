@@ -643,6 +643,31 @@
     ]
   },
   {
+    "id": "integrated_mandibles_wasp",
+    "type": "ARMOR",
+    "category": "armor",
+    "name": { "str_sp": "wasp mandibles" },
+    "description": "These are much better than puny human mouthparts.",
+    "weight": "200 g",
+    "volume": "200 ml",
+    "price": 0,
+    "price_postapoc": 0,
+    "material": [ "chitin" ],
+    "symbol": ";",
+    "qualities":[["CUT",2], ["FABRIC_CUT", 2]],
+    "color": "dark_gray",
+    "warmth": 2,
+    "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "SKINTIGHT", "PADDED", "NO_SALVAGE" ],
+    "armor": [
+      {
+        "material": [ { "type": "chitin", "covered_by_mat": 100, "thickness": 3 } ],
+        "covers": [ "mouth" ],
+        "coverage": 40,
+        "encumbrance": 0
+      }
+    ]
+  },
+  {
     "id": "integrated_fangs_spider",
     "type": "ARMOR",
     "category": "armor",

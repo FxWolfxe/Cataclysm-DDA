@@ -273,7 +273,10 @@ static void load_available_constructions( std::vector<construction_group_str_id>
     avatar &player_character = get_avatar();
     for( construction &it : constructions ) {
         if( it.on_display && ( !hide_unconstructable ||
-                               player_can_build( player_character, player_character.crafting_inventory(), it ) ) ) {
+                               player_can_build( player_character, player_character.crafting_inventory(), it ) ) ) 
+        {
+            if (!can_see(it, player_character)) continue; 
+
             bool already_have_it = false;
             for( auto &avail_it : available ) {
                 if( avail_it == it.group ) {
@@ -936,6 +939,17 @@ bool can_construct( const construction &con )
     return false;
 }
 
+
+bool can_see(const construction& con, const Character& you)
+{
+    for(const auto& mut: con.required_mutations)
+    {
+        if (you.has_trait(mut)) return true; 
+    }
+    return con.required_mutations.empty(); 
+}
+
+
 void place_construction( std::vector<construction_group_str_id> const &groups )
 {
     avatar &player_character = get_avatar();
@@ -996,7 +1010,7 @@ void place_construction( std::vector<construction_group_str_id> const &groups )
     if( player_character.has_trait( trait_DEBUG_HS ) ) {
         // Gift components
         for( const auto &it : con.requirements->get_components() ) {
-            used.emplace_back( item( it.front().type ) );
+            used.emplace_back(it.front().type);
         }
     } else {
         // Use up the components
@@ -1937,6 +1951,15 @@ void load_construction( const JsonObject &jo )
     if( jo.has_member( "byproducts" ) ) {
         con.byproduct_item_group = item_group::load_item_group( jo.get_member( "byproducts" ),
                                    "collection", "byproducts of construction " + con.str_id.str() );
+    }
+
+
+    if(jo.has_array("required_mutations"))
+    {
+        for(const std::string mut: jo.get_array("required_mutations"))
+        {
+            con.required_mutations.emplace_back(mut); 
+        }
     }
 
     static const std::map<std::string, bool( * )( const tripoint_bub_ms & )> pre_special_map = {{
