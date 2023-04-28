@@ -4232,9 +4232,9 @@
     "prereqs": [ "POISRESIST" ],
     "//": "Yes, you eventually got over the massive digestive upset.  Mutations aren't easy on a system!",
     "prereqs2": [ "SAPROVORE", "TOLERANCE" , "SAPROPHAGE_ANIMAL"],
-    "threshreq": [ "THRESH_TROGLOBITE", "THRESH_CHIMERA", "THRESH_RAPTOR", "THRESH_RAT", "THRESH_MOUSE", "THRESH_BATRACHIAN" , "THRESH_SPIDER"],
+    "threshreq": [ "THRESH_TROGLOBITE", "THRESH_CHIMERA", "THRESH_RAPTOR", "THRESH_RAT", "THRESH_MOUSE", "THRESH_BATRACHIAN" , "THRESH_SPIDER", "THRESH_GASTROPOD"],
     "vitamins_absorb_multi": [ [ "all", [ [ "mutant_toxin", 0.25 ] ] ] ],
-    "category": [ "TROGLOBITE", "RAPTOR", "RAT", "CHIMERA", "BATRACHIAN", "GASTROPOD" , "SPIDER"]
+    "category": [ "TROGLOBITE", "RAPTOR", "RAT", "CHIMERA", "BATRACHIAN", "GASTROPOD" , "SPIDER", "GASTROPOD"]
   },
   {
     "type": "mutation",
@@ -6176,6 +6176,7 @@
     "points": -5,
     "visibility": 9,
     "looks_like":"WINGS_BAT",
+    "mixed_effect":true,
     "ugliness": 4,
     "description": "Your wings have grown larger still, and they feel more natural on your back. They still get in your way, alot, but you can use them to break your fall, from any height",
     "types": [ "WINGS" ],
@@ -6636,7 +6637,8 @@
     "changes_to": [ "HUNGER2", "MET_RAT" ],
     "category": [ "RAT", "ALPHA", "MEDICAL", "ELFA", "BEAST", "SLIME", "RAPTOR", "CHIMERA", "MOUSE", "RABBIT" ],
     "metabolism_modifier": 0.5,
-    "stamina_regen_modifier": 0.1
+    "stamina_regen_modifier": 0.1,
+    "stomach_size_multiplier": 1.15
   },
   {
     "type": "mutation",
@@ -6665,6 +6667,7 @@
     "types": [ "METABOLISM" ],
     "category": [ "BEAST", "SLIME", "RAPTOR", "CHIMERA" ],
     "metabolism_modifier": 1.0,
+    "stomach_size_multiplier":1.25,
     "stamina_regen_modifier": 0.3
   },
   {
@@ -6678,6 +6681,7 @@
     "types": [ "METABOLISM" ],
     "category": [ "CHIMERA" ],
     "metabolism_modifier": 2.0,
+    "stomach_size_multiplier":1.5,
     "stamina_regen_modifier": 0.5
   },
   {

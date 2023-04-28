@@ -167,6 +167,7 @@ static const itype_id itype_tuned_mechanism( "tuned_mechanism" );
 static const itype_id itype_water( "water" );
 static const itype_id itype_water_clean( "water_clean" );
 static const itype_id itype_waterproof_gunmod( "waterproof_gunmod" );
+static const itype_id itype_shell3("integrated_shell3");
 
 static const json_character_flag json_flag_CANNIBAL( "CANNIBAL" );
 static const json_character_flag json_flag_IMMUNE_SPOIL( "IMMUNE_SPOIL" );
@@ -12095,6 +12096,14 @@ bool item::process_temperature_rot( float insulation, const tripoint &pos, map &
         //sludge field will make things rot faster but stick around longer to be eaten rotten 
         spoil_modifier *= (get_relative_rot() <  1.75f ? 15.0f : 0.5f);
 
+    }else if(carried)
+    {
+        const auto shell = carrier->item_worn_with_id(itype_shell3);
+        if(shell != nullptr && shell->contained_where(*this) != nullptr)
+        {
+            spoil_modifier *= (get_relative_rot() < 1.75f ? 30.0f : 0.1f);
+        }
+        
     }
 
     if( now - time > 1_hours ) {
