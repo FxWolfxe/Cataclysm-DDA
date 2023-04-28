@@ -321,13 +321,21 @@
       {
         "//": "has the ability to loosen the pack, causing a lot of encumbrance but allowing for storage of very large items between the pack and the frame",
         "pocket_type": "CONTAINER",
-        "max_contains_volume": "40 L",
-        "max_contains_weight": "30 kg",
-        "max_item_length": "100 cm",
+        "max_contains_volume": "80 L",
+        "max_contains_weight": "80 kg",
+        "max_item_length": "200 cm",
         "min_item_length": "40 cm",
         "moves": 1000,
         "extra_encumbrance": 15,
         "description": "The pack has been slid away from the frame leaving room to store large items."
+      }, 
+      {
+        "holster": true,
+        "moves": 30,
+        "flag_restriction": [ "SHEATH_SPEAR" ],
+        "max_contains_volume": "4000 ml",
+        "max_contains_weight": "4 kg",
+        "max_item_length": "200 cm"
       }
     ],
     "use_action": [ { "type": "attach_molle", "size": 4 }, { "type": "detach_molle" } ],

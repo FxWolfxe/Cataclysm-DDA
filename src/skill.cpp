@@ -361,7 +361,7 @@ bool SkillLevel::isRusty() const
 
 bool SkillLevel::rust( int rust_resist, float rust_multiplier )
 {
-    if( ( calendar::turn - _lastPracticed ) < 24_hours ) {
+    if( ( calendar::turn - _lastPracticed ) < 168_hours ) {
         // don't rust within the grace period
         return false;
     }
