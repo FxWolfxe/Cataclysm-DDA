@@ -16,7 +16,7 @@
         "using": [ [ "welding_standard", 5 ], [ "steel_standard", 4 ] , ["soldering_standard", 3]],
         "proficiencies": [
           { "proficiency": "prof_metalworking" },
-          { "proficiency": "prof_welding_basic", "fail_multiplier": 1.5 },
+          { "proficiency": "prof_welding_basic", "skill_penalty": 1.5 },
           { "proficiency": "prof_welding" }
         ],
         "qualities": [

@@ -1,0 +1,30 @@
+[ 
+    {
+        "id": "makeshift_molle_spear_strap",
+        "repairs_like": "legrig",
+        "type": "ARMOR",
+        "name": { "str": "makeshift molle spear strap", "str_pl": "makeshift molle spear straps" },
+        "description": "A set of molle straps meant to hold a spear",
+        "weight": "190 g",
+        "volume": "500 ml",
+        "price": 2000,
+        "price_postapoc": 250,
+        "material": [ "nylon" ],
+        "symbol": "[",
+        "looks_like": "holster",
+        "color": "dark_gray",
+        "pocket_data": [
+            {
+                "holster": true,
+                "moves": 30,
+                "flag_restriction": [ "SHEATH_SPEAR" ],
+                "max_contains_volume": "4000 ml",
+                "max_contains_weight": "4 kg",
+                "max_item_length": "200 cm"
+              }
+        ],
+        "material_thickness": 0.5,
+        "flags": [ "BELTED", "OVERSIZE", "WATER_FRIENDLY", "PALS_MEDIUM" ],
+        "armor": [ { "encumbrance": 1, "coverage": 100, "covers": [ "torso" ], "specifically_covers": [ "torso_waist" ] } ]
+      }
+]

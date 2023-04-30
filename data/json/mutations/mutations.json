@@ -7464,7 +7464,7 @@
     "types": [ "ECTOTHERMIC" ],
     "prereqs": [ "COLDBLOOD" ],
     "changes_to": [ "COLDBLOOD3" ],
-    "category": [ "INSECT", "LIZARD", "BATRACHIAN", "PLANT", "SPIDER" ],
+    "category": [ "INSECT", "LIZARD", "BATRACHIAN", "PLANT", "SPIDER" , "GASTROPOD"],
     "temperature_speed_modifier": 0.333,
     "metabolism_modifier": -0.5
   },
@@ -7479,7 +7479,7 @@
     "types": [ "ECTOTHERMIC" ],
     "prereqs": [ "COLDBLOOD2" ],
     "changes_to": [ "COLDBLOOD4" ],
-    "category": [ "INSECT", "LIZARD", "BATRACHIAN", "PLANT" , "SPIDER"],
+    "category": [ "INSECT", "LIZARD", "BATRACHIAN", "PLANT" , "SPIDER", "GASTROPOD"],
     "temperature_speed_modifier": 0.5,
     "metabolism_modifier": -0.5
   },
@@ -7493,9 +7493,9 @@
     "description": "Your body has become permanently cold-blooded.  Your speed lowers or raises 1% for every 2 (1.1) degrees below or above 65 F (18.3 C).  You eat much less than you otherwise would.",
     "types": [ "ECTOTHERMIC" ],
     "prereqs": [ "COLDBLOOD3" ],
-    "threshreq": [ "THRESH_LIZARD", "THRESH_PLANT", "THRESH_BATRACHIAN", "THRESH_SPIDER" ],
+    "threshreq": [ "THRESH_LIZARD", "THRESH_PLANT", "THRESH_BATRACHIAN", "THRESH_SPIDER", "THRESH_GASTROPOD" ],
     "purifiable": false,
-    "category": [ "LIZARD", "PLANT", "BATRACHIAN", "SPIDER" ],
+    "category": [ "LIZARD", "PLANT", "BATRACHIAN", "SPIDER", "GASTROPOD" ],
     "temperature_speed_modifier": 0.5,
     "metabolism_modifier": -0.5
   },

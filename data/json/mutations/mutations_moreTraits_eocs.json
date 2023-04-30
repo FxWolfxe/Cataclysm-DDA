@@ -2,7 +2,7 @@
     {
         "type": "effect_on_condition",
         "id": "manifest_destiny_wolf",
-        "recurrence": [ "1 days", "5 days" ],
+        "recurrence": [ "2 days", "7 days" ],
         "condition": { "u_has_trait": "MANIFEST_DESTINY_WOLF" },
         "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_WOLF" },
         "effect": [
@@ -52,7 +52,7 @@
       {
         "type": "effect_on_condition",
         "id": "manifest_destiny_snail",
-        "recurrence": [ "1 days", "5 days" ],
+        "recurrence": [ "2 days", "7 days" ],
         "condition": { "u_has_trait": "MANIFEST_DESTINY_SNAIL" },
         "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_SNAIL" },
         "effect": [
@@ -102,7 +102,7 @@
       {
         "type": "effect_on_condition",
         "id": "manifest_destiny_lizard",
-        "recurrence": [ "1 days", "5 days" ],
+        "recurrence": [ "2 days", "7 days" ],
         "condition": { "u_has_trait": "MANIFEST_DESTINY_LIZARD" },
         "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_LIZARD" },
         "effect": [

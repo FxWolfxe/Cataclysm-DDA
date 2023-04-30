@@ -1,0 +1,15 @@
+[ 
+    {
+        "result": "makeshift_molle_spear_strap",
+        "type": "recipe",
+        "activity_level": "LIGHT_EXERCISE",
+        "category": "CC_ARMOR",
+        "subcategory": "CSC_ARMOR_STORAGE",
+        "skill_used": "tailor",
+        "difficulty": 3,
+        "time": "4 h",
+        "autolearn": true,
+        "using": [ [ "tailoring_nylon_patchwork", 6 ], [ "strap_large", 1 ], [ "clasps", 1 ] ],
+        "proficiencies": [ { "proficiency": "prof_closures" }, { "proficiency": "prof_closures_waterproofing" } ]
+      }
+]
