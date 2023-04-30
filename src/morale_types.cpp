@@ -305,7 +305,7 @@ void morale_type_data::reset()
     morale_data.reset();
 }
 
-void morale_type_data::load(const JsonObject& jo, const std::string& src)
+void morale_type_data::load( const JsonObject &jo, const std::string_view )
 {
     mandatory(jo, was_loaded, "id", id);
     mandatory(jo, was_loaded, "text", text);
@@ -315,10 +315,10 @@ void morale_type_data::load(const JsonObject& jo, const std::string& src)
     {
         for (JsonArray replacement : jo.get_array("replacement_morales"))
         {
-            trait_id trait = trait_id(replacement.get_string(0));
+           /* trait_id trait = trait_id(replacement.get_string(0));
             replacement_morale_data r;
             r.load(replacement.get_object(1), src);
-            replacement_morales[trait] = r; 
+            replacement_morales[trait] = r; */
         }
     }
 }

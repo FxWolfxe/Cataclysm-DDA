@@ -10,7 +10,6 @@
         "looks_like":"kiln",
         "price_postapoc": 7500,
         "to_hit": -3,
-        "bashing": 12,
         "material": [ "steel" ],
         "symbol": ";",
         "qualities":[["GENETIC_DUPLICATION",1]],

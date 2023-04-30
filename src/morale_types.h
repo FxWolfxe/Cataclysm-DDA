@@ -53,7 +53,7 @@ class morale_type_data
          */
         std::optional<replacement_morale_data> get_replacement_morale(const Character& character) const; 
 
-        void load( const JsonObject &jo, const std::string &src );
+        void load( const JsonObject &jo, std::string_view src );
         void check() const;
 
         static void load_type( const JsonObject &jo, const std::string &src );

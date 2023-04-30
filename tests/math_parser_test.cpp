@@ -1,6 +1,7 @@
 #include "cata_catch.h"
 
 #include <cmath>
+#include <locale>
 
 #include "avatar.h"
 #include "dialogue.h"
@@ -14,7 +15,7 @@ static const spell_id spell_test_spell_pew( "test_spell_pew" );
 TEST_CASE( "math_parser_parsing", "[math_parser]" )
 {
     dialogue const d( std::make_unique<talker>(), std::make_unique<talker>() );
-    math_exp<dialogue> testexp;
+    math_exp testexp;
 
     CHECK_FALSE( testexp.parse( "" ) );
     CHECK( testexp.eval( d ) == Approx( 0.0 ) );
@@ -58,6 +59,8 @@ TEST_CASE( "math_parser_parsing", "[math_parser]" )
     // functions
     CHECK( testexp.parse( "_test_()" ) ); // nullary test function
     CHECK( testexp.parse( "max()" ) ); // variadic called with zero arguments
+    CHECK( testexp.parse( "clamp( 1, 2, 3 )" ) ); // arguments passed in the right order 🤦
+    CHECK( testexp.eval( d ) == Approx( 2 ) );
     CHECK( testexp.parse( "sin(1)" ) );
     CHECK( testexp.eval( d ) == Approx( std::sin( 1.0 ) ) );
     CHECK( testexp.parse( "sin((1))" ) );
@@ -97,6 +100,20 @@ TEST_CASE( "math_parser_parsing", "[math_parser]" )
     CHECK( testexp.parse( "-1 ^ 0.5" ) );
     CHECK( std::isnan( testexp.eval( d ) ) );
 
+    // locale-independent decimal point
+    std::locale const &oldloc = std::locale();
+    on_out_of_scope reset_loc( [&oldloc]() {
+        std::locale::global( oldloc );
+    } );
+    try {
+        std::locale::global( std::locale( "de_DE.UTF-8" ) );
+    } catch( std::runtime_error &e ) {
+        WARN( "couldn't set locale for math_parser test: " << e.what() );
+    }
+    CAPTURE( std::setlocale( LC_ALL, nullptr ), std::locale().name() );
+    CHECK( testexp.parse( "2 * 1.5" ) );
+    CHECK( testexp.eval( d ) == Approx( 3 ) );
+
     // failed validation
     // NOLINTNEXTLINE(readability-function-cognitive-complexity): false positive
     std::string dmsg = capture_debugmsg_during( [&testexp, &d]() {
@@ -117,8 +134,11 @@ TEST_CASE( "math_parser_parsing", "[math_parser]" )
         CHECK_FALSE( testexp.parse( "sin(+)" ) );
         CHECK_FALSE( testexp.parse( "sin(-)" ) );
         CHECK_FALSE( testexp.parse( "_test_(-)" ) );
+        CHECK_FALSE( testexp.parse( "_test_(1)" ) );
         CHECK_FALSE( testexp.parse( "'string'" ) );
         CHECK_FALSE( testexp.parse( "('wrong')" ) );
+        CHECK_FALSE( testexp.parse( "u_val('wr'ong')" ) ); // stray ' inside string
+        CHECK_FALSE( testexp.parse( "2 2*2" ) ); // stray space inside variable name
         CHECK_FALSE( testexp.parse( "2+++2" ) );
         CHECK( testexp.parse( "2+3" ) );
         testexp.assign( d, 10 ); // assignment called on eval tree should not crash
@@ -130,7 +150,7 @@ TEST_CASE( "math_parser_dialogue_integration", "[math_parser]" )
 {
     standard_npc dude;
     dialogue const d( get_talker_for( get_avatar() ), get_talker_for( &dude ) );
-    math_exp<dialogue> testexp;
+    math_exp testexp;
     global_variables &globvars = get_globals();
 
     // reading scoped variables

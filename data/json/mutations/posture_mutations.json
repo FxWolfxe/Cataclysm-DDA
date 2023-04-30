@@ -30,10 +30,10 @@
         "points": 0,
         "changes_to":["QUADRUPED"],
         "visibility": 4,
+        "movecost_modifier":1.25,
         "ugliness": 2,
         "mixed_effect":true,
         "prereqs":["SEMI_QUADRUPED_BAD"],
-        "movecost_wield_modifier": 1.0,
         "description": "Your posture has altered again. Whlie you can stand up to use tools or climb, walking on two legs is difficult. But being on all fours feels better",
         "types": [
             "POSTURE"
@@ -44,7 +44,38 @@
         "category": [
             "LUPINE", "FELINE", "CHIMERA", "CATTLE"
         ], 
-        "passive_mods": { "str_mod": 2 }
+        "passive_mods": { "str_mod": 2 }, 
+        "triggers": [
+            [
+              {
+                "condition": {
+                  "and": [
+                    { "u_has_move_mode": "crouch" },
+                    { "not": "u_can_drop_weapon" },
+                    {
+                      "u_has_any_trait": [ "THRESH_BEAST", "THRESH_FELINE", "THRESH_LUPINE", "THRESH_URSINE", "THRESH_RAT", "THRESH_MOUSE", "THRESH_RABBIT" ]
+                    }
+                  ]
+                },
+                "msg_on": { "text": "You drop down on all fours." },
+                "msg_off": { "text": "You rise up to walk on your hind feet." }
+              }
+            ]
+          ],
+          "enchantments": [
+            {
+              "condition": {
+                "and": [
+                  { "u_has_move_mode": "crouch" },
+                  { "not": "u_can_drop_weapon" },
+                  {
+                    "u_has_any_trait": [ "THRESH_BEAST", "THRESH_FELINE", "THRESH_LUPINE", "THRESH_URSINE", "THRESH_RAT", "THRESH_MOUSE", "THRESH_RABBIT" ]
+                  }
+                ]
+              },
+              "values": [ { "value": "MOVE_COST", "multiply": -0.25 } ]
+            }
+          ]
     },
     {
         "type": "mutation",
@@ -57,9 +88,8 @@
         "prereqs2":["FELINE_LEAP", "DIGITIGRADE_LEGS", "UNGULIGRADE_LEGS"],
         "visibility": 4,
         "ugliness": 2,
-        "movecost_modifier":0.8,
+        "movecost_modifier":2.0,
         "mixed_effect":true,
-        "movecost_wield_modifier":2.0,
         "description": "Your spine and hips have continued to change. You find it extremlly difficult to walk on two legs for any period of time and you find yourself going down on all fours instinctivly",
         "types": [
             "POSTURE"
@@ -70,7 +100,38 @@
         "category": [
             "LUPINE", "FELINE", "CHIMERA", "CATTLE"
         ], 
-        "passive_mods": { "str_mod": 2 }
+        "passive_mods": { "str_mod": 2 }, 
+        "triggers": [
+            [
+              {
+                "condition": {
+                  "and": [
+                    { "u_has_move_mode": "crouch" },
+                    { "not": "u_can_drop_weapon" },
+                    {
+                      "u_has_any_trait": [ "THRESH_BEAST", "THRESH_FELINE", "THRESH_LUPINE", "THRESH_URSINE", "THRESH_RAT", "THRESH_MOUSE", "THRESH_RABBIT" ]
+                    }
+                  ]
+                },
+                "msg_on": { "text": "You drop down on all fours." },
+                "msg_off": { "text": "You rise up to walk on your hind feet." }
+              }
+            ]
+          ],
+          "enchantments": [
+            {
+              "condition": {
+                "and": [
+                  { "u_has_move_mode": "crouch" },
+                  { "not": "u_can_drop_weapon" },
+                  {
+                    "u_has_any_trait": [ "THRESH_BEAST", "THRESH_FELINE", "THRESH_LUPINE", "THRESH_URSINE", "THRESH_RAT", "THRESH_MOUSE", "THRESH_RABBIT" ]
+                  }
+                ]
+              },
+              "values": [ { "value": "MOVE_COST", "multiply": -0.75 } ]
+            }
+          ]
     }, 
     {
         "type": "mutation",
