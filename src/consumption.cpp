@@ -602,9 +602,9 @@ std::pair<int, int> Character::fun_for(const item& comest, bool ignore_already_a
     }else if(has_trait(trait_SAPROPHAGE_ANIMAL) && comest.is_food() && comest.goes_bad()) //saprophages have the inverse relationship, they want more rotten food, inverse of the relationship above 
     {
         const float min_fun = std::min<float>(- 2, fun);
-        float max_adj_fun = std::max(fun * 0.75f, 0.0f);
+        float max_adj_fun = std::max(fun * 0.75f + 5, 0.0f);
         //lerp between -2 and max_adjusted_fun for rotness, where rel_rotness is between [0,2]
-        const float t = clamp(relative_rot / 2, 0.0f, 1.0f); 
+        const float t = clamp(relative_rot / 1.5f, 0.0f, 1.0f); 
         fun = lerp(min_fun, max_adj_fun, t); //rot fully rotten food cancel 
 
         
@@ -1070,12 +1070,13 @@ ret_val<edible_rating> Character::will_eat( const item &food, bool interactive )
         consequences.emplace_back( ret_val<edible_rating>::make_failure( code, msg ) );
     };
 
-    const bool saprophage = has_trait( trait_SAPROPHAGE ) || has_trait(trait_SAPROPHAGE_ANIMAL);
+    const bool animal_saprophage = has_trait(trait_SAPROPHAGE_ANIMAL);
+    const bool saprophage = has_trait( trait_SAPROPHAGE ) || animal_saprophage;
     const bool plant_saprophage = has_trait(trait_SAPROPHAGE ); 
     const auto &comest = food.get_comestible();
+    const bool saprovore = has_trait(trait_SAPROVORE);
 
     if( food.rotten() ) {
-        const bool saprovore = has_trait( trait_SAPROVORE );
         if( !saprophage && !saprovore ) {
             add_consequence( _( "This is rotten and smells awful!" ), ROTTEN );
         }
@@ -1102,7 +1103,7 @@ ret_val<edible_rating> Character::will_eat( const item &food, bool interactive )
         add_consequence( _( "You still feel nauseous and will probably puke it all up again." ), NAUSEA );
     }
 
-    if( ( allergy_type( food ) != MORALE_NULL ) || ( carnivore && food.has_flag( flag_ALLERGEN_JUNK ) &&
+    if( ( allergy_type( food ) != MORALE_NULL  && !(food.rotten() && (saprovore || saprophage))) || (carnivore && food.has_flag(flag_ALLERGEN_JUNK) &&
             !food.has_flag( flag_CARNIVORE_OK ) ) ) {
         add_consequence( _( "Your stomach won't be happy (allergy)." ), ALLERGY );
     }
@@ -1113,6 +1114,16 @@ ret_val<edible_rating> Character::will_eat( const item &food, bool interactive )
         //~ No, we don't eat "rotten" food. We eat properly aged food, like a normal person.
         //~ Semantic difference, but greatly facilitates people being proud of their character.
         add_consequence( _( "Your stomach won't be happy (not rotten enough)." ), ALLERGY_WEAK );
+    }else if(animal_saprophage && edible && food.get_relative_rot() < 1.5)
+    {
+        const float rel_rot = food.get_relative_rot();
+        if(rel_rot < 1)
+            add_consequence(_("This food is too fresh"), ALLERGY_WEAK);
+        else if(rel_rot < 1.5)
+        {
+            add_consequence(_("This food still needs to rot more"), AGE);
+
+        }
     }
 
     if( food.charges > 0 && food.is_food() &&
@@ -1215,6 +1226,9 @@ static bool eat( item &food, Character &you, bool force )
         }
     } else if( spoiled && saprophage ) {
         you.add_msg_if_player( m_good, _( "Mmm, this %s tastes delicious…" ), food.tname() );
+    }else if(!spoiled && saprophage && chew)
+    {
+        you.add_msg_if_player(m_bad, _("Ick, this %s doesn't taste mushy enough..."), food.tname());
     }
 
 
@@ -1290,8 +1304,12 @@ static bool eat( item &food, Character &you, bool force )
 
     // The fun changes for these effects are applied in fun_for().
     if( food.has_flag( flag_MUSHY ) ) {
-        you.add_msg_if_player( m_bad,
+        if(!saprophage)
+            you.add_msg_if_player( m_bad,
                                _( "You try to ignore its mushy texture, but it leaves you with an awful aftertaste." ) );
+        else
+            you.add_msg_if_player(m_good,
+                _("It has a delicious mushy texture"));
     }
     if( food.get_comestible_fun() > 0 ) {
         if( you.has_effect( effect_common_cold ) ) {
@@ -1534,7 +1552,7 @@ void Character::modify_morale( item &food, const int nutr )
             add_msg_if_player( m_bad, _( "Your stomach begins gurgling and you feel bloated and ill." ) );
             add_morale( allergy, -75, -400, 30_minutes, 24_minutes );
         }
-        if( food.has_flag( flag_ALLERGEN_JUNK ) ) {
+        if( food.has_flag( flag_ALLERGEN_JUNK )  && !food.rotten()) {
             if( has_trait( trait_PROJUNK ) ) {
                 add_msg_if_player( m_good, _( "Mmm, junk food." ) );
                 add_morale( MORALE_SWEETTOOTH, 5, 30, 30_minutes, 24_minutes );

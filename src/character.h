@@ -273,6 +273,9 @@ enum edible_rating {
     ROTTEN,
     /// Can provoke vomiting if you already feel nauseous.
     NAUSEA,
+    //it's old, or not old enough (if prefer rotting food) 
+    AGE,
+
     /// We can eat this, but we'll suffer from overeat
     TOO_FULL,
     /// Some weird stuff that requires a tool we don't have

@@ -6016,6 +6016,9 @@ nc_color item::color_in_inventory( const Character *const ch ) const
                 break;
             case NO_TOOL:
                 break;
+            case AGE:
+                ret = c_yellow;
+                break;
         }
     } else if( is_gun() ) {
         // Guns are green if you are carrying ammo for them
@@ -12099,9 +12102,14 @@ bool item::process_temperature_rot( float insulation, const tripoint &pos, map &
     }else if(carried)
     {
         const auto shell = carrier->item_worn_with_id(itype_shell3);
-        if(shell != nullptr && shell->contained_where(*this) != nullptr)
+        if(shell != nullptr)
         {
-            spoil_modifier *= (get_relative_rot() < 1.75f ? 30.0f : 0.1f);
+            const auto pocket = shell->contained_where(*this);
+            if (pocket != nullptr && !pocket->is_holster()) //holster check not a great idea but ok for now 
+            {
+				
+                spoil_modifier *= (get_relative_rot() < 1.75f ? 30.0f : 0.1f);
+            }
         }
         
     }
