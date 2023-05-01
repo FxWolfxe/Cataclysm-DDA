@@ -3733,7 +3733,14 @@ int Character::encumb( const bodypart_id &bp ) const
         debugmsg( "INFO: Tried to check encumbrance of a bodypart that does not exist." );
         return 0;
     }
-    return get_part_encumbrance_data( bp ).encumbrance;
+
+    float dex_enc_bonus = 9.0f / std::max(1, 1 + get_dex());
+    dex_enc_bonus = std::min(1.2f, std::sqrt(dex_enc_bonus));
+    
+    float str_enc_bonus = 10.0f / std::max(1, 1 + get_str());
+    str_enc_bonus = std::min(1.0f, std::sqrt(str_enc_bonus)); 
+    
+    return static_cast<int>( std::round(get_part_encumbrance_data( bp ).encumbrance * dex_enc_bonus * str_enc_bonus) );
 }
 
 void Character::apply_mut_encumbrance( std::map<bodypart_id, encumbrance_data> &vals ) const

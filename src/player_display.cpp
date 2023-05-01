@@ -165,7 +165,7 @@ void Character::print_encumbrance( ui_adaptor &ui, const catacurses::window &win
         const bodypart_id &bp = bps[thisline].first;
         const bool combine = bps[thisline].second;
         const encumbrance_data &e = get_part_encumbrance_data( bp );
-
+        const int enc_val = encumb(bp); 
         const bool highlighted = selected_clothing ? selected_clothing->covers( bp ) : false;
         std::string out = body_part_name_as_heading( bp, combine ? 2 : 1 );
         if( utf8_width( out ) > 7 ) {
@@ -185,14 +185,14 @@ void Character::print_encumbrance( ui_adaptor &ui, const catacurses::window &win
         mvwprintz( win, point( 1, y_pos ), limb_color, "%s", out );
         // accumulated encumbrance from clothing, plus extra encumbrance from layering
         int column = std::max( 10, ( width / 2 ) - 3 ); //Ideally the encumbrance data is centred
-        mvwprintz( win, point( column, y_pos ), display::encumb_color( e.encumbrance ), "%3d",
-                   e.encumbrance - e.layer_penalty );
+        mvwprintz( win, point( column, y_pos ), display::encumb_color(enc_val), "%3d",
+            enc_val - e.layer_penalty );
         // separator in low toned color
         column += 3; //Prepared for 3-digit encumbrance
         mvwprintz( win, point( column, y_pos ), c_light_gray, "+" );
         column += 1; // "+"
         // take into account the new encumbrance system for layers
-        mvwprintz( win, point( column, y_pos ), display::encumb_color( e.encumbrance ), "%-3d",
+        mvwprintz( win, point( column, y_pos ), display::encumb_color(enc_val), "%-3d",
                    e.layer_penalty );
         // print warmth, tethered to right hand side of the window
         mvwprintz( win, point( width - 6, y_pos ), display::bodytemp_color( *this, bp ), "(% 3d)",
