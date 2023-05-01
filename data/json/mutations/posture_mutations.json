@@ -53,7 +53,7 @@
                     { "u_has_move_mode": "crouch" },
                     { "not": "u_can_drop_weapon" },
                     {
-                      "u_has_any_trait": [ "THRESH_BEAST", "THRESH_FELINE", "THRESH_LUPINE", "THRESH_URSINE", "THRESH_RAT", "THRESH_MOUSE", "THRESH_RABBIT" ]
+                      "u_has_any_trait": [ "SEMI_QUADRUPED_OK" ]
                     }
                   ]
                 },
@@ -69,11 +69,11 @@
                   { "u_has_move_mode": "crouch" },
                   { "not": "u_can_drop_weapon" },
                   {
-                    "u_has_any_trait": [ "THRESH_BEAST", "THRESH_FELINE", "THRESH_LUPINE", "THRESH_URSINE", "THRESH_RAT", "THRESH_MOUSE", "THRESH_RABBIT" ]
+                    "u_has_any_trait": [ "SEMI_QUADRUPED_OK" ]
                   }
                 ]
               },
-              "values": [ { "value": "MOVE_COST", "multiply": -0.25 } ]
+              "values": [ { "value": "MOVE_COST", "multiply": -0.55 } ]
             }
           ]
     },
@@ -109,7 +109,7 @@
                     { "u_has_move_mode": "crouch" },
                     { "not": "u_can_drop_weapon" },
                     {
-                      "u_has_any_trait": [ "THRESH_BEAST", "THRESH_FELINE", "THRESH_LUPINE", "THRESH_URSINE", "THRESH_RAT", "THRESH_MOUSE", "THRESH_RABBIT" ]
+                      "u_has_any_trait": [ "QUADRUPED" ]
                     }
                   ]
                 },
@@ -125,7 +125,7 @@
                   { "u_has_move_mode": "crouch" },
                   { "not": "u_can_drop_weapon" },
                   {
-                    "u_has_any_trait": [ "THRESH_BEAST", "THRESH_FELINE", "THRESH_LUPINE", "THRESH_URSINE", "THRESH_RAT", "THRESH_MOUSE", "THRESH_RABBIT" ]
+                    "u_has_any_trait": [ "QUADRUPED" ]
                   }
                 ]
               },

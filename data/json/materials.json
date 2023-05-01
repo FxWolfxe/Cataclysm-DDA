@@ -1621,7 +1621,6 @@
     "id": "mutant_slime",
     "name": "Slime",
     "density": 1,
-    "bash_resist": 1,
     "breathability":"SECOND_SKIN",
     "conductive": true,
     "chip_resist": 0,
@@ -1632,6 +1631,7 @@
       "cut":1,
       "bullet":1,
       "acid":1,
+      "bash":1,
       "heat":5
     }
   },
