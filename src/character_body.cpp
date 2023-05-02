@@ -79,6 +79,7 @@ static const trait_id trait_PYROMANIA( "PYROMANIA" );
 static const trait_id trait_SLIMY( "SLIMY" );
 static const trait_id trait_URSINE_FUR( "URSINE_FUR" );
 static const trait_id trait_HORIZONTAL_GENE_TRANSFER("HORIZONTAL_GENE_TRANSFER");
+static const trait_id trait_HIBERNATE("HIBERNATE"); 
 
 static const vitamin_id vitamin_blood( "blood" );
 static const vitamin_id vitamin_toxin( "mutant_toxin" ); 

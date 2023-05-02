@@ -4254,10 +4254,12 @@ int Character::get_instant_thirst() const
 
 void Character::mod_thirst( int nthirst )
 {
+    int mx = has_active_mutation(trait_HIBERNATE) ? -600 : -100;
+
     if( has_flag( json_flag_NO_THIRST ) || !needs_food() ) {
         return;
     }
-    set_thirst( std::max( -100, thirst + nthirst ) );
+    set_thirst( std::max( mx, thirst + nthirst ) );
 }
 
 void Character::set_thirst( int nthirst )
@@ -4884,9 +4886,13 @@ void Character::calc_sleep_recovery_rate( needs_rates &rates ) const
         const float accelerated_recovery_rate = 1.0f / accelerated_recovery_chance;
         rates.recovery += accelerated_recovery_rate;
     } else {
+
+        const auto bmi = get_bmi_fat();
+        const float rate = bmi > character_weight_category::overweight ? 1.0 / 9 : 2.0 / 7.0;
+         
         // Hunger and thirst advance *much* more slowly whilst we hibernate.
-        rates.hunger *= ( 2.0f / 7.0f );
-        rates.thirst *= ( 2.0f / 7.0f );
+        rates.hunger *= rate;
+        rates.thirst *= ( 1.0f / 8.0f );
     }
     rates.recovery -= static_cast<float>( get_perceived_pain() ) / 60;
 }

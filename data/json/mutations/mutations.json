@@ -3918,8 +3918,8 @@
     "prereqs2":[ "FOOT_PAWS" ],
     "description": "Your legs have changed structure significantly, you're always standing on your 'toes' with a significantly longer heel. they look alot more like dog legs then human. You can only wear cloth pants but moving for long periods feels less taxing",
     "types": [ "LEGS" ],
-    "threshreq": ["THRESH_LUPINE"],
-    "category": ["LUPINE" ],
+    "threshreq": ["THRESH_LUPINE", "THRESH_URSINE"],
+    "category": ["LUPINE" , "URSINE"],
     "stamina_regen_modifier":0.2,
     "restricts_gear":[ "leg_l" ,  "leg_r" ],
     "allow_soft_gear":true,
@@ -3953,7 +3953,7 @@
     "leads_to": [ "LEAPING_LEGS", "FELINE_LEAP" ],
     "changes_to": ["DIGITIGRADE_LEGS", "UNGULIGRADE_LEGS", "RAPT_LEGS"],
     "movecost_modifier": 0.88,
-    "category": [ "BATRACHIAN", "RABBIT", "FELINE", "LUPINE", "SPIDER" , "CHIMERA", "CATTLE", "RAPTOR"]
+    "category": [ "BATRACHIAN", "RABBIT", "FELINE", "LUPINE", "SPIDER" ,"URSINE",  "CHIMERA", "CATTLE", "RAPTOR"]
   },
   {
     "type": "mutation",
@@ -6027,8 +6027,8 @@
     "points": -1,
     "mixed_effect": true,
     "description": "Just thinking of mutagen (such a lovely word!  'Mutagen'.  Perfect!) makes you thirsty.  And you so love your new parts.  You simply must have more mutagen!",
-    "threshreq": [ "THRESH_MEDICAL", "THRESH_CHIMERA" ],
-    "category": [ "MEDICAL", "CHIMERA" ]
+    "category": [ "MEDICAL", "CHIMERA" ],
+    "starting_trait":true
   },
   {
     "type": "mutation",

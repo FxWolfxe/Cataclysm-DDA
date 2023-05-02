@@ -1711,6 +1711,8 @@ bool Character::consume_effects(item& food)
 
     const bool hibernate = has_active_mutation(trait_HIBERNATE);
     if (hibernate) {
+        const auto bmi = get_bmi_fat(); 
+
         if ((nutr > 0 && get_hunger() < -60) || (comest.quench > 0 && get_thirst() < -60)) {
             // Tell the player what's going on
             add_msg_if_player(_("You gorge yourself, preparing to hibernate."));
@@ -1719,7 +1721,7 @@ bool Character::consume_effects(item& food)
                 mod_fatigue(nutr);
             }
         }
-        if ((nutr > 0 && get_hunger() < -200) || (comest.quench > 0 && get_thirst() < -200)) {
+        if ((nutr > 0 && get_hunger() < -60) || (comest.quench > 0 && get_thirst() < -200) && bmi >= character_weight_category::overweight ) {
             // Hibernation should cut burn to 60/day
             add_msg_if_player(_("You feel stocked for a day or two.  Got your bed all ready and secured?"));
             if (one_in(2)) {
@@ -1728,7 +1730,7 @@ bool Character::consume_effects(item& food)
             }
         }
 
-        if ((nutr > 0 && get_hunger() < -400) || (comest.quench > 0 && get_thirst() < -400)) {
+        if ((nutr > 0 && get_hunger() < -60) || (comest.quench > 0 && get_thirst() < -200) && bmi >= character_weight_category::obese ) {
             add_msg_if_player(
                 _("Mmm.  You can still fit some more in… but maybe you should get comfortable and sleep."));
             if (!one_in(3)) {
@@ -1736,7 +1738,7 @@ bool Character::consume_effects(item& food)
                 mod_fatigue(nutr);
             }
         }
-        if ((nutr > 0 && get_hunger() < -600) || (comest.quench > 0 && get_thirst() < -600)) {
+        if ((nutr > 0 && get_hunger() < -60) || (comest.quench > 0 && get_thirst() < -200) && bmi >= character_weight_category::very_obese ) {
             add_msg_if_player(_("That filled a hole!  Time for bed…"));
             // At this point, you're done.  Schlaf gut.
             mod_fatigue(nutr);

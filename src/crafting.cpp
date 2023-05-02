@@ -1031,14 +1031,18 @@ float Character::get_recipe_weighted_skill_average( const recipe &making ) const
         total_skill_modifiers -= vision_penalty;
     }
 
+
+    float mut_bonus = 0;
     // Mutations can define specific skill bonuses and penalties.  Gotta include those.
     for( const trait_id &mut : get_mutations() ) {
         for( const std::pair<const skill_id, int> &skill_bonuses : mut->craft_skill_bonus ) {
             if( making.skill_used == skill_bonuses.first ) {
-                total_skill_modifiers += skill_bonuses.second * 1.0f;
+                mut_bonus += skill_bonuses.second * 1.0f;
             }
         }
     }
+
+    total_skill_modifiers += std::max<float>(-1, mut_bonus); 
 
     // TO DO: Attribute role should also be data-driven either in skills.json or in the recipe itself.
     // For now let's just use Intelligence.  For the average intelligence of 8, give +2.  Inc/dec by 0.25 per stat point.

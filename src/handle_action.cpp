@@ -1167,7 +1167,7 @@ static void sleep()
     }
     if( player_character.has_alarm_clock() ) {
         /* Reuse menu to ask player whether they want to set an alarm. */
-        bool can_hibernate = player_character.get_hunger() < -60 &&
+        bool can_hibernate = player_character.get_hunger() < 0 && player_character.get_bmi_fat() > character_weight_category::overweight &&
                              player_character.has_active_mutation( trait_HIBERNATE );
 
         as_m.reset();

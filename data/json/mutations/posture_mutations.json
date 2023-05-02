@@ -16,7 +16,7 @@
             "POSTURE"
         ],
         "category": [
-            "LUPINE", "FELINE", "CHIMERA", "CATTLE"
+            "LUPINE", "FELINE", "CHIMERA", "CATTLE", "URSINE"
         ], 
         "passive_mods": { "str_mod": 1 }
     }, 
@@ -39,10 +39,10 @@
             "POSTURE"
         ],
         "threshreq": [
-            "THRESH_LUPINE", "THRESH_FELINE", "THRESH_CATTLE", "THRESH_CHIMERA" 
+            "THRESH_LUPINE", "THRESH_FELINE", "THRESH_CATTLE", "THRESH_CHIMERA", "THRESH_URSINE"
         ],
         "category": [
-            "LUPINE", "FELINE", "CHIMERA", "CATTLE"
+            "LUPINE", "FELINE", "CHIMERA", "CATTLE", "URSINE"
         ], 
         "passive_mods": { "str_mod": 2 }, 
         "triggers": [
@@ -59,6 +59,19 @@
                 },
                 "msg_on": { "text": "You drop down on all fours." },
                 "msg_off": { "text": "You rise up to walk on your hind feet." }
+              },
+              {
+                "condition": {
+                  "and": [
+                    { "u_has_move_mode": "run" },
+                    { "not": "u_can_drop_weapon" },
+                    {
+                      "u_has_any_trait": [ "SEMI_QUADRUPED_OK" ]
+                    }
+                  ]
+                },
+                "msg_on": { "text": "You drop down on all fours." },
+                "msg_off": { "text": "You rise up to walk on your hind feet." }
               }
             ]
           ],
@@ -67,6 +80,18 @@
               "condition": {
                 "and": [
                   { "u_has_move_mode": "crouch" },
+                  { "not": "u_can_drop_weapon" },
+                  {
+                    "u_has_any_trait": [ "SEMI_QUADRUPED_OK" ]
+                  }
+                ]
+              },
+              "values": [ { "value": "MOVE_COST", "multiply": -0.55 } ]
+            },
+            {
+              "condition": {
+                "and": [
+                  { "u_has_move_mode": "run" },
                   { "not": "u_can_drop_weapon" },
                   {
                     "u_has_any_trait": [ "SEMI_QUADRUPED_OK" ]
@@ -95,10 +120,10 @@
             "POSTURE"
         ],
         "threshreq": [
-            "THRESH_LUPINE", "THRESH_FELINE", "THRESH_CATTLE", "THRESH_CHIMERA" 
+            "THRESH_LUPINE", "THRESH_FELINE", "THRESH_CATTLE", "THRESH_CHIMERA", "THRESH_URSINE"
         ],
         "category": [
-            "LUPINE", "FELINE", "CHIMERA", "CATTLE"
+            "LUPINE", "FELINE", "CHIMERA", "CATTLE", "URSINE"
         ], 
         "passive_mods": { "str_mod": 2 }, 
         "triggers": [
@@ -115,6 +140,19 @@
                 },
                 "msg_on": { "text": "You drop down on all fours." },
                 "msg_off": { "text": "You rise up to walk on your hind feet." }
+              },
+              {
+                "condition": {
+                  "and": [
+                    { "u_has_move_mode": "run" },
+                    { "not": "u_can_drop_weapon" },
+                    {
+                      "u_has_any_trait": [ "QUADRUPED" ]
+                    }
+                  ]
+                },
+                "msg_on": { "text": "You drop down on all fours." },
+                "msg_off": { "text": "You rise up to walk on your hind feet." }
               }
             ]
           ],
@@ -123,6 +161,18 @@
               "condition": {
                 "and": [
                   { "u_has_move_mode": "crouch" },
+                  { "not": "u_can_drop_weapon" },
+                  {
+                    "u_has_any_trait": [ "QUADRUPED" ]
+                  }
+                ]
+              },
+              "values": [ { "value": "MOVE_COST", "multiply": -0.75 } ]
+            },
+            {
+              "condition": {
+                "and": [
+                  { "u_has_move_mode": "run" },
                   { "not": "u_can_drop_weapon" },
                   {
                     "u_has_any_trait": [ "QUADRUPED" ]

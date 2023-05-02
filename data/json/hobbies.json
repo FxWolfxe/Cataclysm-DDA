@@ -83,7 +83,8 @@
     "name": "Mutagen Junkie",
     "description": "You managed to get your hands on mutagen once, ever since then you've been craving more and the changes it brings.",
     "points": -3,
-    "addictions": [ { "intensity": 40, "type": "mutagen" } ]
+    "addictions": [ { "intensity": 20, "type": "mutagen" } ],
+    "traits":["MUT_JUNKIE"]
   },
   {
     "type": "profession",
