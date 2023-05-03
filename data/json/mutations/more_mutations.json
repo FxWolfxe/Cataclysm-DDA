@@ -40,5 +40,21 @@
         "attackcost_modifier": 1.2,
         "weight_capacity_modifier": 1.5,
         "enchantments": [ { "condition": "ALWAYS", "values": [  { "value": "ARMOR_CUT", "multiply": -0.05 }, { "value": "ARMOR_STAB", "multiply": -0.05 } ] } ]
+      }, 
+      {
+        "type": "mutation",
+        "id": "ACID_ANT_BLAST",
+        "name": { "str": "Acid Flare" },
+        "morph_req":["METAMORPHOSES_ACID_ANT"],
+        "points": 6,
+        "description": "You can spit a wad of acidic goo several meters away",
+        "encumbrance_covered": [ [ "head", 5 ] ],
+        "types": [ "BIOLUM" ],
+        "prereqs": [ "BIOLUM3" ],
+        "prereqs2":["ACIDBLOOD"],
+        "category": [ "INSECT" ],
+        "threshreq": [ "THRESH_INSECT" ],
+        "active": true,
+        "activated_eocs": [ "EOC_ACID_FLARE_activated" ]
       }
 ]

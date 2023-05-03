@@ -42,6 +42,18 @@
         "faction_override":"wasp", 
         "transformation_text":"looking upon the wasps, and the paper walls of the nest awakens something in you. You know your place now, you're a memeber of the swarm, and this nest is your home now"
     },
+    {
+        "type":"mutation", 
+        "id":"METAMORPHOSES_ACID_ANT", 
+        "name":{"str":"Acid Ant Mutant"}, 
+        "description":"The nest has embraced you, and you them. You're one of them now, and your abdomen twitches slightly and acid drips from it, eager to meet those who dare enter the territory of your nest", 
+        "morph":true,
+        "points":0,
+        "threshreq":["THRESH_INSECT"], 
+        "purifiable":false, 
+        "faction_override":"acid_ant", 
+        "transformation_text":"looking upon the ant hill awakens something in you. You know your place now, you're a memeber of the swarm, and this nest is your home now"
+    },
     { 
         "type":"mutation", 
         "id":"METAMORPHOSES_MUTANT", 

@@ -366,6 +366,7 @@
     "types": [ "BIOLUM" ],
     "prereqs": [ "BIOLUM2" ],
     "category": [ "INSECT" ],
+    "changes_to":["ACID_ANT_BLAST"],
     "threshreq": [ "THRESH_INSECT" ],
     "active": true,
     "activated_eocs": [ "EOC_BIOLUM3_activated" ]

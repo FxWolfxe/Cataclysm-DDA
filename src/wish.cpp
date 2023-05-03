@@ -163,6 +163,17 @@ class wish_mutate_callback: public uilist_callback
                     }
                 }
 
+                if( !mdata.morph_req.empty())
+                {
+                    line2++;
+                    mvwprintz(menu->window, point(startx, line2), c_light_gray, _("Morphs required:"));
+                    for (const trait_id& j : mdata.morph_req) {
+                        mvwprintz(menu->window, point(startx + 21, line2), mcolor(j),
+                            j->name());
+                        line2++;
+                    }
+                }
+
                 if( !mdata.cancels.empty() ) {
                     line2++;
                     mvwprintz( menu->window, point( startx, line2 ), c_light_gray, _( "Cancels:" ) );

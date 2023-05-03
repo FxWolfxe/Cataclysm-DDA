@@ -1089,11 +1089,10 @@ bool Character::mutation_ok( const trait_id &mutation, bool allow_good, bool all
                     {
                         valid_threshold |= std::find(m->threshreq.begin(), m->threshreq.end(), t) != m->threshreq.end(); 
                     }
-                    break; //only ever need to check 1 threshold as there can only be 1 
                 }
             }
 
-            if (!crossed_threshold || !valid_threshold) return false; //if they've crossed a threshold but it's not a threshold that can get any of the required morphs 
+            if (crossed_threshold && !valid_threshold) return false; //if they've crossed a threshold but it's not a threshold that can get any of the required morphs 
                 //also return false if they've not crossed a threshold as that's required before they can get a morph so no reason to even consider it 
         }
     }
@@ -1650,6 +1649,7 @@ bool Character::mutate_towards( const trait_id &mut, const mutation_category_id 
         {
             add_msg_if_player(_(no_threshreq_msg));
         }
+        return false; 
         
     }
 
