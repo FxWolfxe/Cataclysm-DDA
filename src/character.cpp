@@ -471,6 +471,7 @@ static const trait_id trait_THRESH_CEPHALOPOD( "THRESH_CEPHALOPOD" );
 static const trait_id trait_THRESH_INSECT( "THRESH_INSECT" );
 static const trait_id trait_THRESH_PLANT( "THRESH_PLANT" );
 static const trait_id trait_THRESH_SPIDER( "THRESH_SPIDER" );
+static const trait_id trait_CANINE_EYE("CANINE_EYE"); 
 static const trait_id trait_TRANSPIRATION( "TRANSPIRATION" );
 static const trait_id trait_URSINE_EYE( "URSINE_EYE" );
 static const trait_id trait_VISCOUS( "VISCOUS" );
@@ -2354,6 +2355,11 @@ void Character::recalc_sight_limits()
     } else if( has_effect( effect_darkness ) ) {
         vision_mode_cache.set( DARKNESS );
         sight_max = 10;
+    }
+
+    if(has_trait(trait_CANINE_EYE))
+    {
+        vision_mode_cache.set(VISION_DOG);
     }
 
     // Debug-only NV, by vache's request

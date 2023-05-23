@@ -21,6 +21,7 @@ static color_pixel_function_map builtin_color_pixel_functions = {
     { "color_pixel_grayscale", color_pixel_grayscale },
     { "color_pixel_nightvision", color_pixel_nightvision },
     { "color_pixel_overexposed", color_pixel_overexposed },
+    { "color_pixel_dogvision", color_pixel_dogvision}
 };
 
 color_pixel_function_pointer get_color_pixel_function( const std::string &name )
@@ -94,6 +95,17 @@ inline SDL_Color color_pixel_nightvision( const SDL_Color &color )
         static_cast<Uint8>( result >> 3 ),
         color.a
     };
+}
+
+inline SDL_Color color_pixel_dogvision(const SDL_Color &color)
+{
+
+    SDL_Color retVal = color;
+    retVal.r = (color.g + color.r) / 2;
+    retVal.g = retVal.r;
+
+    return retVal; 
+
 }
 
 inline SDL_Color color_pixel_overexposed( const SDL_Color &color )

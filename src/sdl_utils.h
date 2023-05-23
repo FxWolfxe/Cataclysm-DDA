@@ -40,6 +40,7 @@ SDL_Color color_pixel_overexposed( const SDL_Color &color );
 SDL_Color color_pixel_darken( const SDL_Color &color );
 SDL_Color color_pixel_mixer( const SDL_Color &color, const float &gammav,
                              const SDL_Color &color_a, const SDL_Color &color_b );
+SDL_Color color_pixel_dogvision(const SDL_Color& color); 
 
 inline SDL_Color color_pixel_sepia_light( const SDL_Color &color )
 {
