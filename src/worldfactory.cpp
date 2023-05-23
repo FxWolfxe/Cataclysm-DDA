@@ -382,7 +382,7 @@ void worldfactory::init()
 
     // This returns files as well, but they are going to be discarded later as
     // we look for files *within* these dirs. If it's a file, there won't be
-    // be any of those inside it and is_save_dir will return false.
+    // any files inside it and is_save_dir will return false.
     for( const std::string &dir : get_files_from_path( "", PATH_INFO::savedir(), false ) ) {
         if( !is_save_dir( dir ) ) {
             continue;
@@ -1816,7 +1816,7 @@ int worldfactory::show_worldgen_basic( WORLD *world )
         } else if( action == "PICK_MODS" ) {
             show_worldgen_tab_modselection( w_confirmation, world, false );
         } else if( action == "ADVANCED_SETTINGS" ) {
-            auto WOPTIONS_OLD = world->WORLD_OPTIONS;
+            options_manager::options_container WOPTIONS_OLD = world->WORLD_OPTIONS;
             show_worldgen_tab_options( w_confirmation, world, false );
             for( auto &iter : WOPTIONS_OLD ) {
                 if( iter.second != world->WORLD_OPTIONS[iter.first] ) {

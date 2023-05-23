@@ -636,8 +636,8 @@ void tileset_cache::loader::load( const std::string &tileset_id, const bool prec
     cata_path layering_path = tileset_root / fs::u8path( layering );
 
     dbg( D_INFO ) << "Attempting to Load LAYERING file " << layering_path;
-    cata::ifstream layering_file( layering_path.get_unrelative_path(),
-                                  std::ifstream::in | std::ifstream::binary );
+    std::ifstream layering_file( layering_path.get_unrelative_path(),
+                                 std::ifstream::in | std::ifstream::binary );
 
     if( !layering_file.good() ) {
         has_layering = false;
@@ -1264,8 +1264,7 @@ void cata_tiles::draw( const point &dest, const tripoint &center, int width, int
         geometry->rect( renderer, clipRect, SDL_Color() );
     }
 
-    point s;
-    get_window_tile_counts( width, height, s.x, s.y );
+    const point s = get_window_tile_counts( point( width, height ) );
 
     init_light();
     map &here = get_map();
@@ -1759,15 +1758,29 @@ void cata_tiles::draw_minimap( const point &dest, const tripoint &center, int wi
     minimap->draw( SDL_Rect{ dest.x, dest.y, width, height }, center );
 }
 
-void cata_tiles::get_window_tile_counts( const int width, const int height, int &columns,
-        int &rows ) const
+point cata_tiles::get_window_tile_counts( const point &size ) const
 {
     if( is_isometric() ) {
-        columns = std::ceil( static_cast<double>( width ) / tile_width ) * 2 + 4;
-        rows = std::ceil( static_cast<double>( height ) / ( tile_width / 2.0 - 1 ) ) * 2 + 4;
+        const int columns = divide_round_up( size.x, tile_width ) * 2 + 4;
+        const int rows = divide_round_up( size.y * 2, tile_width - 2 ) * 2 + 4;
+        return point( columns, rows );
     } else {
-        columns = std::ceil( static_cast<double>( width ) / tile_width );
-        rows = std::ceil( static_cast<double>( height ) / tile_height );
+        const int columns = divide_round_up( size.x, tile_width );
+        const int rows = divide_round_up( size.y, tile_height );
+        return point( columns, rows );
+    }
+}
+
+point cata_tiles::get_window_full_tile_counts( const point &size ) const
+{
+    if( is_isometric() ) {
+        const int columns = divide_round_down( size.x, tile_width ) * 2 + 4;
+        const int rows = divide_round_down( size.y * 2, tile_width - 2 ) * 2 + 4;
+        return point( columns, rows );
+    } else {
+        const int columns = divide_round_down( size.x, tile_width );
+        const int rows = divide_round_down( size.y, tile_height );
+        return point( columns, rows );
     }
 }
 
@@ -2160,9 +2173,9 @@ bool cata_tiles::draw_from_id_string_internal(const std::string &id, TILE_CATEGO
                 if( subtile == open_ ) {
                     sym = '\'';
                 } else if( subtile == broken ) {
-                    sym = v.sym_broken;
+                    sym = v.get_symbol_broken();
                 } else {
-                    sym = v.sym;
+                    sym = v.get_symbol();
                     if( !vpid_data.second.empty() ) {
                         const auto &var_data = v.symbols.find( vpid_data.second );
                         if( var_data != v.symbols.end() ) {
@@ -2472,7 +2485,7 @@ bool cata_tiles::draw_from_id_string_internal(const std::string &id, TILE_CATEGO
             // needs to be defined by the tileset to look good, so we use system clock:
             std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
             auto now_ms = std::chrono::time_point_cast<std::chrono::milliseconds>( now );
-            auto value = now_ms.time_since_epoch();
+            std::chrono::milliseconds value = now_ms.time_since_epoch();
             // aiming roughly at the standard 60 frames per second:
             int animation_frame = value.count() / 17;
             // offset by log_rand so that everything does not blink at the same time:
@@ -3862,7 +3875,7 @@ bool cata_tiles::draw_critter_at( const tripoint &p, lit_level ll, int &height_3
                 rot_facing = -1;
             }
             if( rot_facing >= -1 ) {
-                const auto ent_name = m->type->id;
+                const mtype_id ent_name = m->type->id;
                 std::string chosen_id = ent_name.str();
                 if( m->has_effect( effect_ridden ) ) {
                     int pl_under_height = 6;
@@ -4414,6 +4427,7 @@ void cata_tiles::draw_custom_explosion_frame()
 
         const tripoint &p = pr.first;
         std::string explosion_tile_id;
+        // Use target sprite if exist, otherwise col will determine fallback sprite
         if( pr.second.tile_name &&
             find_tile_looks_like( *pr.second.tile_name, TILE_CATEGORY::NONE, "" ) ) {
             explosion_tile_id = *pr.second.tile_name;
@@ -4421,6 +4435,9 @@ void cata_tiles::draw_custom_explosion_frame()
             explosion_tile_id = exp_strong;
         } else if( col == c_yellow ) {
             explosion_tile_id = exp_medium;
+        } else if( col == c_black ) {
+            // c_black results in no fallback sprite
+            return;
         } else {
             explosion_tile_id = exp_weak;
         }
