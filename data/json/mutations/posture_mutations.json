@@ -9,14 +9,13 @@
         "visibility": 4,
         "ugliness": 2,
         "changes_to":["SEMI_QUADRUPED_OK"],
-        "prereqs":["STRONG_LEGS", "DIGITIGRADE_LEGS", "UNGULIGRADE_LEGS"],
         "movecost_modifier":1.25,
         "description": "Your chest has put on more muscle, and in response your spine has curved a bit. You're finding it harder to walk normally",
         "types": [
             "POSTURE"
         ],
         "category": [
-            "LUPINE", "FELINE", "CHIMERA", "CATTLE", "URSINE"
+            "LUPINE", "FELINE", "CHIMERA", "CATTLE", "URSINE", "RAT"
         ], 
         "passive_mods": { "str_mod": 1 }
     }, 
@@ -34,6 +33,7 @@
         "ugliness": 2,
         "mixed_effect":true,
         "prereqs":["SEMI_QUADRUPED_BAD"],
+        "prereqs2":["STRONG_LEGS", "DIGITIGRADE_LEGS", "UNGULIGRADE_LEGS"],
         "description": "Your posture has altered again. Whlie you can stand up to use tools or climb, walking on two legs is difficult. But being on all fours feels better",
         "types": [
             "POSTURE"
@@ -183,6 +183,86 @@
             }
           ]
     }, 
+    {
+      "type": "mutation",
+      "id": "RAT_SCURRY",
+      "name": {
+          "str": "Scurry"
+      },
+      "points": 0,
+      "prereqs":["SEMI_QUADRUPED_BAD"],
+      "visibility": 4,
+      "movecost_modifier":1.14,
+      "ugliness": 2,
+      "mixed_effect":true,
+      "description": "Your spine and hips have continued to change. You again feel better on two legs again, but running on 4 feels better",
+      "types": [
+          "POSTURE"
+      ],
+      "threshreq": [
+          "THRESH_RAT"
+      ],
+      "category": [
+          "RAT"
+      ], 
+      "passive_mods": { "str_mod": 1 }, 
+      "triggers": [
+          [
+            {
+              "condition": {
+                "and": [
+                  { "u_has_move_mode": "crouch" },
+                  { "not": "u_can_drop_weapon" },
+                  {
+                    "u_has_any_trait": [ "QUADRUPED" ]
+                  }
+                ]
+              },
+              "msg_on": { "text": "You drop down on all fours." },
+              "msg_off": { "text": "You rise up to walk on your hind feet." }
+            },
+            {
+              "condition": {
+                "and": [
+                  { "u_has_move_mode": "run" },
+                  { "not": "u_can_drop_weapon" },
+                  {
+                    "u_has_any_trait": [ "QUADRUPED" ]
+                  }
+                ]
+              },
+              "msg_on": { "text": "You drop down on all fours." },
+              "msg_off": { "text": "You rise up to walk on your hind feet." }
+            }
+          ]
+        ],
+        "enchantments": [
+          {
+            "condition": {
+              "and": [
+                { "u_has_move_mode": "crouch" },
+                { "not": "u_can_drop_weapon" },
+                {
+                  "u_has_any_trait": [ "QUADRUPED" ]
+                }
+              ]
+            },
+            "values": [ { "value": "MOVE_COST", "multiply": -0.35 } ]
+          },
+          {
+            "condition": {
+              "and": [
+                { "u_has_move_mode": "run" },
+                { "not": "u_can_drop_weapon" },
+                {
+                  "u_has_any_trait": [ "QUADRUPED" ]
+                }
+              ]
+            },
+            "values": [ { "value": "MOVE_COST", "multiply": -0.35 } ]
+          }
+        ]
+  }, 
     {
         "type": "mutation",
         "id": "RAPT_LEGS",

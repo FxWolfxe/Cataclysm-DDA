@@ -90,5 +90,27 @@
         "valid": true,
         "player_display":true,
         "description": "You feel like you've left behind your old life and form."
+      },
+      {
+        "type": "mutation",
+        "id": "MANIFEST_DESTINY_RAT",
+        "name": { "str": "Transforming into Rat" },
+        "points": 0,
+        "starting_trait": true,
+        "purifiable": false,
+        "valid": true,
+        "player_display":true,
+        "description": "You feel like you've left behind your old life and form."
+      },
+      {
+        "type": "mutation",
+        "id": "MANIFESTED_DESTINY_RAT",
+        "name": { "str": "Transformed into Rat" },
+        "points": 0,
+        "starting_trait": false,
+        "purifiable": false,
+        "valid": true,
+        "player_display":true,
+        "description": "You feel like you've left behind your old life and form."
       }
 ]
