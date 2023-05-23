@@ -1,0 +1,36 @@
+[ {
+    "id": "spider_pouch",
+    "type": "ARMOR",
+    "name": { "str": "silk pouch", "str_pl": "silk pouches" },
+    "description": "a pouch woven from spider silk. Small and light weight but remarkably stretchy and strong",
+    "weight": "11 g",
+    "looks_like":"ragpouch",
+    "volume": "1 L",
+    "price": 1700,
+    "price_postapoc": 700,
+    "to_hit": 1,
+    "material": [ "silk" ],
+    "symbol": "[",
+    "color": "white",
+    "pocket_data": [
+      {
+        "pocket_type": "CONTAINER",
+        "max_contains_volume": "4550 ml",
+        "max_contains_weight": "10 kg",
+        "max_item_length": "80 cm",
+        "moves": 200
+      }
+    ],
+    "material_thickness": 0.1,
+    "flags": [ "BELTED", "OVERSIZE", "WATER_FRIENDLY" ],
+    "armor": [
+      {
+        "encumbrance": 2,
+        "volume_encumber_modifier": 0.1,
+        "coverage": 100,
+        "covers": [ "torso" ],
+        "specifically_covers": [ "torso_waist" ]
+      }
+    ]
+  }
+]
