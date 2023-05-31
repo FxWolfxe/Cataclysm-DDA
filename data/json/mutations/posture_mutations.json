@@ -8,7 +8,7 @@
         "points": -1,
         "visibility": 4,
         "ugliness": 2,
-        "changes_to":["SEMI_QUADRUPED_OK"],
+        "changes_to":["SEMI_QUADRUPED_OK", "RAT_SCURRY"],
         "movecost_modifier":1.25,
         "description": "Your chest has put on more muscle, and in response your spine has curved a bit. You're finding it harder to walk normally",
         "types": [
@@ -214,7 +214,7 @@
                   { "u_has_move_mode": "crouch" },
                   { "not": "u_can_drop_weapon" },
                   {
-                    "u_has_any_trait": [ "QUADRUPED" ]
+                    "u_has_any_trait": [ "RAT_SCURRY" ]
                   }
                 ]
               },
@@ -227,7 +227,7 @@
                   { "u_has_move_mode": "run" },
                   { "not": "u_can_drop_weapon" },
                   {
-                    "u_has_any_trait": [ "QUADRUPED" ]
+                    "u_has_any_trait": [ "RAT_SCURRY" ]
                   }
                 ]
               },
@@ -243,11 +243,11 @@
                 { "u_has_move_mode": "crouch" },
                 { "not": "u_can_drop_weapon" },
                 {
-                  "u_has_any_trait": [ "QUADRUPED" ]
+                  "u_has_any_trait": [ "RAT_SCURRY" ]
                 }
               ]
             },
-            "values": [ { "value": "MOVE_COST", "multiply": -0.35 } ]
+            "values": [ { "value": "MOVE_COST", "multiply": -0.55 } ]
           },
           {
             "condition": {
@@ -255,11 +255,11 @@
                 { "u_has_move_mode": "run" },
                 { "not": "u_can_drop_weapon" },
                 {
-                  "u_has_any_trait": [ "QUADRUPED" ]
+                  "u_has_any_trait": [ "RAT_SCURRY" ]
                 }
               ]
             },
-            "values": [ { "value": "MOVE_COST", "multiply": -0.35 } ]
+            "values": [ { "value": "MOVE_COST", "multiply": -0.55 } ]
           }
         ]
   }, 
