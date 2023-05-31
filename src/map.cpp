@@ -7865,9 +7865,9 @@ void map::grow_plant( const tripoint &p )
         return;
     }
 
-    const float growth_speed = 100.0f / std::max<float>(1, get_option<int>("PLANT_GROWTH_SPEED")); 
+    //const float growth_speed = 100.0f / std::max<float>(1, get_option<int>("PLANT_GROWTH_SPEED")); 
 
-    const time_duration plantEpoch = seed->get_plant_epoch() * growth_speed;
+    const time_duration plantEpoch = seed->get_plant_epoch(); // *growth_speed;
     if( seed->age() >= plantEpoch * furn.plant->growth_multiplier &&
         !furn.has_flag( ter_furn_flag::TFLAG_GROWTH_HARVEST ) ) {
         if( seed->age() < plantEpoch * 2 ) {
