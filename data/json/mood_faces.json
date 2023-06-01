@@ -154,6 +154,16 @@
     "copy-from": "THRESH_FELINE"
 },
 {
+  "type": "mood_face",
+  "id": "THRESH_CHIMERA",
+  "copy-from": "THRESH_FELINE"
+},
+{
+  "type": "mood_face",
+  "id": "THRESH_CHIMERA_HORIZONTAL",
+  "copy-from": "THRESH_FELINE_HORIZONTAL"
+},
+{
     "type": "mood_face",
     "id": "THRESH_CRUSTACEAN",
     "copy-from": "THRESH_FELINE"

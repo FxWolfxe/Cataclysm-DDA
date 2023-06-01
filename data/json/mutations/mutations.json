@@ -651,8 +651,8 @@
     "name": { "str": "Aquatic Sleeper" },
     "points": 2,
     "description": "You always sleep better underwater.",
-    "threshreq": [ "THRESH_FISH", "THRESH_BATRACHIAN" ],
-    "category": [ "BATRACHIAN", "FISH" ],
+    "threshreq": [ "THRESH_FISH", "THRESH_BATRACHIAN", "THRESH_CRUSTACEAN" ],
+    "category": [ "BATRACHIAN", "FISH", "CRUSTACEAN" ],
     "enchantments": [ { "condition": "u_is_underwater", "values": [ { "value": "SLEEPY", "add": 40 } ] } ]
   },
   {
@@ -2673,7 +2673,7 @@
     "mixed_effect": true,
     "description": "Your bones are very light.  This enables you to move and attack 10% faster, but also reduces your carrying weight by 20% and makes bashing attacks hurt a little more.",
     "types": [ "BONES" ],
-    "category": [ "MOUSE", "RABBIT", "BIRD", "SLIME", "ELFA", "SPIDER", "INSECT" ],
+    "category": [ "MOUSE", "RABBIT", "BIRD", "SLIME", "ELFA", "SPIDER", "INSECT", "CRUSTACEAN" ],
     "changes_to": [ "HOLLOW_BONES" ],
     "movecost_modifier": 0.9,
     "attackcost_modifier": 0.9,
@@ -2970,7 +2970,7 @@
     "purifiable": false,
     "types": [ "BODY_ARMOR" ],
     "prereqs": [ "CHITIN_MOLTED" ],
-    "leads_to": [ "CHITIN3", "CRUSTACEAN_CARAPACE" ],
+    "leads_to": [ "CHITIN3", "CRUSTACEAN_CARAPACE", "CRUSTACEAN_CARAPACE_MOLTED" ],
     "integrated_armor": [ "integrated_chitin2_molted" ],
     "wet_protection": [
       { "part": "head", "ignored": 2 },
@@ -3075,7 +3075,7 @@
     "ugliness": 8,
     "description": "You're covered in a great chitin carapace which reduces your Dexterity by 1, however it has recently molted and will offer poor protection until it has time to harden.  Greatly reduces wet effects.",
     "types": [ "BODY_ARMOR" ],
-    "prereqs": [ "CHITIN2" ],
+    "prereqs": [ "CHITIN2_MOLTED" , "CHITIN2"],
     "category": [ "CRUSTACEAN" ],
     "leads_to": [ "CRUSTACEAN_CLAW" ],
     "integrated_armor": [ "integrated_carapace_molted" ],
@@ -3171,7 +3171,15 @@
     "threshreq": [ "THRESH_CRUSTACEAN" ],
     "category": [ "CRUSTACEAN" ],
     "restricts_gear": [ "hand_r" ],
-    "types": [ "HANDS" ]
+    "types": [ "HANDS" ], 
+    "attacks": {
+      "attack_text_u": "You tear into %s with your pincer",
+      "attack_text_npc": "%1$s tears into %2$s with their pincer",
+      "body_part": "hand_r",
+      "chance": 20,
+      "base_damage": { "damage_type": "stab", "amount": 25 },
+      "strength_damage": { "damage_type": "stab", "amount": 5 }
+    }
   },
   {
     "type": "mutation",
@@ -4679,8 +4687,8 @@
     "ugliness": 2,
     "description": "You have a short, stubby tail, like a rabbit's.  It serves no purpose.",
     "types": [ "TAIL" ],
-    "changes_to": [ "TAIL_LONG",  "TAIL_THICK", "TAIL_FIN", "TAIL_RAT", "TAIL_RAPTOR" , "TAIL_INTERMEDIAT_ABDOMEN", "TAIL_BIRD", "TAIL_BAT"],
-    "category": [ "BIRD", "URSINE", "FELINE", "LIZARD", "FISH", "RAT", "MOUSE", "RAPTOR", "LUPINE", "INSECT", "SPIDER" ,"CATTLE", "CHIMERA", "BEAST" ]
+    "changes_to": [ "TAIL_LONG",  "TAIL_THICK", "TAIL_FIN", "TAIL_RAT", "TAIL_RAPTOR" , "TAIL_LOBSTER", "TAIL_INTERMEDIAT_ABDOMEN", "TAIL_BIRD", "TAIL_BAT"],
+    "category": [ "BIRD", "URSINE", "FELINE", "LIZARD", "FISH", "RAT", "MOUSE", "RAPTOR", "LUPINE", "INSECT", "SPIDER" ,"CATTLE", "CHIMERA", "BEAST" , "CRUSTACEAN"]
   },
   { 
     "type":"mutation", 
@@ -5782,7 +5790,7 @@
     "description": "You have grown noticeably taller and broader.  Much of it is useful muscle mass (Strength +2), but you find it throws off your balance and you get in your own way (+10 torso and arm encumbrance).",
     "types": [ "SIZE" ],
     "prereqs": [ "STR_UP", "STR_UP_2", "STR_UP_3", "STR_UP_4", "MASOCHIST_MED" ],
-    "prereqs2": [ "DENSE_BONES" ],
+    "prereqs2": [ "DENSE_BONES", "LIGHT_BONES"],
     "changes_to": [ "LARGE_OK", "HUGE" ],
     "category": [ "URSINE", "CATTLE", "LIZARD", "CHIMERA", "CRUSTACEAN" ],
     "passive_mods": { "str_mod": 2 },
@@ -6412,6 +6420,7 @@
     "types": [ "EYES" ],
     "category": [ "CRUSTACEAN" ],
     "restricts_gear": [ "eyes" ],
+    "prereqs":["EYESTALKS1"],
     "allow_soft_gear": true,
     "passive_mods": { "per_mod": 1 },
     "flags": [ "EYE_MEMBRANE" ]
@@ -6837,7 +6846,7 @@
     "mixed_effect": true,
     "description": "Your bones are particularly dense and durable.  Your tougher frame grants 5% more HP and 15% more carry capacity plus bashing attacks injure you less, but your higher weight makes attacking and moving 5% slower.  Also, dodging and swimming are harder.",
     "types": [ "BONES" ],
-    "category": [ "URSINE", "CATTLE", "CHIMERA", "BEAST", "LIZARD", "CRUSTACEAN" ],
+    "category": [ "URSINE", "CATTLE", "CHIMERA", "BEAST", "LIZARD" ],
     "movecost_modifier": 1.05,
     "movecost_swim_modifier": 1.2,
     "attackcost_modifier": 1.05,
@@ -8222,7 +8231,7 @@
     "threshreq": [ "THRESH_CRUSTACEAN" ],
     "movecost_obstacle_modifier": 0.87,
     "category": [ "CRUSTACEAN" ],
-    "flags": [ "WALK_UNDERWATER" ], 
+    "flags": [ "WALK_UNDERWATER", "SWIMS"], 
     "climbing_difficulty_modifier": 0.8
   },
   {
@@ -8558,9 +8567,9 @@
     "name": { "str": "Aqueous Repose" },
     "points": 1,
     "description": "Falling asleep underwater is easy for you, and you spend less time asleep when you rest there.  You can also eat underwater, though you can't drink.",
-    "prereqs": [ "SEESLEEP", "FROG_EYES" ],
-    "category": [ "FISH", "BATRACHIAN" ],
-    "threshreq": [ "THRESH_FISH", "THRESH_BATRACHIAN" ]
+    "prereqs": [ "SEESLEEP", "FROG_EYES", "EYESTALKS_RIGID" ],
+    "category": [ "FISH", "BATRACHIAN", "CRUSTACEAN" ],
+    "threshreq": [ "THRESH_FISH", "THRESH_BATRACHIAN", "THRESH_CRUSTACEAN" ]
   },
   {
     "type": "mutation",
@@ -8579,8 +8588,8 @@
     "points": 4,
     "description": "Your gills and skin are highly permeable to moisture, and you can hydrate your body through osmosis.  While submerged in fresh water, any thirst you might have will be slaked.",
     "prereqs": [ "GILLS" ],
-    "category": [ "FISH", "BATRACHIAN" ],
-    "threshreq": [ "THRESH_FISH", "THRESH_BATRACHIAN" ]
+    "category": [ "FISH", "BATRACHIAN", "CRUSTACEAN" ],
+    "threshreq": [ "THRESH_FISH", "THRESH_BATRACHIAN", "THRESH_CRUSTACEAN" ]
   },
   {
     "type": "mutation",

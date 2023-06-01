@@ -33,9 +33,9 @@
         "description": "Your bones have almost entirely dissolved, the calcium being used to reinforce your chitin exoskeliton, which now hold you up. Moving is harder but you feel stronger",
         "types": [ "BONES" ],
         "prereqs":["LIGHT_BONES"],
-        "prereqs2":["CHITIN", "CHITIN2", "CHITIN3", "CHITIN_FUR2", "CHITIN_FUR3" ],
-        "threshreq":["THRESH_SPIDER","THRESH_INSECT"],
-        "category": [ "INSECT", "SPIDER" ],
+        "prereqs2":["CHITIN", "CHITIN2", "CHITIN3", "CHITIN_FUR2", "CHITIN_FUR3", "CRUSTACEAN_CARAPACE" ],
+        "threshreq":["THRESH_SPIDER","THRESH_INSECT", "THRESH_CRUSTACEAN"],
+        "category": [ "INSECT", "SPIDER", "CRUSTACEAN" ],
         "movecost_modifier": 1.2,
         "attackcost_modifier": 1.2,
         "weight_capacity_modifier": 1.5,
@@ -56,5 +56,22 @@
         "threshreq": [ "THRESH_INSECT" ],
         "active": true,
         "activated_eocs": [ "EOC_ACID_FLARE_activated" ]
+      },
+      {
+        "type": "mutation",
+        "id": "TAIL_LOBSTER",
+        "name": { "str": "Lobster Tail" },
+        "points": 0,
+        "visibility": 4,
+        "ugliness": 2,
+        "description": "You have a fin-like lobster tail.  It allows you to swim more quickly, but prevents wearing non-fabric pants.  Slightly increases wet benefits.",
+        "types": [ "TAIL" ],
+        "prereqs": [ "TAIL_STUB" ],
+        "category": [ "CRUSTACEAN" ],
+        "wet_protection": [ { "part": "leg_l", "good": 3 }, { "part": "leg_r", "good": 3 } ],
+        "movecost_swim_modifier": 0.55,
+        "restricts_gear": [ "leg_hip_l", "leg_hip_r" ],
+        "allowed_items": [ "ALLOWS_TAIL" ],
+        "allow_soft_gear": true
       }
 ]

@@ -1217,7 +1217,7 @@
     "color": "brown",
     "warmth": 10,
     "to_hit": 1,
-    "qualities": [ [ "CUT", 1 ], [ "BUTCHER", -4 ], [ "PRY", 1 ], [ "HAMMER", 1 ] ],
+    "qualities": [ [ "CUT", 2 ], [ "BUTCHER", -4 ], [ "PRY", 3 ], [ "HAMMER", 2 ] ],
     "environmental_protection": 3,
     "techniques": [ "BRUTAL", "WBLOCK_2" ],
     "flags": [ "INTEGRATED", "ALLOWS_NATURAL_ATTACKS", "UNBREAKABLE", "OUTER", "PADDED" ],

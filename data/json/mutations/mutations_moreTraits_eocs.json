@@ -298,6 +298,56 @@
             }
           }
         ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_crustacean",
+        "recurrence": [ "2 days", "7 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_CRUSTACEAN" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_CRUSTACEAN" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_crustacean" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_crustacean_complete",
+              "condition": { "u_has_trait": "THRESH_CRUSTACEAN" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_CRUSTACEAN" }, { "u_add_trait": "MANIFESTED_DESTINY_CRUSTACEAN" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_crustacean",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_CRUSTACEAN" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_crustacean" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_crustacean",
+              "condition": { "u_has_trait": "THRESH_CRUSTACEAN" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_CRUSTACEAN" } ]
+            }
+          }
+        ]
       }
       
 ]
