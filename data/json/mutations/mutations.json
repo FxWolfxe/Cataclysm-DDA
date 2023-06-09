@@ -2699,6 +2699,7 @@
     "type": "mutation",
     "id": "DOWN",
     "name": { "str": "Down" },
+    "integrated_armor":["integrated_feathers"],
     "points": 0,
     "visibility": 4,
     "ugliness": -1,
@@ -5367,7 +5368,7 @@
     "category": [ "INSECT" ],
     "flags": [ "WINGS_2" ], 
     "active": true,
-    "cost": 3,
+    "cost": 1,
     "time": "1 s",
     "fatigue": true,
     "kcal": true,
@@ -8439,6 +8440,7 @@
     "description": "You can't tell what you are anymore.  Everything and yet nothing, like you weren't meant to exist.  But you do, and you're a force, no matter what happens.",
     "valid": false,
     "purifiable": false,
+    "vitamin_rates":[ ["mutant_toxin", 150]],
     "threshold": true
   },
   {

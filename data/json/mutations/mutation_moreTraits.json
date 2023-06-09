@@ -157,5 +157,49 @@
         "valid": true,
         "player_display":true,
         "description": "You feel like you've left behind your old life and form."
+      },
+      {
+        "type": "mutation",
+        "id": "MANIFEST_DESTINY_CHIMERA",
+        "name": { "str": "Transforming into Monster" },
+        "points": 0,
+        "starting_trait": true,
+        "purifiable": false,
+        "valid": true,
+        "player_display":true,
+        "description": "You feel like you've left behind your old life and form."
+      },
+      {
+        "type": "mutation",
+        "id": "MANIFESTED_DESTINY_CHIMERA",
+        "name": { "str": "Transformed into Monster" },
+        "points": 0,
+        "starting_trait": false,
+        "purifiable": false,
+        "valid": true,
+        "player_display":true,
+        "description": "You feel like you've left behind your old life and form."
+      }, 
+      {
+        "type": "mutation",
+        "id": "MANIFEST_DESTINY_BIRD",
+        "name": { "str": "Transforming into Bird" },
+        "points": 0,
+        "starting_trait": true,
+        "purifiable": false,
+        "valid": true,
+        "player_display":true,
+        "description": "You feel like you've left behind your old life and form."
+      },
+      {
+        "type": "mutation",
+        "id": "MANIFESTED_DESTINY_BIRD",
+        "name": { "str": "Transformed into Bird" },
+        "points": 0,
+        "starting_trait": false,
+        "purifiable": false,
+        "valid": true,
+        "player_display":true,
+        "description": "You feel like you've left behind your old life and form."
       }
 ]
