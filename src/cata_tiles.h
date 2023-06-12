@@ -432,36 +432,36 @@ class cata_tiles
         bool find_overlay_looks_like( bool male, const std::string &overlay, const std::string &variant,
                                       std::string &draw_id );
 
-        bool draw_from_id_string(const std::string &id, const tripoint &pos, int subtile, int rota,
-                                 lit_level ll,
-                                 bool apply_night_vision_goggles, bool apply_dog_vision);
-        bool draw_from_id_string(const std::string &id, TILE_CATEGORY category,
-                                 const std::string &subcategory, const tripoint &pos, int subtile, int rota,
-                                 lit_level ll, bool apply_night_vision_goggles, bool apply_dog_vision);
-        bool draw_from_id_string(const std::string &id, const tripoint &pos, int subtile, int rota,
-                                 lit_level ll,
-                                 bool apply_night_vision_goggles, int &height_3d, bool apply_dog_vision);
-        bool draw_from_id_string(const std::string &id, TILE_CATEGORY category,
-                                 const std::string &subcategory, const tripoint &pos, int subtile, int rota,
-                                 lit_level ll, bool apply_night_vision_goggles, int &height_3d, bool apply_dog_vision);
-        bool draw_from_id_string(const std::string &id, TILE_CATEGORY category,
-                                 const std::string &subcategory, const tripoint &pos, int subtile, int rota,
-                                 lit_level ll, bool apply_night_vision_goggles, int &height_3d, int intensity_level, bool apply_dog_vision);
-        bool draw_from_id_string(const std::string &id, TILE_CATEGORY category,
-                                 const std::string &subcategory, const tripoint &pos, int subtile, int rota,
-                                 lit_level ll, bool apply_night_vision_goggles, int &height_3d, int intensity_level,
-                                 const std::string &variant, bool apply_dog_vision);
-        bool draw_from_id_string(const std::string &id, TILE_CATEGORY category,
-                                 const std::string &subcategory, const tripoint &pos, int subtile, int rota,
-                                 lit_level ll, bool apply_night_vision_goggles, int &height_3d, int intensity_level,
-                                 const std::string &variant, const point &offset, bool apply_dog_vision);
-        bool draw_from_id_string_internal(const std::string &id, const tripoint &pos, int subtile,
-                                          int rota,
-                                          lit_level ll, int retract, bool apply_night_vision_goggles, bool apply_dog_vision);
-        bool draw_from_id_string_internal(const std::string &id, TILE_CATEGORY category,
-                                          const std::string &subcategory, const tripoint &pos, int subtile, int rota,
-                                          lit_level ll, int retract, bool apply_night_vision_goggles, int &height_3d, int intensity_level,
-                                          const std::string &variant, const point &offset, bool apply_dog_vision);
+        bool draw_from_id_string( const std::string &id, const tripoint &pos, int subtile, int rota,
+                                  lit_level ll,
+                                  bool apply_night_vision_goggles, bool apply_dog_vision);
+        bool draw_from_id_string( const std::string &id, TILE_CATEGORY category,
+                                  const std::string &subcategory, const tripoint &pos, int subtile, int rota,
+                                  lit_level ll, bool apply_night_vision_goggles, bool apply_dog_vision);
+        bool draw_from_id_string( const std::string &id, const tripoint &pos, int subtile, int rota,
+                                  lit_level ll,
+                                  bool apply_night_vision_goggles, int &height_3d, bool apply_dog_vision);
+        bool draw_from_id_string( const std::string &id, TILE_CATEGORY category,
+                                  const std::string &subcategory, const tripoint &pos, int subtile, int rota,
+                                  lit_level ll, bool apply_night_vision_goggles, int &height_3d, bool apply_dog_vision);
+        bool draw_from_id_string( const std::string &id, TILE_CATEGORY category,
+                                  const std::string &subcategory, const tripoint &pos, int subtile, int rota,
+                                  lit_level ll, bool apply_night_vision_goggles, int &height_3d, int intensity_level, bool apply_dog_vision);
+        bool draw_from_id_string( const std::string &id, TILE_CATEGORY category,
+                                  const std::string &subcategory, const tripoint &pos, int subtile, int rota,
+                                  lit_level ll, bool apply_night_vision_goggles, int &height_3d, int intensity_level,
+                                  const std::string &variant, bool apply_dog_vision);
+        bool draw_from_id_string( const std::string &id, TILE_CATEGORY category,
+                                  const std::string &subcategory, const tripoint &pos, int subtile, int rota,
+                                  lit_level ll, bool apply_night_vision_goggles, int &height_3d, int intensity_level,
+                                  const std::string &variant, const point &offset, bool apply_dog_vision);
+        bool draw_from_id_string_internal( const std::string &id, const tripoint &pos, int subtile,
+                                           int rota,
+                                           lit_level ll, int retract, bool apply_night_vision_goggles, int &height_3d, bool apply_dog_vision);
+        bool draw_from_id_string_internal( const std::string &id, TILE_CATEGORY category,
+                                           const std::string &subcategory, const tripoint &pos, int subtile, int rota,
+                                           lit_level ll, int retract, bool apply_night_vision_goggles, int &height_3d, int intensity_level,
+                                           const std::string &variant, const point &offset, bool apply_dog_vision);
         bool draw_sprite_at(
             const tile_type &tile, const weighted_int_list<std::vector<int>> &svlist,
             const point &, unsigned int loc_rand, bool rota_fg, int rota, lit_level ll,
@@ -545,6 +545,7 @@ class cata_tiles
                              const std::array<bool, 5> &invisible );
         bool draw_zombie_revival_indicators( const tripoint &pos, lit_level ll, int &height_3d,
                                              const std::array<bool, 5> &invisible );
+        void draw_zlevel_overlay( const tripoint &p, lit_level ll, int &height_3d );
         void draw_entity_with_overlays( const Character &ch, const tripoint &p, lit_level ll,
                                         int &height_3d );
 
