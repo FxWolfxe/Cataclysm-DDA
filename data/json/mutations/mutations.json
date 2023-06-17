@@ -7259,7 +7259,7 @@
     "types": [ "HANDS" ],
     "prereqs": [ "PAWS" ],
     "cancels": [ "TALONS" ],
-    "category": [ "BEAST", "URSINE" ]
+    "category": [ "URSINE" ]
   },
   {
     "type": "mutation",
@@ -7849,7 +7849,7 @@
     "points": 0,
     "description": "You hiss when speaking.  Persuading NPCs will be more difficult, but threatening them will be easier.",
     "types": [ "VOICE_TONE" ],
-    "category": [ "LIZARD", "RAPTOR" ],
+    "category": [ "LIZARD", "RAPTOR" , "SPIDER"],
     "social_modifiers": { "persuade": -20, "lie": -10, "intimidate": 10 }
   },
   {

@@ -211,5 +211,15 @@
   "type": "mood_face",
   "id": "THRESH_CRUSTACEAN_HORIZONTAL",
   "copy-from": "THRESH_GASTROPOD_HORIZONTAL"
+},
+{
+  "type": "mood_face",
+  "id": "THRESH_BEAST",
+  "copy-from": "THRESH_FELINE"
+},
+{
+  "type": "mood_face",
+  "id": "THRESH_BEAST_HORIZONTAL",
+  "copy-from": "THRESH_FELINE_HORIZONTAL"
 }
 ]
