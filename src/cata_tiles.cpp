@@ -220,6 +220,7 @@ cata_tiles::cata_tiles( const SDL_Renderer_Ptr &renderer, const GeometryRenderer
     do_draw_zones = false;
 
     nv_goggles_activated = false;
+    dog_vision_activated = false;
 
     on_options_changed();
 }
@@ -3152,43 +3153,13 @@ bool cata_tiles::draw_terrain( const tripoint &p, const lit_level ll, int &heigh
         }
     } else if( invisible[0] ) {
         // try drawing memory if invisible and not overridden
-        const memorized_terrain_tile &t = get_terrain_memory_at( p );
-        return draw_from_id_string(
-            t.tile, TILE_CATEGORY::TERRAIN, empty_string, p, t.subtile, t.rotation,
-            lit_level::MEMORIZED, nv_goggles_activated, height_3d, dog_vision_activated);
-    }
-    return false;
-}
+        const auto &t = get_terrain_memory_at( p );
+        if (!t.get_ter_id().empty())
+        {
+            return draw_from_id_string(
+                t.get_ter_id(), TILE_CATEGORY::TERRAIN, empty_string, p, t.get_ter_subtile(), t.get_ter_rotation(),
+                lit_level::MEMORIZED, nv_goggles_activated, height_3d, dog_vision_activated);
 
-bool cata_tiles::has_memory_at( const tripoint &p ) const
-{
-    avatar &you = get_avatar();
-    if( you.should_show_map_memory() ) {
-        const memorized_terrain_tile t = you.get_memorized_tile( get_map().getabs( p ) );
-        return !t.tile.empty();
-    }
-    return false;
-}
-
-bool cata_tiles::has_terrain_memory_at( const tripoint &p ) const
-{
-    avatar &you = get_avatar();
-    if( you.should_show_map_memory() ) {
-        const memorized_terrain_tile t = you.get_memorized_tile( get_map().getabs( p ) );
-        if( string_starts_with( t.tile, "t_" ) ) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool cata_tiles::has_furniture_memory_at( const tripoint &p ) const
-{
-    avatar &you = get_avatar();
-    if( you.should_show_map_memory() ) {
-        const memorized_terrain_tile t = you.get_memorized_tile( get_map().getabs( p ) );
-        if( string_starts_with( t.tile, "f_" ) ) {
-            return true;
         }
     }
     return false;
@@ -3280,11 +3251,14 @@ bool cata_tiles::draw_furniture( const tripoint &p, const lit_level ll, int &hei
         }
     } else if( invisible[0] ) {
         // try drawing memory if invisible and not overridden
-        const memorized_terrain_tile &t = get_furniture_memory_at( p );
-        return draw_from_id_string(
-            t.tile, TILE_CATEGORY::FURNITURE, empty_string, p, t.subtile, t.rotation,
-            lit_level::MEMORIZED, nv_goggles_activated, height_3d, dog_vision_activated);
-    }
+        const auto &t = get_furniture_memory_at( p );
+        if (!t.get_dec_id().empty())
+        {
+            return draw_from_id_string(
+                t.get_dec_id(), TILE_CATEGORY::FURNITURE, empty_string, p, t.get_dec_subtile(), t.get_dec_rotation(),
+                lit_level::MEMORIZED, nv_goggles_activated, height_3d, dog_vision_activated);
+        }
+        }
     return false;
 }
 
@@ -3359,10 +3333,14 @@ bool cata_tiles::draw_trap( const tripoint &p, const lit_level ll, int &height_3
         }
     } else if( invisible[0] ) {
         // try drawing memory if invisible and not overridden
-        const memorized_terrain_tile &t = get_trap_memory_at( p );
-        return draw_from_id_string(
-            t.tile, TILE_CATEGORY::TRAP, empty_string, p, t.subtile, t.rotation,
-            lit_level::MEMORIZED, nv_goggles_activated, height_3d, dog_vision_activated);
+        const auto &t = get_trap_memory_at( p );
+
+        if (!t.get_ter_id().empty())
+        {
+            return draw_from_id_string(
+                t.get_ter_id(), TILE_CATEGORY::TRAP, empty_string, p, t.get_ter_subtile(), t.get_ter_rotation(),
+                lit_level::MEMORIZED, nv_goggles_activated, height_3d, dog_vision_activated);
+        }
     }
     return false;
 }
@@ -3806,7 +3784,7 @@ bool cata_tiles::draw_vpart( const tripoint &p, lit_level ll, int &height_3d,
             return draw_from_id_string(
                        std::string( tid ), TILE_CATEGORY::VEHICLE_PART, empty_string, p, t.get_dec_subtile(),
                        t.get_dec_rotation(), lit_level::MEMORIZED, nv_goggles_activated, height_3d_temp, 0,
-                       std::string( tvar ));
+                       std::string( tvar ), dog_vision_activated);
         }
     }
     return false;
@@ -4047,7 +4025,7 @@ bool cata_tiles::draw_zone_mark( const tripoint &p, lit_level ll, int &height_3d
 
         if( option && !option->get_mark().empty() ) {
             return draw_from_id_string( option->get_mark(), TILE_CATEGORY::NONE, empty_string, p,
-                                        0, 0, ll, nv_goggles_activated, height_3d, false);
+                                        0, 0, ll, nv_goggles_activated, height_3d, dog_vision_activated);
         }
     }
 
@@ -4660,7 +4638,7 @@ void cata_tiles::draw_async_anim()
         const std::string tile_id = anim.second;
         // Only draw if sprite found
         if( find_tile_looks_like( tile_id, TILE_CATEGORY::NONE, "" ) ) {
-            draw_from_id_string( tile_id, p, 0, 0, lit_level::LIT, nv_goggles_activated );
+            draw_from_id_string( tile_id, p, 0, 0, lit_level::LIT, nv_goggles_activated, dog_vision_activated );
         }
     }
 }
