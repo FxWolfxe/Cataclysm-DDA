@@ -91,7 +91,7 @@
     "time": "30 m",
     "autolearn": true,
     "qualities": [ { "id": "CUT", "level": 2 } ],
-    "components": [ [ [ "duct_tape", 10 ] ], [ [ "bottle_plastic", 8 ], [ "bottle_bathroom", 8 ],["condiment_bottle_sealed", 8], [ "bottle_plastic_small", 16 ] , ["bottle_plastic_pill_painkiller", 16]] ]
+    "components": [ [ [ "duct_tape", 10 ] ], [ [ "bottle_plastic", 8 ], [ "bottle_twoliter",  4], [ "bottle_bathroom", 8 ],["condiment_bottle_sealed", 8], [ "bottle_plastic_small", 16 ] , ["bottle_plastic_pill_painkiller", 16]] ]
   },
   {
     "type": "recipe",
