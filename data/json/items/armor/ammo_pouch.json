@@ -44,6 +44,7 @@
           "545x39": 60,
           "223": 60,
           "3006": 60,
+          "123ln": 60,
           "50beowulf": 60,
           "450": 60,
           "338lapua": 60,
@@ -622,7 +623,6 @@
   },
   {
     "id": "light_load_bearing_vest",
-    "repairs_like": "tacvest",
     "type": "ARMOR",
     "name": { "str": "light load bearing vest" },
     "description": "This lightweight harness covered in MOLLE webbing is designed to attach a few pouches, holsters and other PALS compatible accessories.  Preferred by some soldiers over directly attaching accessories to a ballistic vest as they can then be easily separated.",
@@ -649,7 +649,6 @@
   },
   {
     "id": "load_bearing_vest",
-    "repairs_like": "tacvest",
     "type": "ARMOR",
     "name": { "str": "load bearing vest" },
     "description": "This vest covered in MOLLE webbing is designed to attach pouches, holsters and other PALS compatible accessories.  Preferred by some soldiers over directly attaching accessories to a ballistic vest as they can then be easily separated.",
@@ -676,7 +675,6 @@
   },
   {
     "id": "load_bearing_vest_sling",
-    "repairs_like": "tacvest",
     "type": "ARMOR",
     "copy-from": "load_bearing_vest",
     "name": { "str": "load bearing vest with sling", "str_pl": "load bearing vests with slings" },
@@ -709,7 +707,6 @@
   },
   {
     "id": "heavy_load_bearing_vest",
-    "repairs_like": "tacvest",
     "type": "ARMOR",
     "name": { "str": "heavy load bearing vest" },
     "description": "This massive vest covered in MOLLE webbing is designed to attach a large number of pouches, holsters and other PALS compatible accessories.  Preferred by some soldiers over directly attaching accessories to a ballistic vest as they can then be easily separated.",
@@ -736,7 +733,6 @@
   },
   {
     "id": "heavy_load_bearing_vest_sling",
-    "repairs_like": "tacvest",
     "type": "ARMOR",
     "copy-from": "heavy_load_bearing_vest",
     "name": { "str": "heavy load bearing vest with sling", "str_pl": "heavy load bearing vests with slings" },
@@ -769,7 +765,6 @@
   },
   {
     "id": "heavy_load_bearing_vest_breacher",
-    "repairs_like": "tacvest",
     "type": "ARMOR",
     "copy-from": "heavy_load_bearing_vest",
     "name": { "str": "breacher load bearing vest" },
@@ -815,7 +810,6 @@
   },
   {
     "id": "radio_pouch",
-    "repairs_like": "legrig",
     "type": "ARMOR",
     "//": " stats taken from: https://www.patriotoutfitters.com/5-11-tactical-molle-radio-pouch?PMSRCH=MOLLE%20GEAR",
     "name": { "str": "tactical radio pouch", "str_pl": "tactical radio pouches" },
@@ -844,7 +838,6 @@
   },
   {
     "id": "gadget_pouch",
-    "repairs_like": "legrig",
     "type": "ARMOR",
     "//": " stats taken from: https://www.patriotoutfitters.com/condor-gadget-pouch-tan498-?PMSRCH=MOLLE%20GEAR",
     "name": { "str": "gadget pouch", "str_pl": "gadget pouches" },
@@ -873,7 +866,6 @@
   },
   {
     "id": "h2o_pouch",
-    "repairs_like": "legrig",
     "type": "ARMOR",
     "//": " stats taken from: https://www.patriotoutfitters.com/condor-h2o-pouch?PMSRCH=MOLLE%20GEAR",
     "name": { "str": "H2O pouch", "str_pl": "H2O pouches" },
@@ -910,7 +902,6 @@
   },
   {
     "id": "canteen_pouch",
-    "repairs_like": "legrig",
     "type": "ARMOR",
     "name": { "str": "canteen pouch", "str_pl": "canteen pouches" },
     "description": "A pouch designed to keep your canteen accessible and secure.  Has MOLLE straps for attaching to a belt or vest.",
@@ -939,7 +930,6 @@
   },
   {
     "id": "tool_pouch",
-    "repairs_like": "legrig",
     "type": "ARMOR",
     "//": " stats taken from: https://www.patriotoutfitters.com/condor-t-and-t-pouch?PMSRCH=MOLLE%20GEAR",
     "name": { "str": "tactical tool pouch", "str_pl": "tactical tool pouches" },
@@ -968,7 +958,6 @@
   },
   {
     "id": "flashlight_pouch",
-    "repairs_like": "legrig",
     "type": "ARMOR",
     "//": " stats taken from: https://www.patriotoutfitters.com/condor-flashlight-pouch?PMSRCH=MOLLE%20GEAR liberties were taken with this one so it would hold either flashlight",
     "name": { "str": "flashlight pouch", "str_pl": "flashlight pouches" },
@@ -998,7 +987,6 @@
   },
   {
     "id": "tactical_holster",
-    "repairs_like": "legrig",
     "type": "ARMOR",
     "name": { "str": "tactical holster" },
     "//": " stats taken from: https://www.patriotoutfitters.com/condor-vertical-molle-holster?PMSRCH=MOLLE%20GEAR",
@@ -1038,7 +1026,6 @@
   },
   {
     "id": "gas_mask_pouch",
-    "repairs_like": "legrig",
     "type": "ARMOR",
     "//": " stats taken from: https://condoroutdoor.com/ma11.html this one is much larger than an in game gas mask so I've take some liberties on size",
     "name": { "str": "gas mask pouch", "str_pl": "gas mask pouches" },
@@ -1078,7 +1065,6 @@
   },
   {
     "id": "tactical_grenade_pouch",
-    "repairs_like": "legrig",
     "type": "ARMOR",
     "//": " stats taken from: https://www.tacticalassaultgearstore.com/molle-frag-grenade-pouch.html",
     "name": { "str": "tactical grenade pouch", "str_pl": "tactical grenade pouches" },
@@ -1107,7 +1093,6 @@
   },
   {
     "id": "triple_stacker_pouch",
-    "repairs_like": "legrig",
     "type": "ARMOR",
     "//": " stats taken from: https://www.patriotoutfitters.com/condor-triple-stacker-open-top-m4-mag-pouch?PMSRCH=MOLLE%20GEAR",
     "name": { "str": "triple stacker ammo pouch", "str_pl": "triple stacker ammo pouches" },
@@ -1182,7 +1167,6 @@
   },
   {
     "id": "tactical_shotshell_pouch",
-    "repairs_like": "legrig",
     "type": "ARMOR",
     "//": " stats taken from: https://condoroutdoor.com/ma12-shotgun-ammo-pouch.html",
     "name": { "str": "tactical shotshell pouch", "str_pl": "tactical shotshell pouches" },
@@ -1202,7 +1186,6 @@
   },
   {
     "id": "xlkevlar",
-    "repairs_like": "survivor_suit",
     "type": "ARMOR",
     "category": "armor",
     "name": { "str": "XL Kevlar vest" },
@@ -1306,7 +1289,6 @@
   {
     "id": "belt_loop_small",
     "type": "ARMOR",
-    "repairs_like": "legrig",
     "name": { "str": "small belt loop" },
     "description": "A MOLLE-compatible loop for attaching small tools to a load-bearing vest.",
     "weight": "25 g",
@@ -1337,7 +1319,6 @@
   {
     "id": "belt_loop_medium",
     "type": "ARMOR",
-    "repairs_like": "legrig",
     "name": { "str": "medium belt loop" },
     "description": "A MOLLE-compatible loop for attaching tools and some weapons to a load-bearing vest.",
     "weight": "50 g",
@@ -1368,7 +1349,6 @@
   {
     "id": "belt_loop_large",
     "type": "ARMOR",
-    "repairs_like": "legrig",
     "name": { "str": "large belt loop" },
     "description": "A MOLLE-compatible loop for attaching large tools and weapons to a load-bearing vest.",
     "weight": "100 g",

@@ -725,7 +725,7 @@
     "material": [ "steel" ],
     "symbol": ";",
     "color": "light_gray",
-    "qualities": [ [ "CUT", 2 ], [ "SAW_W", 1 ], [ "SAW_M", 1 ], [ "WRENCH", 1 ], [ "SCREW", 1 ], [ "SCREW_FINE", 1 ], [ "BUTCHER", 7 ] ],
+    "qualities": [ [ "CUT", 2 ], [ "SAW_W", 1 ], [ "SAW_M", 1 ], [ "WRENCH", 1 ], [ "SCREW", 1 ], [ "BUTCHER", 7 ] ],
     "flags": [ "SHEATH_KNIFE", "ALLOWS_BODY_BLOCK" ],
     "melee_damage": { "bash": 1, "stab": 4 }
   },
@@ -1243,13 +1243,20 @@
         "tool_quality": 10,
         "cost_scaling": 0.1,
         "move_cost": 500
+      },
+      {
+        "type": "link_up",
+        "menu_text": "Plug in / Unplug",
+        "ammo_scale": 0,
+        "cable_length": 7,
+        "charge_rate": "3000 W"
       }
     ],
     "flags": [ "ALLOWS_REMOTE_USE", "WATER_BREAK" ],
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
-        "rigid": true,
+        "magazine_well": "500 ml",
         "default_magazine": "medium_storage_battery",
         "item_restriction": [
           "medium_storage_battery",
@@ -1313,13 +1320,20 @@
         "tool_quality": 5,
         "cost_scaling": 0.1,
         "move_cost": 1000
+      },
+      {
+        "type": "link_up",
+        "menu_text": "Plug in / Unplug",
+        "ammo_scale": 0,
+        "cable_length": 7,
+        "charge_rate": "1500 W"
       }
     ],
     "flags": [ "ALLOWS_REMOTE_USE", "WATER_BREAK" ],
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
-        "rigid": true,
+        "magazine_well": "1250 ml",
         "item_restriction": [
           "medium_battery_cell",
           "medium_plus_battery_cell",
@@ -1385,13 +1399,20 @@
         "tool_quality": 10,
         "cost_scaling": 0.1,
         "move_cost": 500
+      },
+      {
+        "type": "link_up",
+        "menu_text": "Plug in / Unplug",
+        "ammo_scale": 0,
+        "cable_length": 7,
+        "charge_rate": "3000 W"
       }
     ],
     "flags": [ "ALLOWS_REMOTE_USE", "WATER_BREAK" ],
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
-        "rigid": true,
+        "magazine_well": "500 ml",
         "item_restriction": [
           "medium_battery_cell",
           "medium_plus_battery_cell",
