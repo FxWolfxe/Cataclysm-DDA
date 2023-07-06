@@ -219,7 +219,17 @@
 },
 {
   "type": "mood_face",
+  "id": "THRESH_FISH",
+  "copy-from": "THRESH_FELINE"
+},
+{
+  "type": "mood_face",
   "id": "THRESH_BEAST_HORIZONTAL",
+  "copy-from": "THRESH_FELINE_HORIZONTAL"
+},
+{
+  "type": "mood_face",
+  "id": "THRESH_FISH_HORIZONTAL",
   "copy-from": "THRESH_FELINE_HORIZONTAL"
 }
 ]
