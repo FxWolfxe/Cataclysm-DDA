@@ -4770,19 +4770,23 @@ void overmap::place_swamps()
             const tripoint_om_omt pos( x, y, 0 );
             // If this location isn't a forest, there's nothing to do here. We'll only grow swamps in existing
             // forest terrain.
+
+            float noise_mul = 1.0;
+            float iso_noise_mul = 1.0; 
             if( !is_ot_match( "forest", ter( pos ), ot_match_type::contains ) ) {
-                continue;
+                noise_mul = 1.5;
+                iso_noise_mul = 2; 
             }
 
             // If this was a part of our buffered floodplain, and the noise here meets the threshold, and the one_in rng
             // triggers, then we should flood this location and make it a swamp.
             const bool should_flood = ( floodplain[x][y] > 0 && !one_in( floodplain[x][y] ) && f.noise_at( { x, y } )
-                                        > settings->overmap_forest.noise_threshold_swamp_adjacent_water );
+                                        > settings->overmap_forest.noise_threshold_swamp_adjacent_water  * noise_mul);
 
             // If this location meets our isolated swamp threshold, regardless of floodplain values, we'll make it
             // into a swamp.
             const bool should_isolated_swamp = f.noise_at( pos.xy() ) >
-                                               settings->overmap_forest.noise_threshold_swamp_isolated;
+                                               settings->overmap_forest.noise_threshold_swamp_isolated * iso_noise_mul;
             if( should_flood || should_isolated_swamp )  {
                 ter_set( pos, oter_forest_water );
             }
