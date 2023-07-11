@@ -335,6 +335,7 @@ static const json_character_flag json_flag_WEBBED_FEET( "WEBBED_FEET" );
 static const json_character_flag json_flag_WEBBED_HANDS( "WEBBED_HANDS" );
 static const json_character_flag json_flag_BAREFOOT_OK("BAREFOOT_OK");
 static const json_character_flag json_flag_SWIMS("SWIMS");
+static const json_character_flag json_flag_ALLFOURS("ALL_FOURS");
 
 
 static const limb_score_id limb_score_balance( "balance" );
@@ -2116,9 +2117,7 @@ bool Character::is_runallfours() const
 {
     bool allfour = false;
     if( move_mode->type() == move_mode_type::RUNNING && !is_armed() ) {
-        if( has_trait( trait_PAWS ) && ( has_trait( trait_THRESH_LUPINE ) ||
-                                         has_trait( trait_THRESH_FELINE )
-                                         || has_trait( trait_THRESH_BEAST ) ) ) {
+        if( has_flag(json_flag_ALLFOURS)) {
             allfour = true;
         }
     }

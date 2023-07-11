@@ -100,7 +100,8 @@
               },
               "values": [ { "value": "MOVE_COST", "multiply": -0.55 } ]
             }
-          ]
+          ],
+          "flags":["ALL_FOURS"]
     },
     {
         "type": "mutation",
@@ -181,7 +182,8 @@
               },
               "values": [ { "value": "MOVE_COST", "multiply": -0.75 } ]
             }
-          ]
+          ],
+          "flags":["ALL_FOURS"]
     }, 
     {
       "type": "mutation",
@@ -261,7 +263,8 @@
             },
             "values": [ { "value": "MOVE_COST", "multiply": -0.55 } ]
           }
-        ]
+        ],
+        "flags":["ALL_FOURS"]
   }, 
     {
         "type": "mutation",
