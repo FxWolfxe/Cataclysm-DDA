@@ -3404,6 +3404,7 @@ bool cata_tiles::draw_terrain( const tripoint &p, const lit_level ll, int &heigh
             // tile overrides are always shown with full visibility
             const lit_level lit = overridden ? lit_level::LIT : ll;
             const bool nv = overridden ? false : nv_goggles_activated;
+            const bool dg_vis = overridden ? false : dog_vision_activated;
             return memorize_only
                    ? false
                    : draw_from_id_string( tname, TILE_CATEGORY::TERRAIN, empty_string, p, subtile,
@@ -3505,6 +3506,7 @@ bool cata_tiles::draw_furniture( const tripoint &p, const lit_level ll, int &hei
             // tile overrides are always shown with full visibility
             const lit_level lit = overridden ? lit_level::LIT : ll;
             const bool nv = overridden ? false : nv_goggles_activated;
+            const bool dg_vis = overridden ? false : dog_vision_activated;
             return memorize_only
                    ? false
                    : draw_from_id_string( fname, TILE_CATEGORY::FURNITURE, empty_string, p, subtile,
@@ -3591,6 +3593,8 @@ bool cata_tiles::draw_trap( const tripoint &p, const lit_level ll, int &height_3
             // tile overrides are always shown with full visibility
             const lit_level lit = overridden ? lit_level::LIT : ll;
             const bool nv = overridden ? false : nv_goggles_activated;
+            const bool dg_vis = overridden ? false : dog_vision_activated;
+
             return memorize_only
                    ? false
                    : draw_from_id_string( trname, TILE_CATEGORY::TRAP, empty_string, p, subtile,
@@ -4015,7 +4019,7 @@ bool cata_tiles::draw_vpart( const tripoint &p, lit_level ll, int &height_3d,
                                  ? false
                                  : draw_from_id_string( "vp_" + vd.id.str(), TILE_CATEGORY::VEHICLE_PART,
                                                         empty_string, p, subtile, rotation, ll,
-                                                        nv_goggles_activated, height_3d_temp, 0, vd.variant.id ,false, dog_vision_activated );
+                                                        nv_goggles_activated, height_3d_temp, 0, vd.variant.id ,dog_vision_activated );
                 if( ret && vd.has_cargo ) {
                     draw_item_highlight( p, height_3d_temp );
                 }
