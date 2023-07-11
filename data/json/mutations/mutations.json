@@ -4144,7 +4144,7 @@
     "description": "The bottoms of your feet are strongly padded.  You receive no movement penalty for not wearing shoes, and even receive a 10% bonus when moving barefoot.",
     "types": [ "SOLES" ],
     "category": [ "BATRACHIAN", "RABBIT", "URSINE", "FELINE", "LUPINE", "SPIDER" , "BEAST"],
-    "flags":["BAREFOOT_OK"]
+    "flags":["TOUGH_FEET"]
   },
   {
     "type": "mutation",
@@ -4160,7 +4160,7 @@
     "climbing_difficulty_modifier":0.6,
     "restricts_gear":[ "foot_l", "foot_r", "foot_sole_l", "foot_sole_l", "foot_toes_l", "foot_toes_r"],
     "allow_soft_gear":true,
-    "flags":["BAREFOOT_OK"]
+    "flags":["TOUGH_FEET"]
   },
   {
     "type": "mutation",
@@ -4175,7 +4175,7 @@
     "movecost_modifier":0.85,
     "restricts_gear":[ "foot_l", "foot_r", "foot_sole_l", "foot_sole_l", "foot_toes_l", "foot_toes_r"],
     "allow_soft_gear":true,
-    "flags":["BAREFOOT_OK"]
+    "flags":["TOUGH_FEET"]
   },
   {
     "type": "mutation",
@@ -4189,7 +4189,7 @@
     "movecost_modifier":0.85,
     "restricts_gear":[ "foot_l", "foot_r", "foot_sole_l", "foot_sole_l", "foot_toes_l", "foot_toes_r"],
     "allow_soft_gear":true,
-    "flags":["BAREFOOT_OK"]
+    "flags":["TOUGH_FEET"]
   },
   {
     "type": "mutation",
@@ -4299,7 +4299,7 @@
       "chance": 20,
       "strength_damage": { "damage_type": "cut", "amount": 4 }
     }, 
-    "flags":["BAREFOOT_OK"]
+    "flags":["TOUGH_FEET"]
   },
   {
     "type": "mutation",
@@ -4322,7 +4322,7 @@
       "chance": 20,
       "strength_damage": { "damage_type": "cut", "amount": 2 }
     }, 
-    "flags":["BAREFOOT_OK"]
+    "flags":["TOUGH_FEET"]
   },
   {
     "type": "mutation",
