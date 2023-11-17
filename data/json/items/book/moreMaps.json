@@ -1,0 +1,20 @@
+[
+    {
+        "id": "lake_map",
+        "copy-from": "abstractmap",
+        "type": "GENERIC",
+        "name": { "str": "lake map" },
+        "description": "A printout of local water sources",
+        "color": "white",
+        "use_action": {
+          "type": "reveal_map",
+          "radius": 90,
+          "terrain": [
+            { "om_terrain": "cabin_lake", "om_terrain_match_type": "TYPE" },
+            { "om_terrain": "lighthouse_ground", "om_terrain_match_type": "TYPE" },
+            { "om_terrain": "sealab_small_surface", "om_terrain_match_type": "TYPE" }
+          ],
+          "message": "You add lake buildings to your map."
+        }
+      }
+]

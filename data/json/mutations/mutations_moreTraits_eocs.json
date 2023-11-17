@@ -498,5 +498,55 @@
             }
           }
         ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_raptor",
+        "recurrence": [ "2 days", "7 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_RAPTOR" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_RAPTOR" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_raptor" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_raptor_complete",
+              "condition": { "u_has_trait": "THRESH_RAPTOR" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_RAPTOR" }, { "u_add_trait": "MANIFESTED_DESTINY_RAPTOR" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_raptor",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_RAPTOR" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_raptor" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_raptor",
+              "condition": { "u_has_trait": "THRESH_RAPTOR" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_RAPTOR" } ]
+            }
+          }
+        ]
       }
 ]

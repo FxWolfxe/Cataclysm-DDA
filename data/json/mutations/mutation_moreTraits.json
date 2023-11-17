@@ -223,5 +223,27 @@
         "valid": true,
         "player_display":true,
         "description": "You feel like you've left behind your old life and form."
+      },
+      {
+        "type": "mutation",
+        "id": "MANIFEST_DESTINY_RAPTOR",
+        "name": { "str": "Transforming into Raptor" },
+        "points": 0,
+        "starting_trait": true,
+        "purifiable": false,
+        "valid": true,
+        "player_display":true,
+        "description": "You feel like you've left behind your old life and form."
+      },
+      {
+        "type": "mutation",
+        "id": "MANIFESTED_DESTINY_RAPTOR",
+        "name": { "str": "Transformed into Raptor" },
+        "points": 0,
+        "starting_trait": false,
+        "purifiable": false,
+        "valid": true,
+        "player_display":true,
+        "description": "You feel like you've left behind your old life and form."
       }
 ]
