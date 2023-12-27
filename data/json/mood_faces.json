@@ -84,6 +84,33 @@
   },
   {
     "type": "mood_face",
+    "id": "THRESH_SPIDER",
+    "values": [
+      { "value": 100, "face": "<color_green>88D</color>" },
+      { "value": 50, "face": "<color_green>::D</color>" },
+      { "value": 10, "face": "<color_green>::3</color>" },
+      { "value": -10, "face": "<color_white>::|</color>" },
+      { "value": -50, "face": "<color_red>):</color>" },
+      { "value": -100, "face": "<color_red>D::</color>" },
+      { "value": -200, "face": "<color_red>D88</color>" }
+    ]
+  },
+  {
+    "type": "mood_face",
+    "id": "THRESH_SPIDER_HORIZONTAL",
+    "values": [
+      { "value": 200, "face": "<color_green>O@W@O</color>" },
+      { "value": 100, "face": "<color_green>oOWOo</color>" },
+      { "value": 50, "face": "<color_green>^owo^</color>" },
+      { "value": 10, "face": "<color_green>.^w^.</color>" },
+      { "value": -10, "face": "<color_white>--w--</color>" },
+      { "value": -50, "face": "<color_red>--m--</color>" },
+      { "value": -100, "face": "<color_red>tTmTt</color>" },
+      { "value": -200, "face": "<color_red>xXmXx</color>" }
+    ]
+  },
+  {
+    "type": "mood_face",
     "id": "THRESH_URSINE",
     "values": [
       { "value": 200, "face": "<color_green>8(80D)</color>" },
@@ -100,5 +127,109 @@
     "type": "mood_face",
     "id": "THRESH_URSINE_HORIZONTAL",
     "copy-from": "THRESH_FELINE_HORIZONTAL"
-  }
+  },
+  {
+    "type": "mood_face",
+    "id": "THRESH_LUPINE",
+    "copy-from": "THRESH_FELINE"
+},
+{
+  "type": "mood_face",
+  "id": "THRESH_RAT",
+  "copy-from": "THRESH_FELINE"
+},
+{
+    "type": "mood_face",
+    "id": "THRESH_LUPINE_HORIZONTAL",
+    "copy-from": "THRESH_FELINE_HORIZONTAL"
+},
+{
+  "type": "mood_face",
+  "id": "THRESH_RAT_HORIZONTAL",
+  "copy-from": "THRESH_FELINE_HORIZONTAL"
+},
+{
+    "type": "mood_face",
+    "id": "THRESH_GASTROPOD",
+    "copy-from": "THRESH_FELINE"
+},
+{
+  "type": "mood_face",
+  "id": "THRESH_CHIMERA",
+  "copy-from": "THRESH_FELINE"
+},
+{
+  "type": "mood_face",
+  "id": "THRESH_CHIMERA_HORIZONTAL",
+  "copy-from": "THRESH_FELINE_HORIZONTAL"
+},
+{
+    "type": "mood_face",
+    "id": "THRESH_CRUSTACEAN",
+    "copy-from": "THRESH_FELINE"
+},
+
+{
+    "type": "mood_face",
+    "id": "THRESH_GASTROPOD_HORIZONTAL",
+    "values": [
+        {
+            "value": 200,
+            "face": "<color_green>@\\W/@</color>"
+        },
+        {
+            "value": 100,
+            "face": "<color_green>O\\W/O</color>"
+        },
+        {
+            "value": 50,
+            "face": "<color_green>o\\w/o</color>"
+        },
+        {
+            "value": 10,
+            "face": "<color_green>^\\w/^</color>"
+        },
+        {
+            "value": -10,
+            "face": "<color_white>-\\w/-</color>"
+        },
+        {
+            "value": -50,
+            "face": "<color_red>-\\m/-</color>"
+        },
+        {
+            "value": -100,
+            "face": "<color_red>T\\m//T</color>"
+        },
+        {
+            "value": -200,
+            "face": "<color_red>X\\m/X</color>"
+        }
+    ]
+}, 
+{
+  "type": "mood_face",
+  "id": "THRESH_CRUSTACEAN_HORIZONTAL",
+  "copy-from": "THRESH_GASTROPOD_HORIZONTAL"
+},
+{
+  "type": "mood_face",
+  "id": "THRESH_BEAST",
+  "copy-from": "THRESH_FELINE"
+},
+{
+  "type": "mood_face",
+  "id": "THRESH_FISH",
+  "copy-from": "THRESH_FELINE"
+},
+{
+  "type": "mood_face",
+  "id": "THRESH_BEAST_HORIZONTAL",
+  "copy-from": "THRESH_FELINE_HORIZONTAL"
+},
+{
+  "type": "mood_face",
+  "id": "THRESH_FISH_HORIZONTAL",
+  "copy-from": "THRESH_FELINE_HORIZONTAL"
+}
 ]

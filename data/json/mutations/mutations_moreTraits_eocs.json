@@ -1,0 +1,552 @@
+[ 
+    {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_wolf",
+        "recurrence": [ "2 days", "7 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_WOLF" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_WOLF" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_lupine" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_wolf_complete",
+              "condition": { "u_has_trait": "THRESH_LUPINE" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_WOLF" }, { "u_add_trait": "MANIFESTED_DESTINY_WOLF" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_wolf",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_WOLF" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_lupine" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_wolf",
+              "condition": { "u_has_trait": "THRESH_LUPINE" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_WOLF" } ]
+            }
+          }
+        ]
+      }, 
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_snail",
+        "recurrence": [ "2 days", "7 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_SNAIL" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_SNAIL" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_gastropod" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_snail_complete",
+              "condition": { "u_has_trait": "THRESH_GASTROPOD" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_SNAIL" }, { "u_add_trait": "MANIFESTED_DESTINY_SNAIL" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_snail",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_SNAIL" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_gastropod" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_snail",
+              "condition": { "u_has_trait": "THRESH_GASTROPOD" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_SNAIL" } ]
+            }
+          }
+        ]
+      }, 
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_lizard",
+        "recurrence": [ "2 days", "7 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_LIZARD" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_LIZARD" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_lizard" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_lizard_complete",
+              "condition": { "u_has_trait": "THRESH_GASTROPOD" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_LIZARD" }, { "u_add_trait": "MANIFESTED_DESTINY_LIZARD" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_lizard",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_LIZARD" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_lizard" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_lizard",
+              "condition": { "u_has_trait": "THRESH_GASTROPOD" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_LIZARD" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_bear",
+        "recurrence": [ "2 days", "7 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_BEAR" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_BEAR" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_ursine" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_bear_complete",
+              "condition": { "u_has_trait": "THRESH_LIZARD" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_BEAR" }, { "u_add_trait": "MANIFESTED_DESTINY_BEAR" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_bear",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_BEAR" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_ursine" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_bear",
+              "condition": { "u_has_trait": "THRESH_URSINE" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_BEAR" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_rat",
+        "recurrence": [ "2 days", "7 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_RAT" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_RAT" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_rat" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_rat_complete",
+              "condition": { "u_has_trait": "THRESH_RAT" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_RAT" }, { "u_add_trait": "MANIFESTED_DESTINY_RAT" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_rat",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_RAT" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_rat" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_rat",
+              "condition": { "u_has_trait": "THRESH_RAT" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_RAT" } ]
+            }
+          }
+        ]
+      }, 
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_cephalopod",
+        "recurrence": [ "2 days", "7 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_CEPHALOPOD" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_CEPHALOPOD" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_cephalopod" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_cephalopod_complete",
+              "condition": { "u_has_trait": "THRESH_CEPHALOPOD" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_CEPHALOPOD" }, { "u_add_trait": "MANIFESTED_DESTINY_CEPHALOPOD" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_cephalopod",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_CEPHALOPOD" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_cephalopod" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_cephalopod",
+              "condition": { "u_has_trait": "THRESH_CEPHALOPOD" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_CEPHALOPOD" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_crustacean",
+        "recurrence": [ "2 days", "7 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_CRUSTACEAN" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_CRUSTACEAN" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_crustacean" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_crustacean_complete",
+              "condition": { "u_has_trait": "THRESH_CRUSTACEAN" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_CRUSTACEAN" }, { "u_add_trait": "MANIFESTED_DESTINY_CRUSTACEAN" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_crustacean",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_CRUSTACEAN" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_crustacean" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_crustacean",
+              "condition": { "u_has_trait": "THRESH_CRUSTACEAN" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_CRUSTACEAN" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_chimera",
+        "recurrence": [ "2 days", "7 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_CHIMERA" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_CHIMERA" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_chimera" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_chimera_complete",
+              "condition": { "u_has_trait": "THRESH_CHIMERA" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_CHIMERA" }, { "u_add_trait": "MANIFESTED_DESTINY_CHIMERA" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_chimera",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_CHIMERA" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_chimera" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_chimera",
+              "condition": { "u_has_trait": "THRESH_CHIMERA" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_CHIMERA" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_bird",
+        "recurrence": [ "2 days", "7 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_BIRD" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_BIRD" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_bird" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_bird_complete",
+              "condition": { "u_has_trait": "THRESH_BIRD" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_BIRD" }, { "u_add_trait": "MANIFESTED_DESTINY_BIRD" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_bird",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_BIRD" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_bird" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_bird",
+              "condition": { "u_has_trait": "THRESH_BIRD" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_BIRD" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_plant",
+        "recurrence": [ "2 days", "7 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_PLANT" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_PLANT" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_plant" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_plant_complete",
+              "condition": { "u_has_trait": "THRESH_PLANT" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_PLANT" }, { "u_add_trait": "MANIFESTED_DESTINY_PLANT" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_plant",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_PLANT" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_plant" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_plant",
+              "condition": { "u_has_trait": "THRESH_PLANT" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_PLANT" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifest_destiny_raptor",
+        "recurrence": [ "2 days", "7 days" ],
+        "condition": { "u_has_trait": "MANIFEST_DESTINY_RAPTOR" },
+        "deactivate_condition": { "u_has_trait": "MANIFESTED_DESTINY_RAPTOR" },
+        "effect": [
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen_raptor" }, "+=", { "arithmetic": [ { "rand": 300 }, "+", { "const": 750 } ] } 
+           
+            ]
+          },
+          {
+            "arithmetic": [ 
+              { "u_val": "vitamin", "name": "mutagen" }, "+=", { "arithmetic": [ { "rand": 50 }, "+", { "const": 250 } ] } 
+           
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "manifest_destiny_raptor_complete",
+              "condition": { "u_has_trait": "THRESH_RAPTOR" },
+              "effect": [ { "u_lose_trait": "MANIFEST_DESTINY_RAPTOR" }, { "u_add_trait": "MANIFESTED_DESTINY_RAPTOR" } ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "effect_on_condition",
+        "id": "manifested_destiny_raptor",
+        "recurrence": [ "3 days", "5 days" ],
+        "condition": { "u_has_trait": "MANIFESTED_DESTINY_RAPTOR" },
+        "effect": [
+          {
+            "arithmetic": [
+              { "u_val": "vitamin", "name": "mutagen_raptor" },
+              "+=",
+              { "arithmetic": [ { "rand": 1000 }, "+", { "const": 1750 } ] }
+            ]
+          },
+          {
+            "run_eocs": {
+              "id": "destiny_goblin_raptor",
+              "condition": { "u_has_trait": "THRESH_RAPTOR" },
+              "effect": [ { "u_lose_trait": "MANIFESTED_DESTINY_RAPTOR" } ]
+            }
+          }
+        ]
+      }
+]
