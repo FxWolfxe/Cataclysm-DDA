@@ -126,7 +126,13 @@ static const trait_id trait_SCHIZOPHRENIC( "SCHIZOPHRENIC" );
 static const trait_id trait_THRESH_MYCUS( "THRESH_MYCUS" );
 static const trait_id trait_WATERSLEEP( "WATERSLEEP" );
 static const trait_id trait_HORIZONTAL_GENE_TRANSFER( "HORIZONTAL_GENE_TRANSFER" );
-static const trait_id trait_METAMORPHOSES_DERMATIK( "METAMORPHOSES_DERMATIK" ); 
+static const trait_id trait_METAMORPHOSES_DERMATIK( "METAMORPHOSES_DERMATIK" );
+static const trait_id trait_M_SPORES("M_SPORES");
+static const trait_id trait_M_FERTILE("M_FERTILE"); 
+static const trait_id trait_M_BLOSSOMS("M_BLOSSOMS");
+static const trait_id trait_M_BLOOM("M_BLOOM"); 
+static const trait_id trait_M_PROVENANCE("M_PROVENANCE");
+
 
 static const vitamin_id vitamin_blood( "blood" );
 static const vitamin_id vitamin_calcium( "calcium" );
@@ -1068,13 +1074,40 @@ static void eff_fun_sleep( Character &u, effect &it )
             }
             // Mycus folks upgrade in their sleep.
             if( u.has_trait( trait_THRESH_MYCUS ) ) {
-                if( one_in( 8 ) ) {
+                if( one_in( 2 ) ) {
                     u.mutate_category( mutation_category_MYCUS, false, true );
                     u.mod_stored_kcal( -87 );
                     u.mod_thirst( 10 );
                     u.mod_fatigue( 5 );
                 }
+
+                if (u.has_trait(trait_M_SKIN3))
+                {
+                    bool on_fungus = here.has_flag_ter_or_furn(ter_furn_flag::TFLAG_FUNGUS, u.pos());
+
+                    int radius = 1;
+                    if (on_fungus)
+                    {
+                        radius = rng(2, 5);
+                    }
+
+                    bool has_providance = u.has_trait(trait_M_PROVENANCE);
+
+                    if (has_providance || u.has_trait(trait_M_SPORES) || u.has_trait(trait_M_FERTILE))
+                    {
+                        u.spores(radius);
+                    }
+
+                    if (has_providance || u.has_trait(trait_M_BLOOM) || u.has_trait(trait_M_BLOSSOMS))
+                    {
+                        u.blossoms();
+                    }
+                }
+
             }
+
+
+            
         }
     }
 

@@ -4487,7 +4487,8 @@
     "purifiable": false,
     "threshreq": [ "THRESH_MYCUS" ],
     "cancels": [ "GOURMAND", "BEAK", "BEAK_PECK", "BEAK_HUM" ],
-    "category": [ "MYCUS" ]
+    "category": [ "MYCUS" ], 
+    "vitamin_rates": [ [ "vitC", -1200 ] , ["iron", -1000], ["calcium", -1000]]
   },
   {
     "type": "mutation",
@@ -7734,8 +7735,8 @@
     "ugliness": 5,
     "description": "Your toes have grown wriggly, and you can't imagine why you wear that stuff on your feet.  Take it off.  It's in the way.",
     "types": [ "FEET" ],
-    "prereqs": [ "PLANTSKIN" ],
-    "threshreq": [ "THRESH_PLANT" ],
+    "prereqs": [ "PLANTSKIN", "M_SKIN", "M_SKIN2"],
+    "threshreq": [ "THRESH_PLANT" , "THRESH_MYCUS"],
     "changes_to": [ "ROOTS2" ],
     "cancels": [ "LEG_TENTACLES", "HOOVES" ],
     "category": [ "PLANT" ],
@@ -7754,7 +7755,7 @@
     },
     "types": [ "LEGS", "FEET" ],
     "prereqs": [ "ROOTS1" ],
-    "threshreq": [ "THRESH_PLANT" ],
+    "threshreq": [ "THRESH_PLANT", "THRESH_MYCUS"],
     "changes_to": [ "ROOTS3" ],
     "category": [ "PLANT" ],
     "encumbrance_covered": [ [ "foot_l", 10 ], [ "foot_r", 10 ] ],
@@ -7770,8 +7771,8 @@
     "description": "You find it difficult not to sink roots when able.  You extract nutrients and water whenever on diggable terrain, but move more slowly.",
     "types": [ "LEGS" ],
     "prereqs": [ "ROOTS2" ],
-    "prereqs2": [ "SAPROPHAGE" ],
-    "threshreq": [ "THRESH_PLANT" ],
+    "prereqs2": [ "SAPROPHAGE" , "M_DEPENDENT"],
+    "threshreq": [ "THRESH_PLANT" , "THRESH_MYCUS"],
     "changes_to": [ "CHLOROMORPH" ],
     "category": [ "PLANT" ],
     "encumbrance_covered": [ [ "foot_l", 10 ], [ "foot_r", 10 ] ]

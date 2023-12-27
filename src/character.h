@@ -2885,7 +2885,7 @@ class Character : public Creature, public visitable
         moncam_cache_t moncam_cache;
         moncam_cache_t get_active_moncams() const;
 
-        void spores();
+        void spores(int radius=1);
         void blossoms();
 
         /** Handles rooting effects */

@@ -8443,13 +8443,13 @@ void Character::restore_scent()
     }
 }
 
-void Character::spores()
+void Character::spores(int radius)
 {
     map &here = get_map();
     fungal_effects fe;
     //~spore-release sound
     sounds::sound( pos(), 10, sounds::sound_t::combat, _( "Pouf!" ), false, "misc", "puff" );
-    for( const tripoint &sporep : here.points_in_radius( pos(), 1 ) ) {
+    for( const tripoint &sporep : here.points_in_radius( pos(), radius ) ) {
         if( sporep == pos() ) {
             continue;
         }
