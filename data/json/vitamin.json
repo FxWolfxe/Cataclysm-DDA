@@ -118,7 +118,7 @@
     "excess": "mutagen",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "3 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -129,7 +129,7 @@
     "excess": "mutagen_alpha",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -140,7 +140,7 @@
     "excess": "mutagen_batrachian",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -151,7 +151,7 @@
     "excess": "mutagen_beast",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -162,7 +162,7 @@
     "excess": "mutagen_bird",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -173,7 +173,7 @@
     "excess": "mutagen_cattle",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -184,7 +184,7 @@
     "excess": "mutagen_cephalopod",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -195,7 +195,7 @@
     "excess": "mutagen_chimera",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -206,7 +206,7 @@
     "excess": "mutagen_elfa",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -217,7 +217,7 @@
     "excess": "mutagen_feline",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -228,7 +228,7 @@
     "excess": "mutagen_fish",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -239,7 +239,7 @@
     "excess": "mutagen_gastropod",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -250,7 +250,7 @@
     "excess": "mutagen_human",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -261,7 +261,7 @@
     "excess": "mutagen_insect",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -272,7 +272,7 @@
     "excess": "mutagen_lizard",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -283,7 +283,7 @@
     "excess": "mutagen_lupine",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -294,7 +294,7 @@
     "excess": "mutagen_medical",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -305,7 +305,7 @@
     "excess": "mutagen_mouse",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -316,7 +316,7 @@
     "excess": "mutagen_plant",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -327,7 +327,7 @@
     "excess": "mutagen_rabbit",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -338,7 +338,7 @@
     "excess": "mutagen_raptor",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -349,7 +349,7 @@
     "excess": "mutagen_rat",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -360,7 +360,7 @@
     "excess": "mutagen_slime",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -371,7 +371,7 @@
     "excess": "mutagen_spider",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -382,7 +382,7 @@
     "excess": "mutagen_troglobite",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -393,7 +393,7 @@
     "excess": "mutagen_ursine",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
@@ -404,7 +404,7 @@
     "excess": "mutagen_crustacean",
     "min": 0,
     "max": 2500,
-    "rate": "1 h",
+    "rate": "5 h",
     "disease_excess": [ [ 100, 500 ], [ 501, 2199 ], [ 2200, 2500 ] ]
   },
   {
