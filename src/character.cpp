@@ -5047,11 +5047,16 @@ void Character::calc_sleep_recovery_rate( needs_rates &rates ) const
     } else {
 
         const auto bmi = get_bmi_fat();
-        const float rate = bmi > character_weight_category::overweight ? 1.0 / 9 : 2.0 / 7.0;
-         
+        const float obsMod = 0.75f;
+        float rate = bmi > character_weight_category::overweight ? 1.0 / 9 : 2.0 / 7.0;
+        rate = bmi > character_weight_category::obese ? bmi * obsMod : bmi;
+        rate = bmi > character_weight_category::morbidly_obese ? bmi * obsMod : bmi; 
+        const float thirstRate = bmi > character_weight_category::obese ? 1.0 / 12 : 1.0f / 8.0f;
+
+
         // Hunger and thirst advance *much* more slowly whilst we hibernate.
         rates.hunger *= rate;
-        rates.thirst *= ( 1.0f / 8.0f );
+        rates.thirst *= thirstRate;
     }
     rates.recovery -= static_cast<float>( get_perceived_pain() ) / 60;
 }
@@ -8857,7 +8862,7 @@ void Character::fall_asleep()
                                 pgettext( "memorial_female", "Entered hibernation." ) );
         }
         // some days worth of round-the-clock Snooze.  Cata seasons default to 91 days.
-        fall_asleep( 10_days );
+        fall_asleep( 20_days );
         // If you're not fatigued enough for 10 days, you won't sleep the whole thing.
         // In practice, the fatigue from filling the tank from (no msg) to Time For Bed
         // will last about 8 days.

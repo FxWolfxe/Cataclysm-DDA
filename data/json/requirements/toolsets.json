@@ -331,8 +331,7 @@
       { "id": "CHISEL", "level": 2 },
       { "id": "PRY", "level": 3 },
       { "id": "DIG", "level": 3 }
-    ],
-    "tools": [ [ [ "angle_grinder", 200 ] ] ]
+    ]
   },
   {
     "id": "linoleum_removal_standard",

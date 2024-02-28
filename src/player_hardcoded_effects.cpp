@@ -987,6 +987,16 @@ static void eff_fun_sleep( Character &u, effect &it )
         u.set_fatigue( 25 ); //Prevent us from waking up naturally while under anesthesia
     }
 
+    if(u.is_hibernating() && u.get_fatigue() <= 25 )
+    {
+        auto bmi = u.get_bmi_fat();
+        if(bmi >= character_weight_category::obese && u.get_lifestyle() > 0)
+        {
+            u.set_fatigue(25); //don't end hibernation too early 
+        }
+    }
+
+
     if( u.get_fatigue() < -25 && it.get_duration() > 3_minutes && !u.has_effect( effect_narcosis ) ) {
         it.set_duration( 1_turns * dice( 3, 10 ) );
     }

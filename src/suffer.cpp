@@ -1277,8 +1277,13 @@ void suffer::from_other_mutations( Character &you )
         here.add_field( position, fd_web, 1 );
     }
 
-    if( (you.has_trait( trait_MUCUS_SECRETION )|| you.has_trait(trait_SNAIL_TRAIL)) && !you.in_vehicle && one_in(233)) {
-        here.add_field( position, fd_sludge, 1 );
+    const bool has_snail_trail = you.has_trait(trait_SNAIL_TRAIL); 
+    if( you.has_trait( trait_MUCUS_SECRETION )|| has_snail_trail && !you.in_vehicle)
+    {
+        const int chance = has_snail_trail ? 12 : 233; 
+
+        if( one_in(chance))
+            here.add_field( position, fd_sludge, 1 );
     }
 
     bool should_mutate = you.has_trait( trait_UNSTABLE ) && !you.has_trait( trait_CHAOTIC_BAD ) &&

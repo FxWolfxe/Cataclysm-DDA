@@ -94,7 +94,7 @@
     "sym": "0",
     "color": "yellow",
     "see_cost": 5,
-    "flags": [ "RISK_LOW", "SOURCE_SAFETY" ]
+    "flags": [ "RISK_LOW", "SOURCE_SAFETY" , "LAKE"]
   },
   {
     "type": "overmap_terrain",
